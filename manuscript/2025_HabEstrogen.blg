@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: 2025_HabEstrogen.aux
+The style file: vancouver-elife.bst
+Database file #1: References_HabEstrogen.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--there's a number but no volume in Broussard2022-yd
+Warning--empty author and editor in 660hz
+Warning--missing publisher in 660hz
+Warning--empty note in Lamire2023-di
+Warning--empty note in Pachitariu2016-tl
+Warning--empty author and editor in picamera
+Warning--missing publisher in picamera
+Warning--empty note in Saunders2019-ka
+Warning--empty author and editor in enwiki:1118116052
+Warning--missing publisher in enwiki:1118116052
+You've used 32 entries,
+            3492 wiz_defined-function locations,
+            947 strings with 14927 characters,
+and the built_in function-call counts, 113510 in all, are:
+= -- 14272
+> -- 1390
+< -- 8
++ -- 728
+- -- 458
+* -- 10456
+:= -- 12478
+add.period$ -- 98
+call.type$ -- 32
+change.case$ -- 368
+chr.to.int$ -- 32
+cite$ -- 42
+duplicate$ -- 8859
+empty$ -- 10245
+format.name$ -- 523
+if$ -- 25812
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 447
+newline$ -- 168
+num.names$ -- 96
+pop$ -- 955
+preamble$ -- 1
+purify$ -- 365
+quote$ -- 0
+skip$ -- 713
+stack$ -- 0
+substring$ -- 22754
+swap$ -- 1041
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 288
+warning$ -- 10
+while$ -- 437
+width$ -- 0
+write$ -- 432
+(There were 10 warnings)
