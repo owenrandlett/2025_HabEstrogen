@@ -233,7 +233,7 @@
 \renewcommand{\Affilfont}{\mdseries\footnotesize\raggedright}
 \renewcommand{\Authands}{, }
 \setlength{\affilsep}{16pt}
-\renewcommand{\AB@affilsepx}{; \protect\Affilfont}
+\renewcommand{\AB@affilsepx}{\par \protect\Affilfont}
 
 \newcommand{\themetadata}{%
     % \textbf{*Correspondence:\\}  \@correspondence\par
