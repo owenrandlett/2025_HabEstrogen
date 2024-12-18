@@ -1,24 +1,12 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{24}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\urlprefix}{}
 \providecommand{\doiprefix}{doi: }
-
-\bibitem[{Ahrens et~al.(2012)Misha B. Ahrens and Jennifer M. Li and Michael B. Orger and Drew N. Robson and Alexander F. Schier and Florian Engert and Ruben Portugues}]{Ahrens2012}
-\textbf{\color{eLifeMediumGrey} Ahrens MB}, Li JM, Orger MB, Robson DN, Schier AF, Engert F, Portugues R.
-\newblock Brain-wide neuronal dynamics during motor adaptation in zebrafish.
-\newblock Nature.  2012 May; 485(7399):471--477.
-\newblock \urlprefix\url{https://doi.org/10.1038/nature11057}, \href{10.1038/nature11057}{\doiprefix \detokenize{10.1038/nature11057}}.
 
 \bibitem[{Ahrens et~al.(2013)Ahrens, Misha B and Orger, Michael B and Robson, Drew N and Li, Jennifer M and Keller, Philipp J}]{Ahrens2013-xh}
 \textbf{\color{eLifeMediumGrey} Ahrens MB}, Orger MB, Robson DN, Li JM, Keller PJ.
 \newblock Whole-brain functional imaging at cellular resolution using light-sheet microscopy.
 \newblock Nat Methods.  2013 May; 10(5):413--420.
-
-\bibitem[{Akerboom et~al.(2012)Jasper Akerboom and Tsai-Wen Chen and Trevor J. Wardill and Lin Tian and Jonathan S. Marvin and Sevin{\c{c}} Mutlu and Nicole Carreras Calder{\'{o}}n and Federico Esposti and Bart G. Borghuis and Xiaonan Richard Sun and Andrew Gordus and Michael B. Orger and Ruben Portugues and Florian Engert and John J. Macklin and Alessandro Filosa and Aman Aggarwal and Rex A. Kerr and Ryousuke Takagi and Sebastian Kracun and Eiji Shigetomi and Baljit S. Khakh and Herwig Baier and Leon Lagnado and Samuel S.-H. Wang and Cornelia I. Bargmann and Bruce E. Kimmel and Vivek Jayaraman and Karel Svoboda and Douglas S. Kim and Eric R. Schreiter and Loren L. Looger}]{Akerboom2012}
-\textbf{\color{eLifeMediumGrey} Akerboom J}, Chen TW, Wardill TJ, Tian L, Marvin JS, Mutlu S, Calder{\'{o}}n NC, Esposti F, Borghuis BG, Sun XR, Gordus A, Orger MB, Portugues R, Engert F, Macklin JJ, Filosa A, Aggarwal A, Kerr RA, Takagi R, Kracun S, et~al.
-\newblock Optimization of a {GCaMP} Calcium Indicator for Neural Activity Imaging.
-\newblock The Journal of Neuroscience.  2012 Oct; 32(40):13819--13840.
-\newblock \urlprefix\url{https://doi.org/10.1523/jneurosci.2601-12.2012}, \href{10.1523/jneurosci.2601-12.2012}{\doiprefix \detokenize{10.1523/jneurosci.2601-12.2012}}.
 
 \bibitem[{Bradski(2000)Bradski, G.}]{opencv_library}
 \textbf{\color{eLifeMediumGrey} Bradski G}.
@@ -34,18 +22,6 @@
 \textbf{\color{eLifeMediumGrey} Budick SA}, O'Malley DM.
 \newblock Locomotor repertoire of the larval zebrafish: swimming, turning and prey capture.
 \newblock J Exp Biol.  2000 Sep; 203(Pt 17):2565--2579.
-
-\bibitem[{Burgess and Granato(2007)Harold A. Burgess and Michael Granato}]{Burgess2007}
-\textbf{\color{eLifeMediumGrey} Burgess HA}, Granato M.
-\newblock Sensorimotor Gating in Larval Zebrafish.
-\newblock The Journal of Neuroscience.  2007 May; 27(18):4984--4994.
-\newblock \urlprefix\url{https://doi.org/10.1523/jneurosci.0615-07.2007}, \href{10.1523/jneurosci.0615-07.2007}{\doiprefix \detokenize{10.1523/jneurosci.0615-07.2007}}.
-
-\bibitem[{Chen et~al.(2013)Tsai-Wen Chen and Trevor J. Wardill and Yi Sun and Stefan R. Pulver and Sabine L. Renninger and Amy Baohan and Eric R. Schreiter and Rex A. Kerr and Michael B. Orger and Vivek Jayaraman and Loren L. Looger and Karel Svoboda and Douglas S. Kim}]{Chen2013}
-\textbf{\color{eLifeMediumGrey} Chen TW}, Wardill TJ, Sun Y, Pulver SR, Renninger SL, Baohan A, Schreiter ER, Kerr RA, Orger MB, Jayaraman V, Looger LL, Svoboda K, Kim DS.
-\newblock Ultrasensitive fluorescent proteins for imaging neuronal activity.
-\newblock Nature.  2013 Jul; 499(7458):295--300.
-\newblock \urlprefix\url{https://doi.org/10.1038/nature12354}, \href{10.1038/nature12354}{\doiprefix \detokenize{10.1038/nature12354}}.
 
 \bibitem[{Dunn et~al.(2016)Dunn, Timothy W and Mu, Yu and Narayan, Sujatha and Randlett, Owen and Naumann, Eva A and Yang, Chao-Tsung and Schier, Alexander F and Freeman, Jeremy and Engert, Florian and Ahrens, Misha B}]{Dunn2016-bg}
 \textbf{\color{eLifeMediumGrey} Dunn TW}, Mu Y, Narayan S, Randlett O, Naumann EA, Yang CT, Schier AF, Freeman J, Engert F, Ahrens MB.
@@ -97,38 +73,24 @@
 \newblock Swimming of larval zebrafish: ontogeny of body waves and implications for locomotory development.
 \newblock J Exp Biol.  2004 Feb; 207(5):853--868.
 
-\bibitem[{Pachitariu et~al.(2016)Pachitariu, Marius and Stringer, Carsen and Dipoppa, Mario and Schr{\"o}der, Sylvia and Rossi, L Federico and Dalgleish, Henry and Carandini, Matteo and Harris, Kenneth D}]{Pachitariu2016-tl}
-\textbf{\color{eLifeMediumGrey} Pachitariu M}, Stringer C, Dipoppa M, Schr{\"o}der S, Rossi LF, Dalgleish H, Carandini M, Harris KD.
-\newblock Suite2p: beyond 10,000 neurons with standard two-photon microscopy; 2016.
-
 \bibitem[{Pereira et~al.(2022)Pereira, Talmo D and Tabris, Nathaniel and Matsliah, Arie and Turner, David M and Li, Junyu and Ravindranath, Shruthi and Papadoyannis, Eleni S and Normand, Edna and Deutsch, David S and Wang, Z Yan and McKenzie-Smith, Grace C and Mitelut, Catalin C and Castro, Marielisa Diez and D'Uva, John and Kislin, Mikhail and Sanes, Dan H and Kocher, Sarah D and Wang, Samuel S-H and Falkner, Annegret L and Shaevitz, Joshua W and Murthy, Mala}]{Pereira2022-rd}
 \textbf{\color{eLifeMediumGrey} Pereira TD}, Tabris N, Matsliah A, Turner DM, Li J, Ravindranath S, Papadoyannis ES, Normand E, Deutsch DS, Wang ZY, McKenzie-Smith GC, Mitelut CC, Castro MD, D'Uva J, Kislin M, Sanes DH, Kocher SD, Wang SSH, Falkner AL, Shaevitz JW, et~al.
 \newblock Publisher Correction: {SLEAP}: A deep learning system for multi-animal pose tracking.
 \newblock Nat Methods.  2022 May; 19(5):628.
-
-\bibitem[{Portugues et~al.(2014)Ruben Portugues and Claudia~E. Feierstein and Florian Engert and Michael~B. Orger}]{Portugues2014}
-\textbf{\color{eLifeMediumGrey} Portugues R}, Feierstein CE, Engert F, Orger MB.
-\newblock Whole-Brain Activity Maps Reveal Stereotyped, Distributed Networks for Visuomotor Behavior.
-\newblock Neuron.  2014 Mar; 81(6):1328--1343.
-\newblock \urlprefix\url{https://doi.org/10.1016/j.neuron.2014.01.019}, \href{10.1016/j.neuron.2014.01.019}{\doiprefix \detokenize{10.1016/j.neuron.2014.01.019}}.
 
 \bibitem[{Randlett et~al.(2019)Randlett, Owen and Haesemeyer, Martin and Forkin, Greg and Shoenhard, Hannah and Schier, Alexander F and Engert, Florian and Granato, Michael}]{Randlett2019-fj}
 \textbf{\color{eLifeMediumGrey} Randlett O}, Haesemeyer M, Forkin G, Shoenhard H, Schier AF, Engert F, Granato M.
 \newblock Distributed plasticity drives visual habituation learning in larval zebrafish.
 \newblock Curr Biol.  2019 Apr; 29(8):1337--1345.e4.
 
-\bibitem[{{Raspberry Pi Foundation}(2023)}]{picamera}
-\textbf{\color{eLifeMediumGrey} {Raspberry Pi Foundation}}, picamera; 2023.
-\newblock \urlprefix\url{https://picamera.readthedocs.io/}, [Online; accessed 02-May-2023].
+\bibitem[{Romano et~al.(2017)Romano, Shannon N and Edwards, Hailey E and Souder, Jaclyn Paige and Ryan, Kevin J and Cui, Xiangqin and Gorelick, Daniel A}]{Romano2017-ep}
+\textbf{\color{eLifeMediumGrey} Romano SN}, Edwards HE, Souder JP, Ryan KJ, Cui X, Gorelick DA.
+\newblock {G} protein-coupled estrogen receptor regulates embryonic heart rate in zebrafish.
+\newblock PLoS Genet.  2017 Oct; 13(10):e1007069.
 
 \bibitem[{Saunders et~al.(2019)Saunders, Jonny L and Ott, Lucas A and Wehr, Michael}]{Saunders2019-ka}
 \textbf{\color{eLifeMediumGrey} Saunders JL}, Ott LA, Wehr M.
 \newblock {AUTOPILOT}: \textit{Automating experiments with lots of Raspberry Pis}; 2019.
-
-\bibitem[{Schindelin et~al.(2012)Schindelin, Johannes and Arganda-Carreras, Ignacio and Frise, Erwin and Kaynig, Verena and Longair, Mark and Pietzsch, Tobias and Preibisch, Stephan and Rueden, Curtis and Saalfeld, Stephan and Schmid, Benjamin and Tinevez, Jean-Yves and White, Daniel James and Hartenstein, Volker and Eliceiri, Kevin and Tomancak, Pavel and Cardona, Albert}]{Schindelin2012-hd}
-\textbf{\color{eLifeMediumGrey} Schindelin J}, Arganda-Carreras I, Frise E, Kaynig V, Longair M, Pietzsch T, Preibisch S, Rueden C, Saalfeld S, Schmid B, Tinevez JY, White DJ, Hartenstein V, Eliceiri K, Tomancak P, Cardona A.
-\newblock Fiji: an open-source platform for biological-image analysis.
-\newblock Nat Methods.  2012 Jun; 9(7):676--682.
 
 \bibitem[{Severi et~al.(2014)Severi, Kristen E and Portugues, Ruben and Marques, Jo{\~a}o C and O'Malley, Donald M and Orger, Michael B and Engert, Florian}]{Severi2014-iw}
 \textbf{\color{eLifeMediumGrey} Severi KE}, Portugues R, Marques JC, O'Malley DM, Orger MB, Engert F.
@@ -144,11 +106,6 @@
 \textbf{\color{eLifeMediumGrey} Tadres D}, Louis M.
 \newblock {PiVR}: An affordable and versatile closed-loop platform to study unrestrained sensorimotor behavior.
 \newblock PLoS Biol.  2020 Jul; 18(7):e3000712.
-
-\bibitem[{Van~der Walt et~al.(2014)Van der Walt, Stefan and Sch{\"o}nberger, Johannes L and Nunez-Iglesias, Juan and Boulogne, Fran{\c{c}}ois and Warner, Joshua D and Yager, Neil and Gouillart, Emmanuelle and Yu, Tony}]{van2014scikit}
-\textbf{\color{eLifeMediumGrey} Van~der Walt S}, Sch{\"o}nberger JL, Nunez-Iglesias J, Boulogne F, Warner JD, Yager N, Gouillart E, Yu T.
-\newblock scikit-image: image processing in Python.
-\newblock PeerJ.  2014; 2:e453.
 
 \bibitem[{{Wikipedia contributors}(2022)}]{enwiki:1118116052}
 \textbf{\color{eLifeMediumGrey} {Wikipedia contributors}}, Extension tube --- {Wikipedia}{,} The Free Encyclopedia; 2022.

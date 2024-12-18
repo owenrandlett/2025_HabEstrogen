@@ -35,7 +35,6 @@
 
 \lstset{style=mystyle}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% ARTICLE SETUP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,184 +102,26 @@ Habituating to the constant stimuli in the environment is a critical adaptive le
 
 \section{Introduction}
 
-A chief application of the larval zebrafish for neuroscience is to image the activity of neurons in the intact and behaving animal using microscopy. This is facilitated by its translucent and small brain, measuring approximately 0.1 mm\textsuperscript{3}. By expressing genetically encoded indicators, such as the GCaMP Ca\textsuperscript{2+} sensors \citep{Akerboom2012, Chen2013}, signals related to the activity of practically any or all neurons can be recorded from the larval zebrafish brain \citep{Ahrens2012, Portugues2014}. 
+abituating to the constant stimuli in the environment is a critical adaptive learning process conserved across species. We use the larval zebrafish visual response to sudden darkness as a model for studying habituation learning, where zebrafish reduce their responses to repeated stimulations. In this paradigm, treatment with Estradiol strongly increases learning rate, resulting in reduced responses. In an attempt to identify the receptor(s) mediating these effects we used established mutant lines with expected null alleles for the known estrogen receptors (\emph{esr1}, \emph{esr2a}, \emph{esr2b}, \emph{gper}). Our experiments failed to identify a receptor required for the effects of Estradiol on habituation learning. Surprisingly, nuclear-receptor mutants showed increased habituation relative to sibling controls when treated with estradiol, indicating that activation of these receptors has paradoxical inhibitory effects on habituation learning. These experiments confirm that Estradiol is a potent modulator of learning in the vertebrate brain, but suggest that these effects occur independently of the classical estrogen receptor-mediated signaling pathways, which may in fact act to inhibit learning performance.  
 
-Ca\textsuperscript{2+} imaging can be performed with standard microscopes, but such systems are not equipped for monitoring the behaviour of the animal. Therefore, any analyses directly relating neural activity to behaviour will require the integration of a behavioural recording apparatus. Behavioural recording is typically done in the context of custom-built microscopes, which can be designed explicitly with this behaviour-monitoring goal in mind. However, many groups (including my own) have neither the financial nor technical means to implement such a complete system. We rely on microscope equipment in a shared core facility. Such microscopes generally cannot be substantially or permanently modified, and often present physical and optical constraints that make installing a behaviour imaging system challenging. 
 
-Here I present a solution for this problem based on the Raspberry Pi computer, that I call \emph{pi\_tailtrack}. The system includes illumination, camera, computer and software, yielding a complete setup that is compact, inexpensive, and self-contained. The \emph{pi\_tailtrack} system can reliably track larval zebrafish behaviour in real-time at over 100hz while performing functional imaging experiments. 
 
 \newpage
 \section{Materials and Methods}
 
 \subsection{Animal Ethics Statement}
 
-Adult zebrafish used to generate larvae were housed in accordance with PRCI facility approved by the animal welfare committee (comité d’éthique en expérimentation animale de la Région Rhône-Alpes: CECCAPP, Agreement \# C693870602). Behaviour and microscopy experiments were performed at the 5dpf stage, and are thus not subject to ethical review, but these procedures do not harm the larvae. 
+Adult zebrafish used to generate larvae were housed in accordance with PRCI facility approved by the animal welfare committee (comité d’éthique en expérimentation animale de la Région Rhône-Alpes: CECCAPP, Agreement \# C693870602). Behaviour experiments were performed at the 5dpf stage, and are thus not subject to ethical review, but these procedures do not harm the larvae. 
 
 \subsection{Animals}
 
-All experiments were performed on larval zebrafish at 5 days post fertilization (dpf), raised at a density of $\approx$1 larvae/mL of E3 media in a 14:10h light/dark cycle at 28-29\degree{}C. Adult zebrafish were housed, cared for, and bred at the Lyon PRECI zebrafish facility. \textit{mitfa}/Nacre mutant animals (ZDB-ALT-990423-22) were used to prevent pigmentation. 
+All experiments were performed on larval zebrafish at 5 days post fertilization (dpf), raised at a density of $\approx$1 larvae/mL of E3 media in a 14:10h light/dark cycle at 28-29\degree{}C. Adult zebrafish were housed, cared for, and bred at the Lyon PRECI zebrafish facility. \textit{mitfa}/Nacre mutant animals (ZDB-ALT-990423-22) were used to prevent pigmentation. Mutant lines were obtained from D. Gorelick's lab, and were of the following allels: 
 
-Larval zebrafish were mounted and head restrained for 2-photon imaging and behavioural analysis by placing them in a very small drop of E3 in the lid of a 35mm petri dish (Greiner bio-one, 627102). Molten ($\approx$42\degree{}C) 2\% low melting point agarose (Sigma A9414) in E3 Medium was added to the dish in an approximately 10mm-diameter droplet around the fish, and the zebrafish was repositioned within the solidifying agarose using a gel-loading pipette tip, such that it was oriented symmetrically for imaging with the dorsal surface of the head at the surface of the agarose. After the agarose had solidified ($\approx$10 minutes), E3 was added to the dish, and then the agarose around the tail was cut away. This was done using a scalpel in two strokes emanating laterally from just below the swim bladder (illustrated in \autoref{fig:3}A). It is critical to not scratch the dish in the vicinity of the freed tail, which can interfere with tail-tracking. 
+\emph{esr1\textsuperscript{uab118}} is a CRISPR/Cas9-generated allele with a 4bp deletion (ZDB-ALT-180420-2), yileing a predicted null frameshift/stop mutation, confirmed by a lack of estradiol responsivenss in the heart as assayed by \emph{Tg(5xERE:GFP)\textsuperscript{c262}} expression \citep{Romano2017-ep}. 
 
+\emph{esr2a\textsuperscript{uab134}} is a 2bp deletion (ZDB-ALT-180420-3), yileing a predicted null frameshift/stop mutation \citep{Romano2017-ep}
 
-\subsection{Hardware}
-
-I used a Raspberry Pi 4 Model B Rev 1.4 computer, running Raspbian GNU/Linux 11 (bullseye). \autoref{tab:hardware} contains the details of the hardware components that I used, their approximate price, and an option for supplier (keeping in mind that these later two are subject to change and will rapidly become inaccurate). 
-
-The short 2 cm focal distance between the animal and the camera allowed for a compact and direct imaging setup, where the camera is mounted directly below the larva (\autoref{fig:1}). This avoids the need for any mirrors, and frees the space above the animal for the microscope objective, and any stimulus apparatus necessary. In our case we use red LEDs to provide visual stimuli to the larvae \citep{Lamire2023-di}. 
-
-To illuminate the larvae and visualize the tail, I used 890nm IR LEDs. Using the IR LEDs as an oblique illumination source generated a nicely resolved image of the \textit{mitfa} mutant zebrafish tail that was sufficient for reliable identification and tracking (\autoref{fig:2}). IR LEDs were wired in a simple circuit, with 10 LEDs in a series, powered by a 18V DC power supply and a 47ohm current limiting resistor (\autoref{fig:1}Bi). Using these exact Voltage/Resistance configurations is not important, provided a relevant power supply and resistor are chosen to match the LED characteristics (forward voltage =1.4V, current = 100mA, for our 890nm LEDs: see for example \href{https://www.amplifiedparts.com/tech-articles/led-parallel-series-calculator}{amplifiedparts.com: LED Parallel/Series Calculator}). 
-
-We used an 880 nm bandpass filter in front of the Raspberry Pi NoIR camera module to selectively pass the IR LED light. This filter is essential to block the intense microscope laser light, which will obscure the image of the fish by saturating (and likely damaging) the camera sensor. Notably, this filter it is the most expensive part in the setup, costing more than the computer and camera, combined (\autoref{tab:hardware}). With our typical 2-photon GFP/GCaMP imaging settings and the laser tuned to 930nm, laser light is not visible in the camera image. Using such a bandpass filter in the 880 nm range should allow this system to be compatible with many other imaging modalities (confocal, epifluorescence, brightfield, etc), provided that the excitation wavelengths are not in the $\approx$870-900nm range, and the microscope system effectively filters out the 890nm light from the LEDs. If necessary, these wavelength characteristics can be adapted using different LED and filter components. 
-
-To house the system components I used a 3D printed mount (\autoref{fig:1}C,D). This was designed using FreeCAD  (\href{https://www.freecad.org/}{freecad.org}, \href{https://github.com/owenrandlett/pi_tailtrack/blob/main/3d_printing/pi_tailtrack_mount.FCStd}{FreeCAD file}), and 3D printed in black PETG using and Creality Ender 3 Pro 3D printer. It consists of the main body shape that holds the the camera, IR filter, red stimulus LEDs above the fish, and IR LEDs in the oblique illumination configuration (\href{https://github.com/owenrandlett/pi_tailtrack/blob/main/3d_printing/pi_tailtrack_mount_MainShape.stl}{Main Shape}). An insert is placed into the depression above the IR filter, forming the platform onto which the zebrafish dish is placed (\href{https://github.com/owenrandlett/pi_tailtrack/blob/main/3d_printing/pi_tailtrack_mount_CameraDepressionInsert.stl}{Depression Insert}). The final 3D printed component is a semicircular shape that completes the encirclement of the objective, and helps minimize light scattering (\autoref{fig:2}Bi, \href{https://github.com/owenrandlett/pi_tailtrack/blob/main/3d_printing/pi_tailtrack_mount_Semicircle.stl}{Semicircle STL file}).  
-
-I would note that I built up the size of the platform of the mount to match with the relatively spacious configuration of the microscope I was using (\autoref{fig:1}D). A much more compact configuration is possible, since we only require $\approx$26 mm of clearance from the fish to the bottom of the $\approx$6 mm thick camera. The base design could be easily adapted to match different microscope stage configurations. For example the entire system could be inverted to accommodate an inverted microscope to image ventral structures during behaviour, such as the the lateral line ganglia or the heart. Or, if stimuli need to be bottom-projected, a small 45-degree hot mirror could be used to divert the image to the camera and free the space directly beneath the animal for stimuli. 
-
-
-\begin{table}[bt]
-\caption{\label{tab:hardware}Bill of Materials}
-% Use "S" column identifier to align on decimal point 
-\begin{tabular}{l l l r l}
-
-\toprule
-
-Component   & Manufacturer  & Cat. Number  & $\approx$Price (€) & Supplier/Link \\
-
-\midrule
-
-Raspberry Pi Computer & Raspberry Pi Found. 
-    & 4B Rev 1.4 8gb 
-        & 95 
-            & \href{https://www.kubii.com/fr/cartes-raspberry-pi/2955-raspberry-pi-4-modele-b-8gb-3272496309050.html?src=raspberrypi}{kubii} 
-\\
-Pi NoIR Camera 
-    & Raspberry Pi Found. 
-        & NoIR v2.1 
-            & 26 & \href{https://www.kubii.com/fr/cameras-capteurs/1654-nouvelle-camera-infrarouge-v2-8mp-kubii-5060214370288.html?src=raspberrypi}{kubii} 
-
-\\
-24'' Pi Camera Cable 
-    & Samtec 
-        & FJ-15-D-24.00-4 
-            & 18 
-                & \href{https://fr.farnell.com/en-FR/samtec/fj-15-d-24-00-4/cable-assy-15p-same-sided-610mm/dp/3514891}{farnell} 
-
-\\
-880nm IR Bandpass filter
-    & Edmund Optics 
-        & 65-122
-            & 177
-                & \href{https://www.edmundoptics.com/p/880nm-cwl-125mm-dia-hard-coated-od-4-10nm-bandpass-filter/19776/}{Edmund Optics} 
-\\
-890nm LEDs
-    & Vishay Semiconductor
-        & TSHF5410
-            & 0.35 $\times$ 10 = 4
-                & \href{https://fr.rs-online.com/web/p/leds-infrarouges/1652375}{RS Components} 
-
-\\
-18V DC power supply\textsuperscript{1}
-    & generic, for IR LEDs
-        & min $\approx$200mA
-            & 15
-                & e.g. \href{https://www.amazon.fr/Adaptateur-dalimentation-Chargeur-adapt%C3%A9-1000mA/dp/B09F3CRPZW/ref=sr_1_3?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2S3D8F1YJAF0A&keywords=18v+power+supply&qid=1683210624&sprefix=18v+power+supply%2Caps%2C77&sr=8-3}{amazon.fr}
-
-\\
-Current Limiting Resistor\textsuperscript{1}
-    & generic, for IR LEDs
-        & minimum 1W power
-            & 1
-                & e.g. \href{https://www.amazon.fr/R%C3%A9sistances-bobin%C3%A9-Anti-surge-Anti-flamme-Watts/dp/B074L3V3MS/ref=asc_df_B074L3V3MS/?tag=googshopfr-21&linkCode=df0&hvadid=227943813093&hvpos=&hvnetw=g&hvrand=241985199445761415&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9056016&hvtargid=pla-403568537008&psc=1}{amazon}
-
-\\
-3D printed parts\textsuperscript{2}
-    & Black/opaque, generic 
-        & PETG\textsuperscript{3}
-            & 1
-                & \href{https://github.com/owenrandlett/pi_tailtrack/tree/main/3d_printing}{github:pi\_tailtrack}
-
-\\
-M3 screws and nuts
-    & generic
-        & to secure camera
-            & 1
-                & 
-
-\\
-Computer screen, keyboard, mouse
-    & generic 
-        & recycle/borrow/steal
-            & 
-                & 
-\\
-\midrule
-    &  
-        & 
-            & \textbf{\underline{Total: $\approx$338€}}
-                & 
-\\
-
-\bottomrule
-\end{tabular}
-
-\medskip 
-\textsuperscript{1}These particular specs are not required, but the power supply and resistor must be matched appropriately. See \href{https://www.amplifiedparts.com/tech-articles/led-parallel-series-calculator}{amplifiedparts.com: LED Parallel/Series Calculator}
-\\
-\textsuperscript{2}Parts were printed on an \href{https://www.creality.com/products/ender-3-pro-3d-printer}{Ender 3 Pro} 3D printer: Printer cost $\approx$200€.
-\\
-\textsuperscript{3}This is the material I had on hand, but likely anything will work (PLA, ABS, Resin, etc)
-
-\end{table}
-
-\subsection{Tail Tracking Approach}
-
-Software was written in Python, using the \emph{picamera} library for camera control \citep{picamera}. Trail tracking was performed using \emph{OpenCV} (cv2 version 4.5.5) \citep{opencv_library}, and \emph{Numpy} (version 1.19.5) \citep{harris2020array}. All code is provided in the file \href{https://github.com/owenrandlett/pi_tailtrack/blob/main/record_tail.py}{record\_tail.py}. 
-
-Image frames are acquired directly from the camera buffer as an 8-bit Numpy array, and thresholded using Adaptive Thresholding (\emph{cv2.adaptiveThreshold}) to identify bright objects in the image (\autoref{fig:2}A, "Threshold"), using a threshold of -10 and a 33 pixel neighborhood. This binary image is then filtered using a morphological Opening and Closing operation (\emph{cv2.morphologyEx}). This combination generally results in a nicely segmented fish blob in the final binary image (\autoref{fig:2}A, "Threshold + Filtering"). Thresholding and filtering parameters can be adjusted in real-time using the w/s and a/d keys. However, this method identifies all large bright objects in the image, including borders of the agarose block and reflections on the microscope objective, and therefore we need a method to identify the fish object among these various segmented blobs. 
-
-The fish object is identified with a pre-defined coordinate that acts as the first tracking point of the fish. The fish object is then skeletonized into up to 10 tail segements (\autoref{fig:2}A, 'Tracking Pts'), which can be used to reconstruct the posture of the tail to identify swimming events (\autoref{fig:2}C,D). To do this skeletonization, the tracking points are iteratively identified based on the intersection of a semicircle and the fish object, offset 7 pixels (0.19mm) from the previous tracking point, and oriented in the direction of the previous segment (similar to \cite{Stih2019-gx, Randlett2019-fj}). For the first search, this direction is toward the right of the image. Therefore, this strategy relies on the zebrafish larvae being oriented with its tail pointed towards the right, and being placed in the same position such that the exit point of the tail from the agarose block intersects with the first tracking point. The starting coordinate for the tail tracking can be adjusted using the arrow keys. It also requires that no other bright objects intersect with the fish object after binarization. Therefore, it is critical to avoid distracting objects in the imaging scene, such as scratches in the dish or stray pieces of agarose.  
-
-\subsection{Tracking data format}
-
-The tail tracking data are saved in a comma-separated text file \emph{'*\_coords.txt'}, the 10 pairs of "X" and "Y" coordinates for each tail point are saved as rows, and thus there are two rows with 10 columns for every tracked frame. 'NaN' values represent instances where a tail point is not identified. 
-
-The timing of the data is saved in a separate text file \emph{'*\_tstamps.txt'}, which also has two rows for each frame. The first value is the "timestamp" reflecting the time elapsed since the beginning of the tracking experiment. This is used to relate the tail posture and behavioural events to specific points in time. This is important for experiments in which precise timing of behavioural events is important, because the frame rate is not fixed and can fluctuate during the experiment (see above). However, it is important to note that the timestamp recorded is based on the time at which the frame is received from the camera buffer, which may lag from the time at which it was actually acquired by the camera. This could be problematic if millisecond-level precision on behavioural timing is critical, for example if differentiating between Short- and Long-Latency acoustic stimulus responses \citep{Burgess2007}. 
-
-The second value in the \emph{'*\_tstamps.txt'} file is the value recorded on one of the GPIO pin 4 of the Raspberry Pi. This value will read either "low"=0 for a voltage less than 1.8V, or "high"=1 for 1.8-3.3V. I use these recordings to synchronize the behavioural recordings with the frames recorded on the microscope. In our typical setup we are using an analog output pin from the DAQ board on the microscope to control the red stimulis LEDs (\autoref{fig:1}B), and we also connect this output of the DAQ board to GPIO pin 4 on the microscope. In this way, we can synchronize the stimuli, microscope imaging frames, and the behavioural recordings. 
-
-These datasets can be read into python for analysis using, for example: 
-
-\begin{adjustwidth}{2cm}{}
-\begin{lstlisting}[language=Python, basicstyle=\small]
-import numpy as np
-
-# load tracking coordinates
-data = np.loadtxt('*_coords.txt', delimiter=',') 
-
-# separate 'x' and 'y' coordinates of tracking points
-x_coords = data[::2, :] 
-y_coords = data[2::2, :]
-
-# load timing data
-t_stamps = np.loadtxt('*_tstamps.txt', delimiter=',')
-
-# separate 'timestamps' and 'stimulus state' recordings
-time = t_stamps[::2]
-stim = t_stamps[1::2]
-
-\end{lstlisting}
-\end{adjustwidth}
-
-
-\subsection{Ca\textsuperscript{2+} imaging and analysis}
-
-2-photon Ca2+ imaging was performed and analyzed as described in \citep{Lamire2023-di}. Briefly, a 5dpf \emph{Tg2(elavl3:GCaMP6s)} (ZDB-ALT-180502-2, \cite{Dunn2016-bg}) larva was imaged using a 20x 1.0NA water dipping objective (Olympus) on a Bruker Ultima microscope at the CIQLE imaging platform (Lyon, LYMIC). Frames were acquired using a resonant scanner over a rectangular region of 1024×512 pixels (0.6\micro m x/y resolution) and piezo objective to scan 12 planes separated at 10\micro m steps, with a repeat rate of 1.98 hz. The position of the functional imaging stack within the brain was stabilized in x/y/z "online" during acquisition using Bruker's PrairieLink API and Python (\href{https://github.com/owenrandlett/pi_tailtrack/blob/main/brukerPL_stable_tseries.py}{brukerPL\_stable\_tseries.py}). The central imaging plane was compared to a high-quality anatomical stack acquired before functional imaging using the \emph{ registration.phase\_cross\_correlation} function from the \emph{scikit-image} package \citep{van2014scikit}. 
-
-ROIs were identified and fluorescence timeseries extracted using suite2p \citep{Pachitariu2016-tl}. The zebrafish was stimulated with 60 "dark flash" stimuli at 60 second ISI \citep{Lamire2023-di}, though responses to these stimuli were not incorporated into the analyses presented here, other than to synchronize the behavioural tracking with the microscope acquisition timing.
-
-
-To identify neurons tuned to turning direction (\autoref{fig:3}C), the fluorescence trace from each ROI was compared to vectors derived from the \emph{pi\_tailtrack} recordings of the tail reflecting leftward or rightward turns, respectively. These "behaviour state" vectors were convolved with the GCaMP response kernel to generate "regressors" reflecting the predicted Ca\textsuperscript{2+} response in neurons that are activated during the relevant behavioural state (as in \cite{Miri2011-sr}). Tuning images were then generated reflecting the Pearson correlation coefficient between the z-scored fluorescence trace of the ROI and the relevant regressor. Images output from the analysis were adjusted for brightness/contrast and LUT using FIJI/ImageJ \citep{Schindelin2012-hd}. This same approach was used to identify the relationship between ROIs and "Swim" and "Struggle" motor events (\autoref{fig:3}D,E). 
+\emph{esr2b\textsuperscript{uab127}} is a 4bp deletion (ZDB-ALT-180420-4), yileing a predicted null frameshift/stop mutation, confirmed by a lack of estradiol responsivenss in the liver as assayed by \emph{Tg(5xERE:GFP)\textsuperscript{c262}} expression \citep{Romano2017-ep}. 
 
 \section{Results and Discussion}
 
