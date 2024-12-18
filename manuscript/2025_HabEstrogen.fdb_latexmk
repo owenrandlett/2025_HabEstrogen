@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex 2025_HabEstrogen"] 1734532982.07054 "2025_HabEstrogen.aux" "2025_HabEstrogen.bbl" "2025_HabEstrogen" 1734532989.64229 0
+["bibtex 2025_HabEstrogen"] 1734537685.72465 "2025_HabEstrogen.aux" "2025_HabEstrogen.bbl" "2025_HabEstrogen" 1734537692.94797 0
   "./References_HabEstrogen.bib" 1734531959.57067 45101 bf1f8745f752aa21fb789a2d5aeed585 ""
   "./vancouver-elife.bst" 1734468040.20232 36589 dcc4ea8151fa24ac17802cbe04324a27 ""
-  "2025_HabEstrogen.aux" 1734532989.22207 15988 19df3a3cabce53d11553e47bb74733ee "pdflatex"
+  "2025_HabEstrogen.aux" 1734537692.53706 16238 1ecc636f16627e7f6ad88a2428745e8b "pdflatex"
   (generated)
   "2025_HabEstrogen.bbl"
   "2025_HabEstrogen.blg"
   (rewritten before read)
-["pdflatex"] 1734532982.23792 "/home/owen/2025_HabEstrogen/manuscript/2025_HabEstrogen.tex" "2025_HabEstrogen.pdf" "2025_HabEstrogen" 1734532989.64254 0
+["pdflatex"] 1734537685.86033 "/home/owen/2025_HabEstrogen/manuscript/2025_HabEstrogen.tex" "2025_HabEstrogen.pdf" "2025_HabEstrogen" 1734537692.94823 0
   "/etc/texmf/web2c/texmf.cnf" 1734468879.79126 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/owen/2025_HabEstrogen/manuscript/2025_HabEstrogen.tex" 1734532974.26827 22343 4efe50ec8bfe40c680d2b1c1a5b44491 ""
+  "/home/owen/2025_HabEstrogen/manuscript/2025_HabEstrogen.tex" 1734537678.23493 23279 b95033562a0b50baecf386eb974fc40a ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/a_jg4h6q.enc" 1561498186 2952 84fda6c8ae8be17712e9d998ffe48bad ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/a_nvvucy.enc" 1561498186 3364 7c78cdd102714be824555fc722b51d02 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -183,11 +183,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1734468893.21219 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1734468931 8212071 5de458cd338a99294a4e7df2bacb9afb ""
-  "2025_HabEstrogen.aux" 1734532989.22207 15988 19df3a3cabce53d11553e47bb74733ee "pdflatex"
-  "2025_HabEstrogen.bbl" 1734532982.23016 10804 8434dd7870c6e350882e81789f819e98 "bibtex 2025_HabEstrogen"
-  "2025_HabEstrogen.out" 1734532989.22407 2092 6a9969b9e48825508466473f04cb96c5 "pdflatex"
-  "2025_HabEstrogen.suppinfo" 1734532989.21307 173 1ee44a2efad0e39af9ca32705dbd9669 "pdflatex"
-  "2025_HabEstrogen.tex" 1734532974.26827 22343 4efe50ec8bfe40c680d2b1c1a5b44491 ""
+  "2025_HabEstrogen.aux" 1734537692.53706 16238 1ecc636f16627e7f6ad88a2428745e8b "pdflatex"
+  "2025_HabEstrogen.bbl" 1734537685.85453 10804 8434dd7870c6e350882e81789f819e98 "bibtex 2025_HabEstrogen"
+  "2025_HabEstrogen.out" 1734537692.53906 2318 753f167ec732a6b05fd37ae24890861c "pdflatex"
+  "2025_HabEstrogen.suppinfo" 1734537692.53206 173 1ee44a2efad0e39af9ca32705dbd9669 "pdflatex"
+  "2025_HabEstrogen.tex" 1734537678.23493 23279 b95033562a0b50baecf386eb974fc40a ""
   "Figure1_Apparatus.png" 1734468040.00431 2282983 c03ec7e0a9b90b250b882228b72d6964 ""
   "Figure2_TrackingResults.png" 1734468040.04531 1460023 f69e9fd2f24f15bfa33b129f23bd1e75 ""
   "Figure3_FunctionalAnalysis.png" 1734468040.07331 9902323 cd163e537d53025923d224bb37ad82d7 ""

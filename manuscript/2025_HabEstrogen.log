@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.12.17)  18 DEC 2024 15:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.12.17)  18 DEC 2024 17:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1066,9 +1066,87 @@ LaTeX Font Info:    Font shape `T1/opensans-TLF/m/it' will be
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/it' will be
 (Font)              scaled to size 9.0pt on input line 120.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 130.
-<Figure1_Apparatus.png, id=87, 399.6531pt x 711.6186pt>
+(Font)              scaled to size 6.0pt on input line 140.
+ [2{/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/a_nvvucy.enc}]
+<Figure1_Apparatus.png, id=110, 399.6531pt x 711.6186pt>
 File: Figure1_Apparatus.png Graphic file (type png)
 <use Figure1_Apparatus.png>
-Package pdftex.def Info: Figure1_Apparatus.png  used on input line 150.
-(pdftex.def)       
+Package pdftex.def Info: Figure1_Apparatus.png  used on input line 160.
+(pdftex.def)             Requested size: 310.08475pt x 552.16109pt.
+LaTeX Font Info:    Font shape `T1/opensans-TLF/b/n' will be
+(Font)              scaled to size 8.0pt on input line 166.
+LaTeX Font Info:    Font shape `T1/opensans-TLF/b/it' will be
+(Font)              scaled to size 8.0pt on input line 166.
+LaTeX Font Info:    Font shape `T1/opensans-TLF/m/it' will be
+(Font)              scaled to size 8.0pt on input line 166.
+<Figure2_TrackingResults.png, id=135, 464.4552pt x 632.1216pt>
+File: Figure2_TrackingResults.png Graphic file (type png)
+<use Figure2_TrackingResults.png>
+Package pdftex.def Info: Figure2_TrackingResults.png  used on input line 183.
+(pdftex.def)             Requested size: 347.50441pt x 472.96152pt.
+LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
+(Font)              scaled to size 7.5pt on input line 204.
+LaTeX Font Info:    Font shape `T1/opensans-TLF/b/n' will be
+(Font)              scaled to size 7.5pt on input line 204.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 204.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 204.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 204.
+
+<Figure3_FunctionalAnalysis.png, id=143, 521.18715pt x 337.0191pt>
+File: Figure3_FunctionalAnalysis.png Graphic file (type png)
+<use Figure3_FunctionalAnalysis.png>
+Package pdftex.def Info: Figure3_FunctionalAnalysis.png  used on input line 210.
+(pdftex.def)             Requested size: 534.6272pt x 345.75023pt.
+LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 216.
+LaTeX Font Info:    Font shape `T1/opensans-TLF/b/n' will be
+(Font)              scaled to size 6.0pt on input line 216.
+[3] [4 <./Figure1_Apparatus.png>] [5 <./Figure2_TrackingResults.png>] [6 <./Figure3_FunctionalAnalysis.png>] [7] (./2025_HabEstrogen.bbl
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 33.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmss.fd
+File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmss' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+Underfull \hbox (badness 1917) in paragraph at lines 32--34
+[][]\T1/opensans-TLF/b/n/8 Elder R[]\T1/opensans-TLF/m/n/8 , A Guide to Record-ing 660FPS Video On A 6 dol-lar Rasp-berry Pi Cam-era; 2019.  [][]$\T1/cmss/m/n/8 (+20) https : / / blog . robertelder . org /
+ []
+
+[8{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}]) (./2025_HabEstrogen.suppinfo) [9] 
+enddocument/afterlastpage: lastpage setting LastPage.
+(./2025_HabEstrogen.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2021/03/21>
+ ***********
+Package rerunfilecheck Info: File `2025_HabEstrogen.out' has not changed.
+(rerunfilecheck)             Checksum: 753F167EC732A6B05FD37AE24890861C;2318.
+ ) 
+Here is how much of TeX's memory you used:
+ 28530 strings out of 474222
+ 525287 string characters out of 5748732
+ 1944975 words of memory out of 5000000
+ 50316 multiletter control sequences out of 15000+600000
+ 629798 words of font info for 183 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 91i,12n,131p,2682b,1164s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/ascender/opensans/OpenSans-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/ascender/opensans/OpenSans-BoldItalic.pfb></usr/share/texlive/texmf-dist/fonts/type1/ascender/opensans/OpenSans-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/ascender/opensans/OpenSans-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0800.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix/stix-mathcal.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb>
+Output written on 2025_HabEstrogen.pdf (9 pages, 15149497 bytes).
+PDF statistics:
+ 302 PDF objects out of 1000 (max. 8388607)
+ 265 compressed objects within 3 object streams
+ 59 named destinations out of 1000 (max. 500000)
+ 16008 words of extra memory for PDF output out of 17280 (max. 10000000)
+
