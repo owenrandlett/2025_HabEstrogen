@@ -1,53 +1,47 @@
-This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: 2025_HabEstrogen.aux
 The style file: vancouver-elife.bst
 Database file #1: References_HabEstrogen.bib
-Warning--I didn't find a database entry for "660hz"
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Warning--there's a number but no volume in Broussard2022-yd
-Warning--empty note in Saunders2019-ka
-Warning--empty author and editor in enwiki:1118116052
-Warning--missing publisher in enwiki:1118116052
-You've used 23 entries,
+You've used 12 entries,
             3492 wiz_defined-function locations,
-            883 strings with 11892 characters,
-and the built_in function-call counts, 76054 in all, are:
-= -- 9597
-> -- 909
-< -- 5
-+ -- 460
-- -- 297
-* -- 6922
-:= -- 8373
-add.period$ -- 70
-call.type$ -- 23
-change.case$ -- 244
-chr.to.int$ -- 23
-cite$ -- 27
-duplicate$ -- 6168
-empty$ -- 6847
-format.name$ -- 344
-if$ -- 17314
+            814 strings with 8543 characters,
+and the built_in function-call counts, 36726 in all, are:
+= -- 4688
+> -- 414
+< -- 1
++ -- 205
+- -- 134
+* -- 3286
+:= -- 4030
+add.period$ -- 37
+call.type$ -- 12
+change.case$ -- 115
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 3181
+empty$ -- 3287
+format.name$ -- 160
+if$ -- 8378
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 315
-newline$ -- 122
-num.names$ -- 69
-pop$ -- 655
+missing$ -- 162
+newline$ -- 67
+num.names$ -- 36
+pop$ -- 344
 preamble$ -- 1
-purify$ -- 243
+purify$ -- 115
 quote$ -- 0
-skip$ -- 504
+skip$ -- 235
 stack$ -- 0
-substring$ -- 14963
-swap$ -- 734
+substring$ -- 6997
+swap$ -- 385
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 207
-warning$ -- 4
-while$ -- 304
+type$ -- 108
+warning$ -- 0
+while$ -- 158
 width$ -- 0
-write$ -- 308
-(There were 5 warnings)
+write$ -- 164
