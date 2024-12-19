@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex 2025_HabEstrogen"] 1734593794.38688 "2025_HabEstrogen.aux" "2025_HabEstrogen.bbl" "2025_HabEstrogen" 1734593796.81947 0
+["bibtex 2025_HabEstrogen"] 1734593794.38688 "2025_HabEstrogen.aux" "2025_HabEstrogen.bbl" "2025_HabEstrogen" 1734594122.17121 0
   "./References_HabEstrogen.bib" 1734593690.86317 45221 a8dd67242c702529108293a452455dfc ""
   "./vancouver-elife.bst" 1734468040.20232 36589 dcc4ea8151fa24ac17802cbe04324a27 ""
-  "2025_HabEstrogen.aux" 1734593796.60801 6988 82972e8bc3aec70b77c6f9be1bc65aa9 "pdflatex"
+  "2025_HabEstrogen.aux" 1734594121.96617 6988 82972e8bc3aec70b77c6f9be1bc65aa9 "pdflatex"
   (generated)
   "2025_HabEstrogen.bbl"
   "2025_HabEstrogen.blg"
   (rewritten before read)
-["pdflatex"] 1734593794.46323 "/home/owen/2025_HabEstrogen/manuscript/2025_HabEstrogen.tex" "2025_HabEstrogen.pdf" "2025_HabEstrogen" 1734593796.81961 0
+["pdflatex"] 1734594119.74505 "/home/owen/2025_HabEstrogen/manuscript/2025_HabEstrogen.tex" "2025_HabEstrogen.pdf" "2025_HabEstrogen" 1734594122.17134 0
   "/etc/texmf/web2c/texmf.cnf" 1734468879.79126 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/owen/2025_HabEstrogen/manuscript/2025_HabEstrogen.tex" 1734593789.50797 18541 a94a12eb441dc2b4cffcffb53c722251 ""
+  "/home/owen/2025_HabEstrogen/manuscript/2025_HabEstrogen.tex" 1734594119.57417 18546 029a4883d89a2975a19dede9b6545fd2 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/a_jg4h6q.enc" 1561498186 2952 84fda6c8ae8be17712e9d998ffe48bad ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/a_nvvucy.enc" 1561498186 3364 7c78cdd102714be824555fc722b51d02 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -183,11 +183,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1734468893.21219 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1734468931 8212071 5de458cd338a99294a4e7df2bacb9afb ""
-  "2025_HabEstrogen.aux" 1734593796.60801 6988 82972e8bc3aec70b77c6f9be1bc65aa9 "pdflatex"
+  "2025_HabEstrogen.aux" 1734594121.96617 6988 82972e8bc3aec70b77c6f9be1bc65aa9 "pdflatex"
   "2025_HabEstrogen.bbl" 1734593794.459 10540 46f01e04e0edc7b7f903b4bb07b009cc "bibtex 2025_HabEstrogen"
-  "2025_HabEstrogen.out" 1734593796.60901 2300 69c04b246cda3d5148f8cbce8c24ba78 "pdflatex"
-  "2025_HabEstrogen.suppinfo" 1734593796.60601 23 9d06dfc8a19fb7c8be575e679aa2627d "pdflatex"
-  "2025_HabEstrogen.tex" 1734593789.50797 18541 a94a12eb441dc2b4cffcffb53c722251 ""
+  "2025_HabEstrogen.out" 1734594121.96617 2300 69c04b246cda3d5148f8cbce8c24ba78 "pdflatex"
+  "2025_HabEstrogen.suppinfo" 1734594121.96317 23 9d06dfc8a19fb7c8be575e679aa2627d "pdflatex"
+  "2025_HabEstrogen.tex" 1734594119.57417 18546 029a4883d89a2975a19dede9b6545fd2 ""
   "RandlettLab_elife.cls" 1734593669.99095 16188 471e8808b3870002dce3ef7e9d444c9c ""
   "vancouver-elife.bst" 1734468040.20232 36589 dcc4ea8151fa24ac17802cbe04324a27 ""
   (generated)

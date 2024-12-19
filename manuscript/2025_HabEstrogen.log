@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.12.17)  19 DEC 2024 08:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.12.17)  19 DEC 2024 08:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1047,64 +1047,64 @@ LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
 (Font)              scaled to size 5.0pt on input line 97.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 99.
+(Font)              scaled to size 9.0pt on input line 102.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/it' will be
-(Font)              scaled to size 9.0pt on input line 105.
+(Font)              scaled to size 9.0pt on input line 111.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 118.
+(Font)              scaled to size 8.0pt on input line 124.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/a_jg4h6q.enc}]
 LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 121.
+(Font)              scaled to size 9.0pt on input line 127.
 LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 121.
+(Font)              scaled to size 6.0pt on input line 127.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/it' will be
-(Font)              scaled to size 6.0pt on input line 123.
+(Font)              scaled to size 6.0pt on input line 129.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 143.
+(Font)              scaled to size 6.0pt on input line 149.
  [2{/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/a_nvvucy.enc}]
 
-LaTeX Warning: Reference `fig:1' on page 3 undefined on input line 157.
+LaTeX Warning: Reference `fig:1' on page 3 undefined on input line 163.
 
 
-LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 157.
+LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 163.
 
 
-Package natbib Warning: Citation `660hz' on page 3 undefined on input line 161.
+Package natbib Warning: Citation `660hz' on page 3 undefined on input line 167.
 
 
-LaTeX Warning: Reference `fig:1' on page 3 undefined on input line 165.
+LaTeX Warning: Reference `fig:1' on page 3 undefined on input line 171.
 
 
-LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 169.
+LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 175.
 
 
-LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 169.
+LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 175.
 
 
-LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 169.
-
-
-LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 171.
-
-
-LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 171.
-
-
-LaTeX Warning: Reference `video:S1' on page 3 undefined on input line 171.
-
-
-LaTeX Warning: Reference `fig:3' on page 3 undefined on input line 177.
+LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 175.
 
 
 LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 177.
 
 
-LaTeX Warning: Reference `fig:3' on page 3 undefined on input line 177.
+LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 177.
 
 
-LaTeX Warning: Reference `fig:3' on page 3 undefined on input line 177.
+LaTeX Warning: Reference `video:S1' on page 3 undefined on input line 177.
+
+
+LaTeX Warning: Reference `fig:3' on page 3 undefined on input line 183.
+
+
+LaTeX Warning: Reference `fig:2' on page 3 undefined on input line 183.
+
+
+LaTeX Warning: Reference `fig:3' on page 3 undefined on input line 183.
+
+
+LaTeX Warning: Reference `fig:3' on page 3 undefined on input line 183.
 
 [3] (./2025_HabEstrogen.bbl [4]
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/n' will be
