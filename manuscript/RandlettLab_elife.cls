@@ -3,7 +3,7 @@
 % Created by Overleaf (writeLaTeX).
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elife}[2022/06/06, v1.11]
+\ProvidesClass{RandlettLab_elife}[2024/12/18 v1]
 
 %% Move all option processing before loading class
 \newif\if@reqslineno

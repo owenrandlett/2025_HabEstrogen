@@ -3,53 +3,51 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: 2025_HabEstrogen.aux
 The style file: vancouver-elife.bst
 Database file #1: References_HabEstrogen.bib
+Warning--I didn't find a database entry for "660hz"
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--there's a number but no volume in Broussard2022-yd
-Warning--empty author and editor in 660hz
-Warning--missing publisher in 660hz
-Warning--empty note in Lamire2023-di
 Warning--empty note in Saunders2019-ka
 Warning--empty author and editor in enwiki:1118116052
 Warning--missing publisher in enwiki:1118116052
-You've used 24 entries,
+You've used 23 entries,
             3492 wiz_defined-function locations,
-            888 strings with 12072 characters,
-and the built_in function-call counts, 76792 in all, are:
-= -- 9682
-> -- 916
-< -- 6
-+ -- 465
-- -- 299
-* -- 6989
-:= -- 8468
-add.period$ -- 71
-call.type$ -- 24
-change.case$ -- 250
-chr.to.int$ -- 24
-cite$ -- 31
-duplicate$ -- 6234
-empty$ -- 6911
-format.name$ -- 347
-if$ -- 17469
+            883 strings with 11892 characters,
+and the built_in function-call counts, 76054 in all, are:
+= -- 9597
+> -- 909
+< -- 5
++ -- 460
+- -- 297
+* -- 6922
+:= -- 8373
+add.period$ -- 70
+call.type$ -- 23
+change.case$ -- 244
+chr.to.int$ -- 23
+cite$ -- 27
+duplicate$ -- 6168
+empty$ -- 6847
+format.name$ -- 344
+if$ -- 17314
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 317
-newline$ -- 125
-num.names$ -- 72
-pop$ -- 665
+missing$ -- 315
+newline$ -- 122
+num.names$ -- 69
+pop$ -- 655
 preamble$ -- 1
-purify$ -- 248
+purify$ -- 243
 quote$ -- 0
-skip$ -- 518
+skip$ -- 504
 stack$ -- 0
-substring$ -- 15067
-swap$ -- 744
+substring$ -- 14963
+swap$ -- 734
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 216
-warning$ -- 7
-while$ -- 307
+type$ -- 207
+warning$ -- 4
+while$ -- 304
 width$ -- 0
-write$ -- 317
-(There were 7 warnings)
+write$ -- 308
+(There were 5 warnings)

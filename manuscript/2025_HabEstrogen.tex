@@ -96,17 +96,20 @@ Master of Biology Program, École normale supérieure de Lyon, France
 \maketitle
 \begin{abstract}
 
-Habituating to the constant stimuli in the environment is a critical adaptive learning process conserved across species. We use the larval zebrafish visual response to sudden darkness as a model for studying habituation learning, where zebrafish reduce their responses to repeated stimulations. In this paradigm, treatment with Estradiol strongly increases learning rate, resulting in reduced responses. In an attempt to identify the receptor(s) mediating these effects we used established mutant lines with expected null alleles for the known estrogen receptors (\emph{esr1}, \emph{esr2a}, \emph{esr2b}, \emph{gper}). Our experiments failed to identify a receptor required for the effects of Estradiol on habituation learning. Surprisingly, nuclear-receptor mutants showed increased habituation relative to sibling controls when treated with estradiol, indicating that activation of these receptors has paradoxical inhibitory effects on habituation learning. These experiments confirm that Estradiol is a potent modulator of learning in the vertebrate brain, but suggest that these effects occur independently of the classical estrogen receptor-mediated signaling pathways, which may in fact act to inhibit learning performance.  
+Habituating to the constant stimuli in the environment is a critical adaptive learning process conserved across species. We use the larval zebrafish visual response to sudden darkness as a model for studying habituation learning, where zebrafish reduce their responses to repeated stimulations. In this paradigm, treatment with Estradiol strongly increases learning rate, resulting in reduced responses. In an attempt to identify the receptor(s) mediating these effects we used established mutant lines with expected null alleles for the known estrogen receptors (\emph{esr1}, \emph{esr2a}, \emph{esr2b}, \emph{gper1}). Our experiments failed to identify a receptor required for the effects of Estradiol on habituation learning. Surprisingly, nuclear-receptor mutants showed increased habituation relative to sibling controls when treated with estradiol, indicating that activation of these receptors has paradoxical inhibitory effects on habituation learning. These experiments confirm that Estradiol is a potent modulator of learning in the vertebrate brain, but suggest that these effects occur independently of the classical estrogen receptor-mediated signaling pathways, which may in fact act to inhibit learning performance in this paradigm.  
 
 \end{abstract}
 
 \section{Introduction}
 
-abituating to the constant stimuli in the environment is a critical adaptive learning process conserved across species. We use the larval zebrafish visual response to sudden darkness as a model for studying habituation learning, where zebrafish reduce their responses to repeated stimulations. In this paradigm, treatment with Estradiol strongly increases learning rate, resulting in reduced responses. In an attempt to identify the receptor(s) mediating these effects we used established mutant lines with expected null alleles for the known estrogen receptors (\emph{esr1}, \emph{esr2a}, \emph{esr2b}, \emph{gper}). Our experiments failed to identify a receptor required for the effects of Estradiol on habituation learning. Surprisingly, nuclear-receptor mutants showed increased habituation relative to sibling controls when treated with estradiol, indicating that activation of these receptors has paradoxical inhibitory effects on habituation learning. These experiments confirm that Estradiol is a potent modulator of learning in the vertebrate brain, but suggest that these effects occur independently of the classical estrogen receptor-mediated signaling pathways, which may in fact act to inhibit learning performance.  
+Habituation is important and interesting\dots , we found that estrogen influences habituation \citep{Lamire2023-he}
+
+Estrogen signaling in learning and memory, any data about receptors. 
+
+In this project we aimed to identify the relevant estrogen receptor mediating the effects of estradiol analogs on habituation learning by undertaking a classical analysis of genetic knockout alleles. Not only did we fail to identify a mutant (or combination of mutants) that lead to estradiol instensitivity, but our results indicat that esrX receptors act to inhibit habituation learning -- effects which are usually masked by an unidentified estradiol-responsive pathway that promotes learning, resulting in estrogne receptor mutants that show increased sensitivity to estradiol in the habituation paradigm. 
 
 
-
-\newpage
+%\newpage
 \section{Materials and Methods}
 
 \subsection{Animal Ethics Statement}
@@ -153,22 +156,7 @@ However, obtaining sufficient resolution and contrast to resolve the larval zebr
 
 The stock lens configuration on the Pi Camera is also not designed for macro photography, and has a minimum focus distance of 50cm. But, extension tubes are a well-known macro-photography hack that work by increasing the distance between the lens and the camera \citep{enwiki:1118116052}. Increasing this distance acts to decrease the focus distance of the optical system, increasing the maximal magnification. By unscrewing the lens of the Pi NoIR camera until just before it falls off, it is possible to focus on objects at a 2 cm distance, allowing for sufficient magnification to observe the and track the tail of \textit{mitfa} mutant zebrafish (\autoref{fig:1}, \autoref{fig:2}).
 
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
 
-\includegraphics[width=0.58\linewidth]{Figure1_Apparatus.png}
-\caption{\textbf{\emph{pi\_tailtrack} apparatus.}
-\\ \textbf{A)} The zebrafish larvae being imaged under the microscope is illuminated with infra-red (IR) LEDs, and imaged with the IR-sensitive Raspberry Pi NoIR Camera. Image acquisition and processing is done with a Raspberry Pi Computer and open-source Python packages. The zebrafish tail is identified and segmented in real-time as a sequence of 10 tail segments (green X's). 
-\\ \textbf{B)} Rendering of the main components of the apparatus. IR leds illuminate the zebrafish larvae that is head-restrained in agarose in a 35mm diameter petri dish lid. An IR filter blocks the visible stimulus lights (Red LEDs), and the microscope laser from reaching the Raspberry Pi NoIR camera suspended below the fish. \textbf{(i)} Wiring diagram for powering the IR LEDs. 
-\\ \textbf{C)} Rendering including the the 3D printed mount and microscope objective. 
-\\ \textbf{D)} Annotated photograph of the \emph{pi\_tailtrack} apparatus.  
-} 
-
-\label{fig:1}
-\end{center}
-\end{fullwidth}
-\end{figure}
 
 A second challenge is that larval zebrafish move their tails very rapidly, with a tail-beat frequency of between 20-40 hz for normal swimming, which can increase to 100 hz during burst/escape swimming \citep{Budick2000-bq, Muller2004-st, Severi2014-iw}. The V2.1 camera documentation indicates maximum frame rate of 30hz, which is insufficient for imaging tail dynamics. However, by adopting a cropped sensor configuration, and by omitting the JPG compression step in image processing, the camera can be pushed to image at up to 1000hz \citep{660hz}. I adopted a configuration where I imaged with a fixed gain/ISO of 800 in auto-exposure mode, and with a cropped sensor of 128x128 pixels covering 3.5x3.5 mm field of view. This gives sufficient spatial resolution to observe and track the tail of the fish (27 \micro m/px), and most importantly, minimal CPU load. This frees the limited CPU resources on the Raspberry Pi to be used for real-time image processing and tail tracking. 
 
@@ -176,51 +164,17 @@ A second challenge is that larval zebrafish move their tails very rapidly, with 
 
 Tracking objects in images and videos has undergone a revolution with deep learning and neural network frameworks, where the tracking and reconstruction of complex animal postures is possible after training networks on only a few example images \citep{Mathis2018-rw, Pereira2022-rd}. However, such approaches are computationally intensive and generally require dedicated and GPU hardware beyond the capabilities of the standard Raspberry Pi, making them incompatible with our project goals. In contexts where the image background is predictable and stable, classical computer vision methods like background subtraction, filtering and thresholding may still be preferable to network-based object identification, especially when speed or computational resources are priorities \citep{Mirat2013, Stih2019-gx, Zhu2023}. Here I have used the \emph{Numpy} \citep{harris2020array} and \emph{OpenCV} \citep{opencv_library} libraries to handle the image data and computer vision tasks (\autoref{fig:1}). 
 
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
-
-\includegraphics[width=0.65\linewidth]{Figure2_TrackingResults.png}
-\caption{\textbf{Larval zebrafish trail tracking examples.}
-\\ \textbf{A)} Screenshot of a single frame of a tracking image, showing the image from the camera ("Camera Image") with the resultant tracking points overlayed as white dots. The final tracking point is shown as a white semicircle, which is used in the coordinate search algorithm. "Threshold" shows the result of the Adaptive Thresholding operation, and "Threshold + Filtering" the result of the morphological Opening and Closing operations. Displayed along the top are the: frame (current frame number of the experiment), sec\_elapsed (number of seconds elapsed in the experiment), fps (current frame rate, frames per second), stim\_val (the current value read on the stimulus recording pin: GPIO Pin 4). A schematic of the image field, depicting the agarose mounting medium, the position of the zebrafish, and the microscope objective visible in the background is shown in the left panel.
-\\ \textbf{B)} Probability density distribution of individual frame periods from two representative experiments. 
-\\ \textbf{C)} i) Example frames during a swimming event. ii) Tail angle deflections during 3 distinct swim events. iii) 3D plot of tail coordinates through the same time period as (ii), drawn in the same time color code. 
-\\ \textbf{D)} Same as (C), but for a period in which the larvae executes a struggle/escape maneuver and associated high amplitude tail deflections. 
-}
-\label{fig:2}
-
-\videosupp{Screen recording of the tail tracking example, \href{https://github.com/owenrandlett/pi_tailtrack/raw/main/SupplementaryVideo_tailtracking_20211213.mkv}{download}}\label{video:S1}
-
-
-\end{center}
-\end{fullwidth}
-\end{figure}
 
 
 I used a computationally lean segmentation and skeletonization strategy (see Materials and Methods) to segment the tail into 10 segments (\autoref{fig:2}), which takes less than 10 ms on the Raspberry Pi CPU. The imaging frame rate when using the \emph{picamera} python package will adjust based on the throughput of the analysis system, which can change with the complexity of the binary images that are processed or external CPU demands, but runs at approximately 104 fps (\autoref{fig:2}B). This is sufficient to clearly distinguish different types of movement events, such as "swims" from "struggles" \autoref{fig:2}C vs. D), and where individual tail beats during swimming events are resolvable. However, this will not be true during rapid/burst swimming, in which tail-beat frequency will exceed our frame rate. If such temporal resolution is required our setup will be insufficient, and we will will only reliably track tail half-beat frequencies of $\leq$50hz. Therefore, this system is not capable of comprehensive behavioural characterization, but can be used to identify different types of swim events. 
 
 During the experiment the software provides a visual display, as is shown in the screenshots in (\autoref{fig:2}), and screen capture video (\autoref{fig:2}--\autoref{video:S1}). Results of the thresholding, filtering, and skeleton tracking are visible and updated in real-time. This can be used to optimize the position of the zebrafish, the Adaptive Thresholding parameters (neighborhood, threshold) using the \emph{'w/a/s/d'} keys, and the position of the first tracking point using the arrow keys.
 
-\subsection{Behavioural analysis of Ca\textsuperscript{2+} imaging data}
+\subsection{Behavioural analysis of Caimaging data}
 
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
 
-\includegraphics[width=1\linewidth]{Figure3_FunctionalAnalysis.png}
-\caption{\textbf{Identification of behaviour-associated neurons in a larval zebrafish brain via 2-photon Ca\textsuperscript{2+} imaging.}
-\\ \textbf{A)} Histogram for the mean tail angle during individual movement bouts for a single larvae over an 80 minute imaging session. Bouts are classified as left or right turns based on a threshold value of 0.004 radians/bout. 
-\\ \textbf{B)} Histogram for the bout vigor, quantified using a rolling standard deviation of absolute tail angle. Movements are classified as "swims" or "struggles" based on a threshold value of 0.017 (AU: arbitrary units).
-\\ \textbf{C)} Tuning of Ca\textsuperscript{2+} traces in ROIs to turns to the left (green) or right (magenta), as classified in (A). Images are the Pearson correlation coefficient to each behavioral regressor (left or right turns), scaled from 0.0 to 0.3. \emph{Tg2(elavl3:GCaMP6s)} expression pattern is shown in grey. Arrows highlight the Anterior Rhombencaphalic Turning Region (ARTR): with isilateral tuning to turning direction. A = Anterior, P = Posterior
-\\ \textbf{D, E)} Tuning of neurons to swims \textbf{(D)}, and struggles \textbf{(E)}, as classified in (B).  
-}
-\label{fig:3}
 
-\end{center}
-\end{fullwidth}
-\end{figure}
-
-To test the performance of the \emph{pi\_tailtrack} system, I analyzed Ca\textsuperscript{2+} imaging data from an 80 minute-long volumetric recording covering a large proportion of the brain (as in \cite{Lamire2023-di}). To identify neurons tuned to behavioural parameters I used "regressors" derived from the \emph{pi\_tailtrack} recordings reflecting different motor states convolved with the GCaMP response kernel (as in \cite{Miri2011-sr}). Zebrafish swim bouts can be classified as either forward swims or turns, and an area within the anterior hindbrain is associated with turning direction. This area is known as the Anterior Rhombencephalic Turning Region (ARTR: \cite{Dunn2016-bg}, also called the HBO: \cite{Ahrens2013-xh, Wolf2017-ma}), and shows a conspicuous activity pattern with stripes of neurons tuned to the ipsilateral turning direction. By looking at correlations to regressors reflecting right and left turns, I identified these stripes of neurons in the ARTR-region, indicating that I can successfully identify the ARTR using \emph{pi\_tailtrack} (\autoref{fig:3}A,C). A similar analysis looking at "swims" vs "struggles", with "struggles" reflecting high-amplitude tail flicking events (\autoref{fig:2}D, \autoref{fig:3}B), identified differential neuronal activation in the context of these two movement categories (\autoref{fig:3}D,E), with the presence of lateral hindbrain populations of neurons that were negatively correlated with "swims", and a broader and more positively correlated population with "struggles". 
+To test the performance of the \emph{pi\_tailtrack} system, I analyzed Ca\textsuperscript{2+} imaging data from an 80 minute-long volumetric recording covering a large proportion of the brain (as in \cite{Lamire2023-he}). To identify neurons tuned to behavioural parameters I used "regressors" derived from the \emph{pi\_tailtrack} recordings reflecting different motor states convolved with the GCaMP response kernel (as in \cite{Miri2011-sr}). Zebrafish swim bouts can be classified as either forward swims or turns, and an area within the anterior hindbrain is associated with turning direction. This area is known as the Anterior Rhombencephalic Turning Region (ARTR: \cite{Dunn2016-bg}, also called the HBO: \cite{Ahrens2013-xh, Wolf2017-ma}), and shows a conspicuous activity pattern with stripes of neurons tuned to the ipsilateral turning direction. By looking at correlations to regressors reflecting right and left turns, I identified these stripes of neurons in the ARTR-region, indicating that I can successfully identify the ARTR using \emph{pi\_tailtrack} (\autoref{fig:3}A,C). A similar analysis looking at "swims" vs "struggles", with "struggles" reflecting high-amplitude tail flicking events (\autoref{fig:2}D, \autoref{fig:3}B), identified differential neuronal activation in the context of these two movement categories (\autoref{fig:3}D,E), with the presence of lateral hindbrain populations of neurons that were negatively correlated with "swims", and a broader and more positively correlated population with "struggles". 
 
 
 \subsection{Future developments}

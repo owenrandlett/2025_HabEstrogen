@@ -1,4 +1,4 @@
-\begin{thebibliography}{24}
+\begin{thebibliography}{23}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\urlprefix}{}
 \providecommand{\doiprefix}{doi: }
@@ -28,10 +28,6 @@
 \newblock Brain-wide mapping of neural activity controlling zebrafish exploratory locomotion.
 \newblock Elife.  2016 Mar; 5:e12741.
 
-\bibitem[{Elder(2019)Robert Elder}]{660hz}
-\textbf{\color{eLifeMediumGrey} Elder R}, A Guide to Recording 660FPS Video On A 6 dollar Raspberry Pi Camera; 2019.
-\newblock \urlprefix\url{https://blog.robertelder.org/recording-660-fps-on-raspberry-pi-camera/}, [Online; accessed 5-May-2023].
-
 \bibitem[{Geissmann et~al.(2017)Geissmann, Quentin and Garcia Rodriguez, Luis and Beckwith, Esteban J and French, Alice S and Jamasb, Arian R and Gilestro, Giorgio F}]{Geissmann2017-gd}
 \textbf{\color{eLifeMediumGrey} Geissmann Q}, Garcia~Rodriguez L, Beckwith EJ, French AS, Jamasb AR, Gilestro GF.
 \newblock Ethoscopes: An open platform for high-throughput ethomics.
@@ -43,9 +39,10 @@
 \newblock Nature.  2020 Sep; 585(7825):357--362.
 \newblock \urlprefix\url{https://doi.org/10.1038/s41586-020-2649-2}, \href{10.1038/s41586-020-2649-2}{\doiprefix \detokenize{10.1038/s41586-020-2649-2}}.
 
-\bibitem[{Lamir{\'e} et~al.(2022)Lamir{\'e}, Laurie-Anne and Haesemeyer, Martin and Engert, Florian and Granato, Michael and Randlett, Owen}]{Lamire2023-di}
+\bibitem[{Lamir{\'e} et~al.(2023)Lamir{\'e}, Laurie Anne and Haesemeyer, Martin and Engert, Florian and Granato, Michael and Randlett, Owen}]{Lamire2023-he}
 \textbf{\color{eLifeMediumGrey} Lamir{\'e} LA}, Haesemeyer M, Engert F, Granato M, Randlett O.
-\newblock Functional and pharmacological analyses of visual habituation learning in larval zebrafish; 2022.
+\newblock Functional and pharmacological analyses of visual habituation learning in larval zebrafish.
+\newblock Elife.  2023 Dec; 12.
 
 \bibitem[{Maia~Chagas et~al.(2017)Maia Chagas, Andre and Prieto-Godino, Lucia L and Arrenberg, Aristides B and Baden, Tom}]{Maia_Chagas2017-mf}
 \textbf{\color{eLifeMediumGrey} Maia~Chagas A}, Prieto-Godino LL, Arrenberg AB, Baden T.
