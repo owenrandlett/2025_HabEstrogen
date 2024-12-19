@@ -1,0 +1,1 @@
+pandoc -s 2025_HabEstrogen.tex -o 2025_HabEstrogen.docx --bibliography=References_HabEstrogen.bib --citeproc
