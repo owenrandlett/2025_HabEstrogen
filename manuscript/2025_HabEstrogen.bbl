@@ -1,16 +1,67 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{12}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\urlprefix}{}
 \providecommand{\doiprefix}{doi: }
+
+\bibitem[{Barros et~al.(2015)Barros, L A and Tufik, S and Andersen, M L}]{Barros2015-jm}
+\textbf{\color{eLifeMediumGrey} Barros LA}, Tufik S, Andersen ML.
+\newblock The role of progesterone in memory: an overview of three decades.
+\newblock Neurosci Biobehav Rev.  2015 Feb; 49:193--204.
+
+\bibitem[{Dillon et~al.(2013)Dillon, T Samuel and Fox, Laura C and Han, Crystal and Linster, Christiane}]{Dillon2013-rk}
+\textbf{\color{eLifeMediumGrey} Dillon TS}, Fox LC, Han C, Linster C.
+\newblock 17$\beta$-estradiol enhances memory duration in the main olfactory bulb in {CD-1} mice.
+\newblock Behav Neurosci.  2013 Dec; 127(6):923--931.
+
+\bibitem[{El-Sherif et~al.(2003)El-Sherif, Y and Tesoriero, J and Hogan, M V and Wieraszko, A}]{El-Sherif2003-vt}
+\textbf{\color{eLifeMediumGrey} El-Sherif Y}, Tesoriero J, Hogan MV, Wieraszko A.
+\newblock Melatonin regulates neuronal plasticity in the hippocampus.
+\newblock J Neurosci Res.  2003 May; 72(4):454--460.
+
+\bibitem[{Jilg et~al.(2019)Jilg, Antje and Bechstein, Philipp and Saade, Anastasia and Dick, Moritz and Li, Tian Xiao and Tosini, Gianluca and Rami, Abdelhaq and Zemmar, Ajmal and Stehle, J{\"o}rg H}]{Jilg2019-oy}
+\textbf{\color{eLifeMediumGrey} Jilg A}, Bechstein P, Saade A, Dick M, Li TX, Tosini G, Rami A, Zemmar A, Stehle JH.
+\newblock Melatonin modulates daytime-dependent synaptic plasticity and learning efficiency.
+\newblock J Pineal Res.  2019 Apr; 66(3):e12553.
 
 \bibitem[{Lamir{\'e} et~al.(2023)Lamir{\'e}, Laurie Anne and Haesemeyer, Martin and Engert, Florian and Granato, Michael and Randlett, Owen}]{Lamire2023-he}
 \textbf{\color{eLifeMediumGrey} Lamir{\'e} LA}, Haesemeyer M, Engert F, Granato M, Randlett O.
 \newblock Functional and pharmacological analyses of visual habituation learning in larval zebrafish.
 \newblock Elife.  2023 Dec; 12.
 
+\bibitem[{Naderi et~al.(2020)Naderi, Mohammad and Salahinejad, Arash and Attaran, Anoosha and Niyogi, Som and Chivers, Douglas P}]{Naderi2020-ot}
+\textbf{\color{eLifeMediumGrey} Naderi M}, Salahinejad A, Attaran A, Niyogi S, Chivers DP.
+\newblock Rapid effects of estradiol and its receptor agonists on object recognition and object placement in adult male zebrafish.
+\newblock Behav Brain Res.  2020 Apr; 384(112514):112514.
+
+\bibitem[{Nilsson and Gustafsson(2002)Nilsson, Stefan and Gustafsson, Jan-Ake}]{Nilsson2002-as}
+\textbf{\color{eLifeMediumGrey} Nilsson S}, Gustafsson JA.
+\newblock Biological role of estrogen and estrogen receptors.
+\newblock Crit Rev Biochem Mol Biol.  2002; 37(1):1--28.
+
+\bibitem[{Randlett et~al.(2019)Randlett, Owen and Haesemeyer, Martin and Forkin, Greg and Shoenhard, Hannah and Schier, Alexander F and Engert, Florian and Granato, Michael}]{Randlett2019-fj}
+\textbf{\color{eLifeMediumGrey} Randlett O}, Haesemeyer M, Forkin G, Shoenhard H, Schier AF, Engert F, Granato M.
+\newblock Distributed plasticity drives visual habituation learning in larval zebrafish.
+\newblock Curr Biol.  2019 Apr; 29(8):1337--1345.e4.
+
+\bibitem[{Rankin et~al.(2009)Rankin, Catharine H and Abrams, Thomas and Barry, Robert J and Bhatnagar, Seema and Clayton, David F and Colombo, John and Coppola, Gianluca and Geyer, Mark A and Glanzman, David L and Marsland, Stephen and McSweeney, Frances K and Wilson, Donald A and Wu, Chun-Fang and Thompson, Richard F}]{Rankin2009-no}
+\textbf{\color{eLifeMediumGrey} Rankin CH}, Abrams T, Barry RJ, Bhatnagar S, Clayton DF, Colombo J, Coppola G, Geyer MA, Glanzman DL, Marsland S, McSweeney FK, Wilson DA, Wu CF, Thompson RF.
+\newblock Habituation revisited: an updated and revised description of the behavioral characteristics of habituation.
+\newblock Neurobiol Learn Mem.  2009 Sep; 92(2):135--138.
+
+\bibitem[{Rawashdeh et~al.(2007)Rawashdeh, Oliver and de Borsetti, Nancy Hernandez and Roman, Gregg and Cahill, Gregory M}]{Rawashdeh2007-bw}
+\textbf{\color{eLifeMediumGrey} Rawashdeh O}, de~Borsetti NH, Roman G, Cahill GM.
+\newblock Melatonin suppresses nighttime memory formation in zebrafish.
+\newblock Science.  2007 Nov; 318(5853):1144--1146.
+
 \bibitem[{Romano et~al.(2017)Romano, Shannon N and Edwards, Hailey E and Souder, Jaclyn Paige and Ryan, Kevin J and Cui, Xiangqin and Gorelick, Daniel A}]{Romano2017-ep}
 \textbf{\color{eLifeMediumGrey} Romano SN}, Edwards HE, Souder JP, Ryan KJ, Cui X, Gorelick DA.
 \newblock {G} protein-coupled estrogen receptor regulates embryonic heart rate in zebrafish.
 \newblock PLoS Genet.  2017 Oct; 13(10):e1007069.
+
+\bibitem[{Wolman et~al.(2011)Wolman, Marc A. and Jain, Roshan A. and Liss, Laura and Granato, Michael}]{wolman_chemical_2011}
+\textbf{\color{eLifeMediumGrey} Wolman MA}, Jain RA, Liss L, Granato M.
+\newblock Chemical modulation of memory formation in larval zebrafish.
+\newblock Proceedings of the National Academy of Sciences.  2011 Sep; 108(37):15468--15473.
+\newblock \urlprefix\url{https://pnas.org/doi/full/10.1073/pnas.1107156108}, \href{10.1073/pnas.1107156108}{\doiprefix \detokenize{10.1073/pnas.1107156108}}.
 
 \end{thebibliography}
