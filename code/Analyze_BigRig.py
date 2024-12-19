@@ -2,7 +2,8 @@
 
 from scipy.signal.signaltools import medfilt2d
 from tkinter import *
-import os
+import os, sys, pickle
+from importlib import reload
 
 current_dir = os.path.dirname(__file__)
 
@@ -14,14 +15,15 @@ import warnings
 warnings.simplefilter(action="default")
 import gspread
 import pandas as pd
-import FishTrack
+import HabTrackFunctions 
 from datetime import datetime
 import matplotlib.pyplot as plt
 from scipy.io import loadmat
 from tqdm.notebook import tqdm
 from scipy.signal import savgol_filter, find_peaks, medfilt
 from scipy.ndimage import median_filter, uniform_filter1d
-import pickle
+
+
 
 import natsort
 import h5py
@@ -31,7 +33,7 @@ from glasbey import Glasbey
 
 # parameters:
 
-exp_dir = os.path.realpath(r'/media/BigBoy/MultiTracker/20231214_125418_coq8aa;ab_BR4')
+exp_dir = os.path.realpath(r'Z:\2025_EstrogenPaper\esr1\20220706_120356')
 
 
 graph_dir = os.path.join(exp_dir, 'graphs')
@@ -39,7 +41,7 @@ graph_dir = os.path.join(exp_dir, 'graphs')
 if not os.path.exists(graph_dir):
     os.mkdir(graph_dir)
 
-big_rig3 = True # set to true if doing an experiment with BigRig3, and using the spreasheet BigRig3_WellIDs ()
+big_rig3 = False # set to true if doing an experiment with BigRig3, and using the spreasheet BigRig3_WellIDs ()
 
 
 n_blocks = 4
@@ -58,39 +60,6 @@ SpeedSmooth = 5; # the kernel of the medfilt1 filter for the speed
 
 plot_tracking_results = False # for debugging, will plot each fish that is tracked
 cont_id = 0 # index of the control group, usually 0
-
-def ffill_cols(a, startfillval=0):
-    mask = np.isnan(a)
-    tmp = a[0].copy()
-    a[0][mask[0]] = startfillval
-    mask[0] = False
-    idx = np.where(~mask,np.arange(mask.shape[0])[:,None],0)
-    out = np.take_along_axis(a,np.maximum.accumulate(idx,axis=0),axis=0)
-    a[0] = tmp
-    return out
-
-def subtract_angles(lhs, rhs):
-    import math
-    """Return the signed difference between angles lhs and rhs
-
-    Return ``(lhs - rhs)``, the value will be within ``[-math.pi, math.pi)``.
-    Both ``lhs`` and ``rhs`` may either be zero-based (within
-    ``[0, 2*math.pi]``), or ``-pi``-based (within ``[-math.pi, math.pi]``).
-    """
-
-    return math.fmod((lhs - rhs) + math.pi * 3, 2 * math.pi) - math.pi
-
-def load_burst_pkl(burst_file):
-    with open(burst_file, 'rb') as f:
-        burst_data = pickle.load(f)
-    
-    tail_coords = burst_data['tail_coords']
-    orientations = burst_data['orientations']
-
-    heading_dir = burst_data['heading_dir']
-    bend_amps = burst_data['bend_amps']
-
-    return tail_coords, orientations, heading_dir, bend_amps
 
 
 
@@ -131,7 +100,7 @@ for plate in range(2):
 
     for i in range(n_groups):
         names.append(rows['Group Name'].iloc[i])
-        rois.append(FishTrack.convert_roi_str(rows['ROIs'].iloc[i]))
+        rois.append(HabTrackFunctions.convert_roi_str(rows['ROIs'].iloc[i]))
 
     #% get burst trials:
 
@@ -185,7 +154,7 @@ for plate in range(2):
         trial_file = trials[trial]
         burst_frame = int(trial_file[trial_file.find('burst_frame_')+12:trial_file.find('_time_')])
         track_data['TiffFrameInds'].append(burst_frame)
-        tail_coords, orientations, heading_dir, bend_amps = load_burst_pkl(trial_file)
+        tail_coords, orientations, heading_dir, bend_amps = HabTrackFunctions.load_burst_pkl(trial_file)
         frame_rate = bend_amps.shape[1]
 
         # % fish are considered not to be tracked properly if they are
@@ -199,18 +168,18 @@ for plate in range(2):
         delta_orient_trace[delta_orient_trace < -np.pi] = delta_orient_trace[delta_orient_trace < -np.pi] + 2*np.pi
         delta_orient_trace[abs(delta_orient_trace) > AngVelThresh] = np.nan
         curve = bend_amps.T
-        curve_smooth = savgol_filter(ffill_cols(curve), sav_sz, sav_ord, axis=0)
+        curve_smooth = savgol_filter(HabTrackFunctions.ffill_cols(curve), sav_sz, sav_ord, axis=0)
 
         # calculate speed
 
         x_coors = tail_coords[0,:,0,:].T
         y_coors = tail_coords[1,:,1,:].T
 
-        # diff_x = np.diff(savgol_filter(ffill_cols(x_coors), sav_sz, sav_ord, axis=0), axis=0)
-        # diff_y = np.diff(savgol_filter(ffill_cols(y_coors), sav_sz, sav_ord, axis=0), axis=0)
+        # diff_x = np.diff(savgol_filter(HabTrackFunctions.ffill_cols(x_coors), sav_sz, sav_ord, axis=0), axis=0)
+        # diff_y = np.diff(savgol_filter(HabTrackFunctions.ffill_cols(y_coors), sav_sz, sav_ord, axis=0), axis=0)
 
-        diff_x = np.diff(median_filter(ffill_cols(x_coors), size=(11,1)), axis=0)
-        diff_y = np.diff(median_filter(ffill_cols(y_coors), size=(11,1)), axis=0)
+        diff_x = np.diff(median_filter(HabTrackFunctions.ffill_cols(x_coors), size=(11,1)), axis=0)
+        diff_y = np.diff(median_filter(HabTrackFunctions.ffill_cols(y_coors), size=(11,1)), axis=0)
 
 
         speed = savgol_filter(np.sqrt(np.square(diff_x) + np.square(diff_x)), sav_sz, sav_ord, axis=0)
@@ -295,7 +264,7 @@ for plate in range(2):
 
                         obend_dur[fish] = (end_o - start_o)*1000/frame_rate
                         obend_disp[fish] = np.sqrt(np.square(x_coors[start_o, fish] - x_coors[end_o, fish]) + np.square(y_coors[start_o, fish] - y_coors[end_o, fish]))
-                        obend_dorient[fish] = subtract_angles(orientations.T[end_o, fish], orientations.T[start_o, fish])
+                        obend_dorient[fish] = HabTrackFunctions.subtract_angles(orientations.T[end_o, fish], orientations.T[start_o, fish])
                         obend_max_curve[fish] = np.max(abs(curve[start_o:end_o, fish]))
 
                         # if obend_disp[fish] < 3: # fish needs to move at least 3 pixels, or else assume its a tracking error
@@ -401,12 +370,11 @@ for plate in range(2):
             if not t==cont_id:
                 non_treat.append(t)
                 if len(stim_times) >=330:
-                    FishTrack.plot_cum_diff(track_data, t, cont_id, save_name.replace('.pkl', '__')+names[t]+'_CumulDiff', ylim=0.2)
-                FishTrack.plot_burst_data_all(track_data, t, 0, col_vec, save_name.replace('.pkl', '__')+names[t], smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
+                    HabTrackFunctions.plot_cum_diff(track_data, t, cont_id, save_name.replace('.pkl', '__')+names[t]+'_CumulDiff', ylim=0.2)
+                HabTrackFunctions.plot_burst_data_all(track_data, t, 0, col_vec, save_name.replace('.pkl', '__')+names[t], smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
 
-    FishTrack.plot_burst_data_all(track_data, non_treat, 0, col_vec, save_name.replace('.pkl', '_'), smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
+    HabTrackFunctions.plot_burst_data_all(track_data, non_treat, 0, col_vec, save_name.replace('.pkl', '_'), smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
     
-
 
 #%%
 
@@ -423,19 +391,19 @@ for id in treat_id:
     treat_name = treat_name + names[id]
 
 #%
-FishTrack.plot_burst_data_all(track_data, treat_id, cont_id, col_vec, save_name.replace('burst_trackdata_twoMeasures.pkl', '__')+names[cont_id] + '---vs---' + treat_name, smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
+HabTrackFunctions.plot_burst_data_all(track_data, treat_id, cont_id, col_vec, save_name.replace('burst_trackdata_twoMeasures.pkl', '__')+names[cont_id] + '---vs---' + treat_name, smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
 
 #%%
 
 #%%
-#FishTrack.plot_cum_diff(track_data, 3, 2, save_name.replace('.pkl', '__')+names[t]+'_CumulDiff', ylim=0.2)
+#HabTrackFunctions.plot_cum_diff(track_data, 3, 2, save_name.replace('.pkl', '__')+names[t]+'_CumulDiff', ylim=0.2)
 
 comps = list(track_data.keys())[:10]
 
 treat_to_plot = np.arange(n_groups)
 cont_ID = 1
 for comp in comps:
-    FishTrack.plot_cum_diff_oneComp(track_data, comp, treat_to_plot, cont_ID, col_vec, '__cumDiff_' + comp, n_norm = 3, ylim=0.3)
+    HabTrackFunctions.plot_cum_diff_oneComp(track_data, comp, treat_to_plot, cont_ID, col_vec, '__cumDiff_' + comp, n_norm = 3, ylim=0.3)
 
 #%%
 
@@ -478,7 +446,7 @@ for file_name in track_names:
     p = gb.generate_palette(size=len(non_treat)+2)
     col_vec_all = gb.convert_palette_to_rgb(p)
     col_vec_all = np.array(col_vec_all[1:], dtype=float)/255
-    FishTrack.plot_burst_data_all(track_data, non_treat, 0, col_vec_all, file_name.replace('.pkl', ''), smooth_window=15, plot_taps=True, plot_retest=True)
+    HabTrackFunctions.plot_burst_data_all(track_data, non_treat, 0, col_vec_all, file_name.replace('.pkl', ''), smooth_window=15, plot_taps=True, plot_retest=True)
 
     ssmd_name = file_name.replace('trackdata', 'ssmddata')
     with open(ssmd_name, "rb") as f:
@@ -517,7 +485,7 @@ online_framerate = 1/np.median(np.diff(tstamps))
 #%%
 plate_data = np.where(frames_plate)[0]
 plate_coords = online_tracking['tail_coords'][plate_data,:,:,0]
-speed = FishTrack.get_speeds(plate_coords)
+speed = HabTrackFunctions.get_speeds(plate_coords)
 
 #%%
 t_speeds = tstamps[plate_data]
@@ -712,7 +680,7 @@ omr_inds = np.arange(omr_start_record,omr_end_record)
 orient_omr = np.zeros((len(omr_inds), n_fish))
 k = 0
 for fr in tqdm(omr_inds):
-    orient_omr[k, ], ba = FishTrack.get_bendamps(tail_coords[fr, :,:,:])
+    orient_omr[k, ], ba = HabTrackFunctions.get_bendamps(tail_coords[fr, :,:,:])
     k+=1
 
 #%%
@@ -732,7 +700,7 @@ plt.plot(orient_omr[2000:3000, fish])
 #%%
 test_frame = 10000
 
-orients, b_a = FishTrack.get_bendamps(tail_coords[test_frame, :,:,:])
+orients, b_a = HabTrackFunctions.get_bendamps(tail_coords[test_frame, :,:,:])
 
 np.array_equal(orients, orientations[test_frame, :,], equal_nan=True)
 #%%
@@ -891,7 +859,7 @@ tail_coords_online = np.array(online_track_data['tail_coords'])
 for i in range(300):
     plt.plot(tail_coords[:, 0, i, 0], tail_coords[:, 1, i, 0])
 #%%
-FishTrack.plot_burst_data(track_data["OBendEvents"], 'probability of response', rois, stim_times, names, stim_given, 15, col_vec, save_name = 'test', plot_taps=True)
+HabTrackFunctions.plot_burst_data(track_data["OBendEvents"], 'probability of response', rois, stim_times, names, stim_given, 15, col_vec, save_name = 'test', plot_taps=True)
 #%%
 plt.plot(fish_not_tracked)
 plt.show()
@@ -1012,14 +980,14 @@ for exp_dir in tqdm(dirs):
             for i in range(nTreat):
                 rois.append(np.arange(rows['ROI Start'].iloc[i]-1, rows['ROI End'].iloc[i], 1 ))
                 if len(rows["Other ROIs"].iloc[i]) > 0:
-                    other_rois = FishTrack.convert_roi_str(rows["Other ROIs"].iloc[i])
+                    other_rois = HabTrackFunctions.convert_roi_str(rows["Other ROIs"].iloc[i])
                     rois[i] = np.hstack((rois[i], other_rois))
 
                 names.append(str(rows['Product Name'].iloc[i]))
             #%
 
             names.insert(0, rows['Control Name'].iloc[0])
-            rois.insert(0, FishTrack.convert_roi_str(rows['Vehicle ROIs'].iloc[0]))
+            rois.insert(0, HabTrackFunctions.convert_roi_str(rows['Vehicle ROIs'].iloc[0]))
 
 
             #%
@@ -1115,9 +1083,9 @@ for exp_dir in tqdm(dirs):
 
 
                 # savgol filter
-                curve_smooth = savgol_filter(ffill_cols(curve), sav_sz, sav_ord, axis=0)
-                diff_x = np.diff(savgol_filter(ffill_cols(x_coors), sav_sz, sav_ord, axis=0), axis=0)
-                diff_y = np.diff(savgol_filter(ffill_cols(y_coors), sav_sz, sav_ord, axis=0), axis=0)
+                curve_smooth = savgol_filter(HabTrackFunctions.ffill_cols(curve), sav_sz, sav_ord, axis=0)
+                diff_x = np.diff(savgol_filter(HabTrackFunctions.ffill_cols(x_coors), sav_sz, sav_ord, axis=0), axis=0)
+                diff_y = np.diff(savgol_filter(HabTrackFunctions.ffill_cols(y_coors), sav_sz, sav_ord, axis=0), axis=0)
 
                 # calculate speed
                 speed = np.sqrt(np.square(diff_x) + np.square(diff_x))
@@ -1200,7 +1168,7 @@ for exp_dir in tqdm(dirs):
 
                                 obend_dur[fish] = (end_o - start_o)*1000/frame_rate
                                 obend_disp[fish] = np.sqrt(np.square(x_coors[start_o, fish] - x_coors[end_o, fish]) + np.square(y_coors[start_o, fish] - y_coors[end_o, fish]))
-                                obend_dorient[fish] = subtract_angles(orient[end_o, fish], orient[start_o, fish])
+                                obend_dorient[fish] = HabTrackFunctions.subtract_angles(orient[end_o, fish], orient[start_o, fish])
                                 obend_max_curve[fish] = np.max(abs(curve[start_o:end_o, fish]))
 
                                 if obend_disp[fish] < 5: # fish needs to move at least 5 pixels, or else assume its a tracking error
@@ -1301,31 +1269,31 @@ for exp_dir in tqdm(dirs):
 
             if plot_burst:
                 # probability
-                FishTrack.plot_burst_data(track_data["OBendEvents"], 'probability of response', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["OBendEvents"], 'probability of response', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 #% latency
-                FishTrack.plot_burst_data(track_data["OBendLatencies"], 'latency of response', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["OBendLatencies"], 'latency of response', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 # displacement
-                FishTrack.plot_burst_data(track_data["DispPerOBend"], 'displacement (px)', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["DispPerOBend"], 'displacement (px)', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 # duration
-                FishTrack.plot_burst_data(track_data["OBendDurations"], 'duration (msec)', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["OBendDurations"], 'duration (msec)', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 # curvature
-                FishTrack.plot_burst_data(abs(track_data["MaxCurvatureOBendEvents"]), 'bend amplitude (rad)', rois, stim_times, names, stim_given, 15, col_vec,save_name = save_name)
+                HabTrackFunctions.plot_burst_data(abs(track_data["MaxCurvatureOBendEvents"]), 'bend amplitude (rad)', rois, stim_times, names, stim_given, 15, col_vec,save_name = save_name)
 
                 # multibend
-                FishTrack.plot_burst_data(track_data["DidAMultiBendOBend"], 'proportion multibend', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["DidAMultiBendOBend"], 'proportion multibend', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 # second obend
-                FishTrack.plot_burst_data(track_data["DidASecondOBend"], 'did second o-bend', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["DidASecondOBend"], 'did second o-bend', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 # c1 length
-                FishTrack.plot_burst_data(track_data["C1LengthOBendEvents"], 'c1 length', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["C1LengthOBendEvents"], 'c1 length', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 # ang vel
-                FishTrack.plot_burst_data(abs(track_data["C1AngVelOBendEvents"]), 'ang velocity', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(abs(track_data["C1AngVelOBendEvents"]), 'ang velocity', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
 
 
@@ -1462,8 +1430,8 @@ for exp_dir in tqdm(dirs):
             #% extract speed trace
             sav_sz_multi = 9
             sav_ord_multi = 2
-            # diff_x_multi = np.diff(savgol_filter(ffill_cols(x_coors_multi), sav_sz_multi, sav_ord_multi, axis=0), axis=0)
-            # diff_y_multi = np.diff(savgol_filter(ffill_cols(y_coors_multi), sav_sz_multi, sav_ord_multi, axis=0), axis=0)
+            # diff_x_multi = np.diff(savgol_filter(HabTrackFunctions.ffill_cols(x_coors_multi), sav_sz_multi, sav_ord_multi, axis=0), axis=0)
+            # diff_y_multi = np.diff(savgol_filter(HabTrackFunctions.ffill_cols(y_coors_multi), sav_sz_multi, sav_ord_multi, axis=0), axis=0)
             # speed_multi = np.sqrt(np.square(diff_x_multi) + np.square(diff_y_multi))
 
             diff_x_multi = np.diff(x_coors_multi, axis=0)
