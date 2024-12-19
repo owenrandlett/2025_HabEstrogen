@@ -1,7 +1,6 @@
 #%%
 
 from scipy.signal.signaltools import medfilt2d
-from tkinter import *
 import os, sys, pickle
 from importlib import reload
 
