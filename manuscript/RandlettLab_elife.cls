@@ -257,7 +257,7 @@
 }
 
 \renewenvironment{abstract}{%
-   \setlength{\parindent}{0pt}\raggedright
+   \setlength{\parindent}{0pt}%\raggedright
    \textcolor{eLifeMediumGrey}{\rule{\textwidth}{2pt}}
    \vskip16pt
    \textcolor{RandlettLightOrange}{\huge\bfseries\abstractname\space}
