@@ -28,12 +28,12 @@ root_dir = os.path.realpath(r'Z:\2025_EstrogenPaper\BigRigData')
 
 # assume all subdirectories are two levels down
 
-
+exp_dirs = glob.glob( os.path.realpath( root_dir + '\\*\\*'))
     
 
 # parameters:
 
-def analyze_df_hab(exp_dir):
+for exp_dir in tqdm(exp_dirs):
 
     if "_BR3" in exp_dir:
         big_rig3 = True
@@ -347,11 +347,8 @@ def analyze_df_hab(exp_dir):
 
         HabTrackFunctions.plot_burst_data_all(track_data, non_treat, 0, col_vec, save_name.replace('.pkl', '_'), smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
         
-exp_dirs = glob.glob( os.path.realpath( root_dir + '\\*\\*'))
 
-for exp_dir in tqdm(exp_dirs):
-    print(exp_dir)
-    analyze_df_hab(exp_dir)
+
 
 #%%
 
