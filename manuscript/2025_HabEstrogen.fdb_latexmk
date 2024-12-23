@@ -1,20 +1,20 @@
 # Fdb version 4
-["bibtex 2025_HabEstrogen"] 1734707694.30897 "2025_HabEstrogen.aux" "2025_HabEstrogen.bbl" "2025_HabEstrogen" 1734707848.20289 0
+["bibtex 2025_HabEstrogen"] 1734946060.32969 "2025_HabEstrogen.aux" "2025_HabEstrogen.bbl" "2025_HabEstrogen" 1734947451.80652 0
   "./References_HabEstrogen.bib" 1734605042 65052 6349d4f522ce1be9af80dff756f75e95 ""
   "./vancouver-elife.bst" 1707915794 38524 dcc4ea8151fa24ac17802cbe04324a27 ""
-  "2025_HabEstrogen.aux" 1734707845 4016 6f888d77c4959df042bd42298c2af5ea "pdflatex"
+  "2025_HabEstrogen.aux" 1734947450 4041 dd9e312d155689500f29775913ff825e "pdflatex"
   (generated)
   "2025_HabEstrogen.bbl"
   "2025_HabEstrogen.blg"
   (rewritten before read)
-["pdflatex"] 1734707838.85553 "c:/Users/owen.randlett/Documents/GitHub/2025_HabEstrogen/manuscript/2025_HabEstrogen.tex" "2025_HabEstrogen.pdf" "2025_HabEstrogen" 1734707848.2042 0
-  "2025_HabEstrogen.aux" 1734707845 4016 6f888d77c4959df042bd42298c2af5ea "pdflatex"
-  "2025_HabEstrogen.bbl" 1734707695 5099 3b1c1ecbef203226ccfa52601f0044f5 "bibtex 2025_HabEstrogen"
-  "2025_HabEstrogen.out" 1734707845 1811 d647c6e00dbe1d469f179317561078c0 "pdflatex"
-  "2025_HabEstrogen.suppinfo" 1734707845 23 9d06dfc8a19fb7c8be575e679aa2627d "pdflatex"
-  "2025_HabEstrogen.tex" 1734707837 11569 8d17a0760663ca43a71fc2646c213549 ""
+["pdflatex"] 1734947448.18165 "c:/Users/owen.randlett/Documents/GitHub/2025_HabEstrogen/manuscript/2025_HabEstrogen.tex" "2025_HabEstrogen.pdf" "2025_HabEstrogen" 1734947451.80705 0
+  "2025_HabEstrogen.aux" 1734947450 4041 dd9e312d155689500f29775913ff825e "pdflatex"
+  "2025_HabEstrogen.bbl" 1734946060 5099 3b1c1ecbef203226ccfa52601f0044f5 "bibtex 2025_HabEstrogen"
+  "2025_HabEstrogen.out" 1734947450 1811 d647c6e00dbe1d469f179317561078c0 "pdflatex"
+  "2025_HabEstrogen.suppinfo" 1734947450 23 9d06dfc8a19fb7c8be575e679aa2627d "pdflatex"
+  "2025_HabEstrogen.tex" 1734947447 12008 80427da3c220bfeb102b5e1721feb4ac ""
   "RandlettLab_elife.cls" 1734681861 16715 df7acaa6aab48ff20136087b97a25641 ""
-  "c:/Users/owen.randlett/Documents/GitHub/2025_HabEstrogen/manuscript/2025_HabEstrogen.tex" 1734707837 11569 8d17a0760663ca43a71fc2646c213549 ""
+  "c:/Users/owen.randlett/Documents/GitHub/2025_HabEstrogen/manuscript/2025_HabEstrogen.tex" 1734947447 12008 80427da3c220bfeb102b5e1721feb4ac ""
   "c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1734437800 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2024/texmf-dist/fonts/enc/dvips/opensans/a_jg4h6q.enc" 1734439404 2952 84fda6c8ae8be17712e9d998ffe48bad ""
   "c:/texlive/2024/texmf-dist/fonts/enc/dvips/opensans/a_nvvucy.enc" 1734439404 3364 7c78cdd102714be824555fc722b51d02 ""
