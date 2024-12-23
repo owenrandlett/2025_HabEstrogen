@@ -339,13 +339,13 @@ for exp_dir in tqdm(exp_dirs):
         treat_ids = np.arange(len(names))
         non_treat = []
         for t in treat_ids:
-                if not t==cont_id:
+                if not t==cont_id and not isinstance(rois[t], int):
                     non_treat.append(t)
                     if len(stim_times) >=330:
-                        HabTrackFunctions.plot_cum_diff(track_data, t, cont_id, save_name.replace('.pkl', '__')+names[t]+'_CumulDiff', ylim=0.2)
-                    HabTrackFunctions.plot_burst_data_all(track_data, t, 0, col_vec, save_name.replace('.pkl', '__')+names[t], smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
+                        HabTrackFunctions.plot_cum_diff(track_data, t, cont_id, os.path.split(save_name)[-1].replace('.pkl', '__')+names[t]+'_CumulDiff', ylim=0.2)
+                    HabTrackFunctions.plot_burst_data_all(track_data, t, 0, col_vec, os.path.split(save_name)[-1].replace('.pkl', '__')+names[t], smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
 
-        HabTrackFunctions.plot_burst_data_all(track_data, non_treat, 0, col_vec, save_name.replace('.pkl', '_'), smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
+        HabTrackFunctions.plot_burst_data_all(track_data, non_treat, 0, col_vec, os.path.split(save_name)[-1].replace('.pkl', '_'), smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
         
 
 

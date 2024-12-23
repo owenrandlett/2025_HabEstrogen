@@ -152,7 +152,7 @@ def plot_cum_diff(data, treat_id, cont_id, save_name, n_norm = 5, ylim=0.8):
     plt.ylim((-ylim, ylim))
     plt.xlim((0,240))
    
-    invalid = '<>:"/\|?* '
+    invalid = '<>:"\/|?* '
 
     for char in invalid:
         save_name = save_name.replace(char, '')
