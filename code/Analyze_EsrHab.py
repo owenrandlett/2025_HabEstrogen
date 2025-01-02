@@ -102,8 +102,10 @@ for exp_dir in tqdm(exp_dirs):
         names = []
 
         for i in range(n_groups):
-            names.append(rows['Group Name'].iloc[i])
-            rois.append(HabTrackFunctions.convert_roi_str(rows['ROIs'].iloc[i]))
+            roi_str = rows['ROIs'].iloc[i]
+            if not roi_str=='[]' and not roi_str=='': # make sure it isnt empty
+                names.append(rows['Group Name'].iloc[i])
+                rois.append(HabTrackFunctions.convert_roi_str(roi_str))
 
         #% get burst trials:
 
