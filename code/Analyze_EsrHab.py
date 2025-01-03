@@ -1,5 +1,4 @@
-#%%
-
+#%% Import libraries and setup fodlders:
 import os
 import sys
 import pickle
@@ -29,8 +28,8 @@ root_dir = os.path.realpath(r'Z:\2025_EstrogenPaper\BigRigData')
 # assume all subdirectories are two levels down
 
 exp_dirs = glob.glob( os.path.realpath( root_dir + '\\*\\*'))
-    
 
+#%% Scan through raw data files and extract responses, etc. 
 # parameters:
 
 for exp_dir in tqdm(exp_dirs):
@@ -47,8 +46,8 @@ for exp_dir in tqdm(exp_dirs):
 
 
 
-    n_blocks = 4
-    n_stim_blocks = 60
+    n_blocks = 4    
+    n_stim_blocks = 60  
     CurvatureStdThresh = 1.7 # max std in curvature trace that is acceptable. non-tracked fish have noisy traces
     SpeedStdThresh = 3.5
     AngVelThresh = np.pi/2.5 # the max angular velocity per frame we will accept as not an artifact
@@ -137,16 +136,16 @@ for exp_dir in tqdm(exp_dirs):
 
 
         track_data = {
-            "OBendEvents":np.zeros((n_trials, n_fish)),
-            "OBendLatencies":np.zeros((n_trials, n_fish)),
-            "DidASecondOBend":np.zeros((n_trials, n_fish)),
-            "DeltaOrientPerOBend":np.zeros((n_trials, n_fish)),
-            "DispPerOBend":np.zeros((n_trials, n_fish)),
-            "OBendDurations":np.zeros((n_trials, n_fish)),
-            "MaxCurvatureOBendEvents":np.zeros((n_trials, n_fish)),
-            "DidAMultiBendOBend":np.zeros((n_trials, n_fish)),
-            "C1LengthOBendEvents":np.zeros((n_trials, n_fish)),
-            "C1AngVelOBendEvents":np.zeros((n_trials, n_fish)),
+            "ProbabilityOfResponse":np.zeros((n_trials, n_fish)),
+            "LatencyOfResponse":np.zeros((n_trials, n_fish)),
+            "SecondResponses":np.zeros((n_trials, n_fish)),
+            "Reorientation":np.zeros((n_trials, n_fish)),
+            "Displacement":np.zeros((n_trials, n_fish)),
+            "MovementDuration":np.zeros((n_trials, n_fish)),
+            "BendAmplitude":np.zeros((n_trials, n_fish)),
+            "CompoundBendResponse":np.zeros((n_trials, n_fish)),
+            "C1Length":np.zeros((n_trials, n_fish)),
+            "C1AngularVelocity":np.zeros((n_trials, n_fish)),
             "TiffFrameInds":[],
             "names":names,
             "rois":rois,
@@ -300,25 +299,25 @@ for exp_dir in tqdm(exp_dirs):
 
 
             obend_happened[fish_not_tracked] = np.nan
-            track_data["OBendEvents"][trial, :] = obend_happened
+            track_data["ProbabilityOfResponse"][trial, :] = obend_happened
             obend_start[fish_not_tracked] = np.nan
-            track_data["OBendLatencies"][trial, :] = obend_start
+            track_data["LatencyOfResponse"][trial, :] = obend_start
             obend_second_counter[fish_not_tracked] = np.nan
-            track_data["DidASecondOBend"][trial, :] = obend_second_counter
+            track_data["SecondResponses"][trial, :] = obend_second_counter
             obend_dur[fish_not_tracked] = np.nan
-            track_data["OBendDurations"][trial, :] = obend_dur
+            track_data["MovementDuration"][trial, :] = obend_dur
             obend_disp[fish_not_tracked] = np.nan
-            track_data["DispPerOBend"][trial,:] = obend_disp
+            track_data["Displacement"][trial,:] = obend_disp
             obend_max_curve[fish_not_tracked] = np.nan
-            track_data["MaxCurvatureOBendEvents"][trial,:] = obend_max_curve
+            track_data["BendAmplitude"][trial,:] = obend_max_curve
             obend_dorient[fish_not_tracked] = np.nan
-            track_data["DeltaOrientPerOBend"][trial,:] = obend_dorient
+            track_data["Reorientation"][trial,:] = obend_dorient
             obend_multibend[fish_not_tracked] = np.nan
-            track_data["DidAMultiBendOBend"][trial,:] = obend_multibend
+            track_data["CompoundBendResponse"][trial,:] = obend_multibend
             obend_c1len[fish_not_tracked] = np.nan
-            track_data["C1LengthOBendEvents"][trial,:] = obend_c1len
+            track_data["C1Length"][trial,:] = obend_c1len
             obend_ang_vel[fish_not_tracked] = np.nan
-            track_data["C1AngVelOBendEvents"][trial,:] = obend_ang_vel
+            track_data["C1AngularVelocity"][trial,:] = obend_ang_vel
 
         stim_times = np.array(track_data['TiffFrameInds'])
         stim_times = stim_times - stim_times[0]
@@ -398,7 +397,7 @@ for file_name in track_names:
     stim_given = track_data['stim_given']
     rois = track_data['rois']
     names = track_data['names']
-    data = track_data['OBendEvents']
+    data = track_data['ProbabilityOfResponse']
     data_train = data[stim_given==1, :]
     #%
     if "TiffTimeInds" in track_data.keys():
@@ -835,7 +834,7 @@ tail_coords_online = np.array(online_track_data['tail_coords'])
 for i in range(300):
     plt.plot(tail_coords[:, 0, i, 0], tail_coords[:, 1, i, 0])
 #%%
-HabTrackFunctions.plot_burst_data(track_data["OBendEvents"], 'probability of response', rois, stim_times, names, stim_given, 15, col_vec, save_name = 'test', plot_taps=True)
+HabTrackFunctions.plot_burst_data(track_data["ProbabilityOfResponse"], 'probability of response', rois, stim_times, names, stim_given, 15, col_vec, save_name = 'test', plot_taps=True)
 #%%
 plt.plot(fish_not_tracked)
 plt.show()
@@ -1001,16 +1000,16 @@ for exp_dir in tqdm(dirs):
 
             #%
             track_data = {
-                "OBendEvents":np.zeros((n_trials, n_fish)),
-                "OBendLatencies":np.zeros((n_trials, n_fish)),
-                "DidASecondOBend":np.zeros((n_trials, n_fish)),
-                "DeltaOrientPerOBend":np.zeros((n_trials, n_fish)),
-                "DispPerOBend":np.zeros((n_trials, n_fish)),
-                "OBendDurations":np.zeros((n_trials, n_fish)),
-                "MaxCurvatureOBendEvents":np.zeros((n_trials, n_fish)),
-                "DidAMultiBendOBend":np.zeros((n_trials, n_fish)),
-                "C1LengthOBendEvents":np.zeros((n_trials, n_fish)),
-                "C1AngVelOBendEvents":np.zeros((n_trials, n_fish)),
+                "ProbabilityOfResponse":np.zeros((n_trials, n_fish)),
+                "LatencyOfResponse":np.zeros((n_trials, n_fish)),
+                "SecondResponses":np.zeros((n_trials, n_fish)),
+                "Reorientation":np.zeros((n_trials, n_fish)),
+                "Displacement":np.zeros((n_trials, n_fish)),
+                "MovementDuration":np.zeros((n_trials, n_fish)),
+                "BendAmplitude":np.zeros((n_trials, n_fish)),
+                "CompoundBendResponse":np.zeros((n_trials, n_fish)),
+                "C1Length":np.zeros((n_trials, n_fish)),
+                "C1AngularVelocity":np.zeros((n_trials, n_fish)),
                 "TiffTimeInds":[],
                 "names":names,
                 "rois":rois,
@@ -1200,25 +1199,25 @@ for exp_dir in tqdm(dirs):
                     # nan out non-tracked fish and save arrays
 
                 obend_happened[fish_not_tracked] = np.nan
-                track_data["OBendEvents"][trial, :] = obend_happened
+                track_data["ProbabilityOfResponse"][trial, :] = obend_happened
                 obend_start[fish_not_tracked] = np.nan
-                track_data["OBendLatencies"][trial, :] = obend_start
+                track_data["LatencyOfResponse"][trial, :] = obend_start
                 obend_second_counter[fish_not_tracked] = np.nan
-                track_data["DidASecondOBend"][trial, :] = obend_second_counter
+                track_data["SecondResponses"][trial, :] = obend_second_counter
                 obend_dur[fish_not_tracked] = np.nan
-                track_data["OBendDurations"][trial, :] = obend_dur
+                track_data["MovementDuration"][trial, :] = obend_dur
                 obend_disp[fish_not_tracked] = np.nan
-                track_data["DispPerOBend"][trial,:] = obend_disp
+                track_data["Displacement"][trial,:] = obend_disp
                 obend_max_curve[fish_not_tracked] = np.nan
-                track_data["MaxCurvatureOBendEvents"][trial,:] = obend_max_curve
+                track_data["BendAmplitude"][trial,:] = obend_max_curve
                 obend_dorient[fish_not_tracked] = np.nan
-                track_data["DeltaOrientPerOBend"][trial,:] = obend_dorient
+                track_data["Reorientation"][trial,:] = obend_dorient
                 obend_multibend[fish_not_tracked] = np.nan
-                track_data["DidAMultiBendOBend"][trial,:] = obend_multibend
+                track_data["CompoundBendResponse"][trial,:] = obend_multibend
                 obend_c1len[fish_not_tracked] = np.nan
-                track_data["C1LengthOBendEvents"][trial,:] = obend_c1len
+                track_data["C1Length"][trial,:] = obend_c1len
                 obend_ang_vel[fish_not_tracked] = np.nan
-                track_data["C1AngVelOBendEvents"][trial,:] = obend_ang_vel
+                track_data["C1AngularVelocity"][trial,:] = obend_ang_vel
 
 
             #gb = Glasbey(base_palette=[(0, 0, 0)])
@@ -1245,31 +1244,31 @@ for exp_dir in tqdm(dirs):
 
             if plot_burst:
                 # probability
-                HabTrackFunctions.plot_burst_data(track_data["OBendEvents"], 'probability of response', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["ProbabilityOfResponse"], 'probability of response', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 #% latency
-                HabTrackFunctions.plot_burst_data(track_data["OBendLatencies"], 'latency of response', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["LatencyOfResponse"], 'latency of response', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 # displacement
-                HabTrackFunctions.plot_burst_data(track_data["DispPerOBend"], 'displacement (px)', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["Displacement"], 'displacement (px)', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 # duration
-                HabTrackFunctions.plot_burst_data(track_data["OBendDurations"], 'duration (msec)', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["MovementDuration"], 'duration (msec)', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 # curvature
-                HabTrackFunctions.plot_burst_data(abs(track_data["MaxCurvatureOBendEvents"]), 'bend amplitude (rad)', rois, stim_times, names, stim_given, 15, col_vec,save_name = save_name)
+                HabTrackFunctions.plot_burst_data(abs(track_data["BendAmplitude"]), 'bend amplitude (rad)', rois, stim_times, names, stim_given, 15, col_vec,save_name = save_name)
 
                 # multibend
-                HabTrackFunctions.plot_burst_data(track_data["DidAMultiBendOBend"], 'proportion multibend', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["CompoundBendResponse"], 'proportion multibend', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 # second obend
-                HabTrackFunctions.plot_burst_data(track_data["DidASecondOBend"], 'did second o-bend', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["SecondResponses"], 'did second o-bend', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 # c1 length
-                HabTrackFunctions.plot_burst_data(track_data["C1LengthOBendEvents"], 'c1 length', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(track_data["C1Length"], 'c1 length', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
                 # ang vel
-                HabTrackFunctions.plot_burst_data(abs(track_data["C1AngVelOBendEvents"]), 'ang velocity', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
+                HabTrackFunctions.plot_burst_data(abs(track_data["C1AngularVelocity"]), 'ang velocity', rois, stim_times, names, stim_given, 15, col_vec, save_name = save_name)
 
 
 
@@ -1646,16 +1645,16 @@ for exp_dir in tqdm(dirs):
                 
                 return blk_results
 
-            ssmds['OBendEvents'] = get_ssmds_burst(track_data['OBendEvents'], rois)
-            ssmds['OBendLatencies'] = get_ssmds_burst(1000-track_data['OBendLatencies'], rois)  # For latencies subtract from max value (1000), because latencies increase during habituation
-            ssmds['DidASecondOBend'] = get_ssmds_burst(track_data['DidASecondOBend'], rois)
-            ssmds['DeltaOrientPerOBend'] = get_ssmds_burst(abs(track_data['DeltaOrientPerOBend']), rois)
-            ssmds['DispPerOBend'] = get_ssmds_burst(track_data['DispPerOBend'], rois)
-            ssmds['OBendDurations'] = get_ssmds_burst(track_data['OBendDurations'], rois)
-            ssmds['MaxCurvatureOBendEvents'] = get_ssmds_burst(track_data['MaxCurvatureOBendEvents'], rois)
-            ssmds['DidAMultiBendOBend'] = get_ssmds_burst(1-track_data['DidAMultiBendOBend'], rois) # subtract from 1 for proportion of simple o-bends
-            ssmds['C1LengthOBendEvents'] = get_ssmds_burst(1000-track_data['C1LengthOBendEvents'], rois)  # subtract from max value (1000), because c1 length increases during habituation
-            ssmds['C1AngVelOBendEvents'] = get_ssmds_burst(track_data['C1AngVelOBendEvents'], rois)
+            ssmds['ProbabilityOfResponse'] = get_ssmds_burst(track_data['ProbabilityOfResponse'], rois)
+            ssmds['LatencyOfResponse'] = get_ssmds_burst(1000-track_data['LatencyOfResponse'], rois)  # For latencies subtract from max value (1000), because latencies increase during habituation
+            ssmds['SecondResponses'] = get_ssmds_burst(track_data['SecondResponses'], rois)
+            ssmds['Reorientation'] = get_ssmds_burst(abs(track_data['Reorientation']), rois)
+            ssmds['Displacement'] = get_ssmds_burst(track_data['Displacement'], rois)
+            ssmds['MovementDuration'] = get_ssmds_burst(track_data['MovementDuration'], rois)
+            ssmds['BendAmplitude'] = get_ssmds_burst(track_data['BendAmplitude'], rois)
+            ssmds['CompoundBendResponse'] = get_ssmds_burst(1-track_data['CompoundBendResponse'], rois) # subtract from 1 for proportion of simple o-bends
+            ssmds['C1Length'] = get_ssmds_burst(1000-track_data['C1Length'], rois)  # subtract from max value (1000), because c1 length increases during habituation
+            ssmds['C1AngularVelocity'] = get_ssmds_burst(track_data['C1AngularVelocity'], rois)
 
 
 
@@ -1663,24 +1662,24 @@ for exp_dir in tqdm(dirs):
 
             fingerprint = np.vstack((
                 # start with dark flash responses, Naieve, train and test blocks
-                np.transpose(ssmds['OBendEvents'][:,:3]), 
-                np.transpose(ssmds['DidASecondOBend'][:,:3]),
-                np.transpose(ssmds['OBendLatencies'][:,:3]),
-                np.transpose(ssmds['DispPerOBend'][:,:3]),
-                np.transpose(ssmds['OBendDurations'][:,:3]),
-                np.transpose(ssmds['MaxCurvatureOBendEvents'][:,:3]),
-                np.transpose(ssmds['DeltaOrientPerOBend'][:,:3]),
-                np.transpose(ssmds['DidAMultiBendOBend'][:,:3]),
-                np.transpose(ssmds['C1LengthOBendEvents'][:,:3]),
-                np.transpose(ssmds['C1AngVelOBendEvents'][:,:3]),
+                np.transpose(ssmds['ProbabilityOfResponse'][:,:3]), 
+                np.transpose(ssmds['SecondResponses'][:,:3]),
+                np.transpose(ssmds['LatencyOfResponse'][:,:3]),
+                np.transpose(ssmds['Displacement'][:,:3]),
+                np.transpose(ssmds['MovementDuration'][:,:3]),
+                np.transpose(ssmds['BendAmplitude'][:,:3]),
+                np.transpose(ssmds['Reorientation'][:,:3]),
+                np.transpose(ssmds['CompoundBendResponse'][:,:3]),
+                np.transpose(ssmds['C1Length'][:,:3]),
+                np.transpose(ssmds['C1AngularVelocity'][:,:3]),
                 # now tap blocks
-                np.transpose(ssmds['OBendEvents'][:,3]), 
-                np.transpose(ssmds['DidASecondOBend'][:,3]),
-                np.transpose(ssmds['OBendLatencies'][:,3]),
-                np.transpose(ssmds['DispPerOBend'][:,3]),
-                np.transpose(ssmds['OBendDurations'][:,3]),
-                np.transpose(ssmds['MaxCurvatureOBendEvents'][:,3]),
-                np.transpose(ssmds['DeltaOrientPerOBend'][:,3]),
+                np.transpose(ssmds['ProbabilityOfResponse'][:,3]), 
+                np.transpose(ssmds['SecondResponses'][:,3]),
+                np.transpose(ssmds['LatencyOfResponse'][:,3]),
+                np.transpose(ssmds['Displacement'][:,3]),
+                np.transpose(ssmds['MovementDuration'][:,3]),
+                np.transpose(ssmds['BendAmplitude'][:,3]),
+                np.transpose(ssmds['Reorientation'][:,3]),
                 ssmds['disp_blkTrain'],
                 ssmds['disp_blkRet'],
                 ssmds['disp_free'],
@@ -1709,6 +1708,7 @@ for exp_dir in tqdm(dirs):
 
 
             plt.imshow(fingerprint, vmin=-2, vmax=2)
+            plt.show()
 
             # collect data and save
 

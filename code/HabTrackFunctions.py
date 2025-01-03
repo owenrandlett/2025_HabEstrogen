@@ -96,10 +96,10 @@ def plot_cum_diff(data, treat_id, cont_id, save_name, n_norm = 5, ylim=0.8):
         'reorientation', 
         'bend amplitude']
     
-    for col_id, data_type in enumerate(['OBendEvents', 'DidASecondOBend', 'OBendLatencies', 'DidAMultiBendOBend', 'OBendDurations', 'DispPerOBend', 'DeltaOrientPerOBend', 'MaxCurvatureOBendEvents']):
-        if data_type == 'OBendLatencies': # invert so that habituation changes match direction
+    for col_id, data_type in enumerate(['ProbabilityOfResponse', 'SecondResponses', 'LatencyOfResponse', 'CompoundBendResponse', 'MovementDuration', 'Displacement', 'Reorientation', 'BendAmplitude']):
+        if data_type == 'LatencyOfResponse': # invert so that habituation changes match direction
             data_to_plot = 1000 - abs(data[data_type][stim_given==1, :]) 
-        elif data_type == 'DidAMultiBendOBend' : # invert so that habituation changes match direction
+        elif data_type == 'CompoundBendResponse' : # invert so that habituation changes match direction
             data_to_plot = 1 - abs(data[data_type][stim_given==1, :]) 
         else:
             data_to_plot = abs(data[data_type][stim_given==1, :])
@@ -193,8 +193,8 @@ def plot_burst_data_all(track_data, treat_ids, cont_id, col_vec, save_str, nStim
     'Reorientation', 
     'Bend Amplitude', 
     'C1 Duration', 
-    'C1 Ang. Vel.']
-    for d, data_type in enumerate(['OBendEvents', 'DidASecondOBend', 'OBendLatencies', 'DidAMultiBendOBend', 'OBendDurations', 'DispPerOBend', 'DeltaOrientPerOBend', 'MaxCurvatureOBendEvents', 'C1LengthOBendEvents', 'C1AngVelOBendEvents']):
+    'C1 Ang. Vel.']               
+    for d, data_type in enumerate([ 'ProbabilityOfResponse', 'SecondResponses', 'LatencyOfResponse', 'CompoundBendResponse', 'MovementDuration', 'Displacement', 'Reorientation', 'BendAmplitude', 'C1Length', 'C1AngularVelocity']):
 
         data = abs(track_data[data_type])
         plt.figure(figsize=(10,7))
