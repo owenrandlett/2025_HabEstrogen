@@ -282,6 +282,11 @@ def plot_burst_data_all_direct(track_data, fish_names, fish_ids, col_vec, save_s
     import warnings
     from scipy.signal import savgol_filter
     
+    # Hardcoded font sizes
+    legend_fontsize = 18
+    axes_fontsize = 18
+    ticks_fontsize = 14
+    
     if np.sum(stim_times == None) > 0:
         stim_times = []
         for i in range(len(track_data["TiffTimeInds"])):
@@ -305,8 +310,8 @@ def plot_burst_data_all_direct(track_data, fish_names, fish_ids, col_vec, save_s
 
         data = abs(track_data[data_type])
         plt.figure(figsize=(10,7))
-        plt.xlabel('time (hr)')
-        plt.ylabel(y_text[d])
+        plt.xlabel('time (hr)', fontsize=axes_fontsize)
+        plt.ylabel(y_text[d], fontsize=axes_fontsize)
 
         n_gr = len(fish_ids)
 
@@ -317,7 +322,7 @@ def plot_burst_data_all_direct(track_data, fish_names, fish_ids, col_vec, save_s
 
             plt.plot(time_inds[inds_stim], np.nanmean(data[inds_both], axis=1), '.', markersize=3, color= col_vec[i], label=fish_names[i]+' , n='+str(len(inds_fish)) )
            
-        lgnd = plt.legend(fontsize = 15, markerscale=3, loc="lower right")  
+        lgnd = plt.legend(fontsize=legend_fontsize, markerscale=3, loc="lower right")  
 
 
         for i in range(n_gr): # plot the smoothed data off of the frist 4 blocks, and retest block
@@ -365,9 +370,6 @@ def plot_burst_data_all_direct(track_data, fish_names, fish_ids, col_vec, save_s
                             warnings.warn('savgol did not converge')
 
 
-        #plt.rc('font', size=18)
-        #plt.rc('legend', fontsize=10)
-        #
         invalid = '<>:"/\|?* '
 
         for char in invalid:
@@ -383,6 +385,8 @@ def plot_burst_data_all_direct(track_data, fish_names, fish_ids, col_vec, save_s
             plt.xlim((-0.1, 1.1))
             
         simpleaxis(plt.gca())
+        plt.xticks(fontsize=ticks_fontsize)
+        plt.yticks(fontsize=ticks_fontsize)
         plt.savefig((save_str +'_' +data_type+ '.svg').replace(' ', ''), bbox_inches='tight', transparent=True)
         plt.savefig((save_str +'_' +data_type+ '.png').replace(' ', ''), bbox_inches='tight', transparent=True, dpi=100)
 
