@@ -381,65 +381,106 @@ for k, track_name in enumerate(analyzed_pkls):
             for gr in range(n_groups):
                 track_data_combined['rois'].append(track_data['rois'][gr] + n_loaded)
                 track_data_combined['names'].append(track_data['names'][gr])
+                track_data_combined['plates'].append(track_data['plates'][gr])
                 track_data_combined['exp_date'].append(exp_date)
               
         n_rois = track_data['ProbabilityOfResponse'].shape[1]
         n_loaded+=n_rois
         print(n_loaded)
 
-output_file = os.path.join(root_dir, 'combined_data.csv')
-with open(output_file, mode='w', newline='') as file:
+output_file_IDs = os.path.join(root_dir, 'combined_data_IDs.csv')
+with open(output_file_IDs, mode='w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['Index', 'Experiment Date', 'Name', 'ROI'])
-    for index, (roi, exp_date, name) in enumerate(zip(track_data_combined['rois'],track_data_combined['exp_date'], track_data_combined['names'])):
-        writer.writerow([index,exp_date, name, roi])
+    writer.writerow(['Index', 'Name_ExperimentDate_Plate', 'ROI'])
+    for index, (roi, exp_date, plate, name) in enumerate(zip(track_data_combined['rois'],track_data_combined['exp_date'],track_data_combined['plates'], track_data_combined['names'])):
+        writer.writerow([index,str(name) + '_' + str(exp_date) + '_plate' + str(plate), roi])
+
+track_file_combined = os.path.join(root_dir, 'track_data_combined.pkl')
+with open(track_file_combined,"wb") as f:
+    pickle.dump(track_data_combined,f)
+
+#%% laod the pre-analyzed datasets to analyze individual experiments
+
+track_file_combined = os.path.join(root_dir, 'track_data_combined.pkl')
+with open(track_file_combined,"rb") as f:
+    track_data_combined = pickle.load(f)
+
+    # Load combined_data_IDs.csv
+combined_data_ids_path = os.path.join(root_dir, 'combined_data_IDs.csv')
+combined_data_ids = pd.read_csv(combined_data_ids_path)
+combined_names = combined_data_ids['Name_ExperimentDate_Plate'].values
 
 #%% effect of estradiol and on habituation
-importlib.reload(HabTrackFunctions)
+# importlib.reload(HabTrackFunctions)
 def make_graph_folder(folder_name):
     graph_folder = os.path.join(os.path.split(root_dir)[0], 'BigRigData_Graphs', folder_name)
     if not os.path.exists(graph_folder):
         os.makedirs(graph_folder)
     return graph_folder
-
-def get_group_indexes(search_names, target_dates, names_list=track_data_combined['names'], exp_dates=track_data_combined['exp_date']):
-    if len(search_names) != len(target_dates):
-        raise ValueError("The length of search_names and target_dates must be the same.")
-    
+def get_group_indexes(search_names, names_list=combined_names):
     indexes = []
     matched_names = []
-    for i, (name, date) in enumerate(zip(names_list, exp_dates)):
-        for search_name, target_date in zip(search_names, target_dates):
-            if fnmatch.fnmatch(name, search_name) and fnmatch.fnmatch(date, target_date):
-                indexes.append(i)
-                matched_names.append(name)
-                print(f"Found index: {i}, Name: {name}, Date: {date}")
-    
-    if not indexes:
-        warnings.warn("No matches found for the given search names and target dates.")
-    
-    return indexes, matched_names
+    for i, name in enumerate(search_names):
+        for j, pattern in enumerate(names_list):
+            if name in pattern:
+                if pattern not in matched_names:
+                    indexes.append(j)
+                    matched_names.append(pattern)
+                    print(f"Found index: {j}, Name: {pattern}")
+                else:
+                    print(f"Duplicate found and ignored: {pattern}")
 
+    if not indexes:
+        print("No matches found for the given search patterns.")
+
+    return indexes, matched_names
 
 graph_folder = make_graph_folder('Estradiol')
 
 
 
-names = ['DMSO esr1 +/?', 'Estradiol esr1 +/?']
-target_date = ['20220706','20220706']
-plot_IDs, plot_names = get_group_indexes(names, target_date)
+DMSO_estradiol_names = [
+    ['DMSO_20220228_plate0', '10 µM beta estradiol_20220228_plate0'],
+    ['DMSO_20220307_plate0','10 µM estradiol_20220307_plate0'],
+    ['DMSO _20220307_plate1','10 µM estradiol_20220307_plate1'],
+    ['DMSO_20220308_plate0','DMSO + 10 µM estradiol_20220308_plate0'],
+    ['DMSO_20220308_plate1','10 µM estradiol_20220308_plate1'],
+    ['DMSO_20220316_plate1','10 µM estradiol_20220316_plate1'],
+    ['0.1% DMSO_20220405_plate0','10 µM estradiol_20220405_plate1'],
+    ['0.1% DMSO_20220412_plate1','10 µM estradiol_20220412_plate1'],
+    ['0.1% DMSO_20220413_plate0','10 µM estradiol_20220413_plate0'],
+    ['0.1% DMSO_20220414_plate1','0.1% DMSO + 10 µM estradiol_20220414_plate1'],
+    ['0.1% DMSO_20220504_plate0','10 µM estradiol_20220504_plate0'],
+                    ]
+DMSO_names, Estradiol_names = zip(*DMSO_estradiol_names)
+plot_IDs_DMSO, plot_names_DMSO = get_group_indexes(DMSO_names)
+plot_IDs_Estradio, plot_names_Estradiol = get_group_indexes(Estradiol_names)
 
 
-p = gb.generate_palette(size=len(plot_IDs)+1)
+
+#%
+
+def get_all_matching_ROIS(plot_IDs):
+    rois_matching = []
+    for i in plot_IDs:
+        rois_matching = np.hstack((rois_matching, track_data_combined['rois'][i]))
+    return rois_matching.astype(int)
+rois_matching_DMSO = get_all_matching_ROIS(plot_IDs_DMSO)
+rois_matching_Estradiol = get_all_matching_ROIS(plot_IDs_Estradio)
+
+plot_rois = [rois_matching_DMSO, rois_matching_Estradiol]
+plot_names = ['DMSO', 'Estradiol']
+#%%
+p = gb.generate_palette(len(plot_names) + 1)
 col_vec = gb.convert_palette_to_rgb(p)
 col_vec = np.array(col_vec[1:], dtype=float)/255
 os.chdir(graph_folder)
 # HabTrackFunctions.plot_burst_data_all(track_data_combined, plot_IDs, col_vec, 'test', smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
 
 
-matching_rois = [track_data_combined['rois'][i] for i in plot_IDs]
+matching_rois = [track_data_combined['rois'][i] for i in plot_IDs_DMSO]
 
-HabTrackFunctions.plot_burst_data_all_direct(track_data_combined, plot_names, matching_rois, col_vec, 'test_2', smooth_window=15, plot_taps=True, plot_retest=False, stim_times=stim_times)
+HabTrackFunctions.plot_burst_data_all_direct(track_data_combined, plot_names, plot_rois, col_vec, 'DMSO_vs_Estradiol', smooth_window=15, plot_taps=True, plot_retest=False, stim_times=stim_times)
 
 #%% DMSO and estradiol trated "control' pairs. we will identify all pairs in the datasets where we have genotype that is either WT, or that is het/wt combination. Making assumption that Mutants are haplosufficient, which appears to be so from all the analyses we have done previously. 
 
