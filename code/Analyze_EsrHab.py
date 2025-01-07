@@ -108,13 +108,14 @@ for exp_dir in tqdm(exp_dirs):
 
         rois = []
         names = []
+        plates = []
 
         for i in range(n_groups):
             roi_str = rows['ROIs'].iloc[i]
             if not roi_str=='[]' and not roi_str=='': # make sure it isnt empty
                 names.append(rows['Group Name'].iloc[i])
                 rois.append(HabTrackFunctions.convert_roi_str(roi_str))
-
+                plates.append(plate)
         #% get burst trials:
 
         trials = natsort.natsorted(glob.glob(os.path.join(exp_dir, '_plate_' + str(plate) + '*BurstTracks.pkl')))
@@ -157,6 +158,7 @@ for exp_dir in tqdm(exp_dirs):
             "C1AngularVelocity":np.zeros((n_trials, n_fish)),
             "TiffFrameInds":[],
             "names":names,
+            "plates":plates,
             "rois":rois,
             "spreadsheet":rows,
             "stim_given":stim_given }
@@ -408,7 +410,7 @@ def get_group_indexes(search_names, target_dates, names_list=track_data_combined
     matched_names = []
     for i, (name, date) in enumerate(zip(names_list, exp_dates)):
         for search_name, target_date in zip(search_names, target_dates):
-            if fnmatch.fnmatch(name, search_name) and date == target_date:
+            if fnmatch.fnmatch(name, search_name) and fnmatch.fnmatch(date, target_date):
                 indexes.append(i)
                 matched_names.append(name)
                 print(f"Found index: {i}, Name: {name}, Date: {date}")
@@ -420,9 +422,14 @@ def get_group_indexes(search_names, target_dates, names_list=track_data_combined
 
 
 graph_folder = make_graph_folder('Estradiol')
-names = ['*dmso*', '*10 µM beta estradiol*' ]
-target_date = ['20220228','20220228']  # Example target date
+
+
+
+names = ['DMSO esr1 +/?', 'Estradiol esr1 +/?']
+target_date = ['20220706','20220706']
 plot_IDs, plot_names = get_group_indexes(names, target_date)
+
+
 p = gb.generate_palette(size=len(plot_IDs)+1)
 col_vec = gb.convert_palette_to_rgb(p)
 col_vec = np.array(col_vec[1:], dtype=float)/255
@@ -433,6 +440,14 @@ os.chdir(graph_folder)
 matching_rois = [track_data_combined['rois'][i] for i in plot_IDs]
 
 HabTrackFunctions.plot_burst_data_all_direct(track_data_combined, plot_names, matching_rois, col_vec, 'test_2', smooth_window=15, plot_taps=True, plot_retest=False, stim_times=stim_times)
+
+#%% DMSO and estradiol trated "control' pairs. we will identify all pairs in the datasets where we have genotype that is either WT, or that is het/wt combination. Making assumption that Mutants are haplosufficient, which appears to be so from all the analyses we have done previously. 
+
+[
+    []
+]
+
+
 #%% DMSO vs Estradiol:
 
 
