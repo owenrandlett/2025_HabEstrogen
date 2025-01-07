@@ -277,3 +277,113 @@ def plot_burst_data_all(track_data, treat_ids, cont_id, col_vec, save_str, nStim
         plt.savefig((save_str +'_' +data_type+ '.png').replace(' ', ''), bbox_inches='tight', transparent=True, dpi=100)
 
         plt.show()
+
+def plot_burst_data_all_direct(track_data, fish_names, fish_ids, col_vec, save_str, nStimInBlocks = 60, smooth_window=15, plot_taps = True, plot_retest=True, stim_times = None, first_block = False):
+    import warnings
+    from scipy.signal import savgol_filter
+    
+    if np.sum(stim_times == None) > 0:
+        stim_times = []
+        for i in range(len(track_data["TiffTimeInds"])):
+            stim_times.append((track_data["TiffTimeInds"][i] - track_data["TiffTimeInds"][0]).total_seconds()/60/60)
+        stim_times = np.array(stim_times)
+
+    time_inds = stim_times
+    stim_given = track_data['stim_given']
+
+    y_text = ['Probability of Response', 
+    'Double Responses', 
+    'Latency', 
+    'Compound O-Bend',
+    'Movement Duration', 
+    'Displacement', 
+    'Reorientation', 
+    'Bend Amplitude', 
+    'C1 Duration', 
+    'C1 Ang. Vel.']               
+    for d, data_type in enumerate([ 'ProbabilityOfResponse', 'SecondResponses', 'LatencyOfResponse', 'CompoundBendResponse', 'MovementDuration', 'Displacement', 'Reorientation', 'BendAmplitude', 'C1Length', 'C1AngularVelocity']):
+
+        data = abs(track_data[data_type])
+        plt.figure(figsize=(10,7))
+        plt.xlabel('time (hr)')
+        plt.ylabel(y_text[d])
+
+        n_gr = len(fish_ids)
+
+        for i in range(n_gr): # plot the raw dark flash stimuli
+            inds_stim = np.ix_((stim_given==1) | (stim_given==3))[0]
+            inds_fish  = fish_ids[i]
+            inds_both = np.ix_(inds_stim, inds_fish)
+
+            plt.plot(time_inds[inds_stim], np.nanmean(data[inds_both], axis=1), '.', markersize=3, color= col_vec[i], label=fish_names[i]+' , n='+str(len(inds_fish)) )
+           
+        lgnd = plt.legend(fontsize = 15, markerscale=3, loc="lower right")  
+
+
+        for i in range(n_gr): # plot the smoothed data off of the frist 4 blocks, and retest block
+            inds_fish  = fish_ids[i]
+            #inds_stim = 
+            for k in range(5):
+                inds_block = np.ix_((stim_given==1) | (stim_given==3))[0][k*nStimInBlocks:k*nStimInBlocks+nStimInBlocks]
+                inds_both_block =  np.ix_(inds_block, inds_fish)
+
+                y = np.nanmean(data[inds_both_block], axis=1) 
+                x = time_inds[inds_block]
+                # remove NaNs
+                x = x[~np.isnan(y)]
+                y = y[~np.isnan(y)]
+                try:
+                    y = savgol_filter(y, smooth_window, 2)
+                    plt.plot(x,y, '-', color= col_vec[i], linewidth=5, alpha=0.8)
+                except:
+                    warnings.warn('savgol did not converge')
+
+
+        # plot taps
+        if plot_taps:
+            for i in range(n_gr):
+                inds_fish  = fish_ids[i]
+                inds_block = np.where(stim_given == 2)[0]
+                n_blocks_taps = np.ceil(len(inds_block)/nStimInBlocks).astype(int)
+
+                for tp_blk in range(n_blocks_taps):
+                    inds_tp_block = np.zeros(stim_given.shape).astype(bool)
+                    inds_tp_block[:] = False
+                    
+                    st_tap = tp_blk * nStimInBlocks
+                    end_tap = min(nStimInBlocks+ tp_blk * nStimInBlocks, len(inds_block))
+                    inds_tp_block[inds_block[st_tap:end_tap]] = True
+                    inds_both_block =  np.ix_(inds_tp_block, inds_fish)
+                    y1 = np.nanmean(data[inds_both_block], axis=1)
+                    plt.plot(time_inds[inds_tp_block], y1, 'x', markersize=3, color= col_vec[i])
+
+                    try:
+                        y2 = savgol_filter(y1, smooth_window, 2)
+                        plt.plot(time_inds[inds_tp_block], y2, '-', color= col_vec[i], linewidth=3, alpha=0.8)
+
+                    except:
+                            warnings.warn('savgol did not converge')
+
+
+        #plt.rc('font', size=18)
+        #plt.rc('legend', fontsize=10)
+        #
+        invalid = '<>:"/\|?* '
+
+        for char in invalid:
+            save_str = save_str.replace(char, '')
+        
+        if not plot_retest and not plot_taps:
+            plt.xlim((-0.1,8.1))
+        
+        if plot_taps and not plot_retest:
+            plt.xlim((-0.1, 10))
+
+        if first_block: # plot only first block
+            plt.xlim((-0.1, 1.1))
+            
+        simpleaxis(plt.gca())
+        plt.savefig((save_str +'_' +data_type+ '.svg').replace(' ', ''), bbox_inches='tight', transparent=True)
+        plt.savefig((save_str +'_' +data_type+ '.png').replace(' ', ''), bbox_inches='tight', transparent=True, dpi=100)
+
+        plt.show()

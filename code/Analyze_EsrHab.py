@@ -21,13 +21,22 @@ sys.path.append(current_dir)
 sys.path.append(os.path.realpath(os.path.join(current_dir, 'ExtraFunctions', 'glasbey-master')))
 from glasbey import Glasbey
 import HabTrackFunctions
+import csv
+import fnmatch
+import importlib
 
+# Set up color palette
+gb = Glasbey()
+p = gb.generate_palette(size=10)
+col_vec = gb.convert_palette_to_rgb(p)
+col_vec = np.array(col_vec[1:], dtype=float)/255
 
 root_dir = os.path.realpath(r'Z:\2025_EstrogenPaper\BigRigData')
 
 # assume all subdirectories are two levels down
 
 exp_dirs = glob.glob( os.path.realpath( root_dir + '\\*\\*'))
+data_analysis_suffix = '_response_data.pkl'
 
 #%% Scan through raw data files and extract responses, etc. 
 # parameters:
@@ -326,25 +335,125 @@ for exp_dir in tqdm(exp_dirs):
         
         os.chdir(graph_dir)
 
-        save_name =trial_file[:trial_file.find('_frame_')] + '_trackdata_twoMeasures.pkl'
+    
+        save_name =trial_file[:trial_file.find('_burst_frame_')] + data_analysis_suffix
         with open(save_name,"wb") as f:
             pickle.dump(track_data,f)
 
+        print('Saved data to: ' + save_name)
 
-        gb = Glasbey()
-        p = gb.generate_palette(size=n_groups+2)
-        col_vec = gb.convert_palette_to_rgb(p)
-        col_vec = np.array(col_vec[1:], dtype=float)/255
+#% Combine data from all experiments into one file
+
+analyzed_pkls = glob.glob( os.path.realpath( root_dir + '\\*\\*\\*response_data.pkl'))
+
+track_data_combined = {}
+n_loaded = 0
+n_files = len(analyzed_pkls)
+for k, track_name in enumerate(analyzed_pkls):
+    exp_date = track_name.split(os.sep)[-2].split('_')[0]
+    with open(track_name, "rb") as f:
+        track_data = pickle.load(f)
+        n_groups = len(track_data['rois'])
         
+        if k == 0:
+            track_data_combined = track_data.copy()
+            track_data_combined['exp_date'] = []
+            for gr in range(n_groups):
+                track_data_combined['exp_date'].append(exp_date)
 
-        treat_ids = np.arange(len(names))
-        non_treat = []
-        for t in treat_ids:
-                if not t==cont_id and not isinstance(rois[t], int):
-                    non_treat.append(t)
-                    if len(stim_times) >=330:
-                        HabTrackFunctions.plot_cum_diff(track_data, t, cont_id, os.path.split(save_name)[-1].replace('.pkl', '__')+names[t]+'_CumulDiff', ylim=0.2)
-                    HabTrackFunctions.plot_burst_data_all(track_data, t, 0, col_vec, os.path.split(save_name)[-1].replace('.pkl', '__')+names[t], smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
 
-        HabTrackFunctions.plot_burst_data_all(track_data, non_treat, 0, col_vec, os.path.split(save_name)[-1].replace('.pkl', '_'), smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
-        
+
+        else:
+            comps = list(track_data_combined.keys())[:10]
+            for comp in comps:
+                comp_data = track_data[comp]
+                n_stim, n_fish = comp_data.shape
+                if n_stim == track_data_combined[comp].shape[0]:
+                    track_data_combined[comp] = np.hstack((track_data_combined[comp], comp_data))
+                else: # in some experiments we dont have the full stimulus run, will fill these up with NAN
+                    comp_data_expand = np.full((track_data_combined[comp].shape[0], n_fish), np.nan)
+                    comp_data_expand[:n_stim, :] = comp_data
+                    track_data_combined[comp] = np.hstack((track_data_combined[comp], comp_data_expand))
+                
+            
+            for gr in range(n_groups):
+                track_data_combined['rois'].append(track_data['rois'][gr] + n_loaded)
+                track_data_combined['names'].append(track_data['names'][gr])
+                track_data_combined['exp_date'].append(exp_date)
+              
+        n_rois = track_data['ProbabilityOfResponse'].shape[1]
+        n_loaded+=n_rois
+        print(n_loaded)
+
+output_file = os.path.join(root_dir, 'combined_data.csv')
+with open(output_file, mode='w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['Index', 'Experiment Date', 'Name', 'ROI'])
+    for index, (roi, exp_date, name) in enumerate(zip(track_data_combined['rois'],track_data_combined['exp_date'], track_data_combined['names'])):
+        writer.writerow([index,exp_date, name, roi])
+
+#%% effect of estradiol and on habituation
+importlib.reload(HabTrackFunctions)
+def make_graph_folder(folder_name):
+    graph_folder = os.path.join(os.path.split(root_dir)[0], 'BigRigData_Graphs', folder_name)
+    if not os.path.exists(graph_folder):
+        os.makedirs(graph_folder)
+    return graph_folder
+
+def get_group_indexes(search_names, target_dates, names_list=track_data_combined['names'], exp_dates=track_data_combined['exp_date']):
+    if len(search_names) != len(target_dates):
+        raise ValueError("The length of search_names and target_dates must be the same.")
+    
+    indexes = []
+    matched_names = []
+    for i, (name, date) in enumerate(zip(names_list, exp_dates)):
+        for search_name, target_date in zip(search_names, target_dates):
+            if fnmatch.fnmatch(name, search_name) and date == target_date:
+                indexes.append(i)
+                matched_names.append(name)
+                print(f"Found index: {i}, Name: {name}, Date: {date}")
+    
+    if not indexes:
+        warnings.warn("No matches found for the given search names and target dates.")
+    
+    return indexes, matched_names
+
+
+graph_folder = make_graph_folder('Estradiol')
+names = ['*dmso*', '*10 µM beta estradiol*' ]
+target_date = ['20220228','20220228']  # Example target date
+plot_IDs, plot_names = get_group_indexes(names, target_date)
+p = gb.generate_palette(size=len(plot_IDs)+1)
+col_vec = gb.convert_palette_to_rgb(p)
+col_vec = np.array(col_vec[1:], dtype=float)/255
+os.chdir(graph_folder)
+# HabTrackFunctions.plot_burst_data_all(track_data_combined, plot_IDs, col_vec, 'test', smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
+
+
+matching_rois = [track_data_combined['rois'][i] for i in plot_IDs]
+
+HabTrackFunctions.plot_burst_data_all_direct(track_data_combined, plot_names, matching_rois, col_vec, 'test_2', smooth_window=15, plot_taps=True, plot_retest=False, stim_times=stim_times)
+#%% DMSO vs Estradiol:
+
+
+
+
+DMSO_groups = ['Esr2a Estradiol-/-']
+Estradiol_groups = ['Esr2a Estradiol +/+ +/-']
+
+n_groups = len(DMSO_groups) + len(Estradiol_groups)
+
+
+
+DMSO_indexes = get_group_indexes(track_data_combined['names'], DMSO_groups)
+Estradiol_indexes = get_group_indexes(track_data_combined['names'], Estradiol_groups)
+print("DMSO indexes:", DMSO_indexes)
+print("Estradiol indexes:", Estradiol_indexes)
+
+
+
+HabTrackFunctions.plot_burst_data_all(track_data_combined, Estradiol_indexes, DMSO_indexes, col_vec, os.path.split(save_name)[-1].replace('.pkl', '_'), smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
+HabTrackFunctions.plot_cum_diff(track_data_combined, Estradiol_indexes[0], DMSO_indexes[0], os.path.split(save_name)[-1].replace('.pkl', '__')+names[t]+'_CumulDiff', ylim=0.2)
+
+
+#%%
