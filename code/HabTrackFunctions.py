@@ -192,11 +192,16 @@ def plot_burst_responses(track_data, fish_names, fish_ids, gb, save_str, nStimIn
 
         plt.show()
 
-def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, components_to_plot=range(7), n_norm = 5, ylim=0.2):
-        ### calculate cumulative difference relative to controls, as in Randlett et al., Current Biology, 2019
-        # n_norm will give the number of inital responses to normalize to
+def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, components_to_plot=range(8), n_norm = 3, n_boots = 2000, ylim=0.2):
+    ### calculate cumulative difference relative to controls, as in Randlett et al., Current Biology, 2019
+    # n_norm will give the number of inital responses to normalize to
 
     from scipy import stats
+
+    # Hardcoded font sizes
+    legend_fontsize = 12
+    axes_fontsize = 18
+    ticks_fontsize = 14
 
     plt.fill_between(np.arange(240), np.ones(240)*-0.05, np.ones(240)*0.05, color=[0.5, 0.5, 0.5], alpha=0.4)
     plt.vlines(60, -1, 1, colors='k', linestyles='dashed')
@@ -204,9 +209,10 @@ def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, comp
     plt.vlines(180, -1, 1, colors='k', linestyles='dashed')
     plt.hlines(0, 0, 240, colors='k', linestyles='dashed')
     stim_given = data['stim_given']
-    rois = data['rois']
-    names = data['names']
-    col_vec = [[0,0,1],  [1,0,0], [0,1,0], [0,0,0], [1,0,1], [0.9, 0.9, 0], [0, 0.4, 0], [0,0.8,0.8]]
+    
+    # color palatte to match Randlett 2019
+    col_vec = [[0,0,1],  [1,0,0], [0,1,0], [0,0,0], [1,0,1], [0.9, 0.9, 0], [0.20588235, 0.41764705, 0.06470587], [0.51764706, 0.41960784, 1]]
+    
     dtype_to_plot = np.array(list(data.keys()))[components_to_plot]
 
     for col_id, data_type in enumerate(dtype_to_plot):
@@ -223,7 +229,6 @@ def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, comp
         treat_data = data_to_plot[:,treat_ids]
         n_treat = len(treat_ids)
 
-        n_boots = 2000
         cum_diff_dist = np.zeros((240, n_boots))
 
         for i in range(n_boots):
@@ -231,7 +236,6 @@ def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, comp
             mean_cont = np.nanmean(cont_data[:, np.random.randint(0, n_cont, n_cont)], axis=1)
             nan_IDs = (np.isnan(mean_treat) | np.isnan(mean_cont))
             norm_vec = np.arange(1,241)
-            k = 1
             for el, val in enumerate(norm_vec):
                 if nan_IDs[el] == True:
                     norm_vec[el:] = norm_vec[el:]-1
@@ -245,19 +249,22 @@ def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, comp
         CI = stats.norm.interval(0.95, loc=mu, scale=sigma/np.sqrt(n_treat))
         CI[0][np.isnan(CI[0])] = mu[np.isnan(CI[0])]
         CI[1][np.isnan(CI[1])] = mu[np.isnan(CI[1])]
-        plt.plot(np.arange(240), mu, color=col_vec[col_id], label=data_type.replace('_', ' '))
+        plt.plot(np.arange(240), mu, color=col_vec[col_id], label=data_type.replace('_', ' '), linewidth=2)
         plt.fill_between(np.arange(240), CI[0], CI[1], alpha=0.3, color=col_vec[col_id], label='_nolegend_', interpolate=True)
-    plt.ylabel('Cum. Mean Diff\nvs. Control')
-    plt.xlabel('Stimuli')
-    plt.legend(bbox_to_anchor=(1.05, 1.0, 0.3, 0.2), loc='upper left')
+    
+    plt.title(fish_names[0] + ', n = ' + str(n_treat) + ' vs.\n' + fish_names[1] + ', n = ' + str(n_cont), fontsize=axes_fontsize)
+    
+    plt.ylabel('Relative decrease\n in response \n(norm. cumul. mean)', fontsize=axes_fontsize)
+    plt.xlabel('Stimuli', fontsize=axes_fontsize)
+    legend = plt.legend(bbox_to_anchor=(1.05, 1.0, 0.3, 0.2), loc='upper left', fontsize=legend_fontsize, markerscale=2)
 
-    # plt.title(names[treat_id] + ', n = ' + str(n_treat) + '\nvs ' + names[cont_id] + ', n = ' + str(n_cont))
-    plt.xticks((0, 60, 120, 180, 240))
+    # Increase the linewidth in the legend
+    for line in legend.get_lines():
+        line.set_linewidth(4.0)
+
+    plt.xticks((0, 60, 120, 180, 240), fontsize=ticks_fontsize)
     plt.ylim((-ylim, ylim))
     plt.xlim((0,240))
-
-    invalid = r'<>:"\/|?* '
-
 
     plt.savefig(remove_brackets_invalid(save_name+'.png'), dpi=100, bbox_inches='tight')
     plt.savefig(remove_brackets_invalid(save_name+'.svg'), dpi=100, bbox_inches='tight')

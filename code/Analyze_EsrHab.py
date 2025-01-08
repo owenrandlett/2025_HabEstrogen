@@ -24,6 +24,7 @@ import HabTrackFunctions
 import csv
 import fnmatch
 import importlib
+import seaborn as sns
 
 # Set up color palette
 gb = Glasbey()
@@ -479,6 +480,71 @@ HabTrackFunctions.plot_burst_responses(track_data_combined, plot_names, plot_roi
 
 #%% DMSO vs Estradiol:
 
-importlib.reload(HabTrackFunctions)
 
-HabTrackFunctions.plot_cum_diff(track_data_combined, plot_names, plot_rois, 'DMSO_vs_Estradiol_cumDiff')
+importlib.reload(HabTrackFunctions)
+n_init = 3
+#HabTrackFunctions.plot_cum_diff(track_data_combined, plot_names, plot_rois, 'DMSO_vs_Estradiol_cumDiff', components_to_plot=[0,2,1,7,5,4,3,6], n_boots=2000, n_norm=n_init)
+
+#%
+# Calculate average response per ROI for the first 8 keys in track_data_combined
+
+stim_epochs = [
+    np.arange(0,n_init),
+    np.arange(n_init, n_stim_blocks),
+    np.arange(n_stim_blocks, n_stim_blocks*2),
+    np.arange(n_stim_blocks*2, n_stim_blocks*3),
+    np.arange(n_stim_blocks*3, n_stim_blocks*4),
+    np.arange(n_init, n_stim_blocks*4),
+    np.where(track_data_combined['stim_given'] == 2)[0]
+]
+all_rois = []
+group_labels = []
+n_groups = len(plot_rois)
+
+dataset = track_data_combined['Probability_Of_Response']
+for i, rois in enumerate(plot_rois):
+    for roi in rois:
+        all_rois.append(roi)
+        group_labels.append(plot_names[i])
+all_rois = np.array(all_rois).astype(int)
+n_rois = len(all_rois)
+epoch_response_per_fish = np.zeros((n_rois, len(stim_epochs)))
+
+for i, epoch in enumerate(stim_epochs):
+    epoch_data = dataset[epoch, :]
+    epoch_response_per_fish[:, i] = np.nanmean(epoch_data[:, all_rois], axis=0)
+
+# Create a DataFrame for plotting
+epoch_columns = [f'Epoch_{i}' for i in range(len(stim_epochs))]
+df_epoch_responses = pd.DataFrame(epoch_response_per_fish, columns=epoch_columns)
+df_epoch_responses['Group'] = group_labels
+
+# Plot paired violin plot with points for each epoch, highlighting the mean
+
+plt.figure(figsize=(14, 8))
+for i, epoch in enumerate(epoch_columns):
+    plt.subplot(3, 3, i + 1)
+    sns.stripplot(x='Group', y=epoch, data=df_epoch_responses, color='k', alpha=0.1, jitter=0.1)
+    sns.violinplot(x='Group', y=epoch, data=df_epoch_responses, inner=None, cut=0, alpha=0.5)
+    # sns.swarmplot(x='Group', y=epoch, data=df_epoch_responses, color='k', alpha=0.6, size=0.5)
+    means = df_epoch_responses.groupby('Group')[epoch].mean()
+    for j, mean in enumerate(means):
+        plt.plot(j, mean, 'o', color='red', markersize=10)
+    plt.title(f'Violin plot of {epoch} per ROI')
+    plt.xlabel('Group')
+    plt.ylabel('Response')
+plt.tight_layout()
+plt.show()
+
+#%%
+# Create a DataFrame for plotting
+df = pd.DataFrame({
+    'Average Response': average_responses,
+    'Group': group_labels
+})
+
+# Plot swarmplot
+plt.figure(figsize=(10, 6))
+sns.swarmplot(x='Group', y='Average Response', data=df)
+plt.title('Swarmplot of Average Response per ROI')
+plt.show()
