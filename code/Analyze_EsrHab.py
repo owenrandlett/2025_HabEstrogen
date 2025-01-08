@@ -27,9 +27,8 @@ import importlib
 
 # Set up color palette
 gb = Glasbey()
-p = gb.generate_palette(size=10)
-col_vec = gb.convert_palette_to_rgb(p)
-col_vec = np.array(col_vec[1:], dtype=float)/255
+
+# directory of datasets
 
 root_dir = os.path.realpath(r'Z:\2025_EstrogenPaper\BigRigData')
 
@@ -38,7 +37,22 @@ root_dir = os.path.realpath(r'Z:\2025_EstrogenPaper\BigRigData')
 exp_dirs = glob.glob( os.path.realpath( root_dir + '\\*\\*'))
 data_analysis_suffix = '_response_data.pkl'
 
-#%% Scan through raw data files and extract responses, etc. 
+#% Parameters for analysis
+n_blocks = 4    
+n_stim_blocks = 60  
+CurvatureStdThresh = 1.7 # max std in curvature trace that is acceptable. non-tracked fish have noisy traces
+SpeedStdThresh = 3.5
+AngVelThresh = np.pi/2.5 # the max angular velocity per frame we will accept as not an artifact
+
+OBendThresh = 3; # radians of curvature to call an O-bend
+CBendThresh = 1; # radians of curvature to call an C-bend
+
+sav_ord = 3 # parameters for the sgolayfilt of curvature
+sav_sz = 15
+SpeedSmooth = 5; # the kernel of the medfilt1 filter for the speed
+
+camera_rez =  180/2290 #mm/pixel
+#%% Scan through raw data files and extract responses, etc. Does not need to be run if data has already been analyzed and saved. 
 # parameters:
 
 for exp_dir in tqdm(exp_dirs):
@@ -53,24 +67,6 @@ for exp_dir in tqdm(exp_dirs):
     if not os.path.exists(graph_dir):
         os.mkdir(graph_dir)
 
-
-
-    n_blocks = 4    
-    n_stim_blocks = 60  
-    CurvatureStdThresh = 1.7 # max std in curvature trace that is acceptable. non-tracked fish have noisy traces
-    SpeedStdThresh = 3.5
-    AngVelThresh = np.pi/2.5 # the max angular velocity per frame we will accept as not an artifact
-
-    OBendThresh = 3; # radians of curvature to call an O-bend
-    CBendThresh = 1; # radians of curvature to call an C-bend
-
-    sav_ord = 3 # parameters for the sgolayfilt of curvature
-    sav_sz = 15
-    SpeedSmooth = 5; # the kernel of the medfilt1 filter for the speed
-
-
-    plot_tracking_results = False # for debugging, will plot each fish that is tracked
-    cont_id = 0 # index of the control group, usually 0
 
 
 
@@ -146,16 +142,16 @@ for exp_dir in tqdm(exp_dirs):
 
 
         track_data = {
-            "ProbabilityOfResponse":np.zeros((n_trials, n_fish)),
-            "LatencyOfResponse":np.zeros((n_trials, n_fish)),
-            "SecondResponses":np.zeros((n_trials, n_fish)),
-            "Reorientation":np.zeros((n_trials, n_fish)),
-            "Displacement":np.zeros((n_trials, n_fish)),
-            "MovementDuration":np.zeros((n_trials, n_fish)),
-            "BendAmplitude":np.zeros((n_trials, n_fish)),
-            "CompoundBendResponse":np.zeros((n_trials, n_fish)),
-            "C1Length":np.zeros((n_trials, n_fish)),
-            "C1AngularVelocity":np.zeros((n_trials, n_fish)),
+            "Probability_Of_Response":np.zeros((n_trials, n_fish)),
+            "Latency_(msec)":np.zeros((n_trials, n_fish)),
+            "Proportion_of_Double_Responses":np.zeros((n_trials, n_fish)),
+            "Reorientation_(deg)":np.zeros((n_trials, n_fish)),
+            "Displacement_(mm)":np.zeros((n_trials, n_fish)),
+            "Movement_Duration_(msec)":np.zeros((n_trials, n_fish)),
+            "Bend_Amplitude_(deg)":np.zeros((n_trials, n_fish)),
+            "Proportion_of_Compound_Responses":np.zeros((n_trials, n_fish)),
+            "C1_Bend_Duration_(msec)":np.zeros((n_trials, n_fish)),
+            "C1_Angular_Velocity_(deg/msec)":np.zeros((n_trials, n_fish)),
             "TiffFrameInds":[],
             "names":names,
             "plates":plates,
@@ -170,7 +166,7 @@ for exp_dir in tqdm(exp_dirs):
             burst_frame = int(trial_file[trial_file.find('burst_frame_')+12:trial_file.find('_time_')])
             track_data['TiffFrameInds'].append(burst_frame)
             tail_coords, orientations, heading_dir, bend_amps = HabTrackFunctions.load_burst_pkl(trial_file)
-            frame_rate = bend_amps.shape[1]
+            frame_rate = bend_amps.shape[1] # number of fps
 
             # % fish are considered not to be tracked properly if they are
             # not found in more than 5% of frames in the movie,
@@ -264,9 +260,8 @@ for exp_dir in tqdm(exp_dirs):
 
                         obend_start[fish] = start_o*1000/frame_rate
 
-                        # get the angular velocity of the C1 movement in radians per msec
-                        # not sure this is right, copying from Matlab code...
-                        obend_ang_vel[fish] = obend_peak_val/(1000/frame_rate*(obend_peak_ind - start_o))
+                        # get the angular velocity of the C1 movement from initiation to peak in degrees per msec
+                        obend_ang_vel[fish] = np.rad2deg(obend_peak_val/(1000/frame_rate*(obend_peak_ind - start_o)))
 
                         # use when the speed and curvature returns to near 0 as the end of the movement to find end of moevement
 
@@ -278,9 +273,9 @@ for exp_dir in tqdm(exp_dirs):
                             end_o = still_after[0]
 
                             obend_dur[fish] = (end_o - start_o)*1000/frame_rate
-                            obend_disp[fish] = np.sqrt(np.square(x_coors[start_o, fish] - x_coors[end_o, fish]) + np.square(y_coors[start_o, fish] - y_coors[end_o, fish]))
-                            obend_dorient[fish] = HabTrackFunctions.subtract_angles(orientations.T[end_o, fish], orientations.T[start_o, fish])
-                            obend_max_curve[fish] = np.max(abs(curve[start_o:end_o, fish]))
+                            obend_disp[fish] = np.sqrt(np.square(x_coors[start_o, fish] - x_coors[end_o, fish]) + np.square(y_coors[start_o, fish] - y_coors[end_o, fish])) * camera_rez
+                            obend_dorient[fish] = np.rad2deg(HabTrackFunctions.subtract_angles(orientations.T[end_o, fish], orientations.T[start_o, fish]))
+                            obend_max_curve[fish] = np.rad2deg(np.max(abs(curve[start_o:end_o, fish])))
 
                             # if obend_disp[fish] < 3: # fish needs to move at least 3 pixels, or else assume its a tracking error
                             #     fish_not_tracked[fish] = 1
@@ -310,25 +305,25 @@ for exp_dir in tqdm(exp_dirs):
 
 
             obend_happened[fish_not_tracked] = np.nan
-            track_data["ProbabilityOfResponse"][trial, :] = obend_happened
+            track_data["Probability_Of_Response"][trial, :] = obend_happened # 0 or 1, probability
             obend_start[fish_not_tracked] = np.nan
-            track_data["LatencyOfResponse"][trial, :] = obend_start
+            track_data["Latency_(msec)"][trial, :] = obend_start # already in msec
             obend_second_counter[fish_not_tracked] = np.nan
-            track_data["SecondResponses"][trial, :] = obend_second_counter
+            track_data["Proportion_of_Double_Responses"][trial, :] = obend_second_counter # 0 or 1, probability
             obend_dur[fish_not_tracked] = np.nan
-            track_data["MovementDuration"][trial, :] = obend_dur
+            track_data["Movement_Duration_(msec)"][trial, :] = obend_dur # units are in msec
             obend_disp[fish_not_tracked] = np.nan
-            track_data["Displacement"][trial,:] = obend_disp
+            track_data["Displacement_(mm)"][trial,:] = obend_disp # in units of mm
             obend_max_curve[fish_not_tracked] = np.nan
-            track_data["BendAmplitude"][trial,:] = obend_max_curve
+            track_data["Bend_Amplitude_(deg)"][trial,:] = obend_max_curve # in units of degrees
             obend_dorient[fish_not_tracked] = np.nan
-            track_data["Reorientation"][trial,:] = obend_dorient
+            track_data["Reorientation_(deg)"][trial,:] = obend_dorient # in units of degrees
             obend_multibend[fish_not_tracked] = np.nan
-            track_data["CompoundBendResponse"][trial,:] = obend_multibend
+            track_data["Proportion_of_Compound_Responses"][trial,:] = obend_multibend # 0 or 1, probability
             obend_c1len[fish_not_tracked] = np.nan
-            track_data["C1Length"][trial,:] = obend_c1len
+            track_data["C1_Bend_Duration_(msec)"][trial,:] = obend_c1len # units are in msec
             obend_ang_vel[fish_not_tracked] = np.nan
-            track_data["C1AngularVelocity"][trial,:] = obend_ang_vel
+            track_data["C1_Angular_Velocity_(deg/msec)"][trial,:] = obend_ang_vel # units are degrees per msec
 
         stim_times = np.array(track_data['TiffFrameInds'])
         stim_times = stim_times - stim_times[0]
@@ -384,7 +379,7 @@ for k, track_name in enumerate(analyzed_pkls):
                 track_data_combined['plates'].append(track_data['plates'][gr])
                 track_data_combined['exp_date'].append(exp_date)
               
-        n_rois = track_data['ProbabilityOfResponse'].shape[1]
+        n_rois = track_data['Probability_Of_Response'].shape[1]
         n_loaded+=n_rois
         print(n_loaded)
 
@@ -470,46 +465,20 @@ rois_matching_Estradiol = get_all_matching_ROIS(plot_IDs_Estradio)
 
 plot_rois = [rois_matching_DMSO, rois_matching_Estradiol]
 plot_names = ['DMSO', 'Estradiol']
-#%%
-p = gb.generate_palette(len(plot_names) + 1)
-col_vec = gb.convert_palette_to_rgb(p)
-col_vec = np.array(col_vec[1:], dtype=float)/255
+
+
 os.chdir(graph_folder)
 # HabTrackFunctions.plot_burst_data_all(track_data_combined, plot_IDs, col_vec, 'test', smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
 
 
 matching_rois = [track_data_combined['rois'][i] for i in plot_IDs_DMSO]
 
-HabTrackFunctions.plot_burst_data_all_direct(track_data_combined, plot_names, plot_rois, col_vec, 'DMSO_vs_Estradiol', smooth_window=15, plot_taps=True, plot_retest=False, stim_times=stim_times)
+HabTrackFunctions.plot_burst_responses(track_data_combined, plot_names, plot_rois, gb, 'DMSO_vs_Estradiol', smooth_window=15, plot_taps=True, plot_retest=False, stim_times=track_data_combined['stim_times'])
 
-#%% DMSO and estradiol trated "control' pairs. we will identify all pairs in the datasets where we have genotype that is either WT, or that is het/wt combination. Making assumption that Mutants are haplosufficient, which appears to be so from all the analyses we have done previously. 
-
-[
-    []
-]
 
 
 #%% DMSO vs Estradiol:
 
+importlib.reload(HabTrackFunctions)
 
-
-
-DMSO_groups = ['Esr2a Estradiol-/-']
-Estradiol_groups = ['Esr2a Estradiol +/+ +/-']
-
-n_groups = len(DMSO_groups) + len(Estradiol_groups)
-
-
-
-DMSO_indexes = get_group_indexes(track_data_combined['names'], DMSO_groups)
-Estradiol_indexes = get_group_indexes(track_data_combined['names'], Estradiol_groups)
-print("DMSO indexes:", DMSO_indexes)
-print("Estradiol indexes:", Estradiol_indexes)
-
-
-
-HabTrackFunctions.plot_burst_data_all(track_data_combined, Estradiol_indexes, DMSO_indexes, col_vec, os.path.split(save_name)[-1].replace('.pkl', '_'), smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
-HabTrackFunctions.plot_cum_diff(track_data_combined, Estradiol_indexes[0], DMSO_indexes[0], os.path.split(save_name)[-1].replace('.pkl', '__')+names[t]+'_CumulDiff', ylim=0.2)
-
-
-#%%
+HabTrackFunctions.plot_cum_diff(track_data_combined, plot_names, plot_rois, 'DMSO_vs_Estradiol_cumDiff')
