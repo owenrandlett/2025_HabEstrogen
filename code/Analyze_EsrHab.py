@@ -14,7 +14,8 @@ import natsort
 
 from scipy.signal import savgol_filter, find_peaks
 from scipy.ndimage import median_filter, uniform_filter1d
-
+import scipy.stats as stats
+import scikit_posthocs as sp
 # Update system paths for local modules if needed
 current_dir = os.path.dirname(__file__)
 sys.path.append(current_dir)
@@ -482,7 +483,7 @@ HabTrackFunctions.plot_burst_responses(track_data_combined, plot_names, plot_roi
 
 
 importlib.reload(HabTrackFunctions)
-n_init = 3
+n_init = 1
 #HabTrackFunctions.plot_cum_diff(track_data_combined, plot_names, plot_rois, 'DMSO_vs_Estradiol_cumDiff', components_to_plot=[0,2,1,7,5,4,3,6], n_boots=2000, n_norm=n_init)
 
 #%
@@ -494,14 +495,23 @@ stim_epochs = [
     np.arange(n_stim_blocks, n_stim_blocks*2),
     np.arange(n_stim_blocks*2, n_stim_blocks*3),
     np.arange(n_stim_blocks*3, n_stim_blocks*4),
-    np.arange(n_init, n_stim_blocks*4),
-    np.where(track_data_combined['stim_given'] == 2)[0]
+    np.where(track_data_combined['stim_given'] == 2)[0],
+    
+]
+
+epoch_names = [
+    'Naive Response', 
+    'Block 1',
+    'Block 2',
+    'Block 3',
+    'Block 4',
+    'Acoustic Responses',
 ]
 all_rois = []
 group_labels = []
 n_groups = len(plot_rois)
-
-dataset = track_data_combined['Probability_Of_Response']
+dataset_key = 'Probability_Of_Response'
+dataset = track_data_combined[dataset_key]
 for i, rois in enumerate(plot_rois):
     for roi in rois:
         all_rois.append(roi)
@@ -515,36 +525,54 @@ for i, epoch in enumerate(stim_epochs):
     epoch_response_per_fish[:, i] = np.nanmean(epoch_data[:, all_rois], axis=0)
 
 # Create a DataFrame for plotting
-epoch_columns = [f'Epoch_{i}' for i in range(len(stim_epochs))]
-df_epoch_responses = pd.DataFrame(epoch_response_per_fish, columns=epoch_columns)
+
+df_epoch_responses = pd.DataFrame(epoch_response_per_fish, columns=epoch_names)
 df_epoch_responses['Group'] = group_labels
 
-# Plot paired violin plot with points for each epoch, highlighting the mean
 
+# Define a color palette
+palette = ['black', 'red']
 plt.figure(figsize=(14, 8))
-for i, epoch in enumerate(epoch_columns):
-    plt.subplot(3, 3, i + 1)
-    sns.stripplot(x='Group', y=epoch, data=df_epoch_responses, color='k', alpha=0.1, jitter=0.1)
-    sns.violinplot(x='Group', y=epoch, data=df_epoch_responses, inner=None, cut=0, alpha=0.5)
-    # sns.swarmplot(x='Group', y=epoch, data=df_epoch_responses, color='k', alpha=0.6, size=0.5)
+
+# Loop through each epoch and create a strip plot with half violin plot
+for i, epoch in enumerate(epoch_names):
+    plt.subplot(3, 3, i + 1)  # Adjust the grid size as needed
+    sns.stripplot(
+        x='Group', 
+        y=epoch, 
+        data=df_epoch_responses, 
+        hue='Group',       # Assign the x variable to hue
+        size=4,            # Marker size
+        palette=palette,   # Use the defined color palette
+        alpha=0.3,         # Marker transparency
+        #edgecolor='black', # Marker edge color
+        linewidth=1,       # Marker edge width
+        jitter=0.2,        # Add jitter to the points   
+    )
+    
+    sns.violinplot(
+        x='Group', 
+        y=epoch, 
+        data=df_epoch_responses, 
+        hue='Group',
+        split=False,       # Create a half violin plot
+        inner=None,        # Remove the fill color
+        palette=palette,   # Use the defined color palette
+        linewidth=1,       # Set the line width
+        alpha=0.6,
+        cut=0              # Do not extend the violin plot beyond the data range
+    )
+
+    # Plot the means on top of the other plots
     means = df_epoch_responses.groupby('Group')[epoch].mean()
     for j, mean in enumerate(means):
-        plt.plot(j, mean, 'o', color='red', markersize=10)
-    plt.title(f'Violin plot of {epoch} per ROI')
-    plt.xlabel('Group')
-    plt.ylabel('Response')
+        plt.plot(j, mean, 'o', markerfacecolor='white', markeredgecolor='black', markersize=13, zorder=10)  # Increase zorder to make it more prominent
+
+    plt.title(epoch, fontsize=16)
+    plt.ylabel(dataset_key, fontsize=12)
+    plt.xlabel('')  
 plt.tight_layout()
 plt.show()
 
-#%%
-# Create a DataFrame for plotting
-df = pd.DataFrame({
-    'Average Response': average_responses,
-    'Group': group_labels
-})
 
-# Plot swarmplot
-plt.figure(figsize=(10, 6))
-sns.swarmplot(x='Group', y='Average Response', data=df)
-plt.title('Swarmplot of Average Response per ROI')
-plt.show()
+#%%
