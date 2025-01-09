@@ -395,11 +395,20 @@ def plot_means_epoch(track_data, fish_names, fish_ids, stim_epochs, epoch_names,
                 cut=0              # Do not extend the violin plot beyond the data range
             )
 
-            # Plot the medians on top of the other plots
-            median = df_epoch_nonan.groupby('Group')[epoch].median()
-            for j, median in enumerate(median):
-                plt.plot(j, median, 'o', markerfacecolor='white', markeredgecolor='black', markersize=13, zorder=10)  # Increase zorder to make it more prominent
+            # Plot the means using sns.pointplot
+            sns.pointplot(
+                x='Group', 
+                y=epoch, 
+                data=df_epoch_nonan, 
+                color= (1,1,1),
+                errorbar=None,
+                markers='o',       # Marker style
+                linestyles='',     # No line connecting the points
+                scale=1.5,         # Scale the size of the markers
+                zorder=10          # Increase zorder to make it more prominent
+            )
 
+            
             # Add significance annotations
             ax = plt.gca()
             y_max = df_epoch_responses[epoch_names].quantile(0.95).quantile(0.99)
@@ -416,7 +425,7 @@ def plot_means_epoch(track_data, fish_names, fish_ids, stim_epochs, epoch_names,
             plt.title(epoch, fontsize=16)
             plt.ylabel(dtype.replace('_', ' '), fontsize=12)
             plt.xlabel('')  # Remove the x-axis label
-
+            plt.xticks(rotation=30)
             # Remove top and right spines
             ax.spines['top'].set_visible(False)
             ax.spines['right'].set_visible(False)

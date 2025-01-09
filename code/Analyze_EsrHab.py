@@ -433,10 +433,11 @@ epoch_names = [
 
 #%% effect of estradiol and on habituation
 
-graph_folder = HabTrackFunctions.make_graph_folder('Estradiol', root_dir)
-os.chdir(graph_folder)
 
-DMSO_estradiol_names = [
+
+group_categories = ['DMSO', 'Estradiol']  
+
+group_names = np.array([
     ['DMSO_20220228_plate0', '10 µM beta estradiol_20220228_plate0'],
     ['DMSO_20220307_plate0','10 µM estradiol_20220307_plate0'],
     ['DMSO _20220307_plate1','10 µM estradiol_20220307_plate1'],
@@ -448,26 +449,47 @@ DMSO_estradiol_names = [
     ['0.1% DMSO_20220413_plate0','10 µM estradiol_20220413_plate0'],
     ['0.1% DMSO_20220414_plate1','0.1% DMSO + 10 µM estradiol_20220414_plate1'],
     ['0.1% DMSO_20220504_plate0','10 µM estradiol_20220504_plate0'],
-                    ]
-DMSO_names, Estradiol_names = zip(*DMSO_estradiol_names)
-plot_IDs_DMSO, plot_names_DMSO = HabTrackFunctions.get_group_indexes(DMSO_names, combined_names)
-plot_IDs_Estradio, plot_names_Estradiol = HabTrackFunctions.get_group_indexes(Estradiol_names, combined_names)
+    ])
 
-plot_rois = [
-             HabTrackFunctions.get_all_matching_ROIS(plot_IDs_DMSO, track_data_combined), 
-             HabTrackFunctions.get_all_matching_ROIS(plot_IDs_Estradio, track_data_combined)
-             ]
-plot_names = ['DMSO', 'Estradiol'] 
+def get_rois (group_names):
+    group_indexes = []
+    found_names = []
+    plot_rois = []
+    for gr in range(group_names.shape[1]):
+        print('Group = ' + group_categories[gr])
+        index, names = HabTrackFunctions.get_group_indexes(group_names[:,gr], combined_names)
+        group_indexes.append(index)
+        found_names.append(names)
+        plot_rois.append(HabTrackFunctions.get_all_matching_ROIS(index, track_data_combined))
+    return plot_rois
 
+graph_folder = HabTrackFunctions.make_graph_folder('Estradiol', root_dir)
+os.chdir(graph_folder)
 
-HabTrackFunctions.plot_burst_responses(track_data_combined, plot_names, plot_rois, gb, 'DMSO_vs_Estradiol', smooth_window=15, plot_taps=True, plot_retest=False, stim_times=track_data_combined['stim_times'])
-HabTrackFunctions.plot_cum_diff(track_data_combined, plot_names, plot_rois, 'DMSO_vs_Estradiol', components_to_plot=[0,2,1,7,5,4,3,6], n_boots=2000, n_norm=n_init)
+plot_rois = get_rois(group_names)          
+HabTrackFunctions.plot_burst_responses(track_data_combined, group_categories, plot_rois, gb, 'DMSO_vs_Estradiol', smooth_window=15, plot_taps=True, plot_retest=False, stim_times=track_data_combined['stim_times'])
+HabTrackFunctions.plot_cum_diff(track_data_combined, group_categories, plot_rois, 'DMSO_vs_Estradiol', components_to_plot=[0,2,1,7,5,4,3,6], n_boots=200, n_norm=n_init)
 
-n_gr = len(plot_names)
-p = gb.generate_palette(n_gr + 1)
+p = gb.generate_palette(group_names.shape[1] + 1)
 col_vec = gb.convert_palette_to_rgb(p)
 col_vec = list(np.array(col_vec[1:], dtype=float)/255)
+HabTrackFunctions.plot_means_epoch(track_data_combined, group_categories, plot_rois, stim_epochs, epoch_names, 'DMSO_vs_Estradiol', gb, col_vec=col_vec, components_to_plot=np.arange(10))
 
-HabTrackFunctions.plot_means_epoch(track_data_combined, plot_names, plot_rois, stim_epochs, epoch_names, 'DMSO_vs_Estradiol', gb, col_vec=col_vec, components_to_plot=np.arange(8))
+#%% Esr1
+importlib.reload(HabTrackFunctions)
+exp_string = 'Esr1 Mutants'
+group_categories = ['DMSO, esr1+/?', 'Estradiol, esr1+/?', 'DMSO, esr1-/-', 'Estradiol, esr1 -/-']  
+group_names = np.array([
+    ['DMSO esr1 +/?_20220706_plate0', 'Estradiol esr1 +/?_20220706_plate0', 'DMSO esr1 -/-_20220706_plate0', 'Estradiol esr1 -/-_20220706_plate0']
+])
+
+graph_folder = HabTrackFunctions.make_graph_folder(exp_string, root_dir)
+os.chdir(graph_folder)
 
 
+plot_rois = get_rois(group_names)    
+# HabTrackFunctions.plot_burst_responses(track_data_combined, group_categories, plot_rois, gb, exp_string, smooth_window=15, plot_taps=True, plot_retest=False, stim_times=track_data_combined['stim_times'])
+p = gb.generate_palette(group_names.shape[1] + 1)
+col_vec = gb.convert_palette_to_rgb(p)
+col_vec = list(np.array(col_vec[1:], dtype=float)/255)
+HabTrackFunctions.plot_means_epoch(track_data_combined, group_categories, plot_rois, stim_epochs, epoch_names, exp_string, gb, col_vec=col_vec, components_to_plot=np.arange(10))
