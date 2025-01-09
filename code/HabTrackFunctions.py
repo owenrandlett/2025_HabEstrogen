@@ -2,8 +2,40 @@ import pickle
 
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
+from scipy import stats
+import scikit_posthocs as sp
+import seaborn as sns
+import os
 
+def make_graph_folder(folder_name, root_dir):
+    graph_folder = os.path.join(os.path.split(root_dir)[0], 'BigRigData_Graphs', folder_name)
+    if not os.path.exists(graph_folder):
+        os.makedirs(graph_folder)
+    return graph_folder
 
+def get_group_indexes(search_names, names_list):
+    indexes = []
+    matched_names = []
+    for i, name in enumerate(search_names):
+        for j, pattern in enumerate(names_list):
+            if name in pattern:
+                if pattern not in matched_names:
+                    indexes.append(j)
+                    matched_names.append(pattern)
+                    print(f"Found index: {j}, Name: {pattern}")
+                else:
+                    print(f"Duplicate found and ignored: {pattern}")
+
+    if not indexes:
+        print("No matches found for the given search patterns.")
+
+    return indexes, matched_names
+def get_all_matching_ROIS(plot_IDs, track_data_combined):
+    rois_matching = []
+    for i in plot_IDs:
+        rois_matching = np.hstack((rois_matching, track_data_combined['rois'][i]))
+    return rois_matching.astype(int)
 
 def ffill_cols(a, startfillval=0):
     mask = np.isnan(a)
@@ -196,7 +228,6 @@ def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, comp
     ### calculate cumulative difference relative to controls, as in Randlett et al., Current Biology, 2019
     # n_norm will give the number of inital responses to normalize to
 
-    from scipy import stats
 
     # Hardcoded font sizes
     legend_fontsize = 12
@@ -266,6 +297,131 @@ def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, comp
     plt.ylim((-ylim, ylim))
     plt.xlim((0,240))
 
-    plt.savefig(remove_brackets_invalid(save_name+'.png'), dpi=100, bbox_inches='tight')
-    plt.savefig(remove_brackets_invalid(save_name+'.svg'), dpi=100, bbox_inches='tight')
+    plt.savefig(remove_brackets_invalid(save_name+'_CumulDiff.png'), dpi=100, bbox_inches='tight')
+    plt.savefig(remove_brackets_invalid(save_name+'_CumulDiff.svg'), dpi=100, bbox_inches='tight')
     plt.show()
+
+
+def plot_means_epoch(track_data, fish_names, fish_ids, stim_epochs, epoch_names, save_str, gb, components_to_plot=np.arange(8),  col_vec=None):
+    
+    n_gr = len(fish_ids)
+
+    if col_vec is None:
+        p = gb.generate_palette(n_gr + 1)
+        col_vec = gb.convert_palette_to_rgb(p)
+        col_vec = list(np.array(col_vec[1:], dtype=float)/255)
+
+    all_rois = []
+    group_labels = []
+    for i, rois in enumerate(fish_ids):
+        for roi in rois:
+            all_rois.append(roi)
+            group_labels.append(fish_names[i])
+    all_rois = np.array(all_rois).astype(int)
+    n_rois = len(all_rois)
+
+    dtype_to_plot = np.array(list(track_data.keys()))[components_to_plot]
+    for dtype in dtype_to_plot:
+        dataset = track_data[dtype]
+
+        epoch_response_per_fish = np.zeros((n_rois, len(stim_epochs)))
+
+        for i, epoch in enumerate(stim_epochs):
+            epoch_data = dataset[epoch, :]
+            epoch_response_per_fish[:, i] = np.nanmean(epoch_data[:, all_rois], axis=0)
+
+        # Create a DataFrame for plotting
+
+        df_epoch_responses = pd.DataFrame(epoch_response_per_fish, columns=epoch_names)
+        df_epoch_responses['Group'] = group_labels
+
+
+        plt.figure(figsize=(14, 8))
+
+        # Function to add significance annotations
+        def add_significance(ax, x1, x2, y, p_val, h=0.02):
+            if p_val < 0.001:
+                text = '***'
+            elif p_val < 0.01:
+                text = '**'
+            elif p_val < 0.05:
+                text = '*'
+            else:
+                text = 'n.s.'
+            ax.plot([x1, x1, x2, x2], [y, y+h, y+h, y], lw=1, color='k')
+            ax.text((x1 + x2) * .5, y + h - 0.02, text, ha='center', va='bottom', color='k', fontsize=10)
+
+        # Loop through each epoch and create a strip plot with half violin plot
+        for i, epoch in enumerate(epoch_names):
+            plt.subplot(3, 3, i + 1)  # Adjust the grid size as needed
+            
+            # Drop NaN values for the current epoch
+            df_epoch_nonan = df_epoch_responses[['Group', epoch]].dropna()
+            
+            # Perform Kruskal-Wallis test
+            group_data = [df_epoch_nonan[df_epoch_nonan['Group'] == group][epoch] for group in df_epoch_nonan['Group'].unique()]
+            H, p = stats.kruskal(*group_data)
+            
+            # Perform Dunn's test for post-hoc pairwise comparisons if Kruskal-Wallis is significant
+            if p < 0.05:
+                dunn_results = sp.posthoc_dunn(df_epoch_nonan, val_col=epoch, group_col='Group', p_adjust='bonferroni')
+                significant_pairs = dunn_results[dunn_results < 0.05].stack().index.tolist()
+            else:
+                significant_pairs = []
+            
+            sns.stripplot(
+                x='Group', 
+                y=epoch, 
+                data=df_epoch_nonan, 
+                hue='Group',       # Assign the x variable to hue
+                size=4,            # Marker size
+                palette=col_vec,   # Use the defined color palette
+                alpha=0.3,         # Marker transparency
+                #edgecolor='black', # Marker edge color
+                linewidth=1,       # Marker edge width
+                jitter=0.2,        # Add jitter to the points   
+            )
+            
+            sns.violinplot(
+                x='Group', 
+                y=epoch, 
+                data=df_epoch_nonan, 
+                hue='Group',       # Assign the x variable to hue
+                split=False,       # Do not split the violin plot
+                inner=None,        # Remove the fill color
+                palette=col_vec,   # Use the defined color palette
+                linewidth=1,       # Set the line width
+                alpha=0.5,
+                cut=0              # Do not extend the violin plot beyond the data range
+            )
+
+            # Plot the medians on top of the other plots
+            median = df_epoch_nonan.groupby('Group')[epoch].median()
+            for j, median in enumerate(median):
+                plt.plot(j, median, 'o', markerfacecolor='white', markeredgecolor='black', markersize=13, zorder=10)  # Increase zorder to make it more prominent
+
+            # Add significance annotations
+            ax = plt.gca()
+            y_max = df_epoch_responses[epoch_names].quantile(0.95).quantile(0.99)
+            y_min = df_epoch_responses[epoch_names].min().min()
+            y_lim = y_max * 1.3 # Add some space at the top
+            plt.ylim(y_min, y_lim)
+            k = 1
+
+            unique_significant_pairs = set(tuple(sorted(pair)) for pair in significant_pairs)
+            for (group1, group2) in unique_significant_pairs:
+                x1, x2 = df_epoch_nonan['Group'].unique().tolist().index(group1), df_epoch_nonan['Group'].unique().tolist().index(group2)
+                add_significance(ax, x1, x2, y_max*1 + (k*0.075), dunn_results.loc[group1, group2])
+                k += 1
+            plt.title(epoch, fontsize=16)
+            plt.ylabel(dtype.replace('_', ' '), fontsize=12)
+            plt.xlabel('')  # Remove the x-axis label
+
+            # Remove top and right spines
+            ax.spines['top'].set_visible(False)
+            ax.spines['right'].set_visible(False)
+
+        plt.tight_layout()
+        plt.savefig(remove_brackets_invalid(save_str + '_' +dtype+ '_Epochs.png'), dpi=100, bbox_inches='tight')
+        plt.savefig(remove_brackets_invalid(save_str + '_' +dtype+ '_Epochs.svg'), dpi=100, bbox_inches='tight')
+        plt.show()

@@ -25,9 +25,7 @@ import HabTrackFunctions
 import csv
 import fnmatch
 import importlib
-import seaborn as sns
-from scipy.stats import kruskal
-import scikit_posthocs as sp
+
 
 # Set up color palette
 gb = Glasbey()
@@ -56,6 +54,8 @@ sav_sz = 15
 SpeedSmooth = 5; # the kernel of the medfilt1 filter for the speed
 
 camera_rez =  180/2290 #mm/pixel
+
+n_init = 3 # what is used as the 'naive' response to the first n_init stmuli
 #%% Scan through raw data files and extract responses, etc. Does not need to be run if data has already been analyzed and saved. 
 # parameters:
 
@@ -409,34 +409,32 @@ combined_data_ids_path = os.path.join(root_dir, 'combined_data_IDs.csv')
 combined_data_ids = pd.read_csv(combined_data_ids_path)
 combined_names = combined_data_ids['Name_ExperimentDate_Plate'].values
 
+
+stim_epochs = [
+    np.arange(0,n_init),
+    np.arange(n_init, n_stim_blocks),
+    np.arange(n_stim_blocks, n_stim_blocks*2),
+    np.arange(n_stim_blocks*2, n_stim_blocks*3),
+    np.arange(n_stim_blocks*3, n_stim_blocks*4),
+    np.arange(n_init, n_stim_blocks*4),
+    np.where(track_data_combined['stim_given'] == 2)[0],
+]
+
+epoch_names = [
+    'Naive Response (first ' + str(n_init) + ' stim.)', 
+    'Block 1',
+    'Block 2',
+    'Block 3',
+    'Block 4',
+    'Trained Response',
+    'Acoustic Responses',
+]
+
+
 #%% effect of estradiol and on habituation
-# importlib.reload(HabTrackFunctions)
-def make_graph_folder(folder_name):
-    graph_folder = os.path.join(os.path.split(root_dir)[0], 'BigRigData_Graphs', folder_name)
-    if not os.path.exists(graph_folder):
-        os.makedirs(graph_folder)
-    return graph_folder
-def get_group_indexes(search_names, names_list=combined_names):
-    indexes = []
-    matched_names = []
-    for i, name in enumerate(search_names):
-        for j, pattern in enumerate(names_list):
-            if name in pattern:
-                if pattern not in matched_names:
-                    indexes.append(j)
-                    matched_names.append(pattern)
-                    print(f"Found index: {j}, Name: {pattern}")
-                else:
-                    print(f"Duplicate found and ignored: {pattern}")
 
-    if not indexes:
-        print("No matches found for the given search patterns.")
-
-    return indexes, matched_names
-
-graph_folder = make_graph_folder('Estradiol')
-
-
+graph_folder = HabTrackFunctions.make_graph_folder('Estradiol', root_dir)
+os.chdir(graph_folder)
 
 DMSO_estradiol_names = [
     ['DMSO_20220228_plate0', '10 µM beta estradiol_20220228_plate0'],
@@ -452,180 +450,24 @@ DMSO_estradiol_names = [
     ['0.1% DMSO_20220504_plate0','10 µM estradiol_20220504_plate0'],
                     ]
 DMSO_names, Estradiol_names = zip(*DMSO_estradiol_names)
-plot_IDs_DMSO, plot_names_DMSO = get_group_indexes(DMSO_names)
-plot_IDs_Estradio, plot_names_Estradiol = get_group_indexes(Estradiol_names)
+plot_IDs_DMSO, plot_names_DMSO = HabTrackFunctions.get_group_indexes(DMSO_names, combined_names)
+plot_IDs_Estradio, plot_names_Estradiol = HabTrackFunctions.get_group_indexes(Estradiol_names, combined_names)
 
+plot_rois = [
+             HabTrackFunctions.get_all_matching_ROIS(plot_IDs_DMSO, track_data_combined), 
+             HabTrackFunctions.get_all_matching_ROIS(plot_IDs_Estradio, track_data_combined)
+             ]
+plot_names = ['DMSO', 'Estradiol'] 
 
-
-#%
-
-def get_all_matching_ROIS(plot_IDs):
-    rois_matching = []
-    for i in plot_IDs:
-        rois_matching = np.hstack((rois_matching, track_data_combined['rois'][i]))
-    return rois_matching.astype(int)
-rois_matching_DMSO = get_all_matching_ROIS(plot_IDs_DMSO)
-rois_matching_Estradiol = get_all_matching_ROIS(plot_IDs_Estradio)
-
-plot_rois = [rois_matching_DMSO, rois_matching_Estradiol, rois_matching_Estradiol]
-plot_names = ['DMSO', 'Estradiol', 'Estradiol 2'] 
-
-
-os.chdir(graph_folder)
-# HabTrackFunctions.plot_burst_data_all(track_data_combined, plot_IDs, col_vec, 'test', smooth_window=15, plot_taps=True, plot_retest=True, stim_times=stim_times)
-
-
-matching_rois = [track_data_combined['rois'][i] for i in plot_IDs_DMSO]
 
 HabTrackFunctions.plot_burst_responses(track_data_combined, plot_names, plot_rois, gb, 'DMSO_vs_Estradiol', smooth_window=15, plot_taps=True, plot_retest=False, stim_times=track_data_combined['stim_times'])
+HabTrackFunctions.plot_cum_diff(track_data_combined, plot_names, plot_rois, 'DMSO_vs_Estradiol', components_to_plot=[0,2,1,7,5,4,3,6], n_boots=2000, n_norm=n_init)
+
+n_gr = len(plot_names)
+p = gb.generate_palette(n_gr + 1)
+col_vec = gb.convert_palette_to_rgb(p)
+col_vec = list(np.array(col_vec[1:], dtype=float)/255)
+
+HabTrackFunctions.plot_means_epoch(track_data_combined, plot_names, plot_rois, stim_epochs, epoch_names, 'DMSO_vs_Estradiol', gb, col_vec=col_vec, components_to_plot=np.arange(8))
 
 
-
-#%% DMSO vs Estradiol:
-
-importlib.reload(HabTrackFunctions)
-n_init = 3
-#HabTrackFunctions.plot_cum_diff(track_data_combined, plot_names, plot_rois, 'DMSO_vs_Estradiol_cumDiff', components_to_plot=[0,2,1,7,5,4,3,6], n_boots=2000, n_norm=n_init)
-
-#%
-# Calculate average response per ROI for the first 8 keys in track_data_combined
-
-
-
-def plot_means_epoch(track_data, fish_names, fish_ids, gb, save_name, n_init=3, nStimInBlocks = 60, smooth_window=15, components_to_plot=range(10), plot_taps = True, plot_retest=True, stim_times = None, first_block = False):
-    
-
-    stim_epochs = [
-        np.arange(0,n_init),
-        np.arange(n_init, n_stim_blocks),
-        np.arange(n_stim_blocks, n_stim_blocks*2),
-        np.arange(n_stim_blocks*2, n_stim_blocks*3),
-        np.arange(n_stim_blocks*3, n_stim_blocks*4),
-        np.arange(n_init, n_stim_blocks*4),
-        np.where(track_data['stim_given'] == 2)[0],
-    ]
-
-    epoch_names = [
-        'Naive Response (first ' + str(n_init) + ' stim.)', 
-        'Block 1',
-        'Block 2',
-        'Block 3',
-        'Block 4',
-        'Trained Response',
-        'Acoustic Responses',
-    ]
-    
-    n_gr = len(fish_ids)
-    p = gb.generate_palette(n_gr + 1)
-    col_vec = gb.convert_palette_to_rgb(p)
-    col_vec = list(np.array(col_vec[1:], dtype=float)/255)
-
-    all_rois = []
-    group_labels = []
-    n_groups = len(fish_ids)
-    dataset_key = 'Probability_Of_Response'
-    dataset = track_data[dataset_key]
-    for i, rois in enumerate(fish_ids):
-        for roi in rois:
-            all_rois.append(roi)
-            group_labels.append(fish_names[i])
-    all_rois = np.array(all_rois).astype(int)
-    n_rois = len(all_rois)
-    epoch_response_per_fish = np.zeros((n_rois, len(stim_epochs)))
-
-    for i, epoch in enumerate(stim_epochs):
-        epoch_data = dataset[epoch, :]
-        epoch_response_per_fish[:, i] = np.nanmean(epoch_data[:, all_rois], axis=0)
-
-    # Create a DataFrame for plotting
-
-    df_epoch_responses = pd.DataFrame(epoch_response_per_fish, columns=epoch_names)
-    df_epoch_responses['Group'] = group_labels
-
-
-    plt.figure(figsize=(14, 8))
-
-    # Function to add significance annotations
-    def add_significance(ax, x1, x2, y, p_val, h=0.02):
-        if p_val < 0.001:
-            text = '***'
-        elif p_val < 0.01:
-            text = '**'
-        elif p_val < 0.05:
-            text = '*'
-        else:
-            text = 'n.s.'
-        ax.plot([x1, x1, x2, x2], [y, y+h, y+h, y], lw=1, color='k')
-        ax.text((x1 + x2) * .5, y + h - 0.02, text, ha='center', va='bottom', color='k', fontsize=10)
-
-    # Loop through each epoch and create a strip plot with half violin plot
-    for i, epoch in enumerate(epoch_names):
-        plt.subplot(3, 3, i + 1)  # Adjust the grid size as needed
-        
-        # Drop NaN values for the current epoch
-        df_epoch_nonan = df_epoch_responses[['Group', epoch]].dropna()
-        
-        # Perform Kruskal-Wallis test
-        group_data = [df_epoch_nonan[df_epoch_nonan['Group'] == group][epoch] for group in df_epoch_nonan['Group'].unique()]
-        H, p = stats.kruskal(*group_data)
-        
-        # Perform Dunn's test for post-hoc pairwise comparisons if Kruskal-Wallis is significant
-        if p < 0.05:
-            dunn_results = sp.posthoc_dunn(df_epoch_nonan, val_col=epoch, group_col='Group', p_adjust='bonferroni')
-            significant_pairs = dunn_results[dunn_results < 0.05].stack().index.tolist()
-        else:
-            significant_pairs = []
-        
-        sns.stripplot(
-            x='Group', 
-            y=epoch, 
-            data=df_epoch_nonan, 
-            hue='Group',       # Assign the x variable to hue
-            size=4,            # Marker size
-            palette=col_vec,   # Use the defined color palette
-            alpha=0.3,         # Marker transparency
-            #edgecolor='black', # Marker edge color
-            linewidth=1,       # Marker edge width
-            jitter=0.2,        # Add jitter to the points   
-        )
-        
-        sns.violinplot(
-            x='Group', 
-            y=epoch, 
-            data=df_epoch_nonan, 
-            hue='Group',       # Assign the x variable to hue
-            split=False,       # Do not split the violin plot
-            inner=None,        # Remove the fill color
-            palette=col_vec,   # Use the defined color palette
-            linewidth=1,       # Set the line width
-            alpha=0.5,
-            cut=0              # Do not extend the violin plot beyond the data range
-        )
-
-        # Plot the means on top of the other plots
-        means = df_epoch_nonan.groupby('Group')[epoch].mean()
-        for j, mean in enumerate(means):
-            plt.plot(j, mean, 'o', markerfacecolor='white', markeredgecolor='black', markersize=13, zorder=10)  # Increase zorder to make it more prominent
-
-        # Add significance annotations
-        ax = plt.gca()
-        y_max = df_epoch_nonan[epoch].max()
-        y_lim = y_max * 1.3 # Add some space at the top
-        plt.ylim(0, y_lim)
-        k = 1
-
-        unique_significant_pairs = set(tuple(sorted(pair)) for pair in significant_pairs)
-        for (group1, group2) in unique_significant_pairs:
-            x1, x2 = df_epoch_nonan['Group'].unique().tolist().index(group1), df_epoch_nonan['Group'].unique().tolist().index(group2)
-            add_significance(ax, x1, x2, y_max*1 + (k*0.075), dunn_results.loc[group1, group2])
-            k += 1
-        plt.title(epoch, fontsize=16)
-        plt.ylabel(dataset_key.replace('_', ' '), fontsize=12)
-        plt.xlabel('')  # Remove the x-axis label
-
-    plt.tight_layout()
-    plt.savefig(HabTrackFunctions.remove_brackets_invalid(save_name+'.png'), dpi=100, bbox_inches='tight')
-    plt.savefig(HabTrackFunctions.remove_brackets_invalid(save_name+'.svg'), dpi=100, bbox_inches='tight')
-    plt.show()
-
-plot_means_epoch(track_data_combined, plot_names, plot_rois, gb, 'DMSO_vs_Estradiol_epochs', n_init=3)
