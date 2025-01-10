@@ -14,23 +14,7 @@ def make_graph_folder(folder_name, root_dir):
         os.makedirs(graph_folder)
     return graph_folder
 
-def get_group_indexes(search_names, names_list):
-    indexes = []
-    matched_names = []
-    for i, name in enumerate(search_names):
-        for j, pattern in enumerate(names_list):
-            if name in pattern:
-                if pattern not in matched_names:
-                    indexes.append(j)
-                    matched_names.append(pattern)
-                    print(f"Found index: {j}, Name: {pattern}")
-                else:
-                    print(f"Duplicate found and ignored: {pattern}")
 
-    if not indexes:
-        print("No matches found for the given search patterns.")
-
-    return indexes, matched_names
 def get_all_matching_ROIS(plot_IDs, track_data_combined):
     rois_matching = []
     for i in plot_IDs:
@@ -224,7 +208,7 @@ def plot_burst_responses(track_data, fish_names, fish_ids, gb, save_str, nStimIn
 
         plt.show()
 
-def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, components_to_plot=range(8), n_norm = 3, n_boots = 2000, ylim=0.2):
+def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, components_to_plot=range(8), n_norm = 3, n_boots = 2000, ylim=0.25):
     ### calculate cumulative difference relative to controls, as in Randlett et al., Current Biology, 2019
     # n_norm will give the number of inital responses to normalize to
 
@@ -297,8 +281,8 @@ def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, comp
     plt.ylim((-ylim, ylim))
     plt.xlim((0,240))
 
-    plt.savefig(remove_brackets_invalid(save_name+'_CumulDiff.png'), dpi=100, bbox_inches='tight')
-    plt.savefig(remove_brackets_invalid(save_name+'_CumulDiff.svg'), dpi=100, bbox_inches='tight')
+    plt.savefig(remove_brackets_invalid(save_name+'_CumulDiff_' + fish_names[0] + '_vs_' +fish_names[1] + '.png'), dpi=100, bbox_inches='tight')
+    plt.savefig(remove_brackets_invalid(save_name+'_CumulDiff_' + fish_names[0] + '_vs_' +fish_names[1] + '.svg'), dpi=100, bbox_inches='tight')
     plt.show()
 
 
@@ -322,7 +306,7 @@ def plot_means_epoch(track_data, fish_names, fish_ids, stim_epochs, epoch_names,
 
     dtype_to_plot = np.array(list(track_data.keys()))[components_to_plot]
     for dtype in dtype_to_plot:
-        dataset = track_data[dtype]
+        dataset = abs(track_data[dtype]) # take the absolute value of the data to ignore sign of turn
 
         epoch_response_per_fish = np.zeros((n_rois, len(stim_epochs)))
 
@@ -349,7 +333,7 @@ def plot_means_epoch(track_data, fish_names, fish_ids, stim_epochs, epoch_names,
             else:
                 text = 'n.s.'
             ax.plot([x1, x1, x2, x2], [y, y+h, y+h, y], lw=1, color='k')
-            ax.text((x1 + x2) * .5, y + h - 0.02, text, ha='center', va='bottom', color='k', fontsize=10)
+            ax.text((x1 + x2) * .5, y + h - 0.05, text, ha='center', va='bottom', color='k', fontsize=10)
 
         # Loop through each epoch and create a strip plot with half violin plot
         for i, epoch in enumerate(epoch_names):
@@ -400,11 +384,17 @@ def plot_means_epoch(track_data, fish_names, fish_ids, stim_epochs, epoch_names,
                 x='Group', 
                 y=epoch, 
                 data=df_epoch_nonan, 
-                color= (1,1,1),
+                estimator=np.mean,
+                color= (0,0,0),
+                markeredgewidth = 1,
+                markeredgecolor = 'black',
+                markerfacecolor = 'white',
+                alpha=0.9,
                 errorbar=None,
                 markers='o',       # Marker style
-                linestyles='',     # No line connecting the points
-                scale=1.5,         # Scale the size of the markers
+                linestyles='',     # No line connecting the points        # Scale the size of the markers
+                #linewidth = 1,
+                markersize=15,     # Increase the size of the markers
                 zorder=10          # Increase zorder to make it more prominent
             )
 
@@ -420,7 +410,7 @@ def plot_means_epoch(track_data, fish_names, fish_ids, stim_epochs, epoch_names,
             unique_significant_pairs = set(tuple(sorted(pair)) for pair in significant_pairs)
             for (group1, group2) in unique_significant_pairs:
                 x1, x2 = df_epoch_nonan['Group'].unique().tolist().index(group1), df_epoch_nonan['Group'].unique().tolist().index(group2)
-                add_significance(ax, x1, x2, y_max*1 + (k*0.075), dunn_results.loc[group1, group2])
+                add_significance(ax, x1, x2, y_max*0.9 + (k*0.09), dunn_results.loc[group1, group2])
                 k += 1
             plt.title(epoch, fontsize=16)
             plt.ylabel(dtype.replace('_', ' '), fontsize=12)

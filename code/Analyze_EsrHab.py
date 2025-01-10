@@ -11,6 +11,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from tqdm.notebook import tqdm
 import natsort
+from itertools import combinations
 
 from scipy.signal import savgol_filter, find_peaks
 from scipy.ndimage import median_filter, uniform_filter1d
@@ -55,7 +56,7 @@ SpeedSmooth = 5; # the kernel of the medfilt1 filter for the speed
 
 camera_rez =  180/2290 #mm/pixel
 
-n_init = 3 # what is used as the 'naive' response to the first n_init stmuli
+n_init = 1 # what is used as the 'naive' response to the first n_init stmuli
 #%% Scan through raw data files and extract responses, etc. Does not need to be run if data has already been analyzed and saved. 
 # parameters:
 
@@ -417,7 +418,9 @@ stim_epochs = [
     np.arange(n_stim_blocks*2, n_stim_blocks*3),
     np.arange(n_stim_blocks*3, n_stim_blocks*4),
     np.arange(n_init, n_stim_blocks*4),
+    np.arange(n_stim_blocks*4),
     np.where(track_data_combined['stim_given'] == 2)[0],
+
 ]
 
 epoch_names = [
@@ -427,13 +430,14 @@ epoch_names = [
     'Block 3',
     'Block 4',
     'Trained Response',
+    'All DF Responses',
     'Acoustic Responses',
 ]
 
 
 #%% effect of estradiol and on habituation
-
-
+importlib.reload(HabTrackFunctions)
+exp_string = 'Estradiol'
 
 group_categories = ['DMSO', 'Estradiol']  
 
@@ -451,45 +455,80 @@ group_names = np.array([
     ['0.1% DMSO_20220504_plate0','10 µM estradiol_20220504_plate0'],
     ])
 
-def get_rois (group_names):
+def get_group_indexes(search_names, names_list, print_finds=True):
+    indexes = []
+    matched_names = []
+    for i, name in enumerate(search_names):
+        for j, pattern in enumerate(names_list):
+            if name in pattern:
+                if pattern not in matched_names:
+                    indexes.append(j)
+                    matched_names.append(pattern)
+                    if print_finds:
+                        print(f"Found index: {j}, Name: {pattern}")
+                else:
+                    if print_finds:
+                        print(f"Duplicate found and ignored: {pattern}")
+
+    if not indexes:
+        print("No matches found for the given search patterns.")
+
+    return indexes, matched_names
+
+def get_rois (group_names, print_finds=True):
     group_indexes = []
     found_names = []
     plot_rois = []
     for gr in range(group_names.shape[1]):
-        print('Group = ' + group_categories[gr])
-        index, names = HabTrackFunctions.get_group_indexes(group_names[:,gr], combined_names)
+        if print_finds:
+            print('Group = ' + group_categories[gr])
+        index, names = get_group_indexes(group_names[:,gr], combined_names, print_finds)
         group_indexes.append(index)
         found_names.append(names)
         plot_rois.append(HabTrackFunctions.get_all_matching_ROIS(index, track_data_combined))
     return plot_rois
 
-graph_folder = HabTrackFunctions.make_graph_folder('Estradiol', root_dir)
-os.chdir(graph_folder)
+def plot_bursts_and_epochs(exp_string, group_categories,  group_names, plot_cumdiff = True):
+    n_groups = group_names.shape[1]
+    graph_folder = HabTrackFunctions.make_graph_folder(exp_string, root_dir)
+    os.chdir(graph_folder)
 
-plot_rois = get_rois(group_names)          
-HabTrackFunctions.plot_burst_responses(track_data_combined, group_categories, plot_rois, gb, 'DMSO_vs_Estradiol', smooth_window=15, plot_taps=True, plot_retest=False, stim_times=track_data_combined['stim_times'])
-HabTrackFunctions.plot_cum_diff(track_data_combined, group_categories, plot_rois, 'DMSO_vs_Estradiol', components_to_plot=[0,2,1,7,5,4,3,6], n_boots=200, n_norm=n_init)
+    plot_rois = get_rois(group_names)          
+    HabTrackFunctions.plot_burst_responses(track_data_combined, group_categories, plot_rois, gb, exp_string, smooth_window=15, plot_taps=True, plot_retest=False, stim_times=track_data_combined['stim_times'])
 
-p = gb.generate_palette(group_names.shape[1] + 1)
-col_vec = gb.convert_palette_to_rgb(p)
-col_vec = list(np.array(col_vec[1:], dtype=float)/255)
-HabTrackFunctions.plot_means_epoch(track_data_combined, group_categories, plot_rois, stim_epochs, epoch_names, 'DMSO_vs_Estradiol', gb, col_vec=col_vec, components_to_plot=np.arange(10))
+    p = gb.generate_palette(n_groups + 1)
+    col_vec = gb.convert_palette_to_rgb(p)
+    col_vec = list(np.array(col_vec[1:], dtype=float)/255)
+    HabTrackFunctions.plot_means_epoch(track_data_combined, group_categories, plot_rois, stim_epochs, epoch_names, exp_string, gb, col_vec=col_vec, components_to_plot=np.arange(10))
+    if plot_cumdiff:
+        if n_groups > 2:
+            for comp in list(combinations(np.arange(n_groups),2)):
+                plot_rois_comp = get_rois(group_names[:, comp], print_finds=False) 
+                group_categories_comp = []
+                for gr in comp:
+                    group_categories_comp.append(group_categories[gr])
+                HabTrackFunctions.plot_cum_diff(track_data_combined, group_categories_comp, plot_rois_comp, exp_string, components_to_plot=[0,2,1,7,5,4,3,6], n_boots=2000, n_norm=n_init)
+        else:
+            HabTrackFunctions.plot_cum_diff(track_data_combined, group_categories, plot_rois, exp_string, components_to_plot=[0,2,1,7,5,4,3,6], n_boots=2000, n_norm=n_init)
+plot_bursts_and_epochs(exp_string, group_categories,  group_names, plot_cumdiff=True)
 
 #%% Esr1
-importlib.reload(HabTrackFunctions)
+
 exp_string = 'Esr1 Mutants'
-group_categories = ['DMSO, esr1+/?', 'Estradiol, esr1+/?', 'DMSO, esr1-/-', 'Estradiol, esr1 -/-']  
+group_categories = [r'DMSO, $\it{esr1^{+/?}}$', 'Estradiol, $\it{esr1^{+/?}}$', 'DMSO, $\it{esr1^{-/-}}$', 'Estradiol, $\it{esr1^{-/-}}$']  
 group_names = np.array([
-    ['DMSO esr1 +/?_20220706_plate0', 'Estradiol esr1 +/?_20220706_plate0', 'DMSO esr1 -/-_20220706_plate0', 'Estradiol esr1 -/-_20220706_plate0']
+    ['DMSO esr1 +/?_20220706_plate0', 'Estradiol esr1 +/?_20220706_plate0', 'DMSO esr1 -/-_20220706_plate0', 'Estradiol esr1 -/-_20220706_plate0'],
+    ['DMSO esr1 +/+;+/-_20220719_plate1', '10 µM estradiol esr1 +/+,+/-_20220719_plate1', 'DMSO esr1 -/-_20220719_plate1', '10 µM estradiol esr1 -/-_20220719_plate1']
 ])
 
-graph_folder = HabTrackFunctions.make_graph_folder(exp_string, root_dir)
-os.chdir(graph_folder)
+plot_bursts_and_epochs(exp_string, group_categories, group_names, plot_cumdiff=True)
+#%% Esr2a
 
+exp_string = 'Esr2a Mutants'
+# group_categories = ['DMSO, esr1+/?', 'Estradiol, esr1+/?', 'DMSO, esr1-/-', 'Estradiol, esr1 -/-']  
+# group_names = np.array([
+#     ['DMSO esr1 +/?_20220706_plate0', 'Estradiol esr1 +/?_20220706_plate0', 'DMSO esr1 -/-_20220706_plate0', 'Estradiol esr1 -/-_20220706_plate0'],
+#     ['DMSO esr1 +/+;+/-_20220719_plate1', '10 µM estradiol esr1 +/+,+/-_20220719_plate1', 'DMSO esr1 -/-_20220719_plate1', '10 µM estradiol esr1 -/-_20220719_plate1']
+# ])
 
-plot_rois = get_rois(group_names)    
-# HabTrackFunctions.plot_burst_responses(track_data_combined, group_categories, plot_rois, gb, exp_string, smooth_window=15, plot_taps=True, plot_retest=False, stim_times=track_data_combined['stim_times'])
-p = gb.generate_palette(group_names.shape[1] + 1)
-col_vec = gb.convert_palette_to_rgb(p)
-col_vec = list(np.array(col_vec[1:], dtype=float)/255)
-HabTrackFunctions.plot_means_epoch(track_data_combined, group_categories, plot_rois, stim_epochs, epoch_names, exp_string, gb, col_vec=col_vec, components_to_plot=np.arange(10))
+# plot_bursts_and_epochs(exp_string, group_categories, group_names)
