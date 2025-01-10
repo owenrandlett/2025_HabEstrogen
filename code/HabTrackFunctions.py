@@ -208,7 +208,7 @@ def plot_burst_responses(track_data, fish_names, fish_ids, gb, save_str, nStimIn
 
         plt.show()
 
-def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, components_to_plot=range(8), n_norm = 3, n_boots = 2000, ylim=0.25):
+def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, components_to_plot=range(8), n_norm = 3, n_boots = 2000, ylim=0.3):
     ### calculate cumulative difference relative to controls, as in Randlett et al., Current Biology, 2019
     # n_norm will give the number of inital responses to normalize to
 

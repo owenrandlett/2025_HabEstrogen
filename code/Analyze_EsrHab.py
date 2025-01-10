@@ -515,7 +515,7 @@ plot_bursts_and_epochs(exp_string, group_categories,  group_names, plot_cumdiff=
 #%% Esr1
 
 exp_string = 'Esr1 Mutants'
-group_categories = [r'DMSO, $\it{esr1^{+/?}}$', 'Estradiol, $\it{esr1^{+/?}}$', 'DMSO, $\it{esr1^{-/-}}$', 'Estradiol, $\it{esr1^{-/-}}$']  
+group_categories = [r'DMSO, $\it{esr1^{+/?}}$', r'Estradiol, $\it{esr1^{+/?}}$', r'DMSO, $\it{esr1^{-/-}}$', r'Estradiol, $\it{esr1^{-/-}}$']  
 group_names = np.array([
     ['DMSO esr1 +/?_20220706_plate0', 'Estradiol esr1 +/?_20220706_plate0', 'DMSO esr1 -/-_20220706_plate0', 'Estradiol esr1 -/-_20220706_plate0'],
     ['DMSO esr1 +/+;+/-_20220719_plate1', '10 µM estradiol esr1 +/+,+/-_20220719_plate1', 'DMSO esr1 -/-_20220719_plate1', '10 µM estradiol esr1 -/-_20220719_plate1']
@@ -525,10 +525,32 @@ plot_bursts_and_epochs(exp_string, group_categories, group_names, plot_cumdiff=T
 #%% Esr2a
 
 exp_string = 'Esr2a Mutants'
-# group_categories = ['DMSO, esr1+/?', 'Estradiol, esr1+/?', 'DMSO, esr1-/-', 'Estradiol, esr1 -/-']  
-# group_names = np.array([
-#     ['DMSO esr1 +/?_20220706_plate0', 'Estradiol esr1 +/?_20220706_plate0', 'DMSO esr1 -/-_20220706_plate0', 'Estradiol esr1 -/-_20220706_plate0'],
-#     ['DMSO esr1 +/+;+/-_20220719_plate1', '10 µM estradiol esr1 +/+,+/-_20220719_plate1', 'DMSO esr1 -/-_20220719_plate1', '10 µM estradiol esr1 -/-_20220719_plate1']
-# ])
+group_categories = [r'DMSO, $\it{esr2a^{+/?}}$', r'Estradiol, $\it{esr2a^{+/?}}$', r'DMSO, $\it{esr2a^{-/-}}$', r'Estradiol, $\it{esr2a^{-/-}}$']  
+group_names = np.array([
+    ['Esr2a DMSO +/+ +/-_20221018_plate1', 'Esr2a Estradiol +/+ +/-_20221018_plate1', 'Esr2a DMSO -/-_20221018_plate1', 'Esr2a Estradiol-/-_20221018_plate1'],
+])
 
-# plot_bursts_and_epochs(exp_string, group_categories, group_names)
+plot_bursts_and_epochs(exp_string, group_categories, group_names, plot_cumdiff=True)
+
+#%% Esr2b
+
+exp_string = 'Esr2b Mutants'
+group_categories = [r'DMSO, $\it{esr2b^{+/?}}$', r'Estradiol, $\it{esr2b^{+/?}}$', r'DMSO, $\it{esr2b^{-/-}}$', r'Estradiol, $\it{esr2b^{-/-}}$']  
+group_names = np.array([
+    ['DMSO esr2b +/+_20220404_plate0', '10 µM estradiol esr2b +/+_20220404_plate0', 'DMSO esr2b -/-_20220404_plate0', '10 µM estradiol esr2b -/-_20220404_plate0' ],
+    ['DMSO esr2b +/-_20220404_plate0', '10 µM estradiol esr2b +/-_20220404_plate0', 'NaN', 'NaN'],
+    ['DMSO esr2b +/?_20220411_plate1', 'Estradiol esr2b +/?_20220411_plate1', 'DMSO esr2b -/-_20220411_plate1', 'Estradiol esr2b -/-_20220411_plate1']
+])
+
+plot_bursts_and_epochs(exp_string, group_categories, group_names, plot_cumdiff=True)
+
+#%% GPER
+exp_string = 'GPER1 Mutants'
+group_categories = [r'DMSO, $\it{gper1^{+/?}}$', r'Estradiol, $\it{gper1^{+/?}}$', r'DMSO, $\it{gper1^{-/-}}$', r'Estradiol, $\it{gper1^{-/-}}$']  
+group_names = np.array([
+    ['GPER DMSO +/?_20221018_plate0', 'GPER Estradiol +/?_20221018_plate0', 'GPER DMSO-/-_20221018_plate0', 'GPER Estradiol-/-_20221018_plate0' ],
+    # ['DMSO GPER +/?_20230130_plate0', 'estradiol 10uM GPER +/?_20230130_plate0', 'DMSO GPER -/-_20230130_plate0', 'estradiol 10uM GPER -/-_20230130_plate0' ], # these experiments are ignored because the effect of Estradiol was not consistent. Likely an issue with fish IDs in experiment
+    # ['DMSO GPER +/?_20230130_plate1', 'estradiol 10uM GPER +/?_20230130_plate1', 'DMSO GPER -/-_20230130_plate1', 'estradiol 10uM GPER -/-_20230130_plate1'],
+])
+
+plot_bursts_and_epochs(exp_string, group_categories, group_names, plot_cumdiff=True)
