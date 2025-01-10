@@ -436,7 +436,7 @@ epoch_names = [
 
 
 #%% effect of estradiol and on habituation
-importlib.reload(HabTrackFunctions)
+
 exp_string = 'Estradiol'
 
 group_categories = ['DMSO', 'Estradiol']  
@@ -527,10 +527,26 @@ plot_bursts_and_epochs(exp_string, group_categories, group_names, plot_cumdiff=T
 exp_string = 'Esr2a Mutants'
 group_categories = [r'DMSO, $\it{esr2a^{+/?}}$', r'Estradiol, $\it{esr2a^{+/?}}$', r'DMSO, $\it{esr2a^{-/-}}$', r'Estradiol, $\it{esr2a^{-/-}}$']  
 group_names = np.array([
-    ['Esr2a DMSO +/+ +/-_20221018_plate1', 'Esr2a Estradiol +/+ +/-_20221018_plate1', 'Esr2a DMSO -/-_20221018_plate1', 'Esr2a Estradiol-/-_20221018_plate1'],
+    # ['Esr2a DMSO +/+ +/-_20221018_plate1', 'Esr2a Estradiol +/+ +/-_20221018_plate1', 'Esr2a DMSO -/-_20221018_plate1', 'Esr2a Estradiol-/-_20221018_plate1'],
+    ["DMSO+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate0", 
+     "ESTR+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate0", 
+     "DMSO+(' +/?', ' +/?', ' +/?', ' -/-') : (gper,esr1,esr2b,esr2a)_20240715_plate0", 
+     "ESTR+(' +/?', ' +/?', ' +/?', ' -/-') : (gper,esr1,esr2b,esr2a)_20240715_plate0"],
+    [
+    "DMSO+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate1",
+    "ESTR+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate1",
+    "DMSO+(' +/?', ' +/?', ' +/?', ' -/-') : (gper,esr1,esr2b,esr2a)_20240715_plate1",
+    "ESTR+(' +/?', ' +/?', ' +/?', ' -/-') : (gper,esr1,esr2b,esr2a)_20240715_plate1"
+    ],
+    [
+    "DMSO+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240716_plate1",
+    "ESTR+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240716_plate1",
+    "DMSO+(' +/?', ' +/?', ' +/?', ' -/-') : (gper,esr1,esr2b,esr2a)_20240716_plate1",
+    "ESTR+(' +/?', ' +/?', ' +/?', ' -/-') : (gper,esr1,esr2b,esr2a)_20240716_plate1"
+]
 ])
 
-plot_bursts_and_epochs(exp_string, group_categories, group_names, plot_cumdiff=True)
+plot_bursts_and_epochs(exp_string, group_categories, group_names, plot_cumdiff=False)
 
 #%% Esr2b
 
