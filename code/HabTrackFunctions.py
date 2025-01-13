@@ -500,7 +500,7 @@ def plot_means_epoch(
 
         # Loop through each epoch and create a strip plot with half violin plot
         for i, epoch in enumerate(epoch_names):
-            plt.subplot(3, 3, i + 1)  # Adjust the grid size as needed
+            ax = plt.subplot(3, 3, i + 1)  # Adjust the grid size as needed
 
             # Drop NaN values for the current epoch
             df_epoch_nonan = df_epoch_responses[["Group", epoch]].dropna()
@@ -553,6 +553,7 @@ def plot_means_epoch(
                 # edgecolor='black', # Marker edge color
                 linewidth=1,  # Marker edge width
                 jitter=0.2,  # Add jitter to the points
+                zorder = 5,
             )
 
             sns.violinplot(
@@ -566,6 +567,7 @@ def plot_means_epoch(
                 linewidth=1,  # Set the line width
                 alpha=0.5,
                 cut=0,  # Do not extend the violin plot beyond the data range
+                zorder = 3,
             )
 
             # Plot the means using sns.pointplot
@@ -581,11 +583,12 @@ def plot_means_epoch(
                 alpha=0.9,
                 errorbar=None,
                 markers="o",  # Marker style
-                linestyles="--",  # No line connecting the points        # Scale the size of the markers
+                linestyles="",  # No line connecting the points        # Scale the size of the markers
                 linewidth=1,
                 markersize=15,  # Increase the size of the markers
                 zorder=10,  # Increase zorder to make it more prominent
             )
+            
 
             # Add significance annotations
             ax = plt.gca()
@@ -622,11 +625,23 @@ def plot_means_epoch(
             plt.title(epoch, fontsize=16)
             plt.ylabel(dtype.replace("_", " "), fontsize=12)
             plt.xlabel("")  # Remove the x-axis label
-            plt.xticks(rotation=30)
+            plt.xticks(rotation=7)
             # Remove top and right spines
             ax.spines["top"].set_visible(False)
             ax.spines["right"].set_visible(False)
+            
+            
+            # # Calculate mean values for each group using numpy
+            # mean_values = df_epoch_nonan.groupby("Group")[epoch].apply(np.mean).values
 
+
+            # # Add horizontal lines from each point to the y-axis
+            # x_min, x_max = ax.get_xlim()
+            # for mean_ind, value in enumerate(mean_values):
+            #     ax.hlines(y=value, xmin=x_min, xmax=mean_ind, color=col_vec[mean_ind], linestyle='--',linewidth=0.85, alpha=1, zorder=0)
+            
+            # ax.set_xlim(x_min, x_max)
+            
         plt.tight_layout()
         plt.savefig(
             remove_brackets_invalid(save_str + "_" + dtype + "_Epochs.png"),
