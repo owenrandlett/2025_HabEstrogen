@@ -117,7 +117,7 @@ def plot_burst_responses(
     track_data,
     fish_names,
     fish_ids,
-    gb,
+    col_vec,
     save_str,
     nStimInBlocks=60,
     smooth_window=15,
@@ -135,11 +135,8 @@ def plot_burst_responses(
     axes_fontsize = 18
     ticks_fontsize = 14
 
-    # Generate color palette
-    n_gr = len(fish_ids)
-    p = gb.generate_palette(n_gr + 1)
-    col_vec = gb.convert_palette_to_rgb(p)
-    col_vec = np.array(col_vec[1:], dtype=float) / 255
+    n_gr = len(fish_names)
+
 
     # If no stimulus times are given, calculate them from the TiffTimeInds
     if np.sum(stim_times == None) > 0:
@@ -436,18 +433,12 @@ def plot_means_epoch(
     stim_epochs,
     epoch_names,
     save_str,
-    gb,
+    col_vec,
     components_to_plot=np.arange(8),
-    col_vec=None,
     ylim_all_same=False,
 ):
 
     n_gr = len(fish_ids)
-
-    if col_vec is None:
-        p_col = gb.generate_palette(n_gr + 1)
-        col_vec = gb.convert_palette_to_rgb(p_col)
-        col_vec = list(np.array(col_vec[1:], dtype=float) / 255)
 
     all_rois = []
     group_labels = []
