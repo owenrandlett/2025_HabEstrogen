@@ -286,13 +286,13 @@ def plot_cum_diff(data, fish_names, fish_ids, save_name, control_index = 0, comp
     plt.show()
 
 
-def plot_means_epoch(track_data, fish_names, fish_ids, stim_epochs, epoch_names, save_str, gb, components_to_plot=np.arange(8),  col_vec=None):
+def plot_means_epoch(track_data, fish_names, fish_ids, stim_epochs, epoch_names, save_str, gb, components_to_plot=np.arange(8),  col_vec=None, ylim_all_same = False):
     
     n_gr = len(fish_ids)
 
     if col_vec is None:
-        p = gb.generate_palette(n_gr + 1)
-        col_vec = gb.convert_palette_to_rgb(p)
+        p_col = gb.generate_palette(n_gr + 1)
+        col_vec = gb.convert_palette_to_rgb(p_col)
         col_vec = list(np.array(col_vec[1:], dtype=float)/255)
 
     all_rois = []
@@ -341,17 +341,27 @@ def plot_means_epoch(track_data, fish_names, fish_ids, stim_epochs, epoch_names,
             
             # Drop NaN values for the current epoch
             df_epoch_nonan = df_epoch_responses[['Group', epoch]].dropna()
-            
-            # Perform Kruskal-Wallis test
-            group_data = [df_epoch_nonan[df_epoch_nonan['Group'] == group][epoch] for group in df_epoch_nonan['Group'].unique()]
-            H, p = stats.kruskal(*group_data)
-            
-            # Perform Dunn's test for post-hoc pairwise comparisons if Kruskal-Wallis is significant
-            if p < 0.05:
-                dunn_results = sp.posthoc_dunn(df_epoch_nonan, val_col=epoch, group_col='Group', p_adjust='bonferroni')
-                significant_pairs = dunn_results[dunn_results < 0.05].stack().index.tolist()
+
+            # Check the number of unique groups
+            unique_groups = df_epoch_nonan['Group'].unique()
+            if len(unique_groups) == 2:
+                # Perform Mann-Whitney U test if there are only two groups
+                group1_data = df_epoch_nonan[df_epoch_nonan['Group'] == unique_groups[0]][epoch]
+                group2_data = df_epoch_nonan[df_epoch_nonan['Group'] == unique_groups[1]][epoch]
+                U, p = stats.mannwhitneyu(group1_data, group2_data)
+                significant_pairs = [(unique_groups[0], unique_groups[1])] if p < 0.05 else []
+        
             else:
-                significant_pairs = []
+                # Perform Kruskal-Wallis test
+                group_data = [df_epoch_nonan[df_epoch_nonan['Group'] == group][epoch] for group in df_epoch_nonan['Group'].unique()]
+                H, p = stats.kruskal(*group_data)
+                
+                # Perform Dunn's test for post-hoc pairwise comparisons if Kruskal-Wallis is significant
+                if p < 0.05:
+                    dunn_results = sp.posthoc_dunn(df_epoch_nonan, val_col=epoch, group_col='Group', p_adjust='bonferroni')
+                    significant_pairs = dunn_results[dunn_results < 0.05].stack().index.tolist()
+                else:
+                    significant_pairs = []
             
             sns.stripplot(
                 x='Group', 
@@ -385,15 +395,15 @@ def plot_means_epoch(track_data, fish_names, fish_ids, stim_epochs, epoch_names,
                 y=epoch, 
                 data=df_epoch_nonan, 
                 estimator=np.mean,
-                color= (0,0,0),
+                color= (0.5,0.5,0.5),
                 markeredgewidth = 1,
                 markeredgecolor = 'black',
                 markerfacecolor = 'white',
                 alpha=0.9,
                 errorbar=None,
                 markers='o',       # Marker style
-                linestyles='',     # No line connecting the points        # Scale the size of the markers
-                #linewidth = 1,
+                linestyles='--',     # No line connecting the points        # Scale the size of the markers
+                linewidth = 1,
                 markersize=15,     # Increase the size of the markers
                 zorder=10          # Increase zorder to make it more prominent
             )
@@ -401,16 +411,25 @@ def plot_means_epoch(track_data, fish_names, fish_ids, stim_epochs, epoch_names,
             
             # Add significance annotations
             ax = plt.gca()
-            y_max = df_epoch_responses[epoch_names].quantile(0.95).quantile(0.99)
-            y_min = df_epoch_responses[epoch_names].min().min()
+            if ylim_all_same:
+                y_max = df_epoch_responses[epoch_names].quantile(0.95).quantile(0.99)
+                y_min = df_epoch_responses[epoch_names].min().min()
+            else: 
+                y_max = df_epoch_responses[epoch].quantile(0.95)
+                y_min = df_epoch_responses[epoch].min()
+                
             y_lim = y_max * 1.3 # Add some space at the top
             plt.ylim(y_min, y_lim)
             k = 1
+            perc_ymax = (y_max - y_min)*0.1
 
             unique_significant_pairs = set(tuple(sorted(pair)) for pair in significant_pairs)
             for (group1, group2) in unique_significant_pairs:
                 x1, x2 = df_epoch_nonan['Group'].unique().tolist().index(group1), df_epoch_nonan['Group'].unique().tolist().index(group2)
-                add_significance(ax, x1, x2, y_max*0.9 + (k*0.09), dunn_results.loc[group1, group2])
+                if len(unique_groups) == 2:
+                    add_significance(ax, x1, x2, y_max + ((k-3)*perc_ymax), p)
+                else:
+                    add_significance(ax, x1, x2, y_max + ((k-3)*perc_ymax), dunn_results.loc[group1, group2])
                 k += 1
             plt.title(epoch, fontsize=16)
             plt.ylabel(dtype.replace('_', ' '), fontsize=12)
