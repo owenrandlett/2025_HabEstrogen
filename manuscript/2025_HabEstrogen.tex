@@ -126,7 +126,9 @@ Estradiol is the most potent and biologically active form of estrogen, and is us
 
 Estrogen signaling in learning and memory, any data about receptors. 
 
-In this project we aimed to identify the relevant estrogen receptor mediating the effects of estradiol analogs on habituation learning by undertaking a classical analysis of genetic knockout alleles. Not only did we fail to identify a mutant (or combination of mutants) that lead to estradiol instensitivity, but our results indicat that esrX receptors act to inhibit habituation learning -- effects which are usually masked by an unidentified estradiol-responsive pathway that promotes learning, resulting in estrogne receptor mutants that show increased sensitivity to estradiol in the habituation paradigm. 
+In this project we aimed to identify the relevant estrogen receptor mediating the effects of estradiol analogs on habituation learning by undertaking a classical analysis of genetic knockout alleles. 
+Not only did we fail to identify a mutant (or combination of mutants) that lead to estradiol insensitivity, leading us to conclude that these receptors act to inhibit habituation learning, rather than mediating the habituation-promoting effects of Estradiols in the zebrafish brain. 
+estrogne receptor mutants that show increased sensitivity to estradiol in the habituation paradigm. 
 
 
 %\newpage
@@ -179,12 +181,46 @@ The mutant product is digested into two bands of 150 and 281 bp and the wild typ
 Larvae were treated with estradiol immediately before the behavioural assay by pipetting 10-30uL of 10x solution directly into the behavioural wells, always with a final concentration of 0.1\% DMSO in E3.
 
 \section{Results and Discussion}
+\subsection{Estradiol increases habituation learning}
+
+
+\begin{figure}
+\begin{fullwidth}
+\begin{center}
+\includegraphics[width=0.95\linewidth]{figures/EstradiolEffect.png}
+\caption{Estradiol increases habituation learning.
+\\ \textbf{A)} In response to a dark flash (DF), larval zebrafish perform a large turning maneuver termed an O-bend response.
+\\ \textbf{B)} High-throughput setup for recording and quantify O-bend responsiveness using a high-speed camera recording at 444hz observing larvae in 300-well plates.
+\\ \textbf{C)} DF stimuli are delivered at 1-minute intervals, in 4 blocks of 60 stimuli, separated by 1hr of rest (from 0:00-7:00). 1.5 hours later a block of 30 acoustic stimuli are delivered at 1-minute intervals (\textbf{i}). Each dot is the probability of response to one flash. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2). 
+\\ \textbf{D-G)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. Statistical significance was calculated using Mann-Whitney U test, *** = p < 0.001.  \textbf{D)} the naive response to the first DF stimulus (binary metric); \textbf{E)} the mean response to the remaining DF stimuli in the Block 1 (DFs 2:60); \textbf{F)} all DFs during the training period (DFs 2:240); \textbf{G)} the 30 acoustic stimuli delivered with a tap from a solenoid on the 300-well plate platform. 
+\\ \textbf{H)} Cumulative plot of the differences in habituation rate for the response components. These plots display the cumulative average differences in the mean response after normalization to the naive response. Estradiol treatment is compared to DMSO controls. Difference from 0 reflects divergence in response across the 240 dark-flash stimuli in the 4 training blocks, with positive values reflecting increased habituation. The widths of the lines are bootstrapped 99.5\% confidence intervals. The gray boxed region reflects the expected non-significant effect size \citep{Randlett2019-fj}.
+\\ Treatment groups are: Estradiol = 10\textmu M estradiol treatment (n = 345 fish); DMSO = 0.1\% DMSO vehicle controls (n = 548 fish)
+}
+
+\label{fig:1}
+
+\end{center}
+\end{fullwidth}
+\end{figure}
+
+
+In response to a sudden global dimming event, which we refer to as a Dark Flash (DF), larval zebrafish execute an "O-bend" maneuver, characterized by a deep "O"-shaped bend, resulting in a high-amplitude turn \citep{Burgess2007}. 
+Habituation learning manifests as a progressive reduction in response to repeated stimuli, and this learning can be retained for seconds/minutes or hours/days for short- and long-term habituation \citep{Rankin2009-no}. 
+We use high-speed cameras, machine-vision analysis, and 300-well plates to quantify habituation across large populations of larvae to identify molecular/genetic mechanisms of long-term habituation({\autoref{fig:1}A,B, \citealp{Randlett2019-fj,Lamire2023-he}). 
+When stimulated with DFs repeated at 1-minute intervals in repeated blocks of 60 stimuli, larval zebrafish exhibit long-term habituation, reducing not only the probability of executing a response, but also modulating the latency and other kinematic aspects of the response \citep{Randlett2019-fj}.  
+
+Our previous small-molecule screening experiments identified multiple synthetic Estrogen Receptor agonists as positive modulators of dark-flash habituation learning, including ethinyl estradiol, estradiol valerate, and hexestrol  \citep{Lamire2023-he}. 
+The major effect we observed was a stronger decrease in the probability of executing a O-bend response during the training/learning blocks. 
+We have confirmed and extended these results using \textbeta-Estradiol (estradiol), which is the major natural estrogen in humans. 
+A 10\textmu M dose of estradiol potently increases habituation learning, which is observable when the response probability of the population of estradiol-treated larvae is compared with DMSO-treated vehicle controls across stimuli (\autoref{fig:1}C-H).
+Consistent with what we previously observed after hexestrol and ethinyl estradiol treatment \citep{Lamire2023-he}, there is a modest reduction in the initial responsiveness of the estradiol-treated larvae to the first DF stimulus (\autoref{fig:1}D), but the major effect is observed during the training phase (\autoref{fig:1}C,E,F), as is revealed by the consistent positive deviation in the cumulative mean difference plot (\autoref{fig:1}H, \citealp{Randlett2019-fj}).
+Importantly, the responsiveness of the larvae to acoustic stimuli delivered after the DF training is indistinguishable from controls (\autoref{fig:1}Ci, G), indicating that estradiol does not affect global arousal levels but rather has specific effects on habituation learning. 
+
 
 \subsection{Nuclear Estrogen receptors are not required for the effects of estradiol on habituation learning}
 
-\subsection{Conclusion}
+We hypothesized that the effects of estradiol on habituation would occur via agonism of one or multiple Estrogen Receptors.  
 
-Here I described our system for tracking the tail of the larval zebrafish during microscopy. Many of the practical considerations of this setup may be specific to our application, and therefore may need modification for use in other experiments in other labs. However, I feel that the core and simple idea of using an IR-sensitive Raspberry Pi Camera, a simple Python script, coupled with IR LEDs and and IR filter, provides an approachable and flexible solution that may be widely useful for observing and tracking the behaviour of zebrafish (or perhaps other animals) while performing imaging experiments. This system's attributes may also make it an ideal tool for community engagement activities such as school outreach programs. It could serve as a platform for learning about microelectronics, behavioural analyses, machine vision, and hardware design and construction.
 
 \section{Funding}
 

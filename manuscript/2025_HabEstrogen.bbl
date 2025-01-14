@@ -1,4 +1,4 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\urlprefix}{}
 \providecommand{\doiprefix}{doi: }
@@ -7,6 +7,12 @@
 \textbf{\color{eLifeMediumGrey} Barros LA}, Tufik S, Andersen ML.
 \newblock The role of progesterone in memory: an overview of three decades.
 \newblock Neurosci Biobehav Rev.  2015 Feb; 49:193--204.
+
+\bibitem[{Burgess and Granato(2007)Harold A. Burgess and Michael Granato}]{Burgess2007}
+\textbf{\color{eLifeMediumGrey} Burgess HA}, Granato M.
+\newblock Sensorimotor Gating in Larval Zebrafish.
+\newblock The Journal of Neuroscience.  2007 May; 27(18):4984--4994.
+\newblock \urlprefix\url{https://doi.org/10.1523/jneurosci.0615-07.2007}, \href{10.1523/jneurosci.0615-07.2007}{\doiprefix \detokenize{10.1523/jneurosci.0615-07.2007}}.
 
 \bibitem[{Dillon et~al.(2013)Dillon, T Samuel and Fox, Laura C and Han, Crystal and Linster, Christiane}]{Dillon2013-rk}
 \textbf{\color{eLifeMediumGrey} Dillon TS}, Fox LC, Han C, Linster C.
