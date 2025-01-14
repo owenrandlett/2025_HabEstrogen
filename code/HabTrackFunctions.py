@@ -1,7 +1,9 @@
 import pickle
+import matplotlib as mpl
 
 import numpy as np
 import matplotlib.pyplot as plt
+
 import pandas as pd
 from scipy import stats
 import scikit_posthocs as sp
@@ -133,6 +135,7 @@ def plot_burst_responses(
 ):
     import warnings
     from scipy.signal import savgol_filter
+    mpl.rcParams['svg.fonttype'] = 'none'
 
     # Hardcoded font sizes
     legend_fontsize = 18
@@ -291,6 +294,8 @@ def plot_cum_diff(
     legend_fontsize = 12
     axes_fontsize = 18
     ticks_fontsize = 14
+    
+    mpl.rcParams['svg.fonttype'] = 'none'
 
     plt.fill_between(
         np.arange(240),
@@ -399,8 +404,8 @@ def plot_cum_diff(
     )
     plt.xlabel("Stimuli", fontsize=axes_fontsize)
     legend = plt.legend(
-        bbox_to_anchor=(1.05, 1.0, 0.3, 0.2),
-        loc="upper left",
+        #bbox_to_anchor=(1.05, 1.0, 0.3, 0.2),
+        #loc="upper left",
         fontsize=legend_fontsize,
         markerscale=2,
     )
@@ -443,6 +448,7 @@ def plot_means_epoch(
 ):
 
     n_gr = len(fish_ids)
+    mpl.rcParams['svg.fonttype'] = 'none'
 
     all_rois = []
     group_labels = []
