@@ -274,13 +274,12 @@ def plot_cum_diff(
     fish_names,
     fish_ids,
     save_name,
-    control_index=0,
-    components_to_plot=range(8),
+    components_to_plot=np.arange(8),
     n_norm=3,
     n_boots=2000,
     ylim=0.3,
 ):
-    ### calculate cumulative difference relative to controls, as in Randlett et al., Current Biology, 2019
+    ### calculate cumulative difference relative to controls, as in Randlett et al., Current Biology, 2019. Controls are at 0 index, treatemnt are 1st index. 
     # n_norm will give the number of inital responses to normalize to
 
     # Hardcoded font sizes
@@ -301,20 +300,20 @@ def plot_cum_diff(
     plt.hlines(0, 0, 240, colors="k", linestyles="dashed")
     stim_given = data["stim_given"]
 
-    # color palatte to match Randlett 2019
+    # color palatte to match Randlett 2019 if plotted in current order in track_data files
     col_vec = [
-        [0, 0, 1],
-        [1, 0, 0],
-        [0, 1, 0],
-        [0, 0, 0],
-        [1, 0, 1],
-        [0.9, 0.9, 0],
-        [0.20588235, 0.41764705, 0.06470587],
-        [0.51764706, 0.41960784, 1],
+        [0, 0, 1], # probability = blue
+        [0, 1, 0], # latency = red
+        [1, 0, 0], # double responses = red    
+        [0.20588235, 0.41764705, 0.06470587], # Reorientation = dark green
+        [0.9, 0.9, 0], # displacement = yellow
+        [1, 0, 1], # duration = magenta
+        [0.51764706, 0.41960784, 1], # bend amplitude = lilac 
+        [0, 0, 0], # compound obend = black
     ]
 
     dtype_to_plot = np.array(list(data.keys()))[components_to_plot]
-
+    col_vec = list(np.array(col_vec)[components_to_plot])
     for col_id, data_type in enumerate(dtype_to_plot):
         if (
             data_type == "Latency_(msec)"
@@ -383,7 +382,7 @@ def plot_cum_diff(
         fish_names[0]
         + ", n = "
         + str(n_treat)
-        + " vs.\n"
+        + " - \n"
         + fish_names[1]
         + ", n = "
         + str(n_cont),
@@ -391,7 +390,7 @@ def plot_cum_diff(
     )
 
     plt.ylabel(
-        "Relative decrease\n in response \n(norm. cumul. mean)", fontsize=axes_fontsize
+        "relative response magnitude\n(norm. cumul. mean difference)", fontsize=axes_fontsize
     )
     plt.xlabel("Stimuli", fontsize=axes_fontsize)
     legend = plt.legend(
@@ -411,14 +410,14 @@ def plot_cum_diff(
 
     plt.savefig(
         remove_brackets_invalid(
-            save_name + "_CumulDiff_" + fish_names[0] + "_vs_" + fish_names[1] + ".png"
+            save_name + "_CumulDiff_" + fish_names[0] + "_minus_" + fish_names[1] + ".png"
         ),
         dpi=100,
         bbox_inches="tight",
     )
     plt.savefig(
         remove_brackets_invalid(
-            save_name + "_CumulDiff_" + fish_names[0] + "_vs_" + fish_names[1] + ".svg"
+            save_name + "_CumulDiff_" +fish_names[0] + "_minus_" + fish_names[1] + ".svg"
         ),
         dpi=100,
         bbox_inches="tight",

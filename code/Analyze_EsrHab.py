@@ -64,7 +64,7 @@ SpeedSmooth = 5
 
 camera_rez = 180 / 2290  # mm/pixel
 
-n_init = 1  # what is used as the 'naive' response to the first n_init stmuli
+n_init = 3  # what is used as the 'naive' response to the first n_init stmuli
 # %% Scan through raw data files and extract responses, etc. Does not need to be run if data has already been analyzed and saved. This will only work if the computer has access to the google sheet with the ROIs via gspread
 # parameters:
 
@@ -610,7 +610,12 @@ def get_rois(group_names, print_finds=True):
 
 
 def plot_bursts_and_epochs(
-    exp_string, group_categories, group_names, col_vec, plot_cumdiff=True
+    exp_string, 
+    group_categories, 
+    group_names, 
+    col_vec, 
+    plot_cumdiff=True,
+    cum_diff_components = np.arange(8)
 ):
     n_groups = group_names.shape[1]
     graph_folder = HabTrackFunctions.make_graph_folder(exp_string, root_dir)
@@ -651,7 +656,7 @@ def plot_bursts_and_epochs(
                     group_categories_comp,
                     plot_rois_comp,
                     exp_string,
-                    components_to_plot=[0, 2, 1, 7, 5, 4, 3, 6],
+                    components_to_plot=cum_diff_components,
                     n_boots=2000,
                     n_norm=n_init,
                 )
@@ -661,7 +666,7 @@ def plot_bursts_and_epochs(
                 group_categories,
                 plot_rois,
                 exp_string,
-                components_to_plot=[0, 2, 1, 7, 5, 4, 3, 6],
+                components_to_plot=cum_diff_components,
                 n_boots=2000,
                 n_norm=n_init,
             )
@@ -673,7 +678,9 @@ plot_bursts_and_epochs(
     group_names,
     col_vec[: group_names.shape[1]],
     plot_cumdiff=True,
+    cum_diff_components = np.arange(8)
 )
+
 
 # %% Esr1
 
@@ -765,7 +772,8 @@ plot_bursts_and_epochs(
     group_categories,
     group_names,
     col_vec[: group_names.shape[1]],
-    plot_cumdiff=False,
+    plot_cumdiff=True,
+    cum_diff_components = [0]
 )
 
 exp_string_esr = exp_string + "_Only Esr Treat"
@@ -775,6 +783,7 @@ plot_bursts_and_epochs(
     np.array(group_names)[:, comp_inds_esr],
     np.array(col_vec)[comp_inds_esr],
     plot_cumdiff=True,
+    cum_diff_components = [0]
 )
 
 # %% Esr2a
@@ -835,7 +844,8 @@ plot_bursts_and_epochs(
     group_categories,
     group_names,
     col_vec[: group_names.shape[1]],
-    plot_cumdiff=False,
+    plot_cumdiff=True,
+    cum_diff_components = [0]
 )
 
 exp_string_esr = exp_string + "_Only Esr Treat"
@@ -845,7 +855,9 @@ plot_bursts_and_epochs(
     np.array(group_names)[:, comp_inds_esr],
     np.array(col_vec)[comp_inds_esr],
     plot_cumdiff=True,
+    cum_diff_components = [0]
 )
+
 
 # %% Esr2b
 
@@ -937,13 +949,13 @@ group_names = np.array(
     ]
 )
 
-
 plot_bursts_and_epochs(
     exp_string,
     group_categories,
     group_names,
     col_vec[: group_names.shape[1]],
-    plot_cumdiff=False,
+    plot_cumdiff=True,
+    cum_diff_components = [0]
 )
 
 exp_string_esr = exp_string + "_Only Esr Treat"
@@ -953,7 +965,9 @@ plot_bursts_and_epochs(
     np.array(group_names)[:, comp_inds_esr],
     np.array(col_vec)[comp_inds_esr],
     plot_cumdiff=True,
+    cum_diff_components = [0]
 )
+
 
 # %% GPER
 exp_string = "GPER1 Mutants"
@@ -1002,7 +1016,8 @@ plot_bursts_and_epochs(
     group_categories,
     group_names,
     col_vec[: group_names.shape[1]],
-    plot_cumdiff=False,
+    plot_cumdiff=True,
+    cum_diff_components = [0]
 )
 
 exp_string_esr = exp_string + "_Only Esr Treat"
@@ -1012,7 +1027,9 @@ plot_bursts_and_epochs(
     np.array(group_names)[:, comp_inds_esr],
     np.array(col_vec)[comp_inds_esr],
     plot_cumdiff=True,
+    cum_diff_components = [0]
 )
+
 
 # %% esr 2a, 2b double mutants
 
@@ -1072,7 +1089,8 @@ plot_bursts_and_epochs(
     group_categories,
     group_names,
     col_vec[: group_names.shape[1]],
-    plot_cumdiff=False,
+    plot_cumdiff=True,
+    cum_diff_components = [0]
 )
 
 exp_string_esr = exp_string + "_Only Esr Treat"
@@ -1082,7 +1100,9 @@ plot_bursts_and_epochs(
     np.array(group_names)[:, comp_inds_esr],
     np.array(col_vec)[comp_inds_esr],
     plot_cumdiff=True,
+    cum_diff_components = [0]
 )
+
 
 # %%  esr1, 2a, 2b triple mutants
 
@@ -1178,7 +1198,8 @@ plot_bursts_and_epochs(
     group_categories,
     group_names,
     col_vec[: group_names.shape[1]],
-    plot_cumdiff=False,
+    plot_cumdiff=True,
+    cum_diff_components = [0]
 )
 
 exp_string_esr = exp_string + "_Only Esr Treat"
@@ -1188,4 +1209,5 @@ plot_bursts_and_epochs(
     np.array(group_names)[:, comp_inds_esr],
     np.array(col_vec)[comp_inds_esr],
     plot_cumdiff=True,
+    cum_diff_components = [0]
 )
