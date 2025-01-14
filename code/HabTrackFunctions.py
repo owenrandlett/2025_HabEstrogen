@@ -7,6 +7,7 @@ from scipy import stats
 import scikit_posthocs as sp
 import seaborn as sns
 import os
+from pylatexenc.latex2text import LatexNodes2Text
 
 
 def make_graph_folder(folder_name, root_dir):
@@ -36,7 +37,7 @@ def ffill_cols(a, startfillval=0):
     return out
 
 
-def remove_brackets_invalid(string, invalid='<>:"/\|?*() '):
+def remove_brackets_invalid(string, invalid=r'<>:"/\|?*() '):
     while "(" in string and ")" in string:
         start = string.index("(")
         end = string.index(")", start) + 1
@@ -44,6 +45,9 @@ def remove_brackets_invalid(string, invalid='<>:"/\|?*() '):
 
     for char in invalid:
         string = string.replace(char, "")
+    
+    # remove any latex-notation stuff
+    string = LatexNodes2Text().latex_to_text(string)
     return string
 
 
@@ -132,7 +136,8 @@ def plot_burst_responses(
 
     # Hardcoded font sizes
     legend_fontsize = 18
-    axes_fontsize = 18
+    y_axis_fontsize = 25
+    x_axis_fontsize = 25
     ticks_fontsize = 14
 
     n_gr = len(fish_names)
@@ -161,8 +166,8 @@ def plot_burst_responses(
 
         data = abs(track_data[dtype])
         plt.figure(figsize=(10, 7))
-        plt.xlabel("time (hr)", fontsize=axes_fontsize)
-        plt.ylabel(y_text[d].replace("_", " "), fontsize=axes_fontsize)
+        plt.xlabel("time (hr)", fontsize=x_axis_fontsize)
+        plt.ylabel(y_text[d].replace("_", " "), fontsize=y_axis_fontsize)
 
         for i in range(n_gr):  # plot the raw dark flash stimuli
             inds_stim = np.ix_((stim_given == 1) | (stim_given == 3))[0]
@@ -277,7 +282,7 @@ def plot_cum_diff(
     components_to_plot=np.arange(8),
     n_norm=3,
     n_boots=2000,
-    ylim=0.3,
+    ylim=0.25,
 ):
     ### calculate cumulative difference relative to controls, as in Randlett et al., Current Biology, 2019. Controls are at 0 index, treatemnt are 1st index. 
     # n_norm will give the number of inital responses to normalize to
@@ -379,18 +384,18 @@ def plot_cum_diff(
         )
 
     plt.title(
-        fish_names[0]
+        fish_names[1]
         + ", n = "
-        + str(n_treat)
-        + " - \n"
-        + fish_names[1]
-        + ", n = "
-        + str(n_cont),
+        + str(n_treat),
         fontsize=axes_fontsize,
     )
 
     plt.ylabel(
-        "relative response magnitude\n(norm. cumul. mean difference)", fontsize=axes_fontsize
+        "Cumulative Mean Difference (norm.)\nvs " 
+        + fish_names[0]
+        + ", n = "
+        + str(n_cont) , 
+        fontsize=axes_fontsize
     )
     plt.xlabel("Stimuli", fontsize=axes_fontsize)
     legend = plt.legend(

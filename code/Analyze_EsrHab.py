@@ -64,7 +64,7 @@ SpeedSmooth = 5
 
 camera_rez = 180 / 2290  # mm/pixel
 
-n_init = 3  # what is used as the 'naive' response to the first n_init stmuli
+n_init = 1  # what is used as the 'naive' response to the first n_init stmuli
 # %% Scan through raw data files and extract responses, etc. Does not need to be run if data has already been analyzed and saved. This will only work if the computer has access to the google sheet with the ROIs via gspread
 # parameters:
 
@@ -546,29 +546,7 @@ col_vec = [  # reorder
     col_vec[2],
 ]
 
-
-# %% effect of estradiol and on habituation
-importlib.reload(HabTrackFunctions)
-exp_string = "Estradiol"
-
-group_categories = ["DMSO", "Estradiol"]
-
-group_names = np.array(
-    [
-        ["DMSO_20220228_plate0", "10 µM beta estradiol_20220228_plate0"],
-        ["DMSO_20220307_plate0", "10 µM estradiol_20220307_plate0"],
-        ["DMSO _20220307_plate1", "10 µM estradiol_20220307_plate1"],
-        ["DMSO_20220308_plate0", "DMSO + 10 µM estradiol_20220308_plate0"],
-        ["DMSO_20220308_plate1", "10 µM estradiol_20220308_plate1"],
-        ["DMSO_20220316_plate1", "10 µM estradiol_20220316_plate1"],
-        ["0.1% DMSO_20220405_plate0", "10 µM estradiol_20220405_plate1"],
-        ["0.1% DMSO_20220412_plate1", "10 µM estradiol_20220412_plate1"],
-        ["0.1% DMSO_20220413_plate0", "10 µM estradiol_20220413_plate0"],
-        ["0.1% DMSO_20220414_plate1", "0.1% DMSO + 10 µM estradiol_20220414_plate1"],
-        ["0.1% DMSO_20220504_plate0", "10 µM estradiol_20220504_plate0"],
-    ]
-)
-
+# define functions
 
 def get_group_indexes(search_names, names_list, print_finds=True):
     indexes = []
@@ -672,15 +650,49 @@ def plot_bursts_and_epochs(
             )
 
 
+# %% effect of estradiol and on habituation
+importlib.reload(HabTrackFunctions)
+exp_string = "Estradiol"
+
+group_categories = ["DMSO", "Estradiol"]
+
+group_names = np.array(
+    [
+        ["DMSO_20220228_plate0", "10 µM beta estradiol_20220228_plate0"],
+        ["DMSO_20220307_plate0", "10 µM estradiol_20220307_plate0"],
+        ["DMSO _20220307_plate1", "10 µM estradiol_20220307_plate1"],
+        ["DMSO_20220308_plate0", "DMSO + 10 µM estradiol_20220308_plate0"],
+        ["DMSO_20220308_plate1", "10 µM estradiol_20220308_plate1"],
+        ["DMSO_20220316_plate1", "10 µM estradiol_20220316_plate1"],
+        ["0.1% DMSO_20220405_plate0", "10 µM estradiol_20220405_plate1"],
+        ["0.1% DMSO_20220412_plate1", "10 µM estradiol_20220412_plate1"],
+        ["0.1% DMSO_20220413_plate0", "10 µM estradiol_20220413_plate0"],
+        ["0.1% DMSO_20220414_plate1", "0.1% DMSO + 10 µM estradiol_20220414_plate1"],
+        ["0.1% DMSO_20220504_plate0", "10 µM estradiol_20220504_plate0"],
+    ]
+)
+
+
+
 plot_bursts_and_epochs(
     exp_string,
     group_categories,
     group_names,
     col_vec[: group_names.shape[1]],
     plot_cumdiff=True,
-    cum_diff_components = np.arange(8)
+    cum_diff_components = [0]
 )
 
+exp_string_all = exp_string + "_CumDiff_AllComponents"
+
+plot_bursts_and_epochs(
+    exp_string_all,
+    group_categories,
+    group_names,
+    col_vec[: group_names.shape[1]],
+    plot_cumdiff=True,
+    cum_diff_components = np.arange(8)
+)
 
 # %% Esr1
 
@@ -785,6 +797,7 @@ plot_bursts_and_epochs(
     plot_cumdiff=True,
     cum_diff_components = [0]
 )
+
 
 # %% Esr2a
 
@@ -1160,7 +1173,9 @@ plot_bursts_and_epochs(
     plot_cumdiff=True,
 )
 
-# %%
+# %% gper, esr1, esr2a, esr2b quadruple mutants
+
+
 
 exp_string = "Gper1;Esr1;Esr2a;Esr2b Mutants"
 group_categories = [
@@ -1211,3 +1226,5 @@ plot_bursts_and_epochs(
     plot_cumdiff=True,
     cum_diff_components = [0]
 )
+
+
