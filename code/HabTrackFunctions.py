@@ -444,7 +444,7 @@ def plot_means_epoch(
     save_str,
     col_vec,
     components_to_plot=np.arange(8),
-    ylim_all_same=False,
+    ylim_all_same=True,
 ):
 
     n_gr = len(fish_ids)
@@ -476,7 +476,7 @@ def plot_means_epoch(
         df_epoch_responses = pd.DataFrame(epoch_response_per_fish, columns=epoch_names)
         df_epoch_responses["Group"] = group_labels
 
-        plt.figure(figsize=(14, 8))
+        plt.figure(figsize=(10, 8))
 
         # Function to add significance annotations
         def add_significance(ax, x1, x2, y, p_val, h=0.02):
@@ -496,12 +496,12 @@ def plot_means_epoch(
                 ha="center",
                 va="bottom",
                 color="k",
-                fontsize=10,
+                fontsize=14,
             )
 
         # Loop through each epoch and create a strip plot with half violin plot
         for i, epoch in enumerate(epoch_names):
-            ax = plt.subplot(3, 3, i + 1)  # Adjust the grid size as needed
+            ax = plt.subplot(2,2, i + 1)  # Adjust the grid size as needed
 
             # Drop NaN values for the current epoch
             df_epoch_nonan = df_epoch_responses[["Group", epoch]].dropna()
@@ -624,7 +624,7 @@ def plot_means_epoch(
                     )
                 k += 1
             plt.title(epoch, fontsize=16)
-            plt.ylabel(dtype.replace("_", " "), fontsize=12)
+            plt.ylabel(dtype.replace("_", " "), fontsize=16)
             plt.xlabel("")  # Remove the x-axis label
             plt.xticks(rotation=7)
             # Remove top and right spines

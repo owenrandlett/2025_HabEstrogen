@@ -64,7 +64,7 @@ SpeedSmooth = 5
 
 camera_rez = 180 / 2290  # mm/pixel
 
-n_init = 1  # what is used as the 'naive' response to the first n_init stmuli
+n_init = 5  # what is used as the 'naive' response to the first n_init stmuli
 # %% Scan through raw data files and extract responses, etc. Does not need to be run if data has already been analyzed and saved. This will only work if the computer has access to the google sheet with the ROIs via gspread
 # parameters:
 
@@ -516,22 +516,22 @@ combined_names = combined_data_ids["Name_ExperimentDate_Plate"].values
 stim_epochs = [
     np.arange(0, n_init),
     np.arange(n_init, n_stim_blocks),
-    np.arange(n_stim_blocks, n_stim_blocks * 2),
-    np.arange(n_stim_blocks * 2, n_stim_blocks * 3),
-    np.arange(n_stim_blocks * 3, n_stim_blocks * 4),
+    #np.arange(n_stim_blocks, n_stim_blocks * 2),
+    #np.arange(n_stim_blocks * 2, n_stim_blocks * 3),
+    #np.arange(n_stim_blocks * 3, n_stim_blocks * 4),
     np.arange(n_init, n_stim_blocks * 4),
-    np.arange(n_stim_blocks * 4),
+    #np.arange(n_stim_blocks * 4),
     np.where(track_data_combined["stim_given"] == 2)[0],
 ]
 
 epoch_names = [
     "Naive Response (first " + str(n_init) + " stim.)",
     "Block 1",
-    "Block 2",
-    "Block 3",
-    "Block 4",
+    #"Block 2",
+    #"Block 3",
+    #"Block 4",
     "Trained Response",
-    "All DF Responses",
+    #"All DF Responses",
     "Acoustic Responses",
 ]
 # %
@@ -1156,12 +1156,14 @@ group_names = np.array(
     ]
 )
 
+
 plot_bursts_and_epochs(
     exp_string,
     group_categories,
     group_names,
     col_vec[: group_names.shape[1]],
-    plot_cumdiff=False,
+    plot_cumdiff=True,
+    cum_diff_components = [0]
 )
 
 exp_string_esr = exp_string + "_Only Esr Treat"
@@ -1171,6 +1173,111 @@ plot_bursts_and_epochs(
     np.array(group_names)[:, comp_inds_esr],
     np.array(col_vec)[comp_inds_esr],
     plot_cumdiff=True,
+    cum_diff_components = [0]
+)
+
+#%% gper, esr2a, esr2b triple mutants:
+
+exp_string = "Gper1;Esr2a;Esr2b Mutants"
+group_categories = [
+    r"DMSO, $\it{esr2a^{+/?};esr2b^{+/?};gper1^{+/?}}$",
+    r"Estradiol, $\it{esr2a^{+/?};esr2b^{+/?};gper1^{+/?}}$",
+    r"DMSO, $\it{esr2a^{-/-};esr2b^{-/-};gper1^{-/-}}$",
+    r"Estradiol, $\it{esr2a^{-/-};esr2b^{-/-};gper1^{-/-}}$",
+]
+
+group_names = np.array(
+    [
+[
+    "DMSO+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate0",
+    "ESTR+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate0",
+    "DMSO+(' -/-', ' +/?', ' -/-', ' -/-') : (gper,esr1,esr2b,esr2a)_20240715_plate0",
+    "ESTR+(' -/-', ' +/?', ' -/-', ' -/-') : (gper,esr1,esr2b,esr2a)_20240715_plate0",
+],
+[
+    "DMSO+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate1",
+    "ESTR+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate1",
+    "DMSO+(' -/-', ' +/?', ' -/-', ' -/-') : (gper,esr1,esr2b,esr2a)_20240715_plate1",
+    "ESTR+(' -/-', ' +/?', ' -/-', ' -/-') : (gper,esr1,esr2b,esr2a)_20240715_plate1",
+],
+[
+    "DMSO+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240716_plate1",
+    "ESTR+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240716_plate1",
+    "DMSO+(' -/-', ' +/?', ' -/-', ' -/-') : (gper,esr1,esr2b,esr2a)_20240716_plate1",
+    "ESTR+(' -/-', ' +/?', ' -/-', ' -/-') : (gper,esr1,esr2b,esr2a)_20240716_plate1",
+],
+    ]
+)
+
+plot_bursts_and_epochs(
+    exp_string,
+    group_categories,
+    group_names,
+    col_vec[: group_names.shape[1]],
+    plot_cumdiff=True,
+    cum_diff_components = [0]
+)
+
+exp_string_esr = exp_string + "_Only Esr Treat"
+plot_bursts_and_epochs(
+    exp_string_esr,
+    np.array(group_categories)[comp_inds_esr],
+    np.array(group_names)[:, comp_inds_esr],
+    np.array(col_vec)[comp_inds_esr],
+    plot_cumdiff=True,
+    cum_diff_components = [0]
+)
+
+#%% gper, esr1 double mutants
+
+exp_string = "Gper1;Esr1 Mutants"
+group_categories = [
+    r"DMSO, $\it{esr1^{+/?};gper1^{+/?}}$",
+    r"Estradiol, $\it{esr1^{+/?};gper1^{+/?}}$",
+    r"DMSO, $\it{esr1^{-/-};gper1^{-/-}}$",
+    r"Estradiol, $\it{esr1^{-/-};gper1^{-/-}}$",
+]
+
+group_names = np.array(
+    [
+[
+    "DMSO+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate0",
+    "ESTR+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate0",
+    "DMSO+(' -/-', ' -/-', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate0",
+    "ESTR+(' -/-', ' -/-', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate0",
+],
+[
+    "DMSO+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate1",
+    "ESTR+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate1",
+    "DMSO+(' -/-', ' -/-', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate1",
+    "ESTR+(' -/-', ' -/-', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240715_plate1",
+],
+[
+    "DMSO+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240716_plate1",
+    "ESTR+(' +/?', ' +/?', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240716_plate1",
+    "DMSO+(' -/-', ' -/-', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240716_plate1",
+    "ESTR+(' -/-', ' -/-', ' +/?', ' +/?') : (gper,esr1,esr2b,esr2a)_20240716_plate1",
+],
+    ]
+)
+
+plot_bursts_and_epochs(
+    exp_string,
+    group_categories,
+    group_names,
+    col_vec[: group_names.shape[1]],
+    plot_cumdiff=True,
+    cum_diff_components = [0]
+)
+
+exp_string_esr = exp_string + "_Only Esr Treat"
+plot_bursts_and_epochs(
+    exp_string_esr,
+    np.array(group_categories)[comp_inds_esr],
+    np.array(group_names)[:, comp_inds_esr],
+    np.array(col_vec)[comp_inds_esr],
+    plot_cumdiff=True,
+    cum_diff_components = [0]
 )
 
 # %% gper, esr1, esr2a, esr2b quadruple mutants
