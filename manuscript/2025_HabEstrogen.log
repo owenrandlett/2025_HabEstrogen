@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.17)  14 JAN 2025 16:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.17)  15 JAN 2025 13:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1450,29 +1450,29 @@ File: LGRopensans-TLF.fd 2019/06/24 Font definitions for LGR/opensans-TLF.
 )
 LaTeX Font Info:    Font shape `LGR/opensans-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 180.
-<figures/EstradiolEffect.png, id=118, 320.51746pt x 160.31895pt>
+<figures/EstradiolEffect.png, id=118, 298.9569pt x 167.9073pt>
 File: figures/EstradiolEffect.png Graphic file (type png)
 <use figures/EstradiolEffect.png>
 Package pdftex.def Info: figures/EstradiolEffect.png  used on input line 190.
-(pdftex.def)             Requested size: 507.8942pt x 254.05458pt.
+(pdftex.def)             Requested size: 507.8942pt x 285.27208pt.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/n' will be
 (Font)              scaled to size 8.0pt on input line 198.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/it' will be
 (Font)              scaled to size 8.0pt on input line 198.
 LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
 (Font)              scaled to size 8.0pt on input line 198.
+ (./2025_HabEstrogen.bbl
 
+[3{c:/texlive/2024/texmf-dist/fonts/enc/dvips/opensans/a_uv4o4i.enc}]
 
-[3{c:/texlive/2024/texmf-dist/fonts/enc/dvips/opensans/a_uv4o4i.enc} <./figures/EstradiolEffect.png>] (./2025_HabEstrogen.bbl
+[4 <./figures/EstradiolEffect.png>]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+) (./2025_HabEstrogen.suppinfo)
 
-
-[4{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]) (./2025_HabEstrogen.suppinfo)
-
-[5] 
+[5{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./2025_HabEstrogen.aux)
  ***********
@@ -1489,13 +1489,13 @@ Package rerunfilecheck Info: File `2025_HabEstrogen.out' has not changed.
 Here is how much of TeX's memory you used:
  30105 strings out of 473330
  553888 string characters out of 5723877
- 1061577 words of memory out of 5000000
+ 1061321 words of memory out of 5000000
  52768 multiletter control sequences out of 15000+600000
  621281 words of font info for 166 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 91i,11n,131p,2711b,1340s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 91i,11n,131p,2711b,1330s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/ascender/opensans/OpenSans-Bold.pfb><c:/texlive/2024/texmf-dist/fonts/type1/ascender/opensans/OpenSans-BoldItalic.pfb><c:/texlive/2024/texmf-dist/fonts/type1/ascender/opensans/OpenSans-Italic.pfb><c:/texlive/2024/texmf-dist/fonts/type1/ascender/opensans/OpenSans-Regular.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/stix/stix-mathit.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb>
-Output written on 2025_HabEstrogen.pdf (5 pages, 1116746 bytes).
+Output written on 2025_HabEstrogen.pdf (5 pages, 1030959 bytes).
 PDF statistics:
  220 PDF objects out of 1000 (max. 8388607)
  193 compressed objects within 2 object streams
