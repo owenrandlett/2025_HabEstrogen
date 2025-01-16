@@ -389,17 +389,13 @@ def plot_cum_diff(
         )
 
     plt.title(
-        fish_names[1]
-        + ", n = "
-        + str(n_treat),
+        fish_names[1],
         fontsize=axes_fontsize,
     )
 
     plt.ylabel(
-        "Cumulative Mean Difference (norm.)\nvs " 
-        + fish_names[0]
-        + ", n = "
-        + str(n_cont) , 
+        "Cumulative Mean Difference \n(norm.) vs. " 
+        + fish_names[0], 
         fontsize=axes_fontsize
     )
     plt.xlabel("Stimuli", fontsize=axes_fontsize)
@@ -623,10 +619,10 @@ def plot_means_epoch(
                         dunn_results.loc[group1, group2],
                     )
                 k += 1
-            plt.title(epoch, fontsize=16)
+            plt.title(epoch, fontsize=19, weight='bold', pad=-20)
             plt.ylabel(dtype.replace("_", " "), fontsize=16)
             plt.xlabel("")  # Remove the x-axis label
-            plt.xticks(rotation=7)
+            plt.xticks(rotation=9, fontsize=12, weight='bold')
             # Remove top and right spines
             ax.spines["top"].set_visible(False)
             ax.spines["right"].set_visible(False)
@@ -644,6 +640,7 @@ def plot_means_epoch(
             # ax.set_xlim(x_min, x_max)
             
         plt.tight_layout()
+        plt.subplots_adjust(wspace=0.4, hspace=0.3)
         plt.savefig(
             remove_brackets_invalid(save_str + "_" + dtype + "_Epochs.png"),
             dpi=100,
