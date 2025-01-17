@@ -192,7 +192,6 @@ asdfadffffffffffffffffffffasdfasdfasfd
 
 Data was analzed in python using custom written analysis scripts, available on \href{https://github.com/owenrandlett/2025\_HabEstrogen}{github}. 
 
-
 \newpage
 \section{Results and Discussion}
 
@@ -218,18 +217,22 @@ Data was analzed in python using custom written analysis scripts, available on \
 \end{fullwidth}
 \end{figure}
 
-
 In response to a sudden global dimming event, which we refer to as a dark flash (DF), larval zebrafish execute an "O-bend" maneuver, characterized by a deep "O"-shaped bend and a high-amplitude turn \citep{Burgess2007}. 
 Habituation learning manifests as a progressive reduction in response to repeated stimuli, and this learning can be retained for seconds/minutes or hours/days for short- and long-term habituation, respectively \citep{Rankin2009-no}. 
 We use high-speed cameras, machine-vision analysis, and 300-well plates to quantify habituation across large populations of larvae to identify molecular/genetic mechanisms of long-term habituation({\autoref{fig:1}A,B, \citealp{Randlett2019-fj,Lamire2023-he}). 
 When stimulated with DFs repeated at 1-minute intervals in repeated blocks of 60 stimuli, larval zebrafish exhibit long-term habituation, reducing not only the probability of executing a response, but also modulating the latency and other kinematic aspects of the response \citep{Randlett2019-fj}.  
 
+
 Our previous small-molecule screening experiments identified multiple synthetic Estrogen Receptor agonists as positive modulators of dark-flash habituation learning, including ethinyl estradiol, estradiol valerate, and hexestrol  \citep{Lamire2023-he}. 
 The major effect we observed was a stronger decrease in the probability of executing a O-bend response during the training/learning blocks. 
 We have confirmed and extended these results using \textbeta-Estradiol (estradiol), which is the major natural estrogen in humans. 
+
+
+
 An acute dose of 10\textmu M estradiol potently increases habituation learning, which is observable when the response probability of the population of estradiol-treated larvae is compared with DMSO-treated vehicle controls across stimuli (\autoref{fig:1}C-H).
 Consistent with our previous experiments \citep{Lamire2023-he}, there is a modest reduction in the initial responsiveness of the estradiol-treated larvae to the first DF stimulus (\autoref{fig:1}D), but the major effect is observed during the training phase (\autoref{fig:1}C,E,F), as is revealed by the consistent positive deviation in the cumulative mean difference plot (\autoref{fig:1}H, \citealp{Randlett2019-fj}).
 Importantly, the responsiveness of the larvae to acoustic stimuli delivered after the DF training is indistinguishable from controls (\autoref{fig:1}Ci, G), indicating that estradiol does not affect global arousal levels but rather has specific effects on habituation learning. 
+
 
 
 \subsection{Membrane-initiated estradiol signaling via Gper1 does not increase habituation learning}
@@ -239,7 +242,7 @@ Importantly, the responsiveness of the larvae to acoustic stimuli delivered afte
 \begin{center}
 \includegraphics[width=0.95\linewidth]{figures/gper1Mutants.png}
 \caption{\textbf{\emph{gper1} mutants do not show habituation deficits after treatment with estradiol.}
-\\ \textbf{A)} Homozygous \emph{gper1\textsuperscript{(-/-)}} mutants do not show impaired habituation relative to sibling controls (\emph{gper1\textsuperscript{(+/-)}} and \emph{gper1\textsuperscript{(+/+)}}). Rather, there is a slight suppression of responsiveness in the mutant group, indicating weakly increased habituation. 
+\\ \textbf{A)} Homozygous \emph{gper1\textsuperscript{(-/-)}} mutants do not show impaired habituation relative to sibling controls (\emph{gper1\textsuperscript{(+/-)}} and \emph{gper1\textsuperscript{(+/+)}}). Rather, there is a slight suppression of responsiveness in the mutant group (arrows), indicating weakly increased habituation. 
 \\ \textbf{B-E)} No significant differences are observed in the responsiveness distributions for the naive response to the first 5 DF stimuli (\textbf{B}), during the first training block (\textbf{C}), or the acoustic response (\textbf{E}), while a subtle but statistically significant decrease in responsiveness is observed in the trained response (\textbf{D}). Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05.
 \\ \textbf{F)} Cumulative mean difference plot quantifying relative habituation performance in  after estradiol treatment, consistent with slightly increased habituation rate in mutant larvae. 
 }
@@ -298,7 +301,7 @@ Since we found the \emph{gper} was unnecessary for the positive effects of estra
 \begin{figure}
 \begin{fullwidth}
 \begin{center}
-\includegraphics[width=0.95\linewidth]{figures/gper1andNuclearMutants.png}
+\includegraphics[width=0.8\linewidth]{figures/gper1andNuclearMutants.png}
 \caption{ \textbf{Double and triple and quaruple mutant combinations of \emph{esr1}, \emph{esr2a}, \emph{esr2a}, and \emph{gper1} do not show habituation deficits after treatment with estradiol.}
 \\ \textbf{A)} Homozygous \emph{esr1\textsuperscript{(-/-)}} mutants do not show impaired habituation relative to sibling het/wt controls. 
 }
@@ -315,8 +318,7 @@ This work was supported by funding from the ATIP-Avenir program of the CNRS and 
 
 \section{Data Availability}
 
-Software and analysis code is available here:  \href{https://github.com/owenrandlett/2025_HabEstrogen}{https://github.com/owenrandlett/2025\_HabEstrogen}. Datasets are available here: .
+Software and analysis code is available here:  \href{https://github.com/owenrandlett/2025_HabEstrogen}{https://github.com/owenrandlett/2025\_HabEstrogen}. Datasets are available here:.
 
 \bibliography{References_HabEstrogen}
-
 \end{document}

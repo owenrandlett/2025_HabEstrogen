@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.17)  16 JAN 2025 16:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.17)  16 JAN 2025 17:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1456,14 +1456,14 @@ LaTeX Font Info:    Font shape `LGR/opensans-TLF/m/n' will be
 <figures/EstradiolEffect.png, id=139, 358.4592pt x 209.46255pt>
 File: figures/EstradiolEffect.png Graphic file (type png)
 <use figures/EstradiolEffect.png>
-Package pdftex.def Info: figures/EstradiolEffect.png  used on input line 205.
+Package pdftex.def Info: figures/EstradiolEffect.png  used on input line 204.
 (pdftex.def)             Requested size: 400.9704pt x 234.31519pt.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 213.
+(Font)              scaled to size 8.0pt on input line 212.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/it' will be
-(Font)              scaled to size 8.0pt on input line 213.
+(Font)              scaled to size 8.0pt on input line 212.
 LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 213.
+(Font)              scaled to size 8.0pt on input line 212.
 
 Overfull \vbox (0.28133pt too high) has occurred while \output is active []
 
@@ -1473,10 +1473,10 @@ Overfull \vbox (0.28133pt too high) has occurred while \output is active []
 <figures/gper1Mutants.png, id=175, 502.7583pt x 118.5228pt>
 File: figures/gper1Mutants.png Graphic file (type png)
 <use figures/gper1Mutants.png>
-Package pdftex.def Info: figures/gper1Mutants.png  used on input line 240.
+Package pdftex.def Info: figures/gper1Mutants.png  used on input line 243.
 (pdftex.def)             Requested size: 507.8942pt x 119.73419pt.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 245.
+(Font)              scaled to size 8.0pt on input line 248.
 
 Overfull \vbox (1.84189pt too high) has occurred while \output is active []
 
@@ -1486,22 +1486,18 @@ Overfull \vbox (1.84189pt too high) has occurred while \output is active []
 <figures/NuclearSingleMutants.png, id=191, 499.02435pt x 388.0899pt>
 File: figures/NuclearSingleMutants.png Graphic file (type png)
 <use figures/NuclearSingleMutants.png>
-Package pdftex.def Info: figures/NuclearSingleMutants.png  used on input line 269.
+Package pdftex.def Info: figures/NuclearSingleMutants.png  used on input line 272.
 (pdftex.def)             Requested size: 507.8942pt x 395.00555pt.
 <figures/NuclearDoubleAndTripleMutants.png, id=195, 512.75565pt x 513.71925pt>
 File: figures/NuclearDoubleAndTripleMutants.png Graphic file (type png)
 <use figures/NuclearDoubleAndTripleMutants.png>
-Package pdftex.def Info: figures/NuclearDoubleAndTripleMutants.png  used on input line 286.
+Package pdftex.def Info: figures/NuclearDoubleAndTripleMutants.png  used on input line 289.
 (pdftex.def)             Requested size: 507.8942pt x 508.85014pt.
 <figures/gper1andNuclearMutants.png, id=196, 504.56505pt x 652.95946pt>
 File: figures/gper1andNuclearMutants.png Graphic file (type png)
 <use figures/gper1andNuclearMutants.png>
-Package pdftex.def Info: figures/gper1andNuclearMutants.png  used on input line 301.
-(pdftex.def)             Requested size: 507.8942pt x 657.26201pt.
-
-
-LaTeX Warning: Float too large for page by 34.72931pt on input line 308.
-
+Package pdftex.def Info: figures/gper1andNuclearMutants.png  used on input line 304.
+(pdftex.def)             Requested size: 427.70338pt x 553.49376pt.
 
 
 [6 <./figures/NuclearSingleMutants.png>]
@@ -1527,18 +1523,18 @@ Package rerunfilecheck Info: File `2025_HabEstrogen.out' has not changed.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 224 ({)
+### simple group (level 1) entered at line 222 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 30163 strings out of 473330
- 555404 string characters out of 5723877
- 1067524 words of memory out of 5000000
- 52808 multiletter control sequences out of 15000+600000
+ 30162 strings out of 473330
+ 555385 string characters out of 5723877
+ 1067533 words of memory out of 5000000
+ 52807 multiletter control sequences out of 15000+600000
  622575 words of font info for 169 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  91i,12n,131p,2711b,1205s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/ascender/opensans/OpenSans-Bold.pfb><c:/texlive/2024/texmf-dist/fonts/type1/ascender/opensans/OpenSans-BoldItalic.pfb><c:/texlive/2024/texmf-dist/fonts/type1/ascender/opensans/OpenSans-Italic.pfb><c:/texlive/2024/texmf-dist/fonts/type1/ascender/opensans/OpenSans-Regular.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/stix/stix-mathit.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb>
-Output written on 2025_HabEstrogen.pdf (9 pages, 8298638 bytes).
+Output written on 2025_HabEstrogen.pdf (9 pages, 8423558 bytes).
 PDF statistics:
  288 PDF objects out of 1000 (max. 8388607)
  248 compressed objects within 3 object streams
