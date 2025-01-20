@@ -1,4 +1,4 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\urlprefix}{}
 \providecommand{\doiprefix}{doi: }
@@ -24,6 +24,11 @@
 \newblock Melatonin regulates neuronal plasticity in the hippocampus.
 \newblock J Neurosci Res.  2003 May; 72(4):454--460.
 
+\bibitem[{Filardo et~al.(2000)Filardo, E J and Quinn, J A and Bland, K I and Frackelton, Jr, A R}]{Filardo2000-yz}
+\textbf{\color{eLifeMediumGrey} Filardo EJ}, Quinn JA, Bland KI, Frackelton AR Jr.
+\newblock Estrogen-induced activation of Erk-1 and Erk-2 requires the {G} protein-coupled receptor homolog, {GPR30}, and occurs via trans-activation of the epidermal growth factor receptor through release of {HB-EGF}.
+\newblock Mol Endocrinol.  2000 Oct; 14(10):1649--1660.
+
 \bibitem[{Jilg et~al.(2019)Jilg, Antje and Bechstein, Philipp and Saade, Anastasia and Dick, Moritz and Li, Tian Xiao and Tosini, Gianluca and Rami, Abdelhaq and Zemmar, Ajmal and Stehle, J{\"o}rg H}]{Jilg2019-oy}
 \textbf{\color{eLifeMediumGrey} Jilg A}, Bechstein P, Saade A, Dick M, Li TX, Tosini G, Rami A, Zemmar A, Stehle JH.
 \newblock Melatonin modulates daytime-dependent synaptic plasticity and learning efficiency.
@@ -34,6 +39,11 @@
 \newblock Functional and pharmacological analyses of visual habituation learning in larval zebrafish.
 \newblock Elife.  2023 Dec; 12.
 
+\bibitem[{Menuet et~al.(2002)Menuet, Arnaud and Pellegrini, Elisabeth and Anglade, Isabelle and Blaise, Odile and Laudet, Vincent and Kah, Olivier and Pakdel, Farzad}]{Menuet2002-fo}
+\textbf{\color{eLifeMediumGrey} Menuet A}, Pellegrini E, Anglade I, Blaise O, Laudet V, Kah O, Pakdel F.
+\newblock Molecular characterization of three estrogen receptor forms in zebrafish: Binding characteristics, transactivation properties, and tissue Distributions1.
+\newblock Biol Reprod.  2002 Jun; 66(6):1881--1892.
+
 \bibitem[{Naderi et~al.(2020)Naderi, Mohammad and Salahinejad, Arash and Attaran, Anoosha and Niyogi, Som and Chivers, Douglas P}]{Naderi2020-ot}
 \textbf{\color{eLifeMediumGrey} Naderi M}, Salahinejad A, Attaran A, Niyogi S, Chivers DP.
 \newblock Rapid effects of estradiol and its receptor agonists on object recognition and object placement in adult male zebrafish.
@@ -43,6 +53,11 @@
 \textbf{\color{eLifeMediumGrey} Nilsson S}, Gustafsson JA.
 \newblock Biological role of estrogen and estrogen receptors.
 \newblock Crit Rev Biochem Mol Biol.  2002; 37(1):1--28.
+
+\bibitem[{Prossnitz and Barton(2023)Prossnitz, Eric R and Barton, Matthias}]{Prossnitz2023-uo}
+\textbf{\color{eLifeMediumGrey} Prossnitz ER}, Barton M.
+\newblock The {G} protein-coupled oestrogen receptor {GPER} in health and disease: an update.
+\newblock Nat Rev Endocrinol.  2023 Jul; 19(7):407--424.
 
 \bibitem[{Randlett et~al.(2019)Randlett, Owen and Haesemeyer, Martin and Forkin, Greg and Shoenhard, Hannah and Schier, Alexander F and Engert, Florian and Granato, Michael}]{Randlett2019-fj}
 \textbf{\color{eLifeMediumGrey} Randlett O}, Haesemeyer M, Forkin G, Shoenhard H, Schier AF, Engert F, Granato M.
@@ -58,6 +73,11 @@
 \textbf{\color{eLifeMediumGrey} Rawashdeh O}, de~Borsetti NH, Roman G, Cahill GM.
 \newblock Melatonin suppresses nighttime memory formation in zebrafish.
 \newblock Science.  2007 Nov; 318(5853):1144--1146.
+
+\bibitem[{Revankar et~al.(2005)Revankar, Chetana M and Cimino, Daniel F and Sklar, Larry A and Arterburn, Jeffrey B and Prossnitz, Eric R}]{Revankar2005-ww}
+\textbf{\color{eLifeMediumGrey} Revankar CM}, Cimino DF, Sklar LA, Arterburn JB, Prossnitz ER.
+\newblock A transmembrane intracellular estrogen receptor mediates rapid cell signaling.
+\newblock Science.  2005 Mar; 307(5715):1625--1630.
 
 \bibitem[{Romano et~al.(2017)Romano, Shannon N and Edwards, Hailey E and Souder, Jaclyn Paige and Ryan, Kevin J and Cui, Xiangqin and Gorelick, Daniel A}]{Romano2017-ep}
 \textbf{\color{eLifeMediumGrey} Romano SN}, Edwards HE, Souder JP, Ryan KJ, Cui X, Gorelick DA.

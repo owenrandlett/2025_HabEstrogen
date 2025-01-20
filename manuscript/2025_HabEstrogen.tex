@@ -11,6 +11,7 @@
 \usepackage{cancel}
 \usepackage{xcolor}
 \usepackage{textgreek}
+\usepackage{soul} 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -113,26 +114,30 @@ Therefore, our data indicate that the positive effects of estradiol on habituati
 
 \section{Introduction}
 
-A primary task of the brain is to learn from ongoing experiences and adjust behavior accordingly. 
-This often involves sharpening attention and behavioural resources toward salient cues while tuning out irrelevant background stimuli. 
-For instance, it may be critical to recognize the alarm calls of a nearby animal, whereas continually registering a steady hum from distant traffic is far less important. 
-The capacity to reduce responses to repetitive, non-essential stimuli is known as habituation, a phenomenon widely considered one of the simplest forms of learning and memory \citep{Rankin2009-no}. 
+A primary task of the brain is to learn from ongoing experiences and adjust behavior according to experience. 
+This involves sharpening attention and behavioural resources toward salient cues while tuning out irrelevant background stimuli. 
+For instance, it may be critical to recognize the alarm calls of a nearby animal, whereas continually registering the steady hum from distant traffic is far less important. 
+The capacity to reduce responses to repetitive, non-essential stimuli is known as habituation, which is considered the simplest form of learning and memory \citep{Rankin2009-no}. 
 
 We have been studying a paradigm for long-term habituation where larval zebrafish reduce their responsiveness to sudden pulses of whole-field darkness, or dark flashes (DFs) \citep{wolman_chemical_2011, Randlett2019-fj, Lamire2023-he}. 
-In this analysis, we emphasize long-term habituation as a practical model for examining the fundamental processes that shape neural circuit plasticity.
 We recently reported that multiple hormonal signaling pathways show strong modulation of habituation learning performance, including Melatonin, progesterone, and estrogen \citep{Lamire2023-he}. 
 The ability of these signaling pathways to modulate learning is consistent with previous results in other systems and paradigms \citep{Nilsson2002-as, Naderi2020-ot, Dillon2013-rk, Rawashdeh2007-bw, Jilg2019-oy, El-Sherif2003-vt, Barros2015-jm}, and may be an important mechanism to shift learning and memory performance or strategies based on biological rhythms or external fluctuations like seasons, weather or the day/night cycle.
 
-In this project we have focused on the Estrogen Receptors (ERs), since we identified multiple estradiol analogs (ethinyl estradiol, estradiol valerate, and hexestrol), which strongly increased habituation learning when applied at 5-10\textmu M doses in the water \citep{Lamire2023-he}.
+In this project we have focused on the Estrogen Receptors (ERs), as we identified multiple estradiol analogs which strongly increased habituation learning when added at 5-10\textmu M doses in the water (ethinyl estradiol, estradiol valerate, and hexestrol, \citealp{Lamire2023-he}).
 Estradiol is the most potent and biologically active form of estrogen, and is used in a variety of clinical contexts including contraception, hormone replacement therapy and gender-affirming therapy.  
 
+\hl{Estrogen signaling in learning and memory, any data about receptors. asdfdffffffffffffffffffffffffffffasdfasdfasdfasdfasdfasdfasdfafd}
+
+Estrogen signaling is mediated by two types of ERs: the ligand-activated transcription factors ERα, and ERβ, and the seven-transmembrane G-protein coupled receptor GPER1.
+ERα/β are thought to mediate the long-term genomic effects of estrogens through transcriptional activation of target genes, and thus are typically termed nuclear ERs.
+Gper1 is thought to mediate acute Estrogen-dependent signaling -- often called "non-genomic", or "membrane-initiated", and does so via multiple G-proteins and epidermal
+growth factor (EGF) receptor transactivation, thus impacting multiple second-messenger systems including adenylyl cyclase, ERK, PI3K-Akt, and nitric oxide synthase \citep{Prossnitz2023-uo, Revankar2005-ww, Filardo2000-yz}. 
 
 
-Estrogen signaling in learning and memory, any data about receptors. 
-
-In this project we aimed to identify the relevant estrogen receptor mediating the effects of estradiol analogs on habituation learning by undertaking a classical analysis of genetic knockout alleles. 
-Not only did we fail to identify a mutant (or combination of mutants) that lead to estradiol insensitivity, leading us to conclude that these receptors act to inhibit habituation learning, rather than mediating the habituation-promoting effects of Estradiols in the zebrafish brain. 
-estrogne receptor mutants that show increased sensitivity to estradiol in the habituation paradigm. 
+In this project we aimed to identify the relevant estrogen receptor mediating the effects of estradiol analogs on habituation learning by undertaking a classical analysis of genetic knockout alleles.
+Zebrafish have single gene encoding ERα (\emph{esr1}) and GPER1 (\emph{gper1}), and two homologs of ERβ : ERβ1 (\emph{esr2a}) and ERβ2 (\emph{esr2a})  \citep{Romano2017-ep, Menuet2002-fo}.  
+We found that none of these mutants were insensitive to estradiol's effects on habituation learning, leading us to conclude that these effects are mediated by a different receptor or target of estradiol. 
+Paradoxically, our data suggest that mutants for \emph{esr1}, \emph{esr2a}, and \emph{gper1} habituate more strongly than sibling controls, although the effect size is relatively small and quite variable. Nevertheless, these data indicate that these receptors actually act to inhibit habituation learning, rather than mediating the habituation-promoting effects of Estradiols in the zebrafish brain. 
 
 
 %\newpage
@@ -254,7 +259,7 @@ Importantly, the responsiveness of the larvae to acoustic stimuli delivered afte
 
 The effects of estradiol we have observed occur very rapidly -- larvae are only pretreated with estradiol for $\approx$25min-1hr before the first DF, as this is the time necessary to set the apparatus and begin the experiment.
 Since classical nuclear hormone receptors (like the Esr1 and Esr2) exert their effects via transcriptional adaptation, this necessitates a delay in signaling response. 
-Therefore, we hypothesized that membrane initiated signaling through Gper1 was the more likely mechanism. 
+Therefore, we hypothesized that membrane-initiated signaling through Gper1 was the more likely mechanism. 
 To test this we obtained and tested the presumed null frameshift/early stop allele \emph{gper1\textsuperscript{uab102}}, which was previously shown to be insensitive to estradiol for heart-rate modulation \citep{Romano2017-ep}. 
 
 To test if \emph{gper1} is required for the effects of estradiol on habituation we generated larvae from \emph{gper1\textsuperscript{uab102}} heterozygous or homo/hererozygous crosses to generate clutches of larvae of mixed genotypes. Larvae were treated with estradiol during habituation, and were subsequently genotyped. We reasoned that if \emph{gper1} is required for the effect of estradiol on habituation, mutants would habituate significantly less than controls. Contrary to this hypothesis, we found that \emph{gper1} mutants showed no deficits in habituation (\autoref{fig:2}). Remarkably, rather than observing the anticipated inhibition of habituation, \emph{gper1} mutants appeared to habituate slightly more, with the responsiveness trendline running slightly but consistently below the sibling controls (\autoref{fig:2}A). This is further supported by a weak but statistically significant decrease in the responsiveness of the larvae during the training period (\autoref{fig:2}D), and a trend towards positive values in the Cumulative Mean DIfference plot (\autoref{fig:2}F). 

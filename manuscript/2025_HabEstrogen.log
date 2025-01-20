@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.17)  16 JAN 2025 17:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.17)  17 JAN 2025 15:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1204,89 +1204,113 @@ File: lgrenc.dfu 2023-03-21 1.9 UTF-8 support for Greek
 File: greek-fontenc.def 2023-09-12 2.5 Common Greek font encoding definitions
 ))
 Package textgreek Info: Loaded fontmap: {eur/*/*}{U/eur/*/*} {phv/*/*}{U/psy/*/*}. on input line 69.
-)
-LaTeX Font Info:    Trying to load font information for T1+opensans-TLF on input line 98.
+) (c:/texlive/2024/texmf-dist/tex/generic/soul/soul.sty
+Package: soul 2023-06-14 v3.1 Permit use of UTF-8 characters in soul (HO)
+ (c:/texlive/2024/texmf-dist/tex/generic/soul/soul-ori.sty
+Package: soul-ori 2023-06-14 v3.1 letterspacing/underlining (mf)
+\SOUL@word=\toks46
+\SOUL@lasttoken=\toks47
+\SOUL@syllable=\toks48
+\SOUL@cmds=\toks49
+\SOUL@buffer=\toks50
+\SOUL@token=\toks51
+\SOUL@syllgoal=\dimen277
+\SOUL@syllwidth=\dimen278
+\SOUL@charkern=\dimen279
+\SOUL@hyphkern=\dimen280
+\SOUL@dimen=\dimen281
+\SOUL@dimeni=\dimen282
+\SOUL@minus=\count391
+\SOUL@comma=\count392
+\SOUL@apo=\count393
+\SOUL@grave=\count394
+\SOUL@spaceskip=\skip154
+\SOUL@ttwidth=\dimen283
+\SOUL@uldp=\dimen284
+\SOUL@ulht=\dimen285
+))
+LaTeX Font Info:    Trying to load font information for T1+opensans-TLF on input line 99.
  (c:/texlive/2024/texmf-dist/tex/latex/opensans/T1opensans-TLF.fd
 File: T1opensans-TLF.fd 2019/06/24 Font definitions for T1/opensans-TLF.
 )
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 98.
+(Font)              scaled to size 9.0pt on input line 99.
  (./2025_HabEstrogen.aux)
 \openout1 = `2025_HabEstrogen.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 98.
-LaTeX Font Info:    Trying to load font information for LS1+stix on input line 98.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 99.
+LaTeX Font Info:    Trying to load font information for LS1+stix on input line 99.
  (c:/texlive/2024/texmf-dist/tex/latex/stix/ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 98.
-LaTeX Font Info:    Trying to load font information for LS2+stix on input line 98.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 99.
+LaTeX Font Info:    Trying to load font information for LS2+stix on input line 99.
  (c:/texlive/2024/texmf-dist/tex/latex/stix/ls2stix.fd
 File: ls2stix.fd 2015/04/17 v1.1.2-latex STIX LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 98.
-LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 98.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 99.
+LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 99.
  (c:/texlive/2024/texmf-dist/tex/latex/cbfonts-fd/lgrcmr.fd
 File: lgrcmr.fd 2017/07/29 v1.2 Greek European Computer Regular
 )
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Info: Command `\dddot' is already robust on input line 98.
-LaTeX Info: Command `\ddddot' is already robust on input line 98.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Info: Command `\dddot' is already robust on input line 99.
+LaTeX Info: Command `\ddddot' is already robust on input line 99.
  (c:/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count391
-\scratchdimen=\dimen277
+\scratchcounter=\count395
+\scratchdimen=\dimen286
 \scratchbox=\box77
-\nofMPsegments=\count392
-\nofMParguments=\count393
-\everyMPshowfont=\toks46
-\MPscratchCnt=\count394
-\MPscratchDim=\dimen278
-\MPnumerator=\count395
-\makeMPintoPDFobject=\count396
-\everyMPtoPDFconversion=\toks47
+\nofMPsegments=\count396
+\nofMParguments=\count397
+\everyMPshowfont=\toks52
+\MPscratchCnt=\count398
+\MPscratchDim=\dimen287
+\MPnumerator=\count399
+\makeMPintoPDFobject=\count400
+\everyMPtoPDFconversion=\toks53
 ) (c:/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (c:/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@mv@tabular=\count397
-\c@mv@boldtabular=\count398
-LaTeX Info: Redefining \microtypecontext on input line 98.
-Package microtype Info: Applying patch `item' on input line 98.
-Package microtype Info: Applying patch `toc' on input line 98.
-Package microtype Info: Applying patch `eqnum' on input line 98.
-Package microtype Info: Applying patch `footnote' on input line 98.
-Package microtype Info: Applying patch `verbatim' on input line 98.
-LaTeX Info: Redefining \microtypesetup on input line 98.
+\c@mv@tabular=\count401
+\c@mv@boldtabular=\count402
+LaTeX Info: Redefining \microtypecontext on input line 99.
+Package microtype Info: Applying patch `item' on input line 99.
+Package microtype Info: Applying patch `toc' on input line 99.
+Package microtype Info: Applying patch `eqnum' on input line 99.
+Package microtype Info: Applying patch `footnote' on input line 99.
+Package microtype Info: Applying patch `verbatim' on input line 99.
+LaTeX Info: Redefining \microtypesetup on input line 99.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 98.
+LaTeX Info: Redefining \showhyphens on input line 99.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1335,97 +1359,97 @@ Package caption Info: listings package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package newfloat Info: `wrapfig' package detected.
-Package hyperref Info: Link coloring ON on input line 98.
+Package hyperref Info: Link coloring ON on input line 99.
 (./2025_HabEstrogen.out) (./2025_HabEstrogen.out)
 \@outlinefile=\write4
 \openout4 = `2025_HabEstrogen.out'.
 
-\c@lstlisting=\count399
+\c@lstlisting=\count403
 
-Package chemgreek Info: Activating mapping `textgreek' on line 98.
+Package chemgreek Info: Activating mapping `textgreek' on line 99.
 
  (c:/texlive/2024/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 98.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 99.
 \symgns@font=\mathgroup12
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/opensans-TLF/m/n --> TS1/opensans-TLF/b/n on input line 98.
-Package gensymb Info: Math companion symbols declared on input line 98.
-LaTeX Info: Redefining \degree on input line 98.
-LaTeX Info: Redefining \celsius on input line 98.
-Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 98.
-LaTeX Info: Redefining \ohm on input line 98.
-Package gensymb Info: Using \textohm for \ohm on input line 98.
-LaTeX Info: Redefining \micro on input line 98.
-Package gensymb Info: Using \textmu for \micro on input line 98.
+(Font)                  TS1/opensans-TLF/m/n --> TS1/opensans-TLF/b/n on input line 99.
+Package gensymb Info: Math companion symbols declared on input line 99.
+LaTeX Info: Redefining \degree on input line 99.
+LaTeX Info: Redefining \celsius on input line 99.
+Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 99.
+LaTeX Info: Redefining \ohm on input line 99.
+Package gensymb Info: Using \textohm for \ohm on input line 99.
+LaTeX Info: Redefining \micro on input line 99.
+Package gensymb Info: Using \textmu for \micro on input line 99.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 101.
+(Font)              scaled to size 9.0pt on input line 102.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/n' will be
-(Font)              scaled to size 24.0pt on input line 101.
+(Font)              scaled to size 24.0pt on input line 102.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 101.
+(Font)              scaled to size 14.4pt on input line 102.
  (c:/texlive/2024/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-LaTeX Font Info:    Trying to load font information for LS1+stixscr on input line 101.
+LaTeX Font Info:    Trying to load font information for LS1+stixscr on input line 102.
  (c:/texlive/2024/texmf-dist/tex/latex/stix/ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS2+stixex on input line 101.
+LaTeX Font Info:    Trying to load font information for LS2+stixex on input line 102.
  (c:/texlive/2024/texmf-dist/tex/latex/stix/ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS1+stixfrak on input line 101.
+LaTeX Font Info:    Trying to load font information for LS1+stixfrak on input line 102.
  (c:/texlive/2024/texmf-dist/tex/latex/stix/ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS1+stixbb on input line 101.
+LaTeX Font Info:    Trying to load font information for LS1+stixbb on input line 102.
  (c:/texlive/2024/texmf-dist/tex/latex/stix/ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS2+stixcal on input line 101.
+LaTeX Font Info:    Trying to load font information for LS2+stixcal on input line 102.
  (c:/texlive/2024/texmf-dist/tex/latex/stix/ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS1+stixsf on input line 101.
+LaTeX Font Info:    Trying to load font information for LS1+stixsf on input line 102.
  (c:/texlive/2024/texmf-dist/tex/latex/stix/ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS2+stixtt on input line 101.
+LaTeX Font Info:    Trying to load font information for LS2+stixtt on input line 102.
  (c:/texlive/2024/texmf-dist/tex/latex/stix/ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 )
-LaTeX Font Info:    Trying to load font information for TS1+opensans-TLF on input line 101.
+LaTeX Font Info:    Trying to load font information for TS1+opensans-TLF on input line 102.
  (c:/texlive/2024/texmf-dist/tex/latex/opensans/TS1opensans-TLF.fd
 File: TS1opensans-TLF.fd 2019/06/24 Font definitions for TS1/opensans-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 101.
+(Font)              scaled to size 14.4pt on input line 102.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `opensans-TLF' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 101.
+(Font)              scaled to size 10.0pt on input line 102.
 LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 101.
+(Font)              scaled to size 7.0pt on input line 102.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 101.
+(Font)              scaled to size 10.0pt on input line 102.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 101.
+(Font)              scaled to size 10.0pt on input line 102.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 101.
+(Font)              scaled to size 14.4pt on input line 102.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 101.
+(Font)              scaled to size 7.0pt on input line 102.
 LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
-(Font)              scaled to size 5.0pt on input line 101.
+(Font)              scaled to size 5.0pt on input line 102.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
-(Font)              scaled to size 5.0pt on input line 101.
+(Font)              scaled to size 5.0pt on input line 102.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 106.
+(Font)              scaled to size 9.0pt on input line 107.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/it' will be
-(Font)              scaled to size 9.0pt on input line 119.
+(Font)              scaled to size 9.0pt on input line 120.
 
 
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
@@ -1435,69 +1459,68 @@ LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
 {c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2024/texmf-dist/fonts/enc/dvips/opensans/a_jg4h6q.enc}]
 LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 126.
-LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 148.
-LaTeX Font Info:    Font shape `T1/opensans-TLF/m/it' will be
-(Font)              scaled to size 6.0pt on input line 153.
-LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 167.
-
-
-[2{c:/texlive/2024/texmf-dist/fonts/enc/dvips/opensans/a_nvvucy.enc}]
-LaTeX Font Info:    Trying to load font information for LGR+opensans-TLF on input line 184.
+LaTeX Font Info:    Trying to load font information for LGR+opensans-TLF on input line 131.
  (c:/texlive/2024/texmf-dist/tex/latex/opensans/LGRopensans-TLF.fd
 File: LGRopensans-TLF.fd 2019/06/24 Font definitions for LGR/opensans-TLF.
 )
 LaTeX Font Info:    Font shape `LGR/opensans-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 184.
+(Font)              scaled to size 9.0pt on input line 131.
+LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
+(Font)              scaled to size 6.0pt on input line 153.
+LaTeX Font Info:    Font shape `T1/opensans-TLF/m/it' will be
+(Font)              scaled to size 6.0pt on input line 158.
+LaTeX Font Info:    Font shape `T1/opensans-TLF/m/n' will be
+(Font)              scaled to size 6.0pt on input line 172.
 
 
-[3{c:/texlive/2024/texmf-dist/fonts/enc/dvips/opensans/a_uv4o4i.enc}]
-<figures/EstradiolEffect.png, id=139, 358.4592pt x 209.46255pt>
+[2{c:/texlive/2024/texmf-dist/fonts/enc/dvips/opensans/a_nvvucy.enc}{c:/texlive/2024/texmf-dist/fonts/enc/dvips/opensans/a_uv4o4i.enc}]
+
+[3]
+<figures/EstradiolEffect.png, id=154, 358.4592pt x 209.46255pt>
 File: figures/EstradiolEffect.png Graphic file (type png)
 <use figures/EstradiolEffect.png>
-Package pdftex.def Info: figures/EstradiolEffect.png  used on input line 204.
+Package pdftex.def Info: figures/EstradiolEffect.png  used on input line 209.
 (pdftex.def)             Requested size: 400.9704pt x 234.31519pt.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 212.
+(Font)              scaled to size 8.0pt on input line 217.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/b/it' will be
-(Font)              scaled to size 8.0pt on input line 212.
+(Font)              scaled to size 8.0pt on input line 217.
 LaTeX Font Info:    Font shape `TS1/opensans-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 212.
+(Font)              scaled to size 8.0pt on input line 217.
 
 Overfull \vbox (0.28133pt too high) has occurred while \output is active []
 
 
 
 [4 <./figures/EstradiolEffect.png>]
-<figures/gper1Mutants.png, id=175, 502.7583pt x 118.5228pt>
+<figures/gper1Mutants.png, id=189, 502.7583pt x 118.5228pt>
 File: figures/gper1Mutants.png Graphic file (type png)
 <use figures/gper1Mutants.png>
-Package pdftex.def Info: figures/gper1Mutants.png  used on input line 243.
+Package pdftex.def Info: figures/gper1Mutants.png  used on input line 248.
 (pdftex.def)             Requested size: 507.8942pt x 119.73419pt.
 LaTeX Font Info:    Font shape `T1/opensans-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 248.
+(Font)              scaled to size 8.0pt on input line 253.
 
 Overfull \vbox (1.84189pt too high) has occurred while \output is active []
 
 
 
 [5 <./figures/gper1Mutants.png>]
-<figures/NuclearSingleMutants.png, id=191, 499.02435pt x 388.0899pt>
+<figures/NuclearSingleMutants.png, id=205, 499.02435pt x 388.0899pt>
 File: figures/NuclearSingleMutants.png Graphic file (type png)
 <use figures/NuclearSingleMutants.png>
-Package pdftex.def Info: figures/NuclearSingleMutants.png  used on input line 272.
+Package pdftex.def Info: figures/NuclearSingleMutants.png  used on input line 277.
 (pdftex.def)             Requested size: 507.8942pt x 395.00555pt.
-<figures/NuclearDoubleAndTripleMutants.png, id=195, 512.75565pt x 513.71925pt>
+<figures/NuclearDoubleAndTripleMutants.png, id=209, 512.75565pt x 505.04684pt>
 File: figures/NuclearDoubleAndTripleMutants.png Graphic file (type png)
 <use figures/NuclearDoubleAndTripleMutants.png>
-Package pdftex.def Info: figures/NuclearDoubleAndTripleMutants.png  used on input line 289.
-(pdftex.def)             Requested size: 507.8942pt x 508.85014pt.
-<figures/gper1andNuclearMutants.png, id=196, 504.56505pt x 652.95946pt>
+Package pdftex.def Info: figures/NuclearDoubleAndTripleMutants.png  used on input line 294.
+(pdftex.def)             Requested size: 507.8942pt x 500.25993pt.
+<figures/gper1andNuclearMutants.png, id=210, 504.56505pt x 634.0488pt>
 File: figures/gper1andNuclearMutants.png Graphic file (type png)
 <use figures/gper1andNuclearMutants.png>
-Package pdftex.def Info: figures/gper1andNuclearMutants.png  used on input line 304.
-(pdftex.def)             Requested size: 427.70338pt x 553.49376pt.
+Package pdftex.def Info: figures/gper1andNuclearMutants.png  used on input line 309.
+(pdftex.def)             Requested size: 427.70338pt x 537.46379pt.
 
 
 [6 <./figures/NuclearSingleMutants.png>]
@@ -1509,9 +1532,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-) (./2025_HabEstrogen.suppinfo)
 
-[9{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] 
+
+[9{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]) (./2025_HabEstrogen.suppinfo)
+
+[10] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./2025_HabEstrogen.aux)
  ***********
@@ -1523,21 +1548,21 @@ Package rerunfilecheck Info: File `2025_HabEstrogen.out' has not changed.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 222 ({)
+### simple group (level 1) entered at line 227 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 30162 strings out of 473330
- 555385 string characters out of 5723877
- 1067533 words of memory out of 5000000
- 52807 multiletter control sequences out of 15000+600000
- 622575 words of font info for 169 fonts, out of 8000000 for 9000
+ 30403 strings out of 473330
+ 559132 string characters out of 5723877
+ 1076585 words of memory out of 5000000
+ 53035 multiletter control sequences out of 15000+600000
+ 622888 words of font info for 170 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 91i,12n,131p,2711b,1205s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 91i,12n,131p,2711b,1368s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/ascender/opensans/OpenSans-Bold.pfb><c:/texlive/2024/texmf-dist/fonts/type1/ascender/opensans/OpenSans-BoldItalic.pfb><c:/texlive/2024/texmf-dist/fonts/type1/ascender/opensans/OpenSans-Italic.pfb><c:/texlive/2024/texmf-dist/fonts/type1/ascender/opensans/OpenSans-Regular.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/stix/stix-mathit.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb>
-Output written on 2025_HabEstrogen.pdf (9 pages, 8423558 bytes).
+Output written on 2025_HabEstrogen.pdf (10 pages, 7950436 bytes).
 PDF statistics:
- 288 PDF objects out of 1000 (max. 8388607)
- 248 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
+ 308 PDF objects out of 1000 (max. 8388607)
+ 267 compressed objects within 3 object streams
+ 53 named destinations out of 1000 (max. 500000)
  14482 words of extra memory for PDF output out of 17280 (max. 10000000)
 
