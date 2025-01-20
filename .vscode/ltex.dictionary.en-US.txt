@@ -5,3 +5,4 @@ genotyped
 DMSO
 agonism
 transactivation
+potentiation

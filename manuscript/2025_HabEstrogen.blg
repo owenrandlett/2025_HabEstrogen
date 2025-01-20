@@ -4,44 +4,44 @@ The top-level auxiliary file: 2025_HabEstrogen.aux
 The style file: vancouver-elife.bst
 Database file #1: References_HabEstrogen.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 17 entries,
+You've used 21 entries,
             3492 wiz_defined-function locations,
-            857 strings with 9919 characters,
-and the built_in function-call counts, 49482 in all, are:
-= -- 6332
-> -- 539
-< -- 3
-+ -- 270
-- -- 174
-* -- 4416
-:= -- 5433
-add.period$ -- 53
-call.type$ -- 17
-change.case$ -- 155
-chr.to.int$ -- 17
-cite$ -- 17
-duplicate$ -- 4361
-empty$ -- 4424
-format.name$ -- 214
-if$ -- 11286
-int.to.chr$ -- 1
+            877 strings with 10358 characters,
+and the built_in function-call counts, 58057 in all, are:
+= -- 7443
+> -- 621
+< -- 5
++ -- 312
+- -- 200
+* -- 5139
+:= -- 6384
+add.period$ -- 63
+call.type$ -- 21
+change.case$ -- 184
+chr.to.int$ -- 20
+cite$ -- 21
+duplicate$ -- 5225
+empty$ -- 5181
+format.name$ -- 249
+if$ -- 13245
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 222
-newline$ -- 93
-num.names$ -- 51
-pop$ -- 458
+missing$ -- 267
+newline$ -- 111
+num.names$ -- 63
+pop$ -- 546
 preamble$ -- 1
-purify$ -- 155
+purify$ -- 184
 quote$ -- 0
-skip$ -- 323
+skip$ -- 395
 stack$ -- 0
-substring$ -- 9326
-swap$ -- 537
+substring$ -- 10794
+swap$ -- 652
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 153
+type$ -- 189
 warning$ -- 0
-while$ -- 218
+while$ -- 261
 width$ -- 0
-write$ -- 232
+write$ -- 278

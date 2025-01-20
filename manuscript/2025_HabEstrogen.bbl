@@ -1,4 +1,4 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\urlprefix}{}
 \providecommand{\doiprefix}{doi: }
@@ -12,7 +12,6 @@
 \textbf{\color{eLifeMediumGrey} Burgess HA}, Granato M.
 \newblock Sensorimotor Gating in Larval Zebrafish.
 \newblock The Journal of Neuroscience.  2007 May; 27(18):4984--4994.
-\newblock \urlprefix\url{https://doi.org/10.1523/jneurosci.0615-07.2007}, \href{10.1523/jneurosci.0615-07.2007}{\doiprefix \detokenize{10.1523/jneurosci.0615-07.2007}}.
 
 \bibitem[{Dillon et~al.(2013)Dillon, T Samuel and Fox, Laura C and Han, Crystal and Linster, Christiane}]{Dillon2013-rk}
 \textbf{\color{eLifeMediumGrey} Dillon TS}, Fox LC, Han C, Linster C.
@@ -29,6 +28,16 @@
 \newblock Estrogen-induced activation of Erk-1 and Erk-2 requires the {G} protein-coupled receptor homolog, {GPR30}, and occurs via trans-activation of the epidermal growth factor receptor through release of {HB-EGF}.
 \newblock Mol Endocrinol.  2000 Oct; 14(10):1649--1660.
 
+\bibitem[{Finney et~al.(2020)Finney, C A and Shvetcov, A and Westbrook, R F and Jones, N M and Morris, M J}]{Finney2020-ng}
+\textbf{\color{eLifeMediumGrey} Finney CA}, Shvetcov A, Westbrook RF, Jones NM, Morris MJ.
+\newblock The role of hippocampal estradiol in synaptic plasticity and memory: A systematic review.
+\newblock Front Neuroendocrinol.  2020 Jan; 56(100818):100818.
+
+\bibitem[{Iqbal et~al.(2024)Iqbal, Javed and Huang, Geng-Di and Xue, Yan-Xue and Yang, Mei and Jia, Xiao-Jian}]{Iqbal2024-yo}
+\textbf{\color{eLifeMediumGrey} Iqbal J}, Huang GD, Xue YX, Yang M, Jia XJ.
+\newblock Role of estrogen in sex differences in memory, emotion and neuropsychiatric disorders.
+\newblock Mol Biol Rep.  2024 Mar; 51(1):415.
+
 \bibitem[{Jilg et~al.(2019)Jilg, Antje and Bechstein, Philipp and Saade, Anastasia and Dick, Moritz and Li, Tian Xiao and Tosini, Gianluca and Rami, Abdelhaq and Zemmar, Ajmal and Stehle, J{\"o}rg H}]{Jilg2019-oy}
 \textbf{\color{eLifeMediumGrey} Jilg A}, Bechstein P, Saade A, Dick M, Li TX, Tosini G, Rami A, Zemmar A, Stehle JH.
 \newblock Melatonin modulates daytime-dependent synaptic plasticity and learning efficiency.
@@ -38,6 +47,11 @@
 \textbf{\color{eLifeMediumGrey} Lamir{\'e} LA}, Haesemeyer M, Engert F, Granato M, Randlett O.
 \newblock Functional and pharmacological analyses of visual habituation learning in larval zebrafish.
 \newblock Elife.  2023 Dec; 12.
+
+\bibitem[{Luine(2014)Luine, Victoria N}]{Luine2014-cj}
+\textbf{\color{eLifeMediumGrey} Luine VN}.
+\newblock Estradiol and cognitive function: past, present and future.
+\newblock Horm Behav.  2014 Sep; 66(4):602--618.
 
 \bibitem[{Menuet et~al.(2002)Menuet, Arnaud and Pellegrini, Elisabeth and Anglade, Isabelle and Blaise, Odile and Laudet, Vincent and Kah, Olivier and Pakdel, Farzad}]{Menuet2002-fo}
 \textbf{\color{eLifeMediumGrey} Menuet A}, Pellegrini E, Anglade I, Blaise O, Laudet V, Kah O, Pakdel F.
@@ -49,7 +63,12 @@
 \newblock Rapid effects of estradiol and its receptor agonists on object recognition and object placement in adult male zebrafish.
 \newblock Behav Brain Res.  2020 Apr; 384(112514):112514.
 
-\bibitem[{Nilsson and Gustafsson(2002)Nilsson, Stefan and Gustafsson, Jan-Ake}]{Nilsson2002-as}
+\bibitem[{Nilsson and Gustafsson(2002{\natexlab{a}})Nilsson, Stefan and Gustafsson, Jan-Ake}]{Nilsson2002-as}
+\textbf{\color{eLifeMediumGrey} Nilsson S}, Gustafsson JA.
+\newblock Biological role of estrogen and estrogen receptors.
+\newblock Crit Rev Biochem Mol Biol.  2002; 37(1):1--28.
+
+\bibitem[{Nilsson and Gustafsson(2002{\natexlab{b}})Nilsson, Stefan and Gustafsson, Jan-Ake}]{Nilsson2002-hs}
 \textbf{\color{eLifeMediumGrey} Nilsson S}, Gustafsson JA.
 \newblock Biological role of estrogen and estrogen receptors.
 \newblock Crit Rev Biochem Mol Biol.  2002; 37(1):1--28.
@@ -88,6 +107,5 @@
 \textbf{\color{eLifeMediumGrey} Wolman MA}, Jain RA, Liss L, Granato M.
 \newblock Chemical modulation of memory formation in larval zebrafish.
 \newblock Proceedings of the National Academy of Sciences.  2011 Sep; 108(37):15468--15473.
-\newblock \urlprefix\url{https://pnas.org/doi/full/10.1073/pnas.1107156108}, \href{10.1073/pnas.1107156108}{\doiprefix \detokenize{10.1073/pnas.1107156108}}.
 
 \end{thebibliography}

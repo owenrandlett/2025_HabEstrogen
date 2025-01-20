@@ -1,0 +1,2 @@
+Adafruit CircuitPython 7.0.0-alpha.3-7-ga99eba35b-dirty on 2021-06-04; Raspberry Pi Pico with rp2040
+boot.py output:
