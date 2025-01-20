@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{29}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\urlprefix}{}
 \providecommand{\doiprefix}{doi: }
@@ -7,6 +7,11 @@
 \textbf{\color{eLifeMediumGrey} Barros LA}, Tufik S, Andersen ML.
 \newblock The role of progesterone in memory: an overview of three decades.
 \newblock Neurosci Biobehav Rev.  2015 Feb; 49:193--204.
+
+\bibitem[{Bradski(2000)Bradski, Gary}]{Bradski2000-qo}
+\textbf{\color{eLifeMediumGrey} Bradski G}.
+\newblock The {openCV} library.
+\newblock Dr Dobb's Journal: Software Tools for the Professional Programmer.  2000; 25(11):120--123.
 
 \bibitem[{Burgess and Granato(2007)Harold A. Burgess and Michael Granato}]{Burgess2007}
 \textbf{\color{eLifeMediumGrey} Burgess HA}, Granato M.
@@ -33,6 +38,17 @@
 \newblock The role of hippocampal estradiol in synaptic plasticity and memory: A systematic review.
 \newblock Front Neuroendocrinol.  2020 Jan; 56(100818):100818.
 
+\bibitem[{Harris et~al.(2020)Harris, Charles R and Millman, K Jarrod and van der Walt, St{\'e}fan J and Gommers, Ralf and Virtanen, Pauli and Cournapeau, David and Wieser, Eric and Taylor, Julian and Berg, Sebastian and Smith, Nathaniel J and Kern, Robert and Picus, Matti and Hoyer, Stephan and van Kerkwijk, Marten H and Brett, Matthew and Haldane, Allan and Del R{\'\i}o, Jaime Fern{\'a}ndez and Wiebe, Mark and Peterson, Pearu and G{\'e}rard-Marchant, Pierre and Sheppard, Kevin and Reddy, Tyler and Weckesser, Warren and Abbasi, Hameer and Gohlke, Christoph and Oliphant, Travis E}]{Harris2020-bg}
+\textbf{\color{eLifeMediumGrey} Harris CR}, Millman KJ, van~der Walt SJ, Gommers R, Virtanen P, Cournapeau D, Wieser E, Taylor J, Berg S, Smith NJ, Kern R, Picus M, Hoyer S, van Kerkwijk MH, Brett M, Haldane A, Del~R{\'\i}o JF, Wiebe M, Peterson P, G{\'e}rard-Marchant P, et~al.
+\newblock Array programming with {NumPy}.
+\newblock Nature.  2020 Sep; 585(7825):357--362.
+
+\bibitem[{Hunter(2007)Hunter, J. D.}]{Hunter2007-ub}
+\textbf{\color{eLifeMediumGrey} Hunter JD}.
+\newblock Matplotlib: A 2D graphics environment.
+\newblock Computing in Science \& Engineering.  2007; 9(3):90--95.
+\newblock \href{10.1109/MCSE.2007.55}{\doiprefix \detokenize{10.1109/MCSE.2007.55}}.
+
 \bibitem[{Iqbal et~al.(2024)Iqbal, Javed and Huang, Geng-Di and Xue, Yan-Xue and Yang, Mei and Jia, Xiao-Jian}]{Iqbal2024-yo}
 \textbf{\color{eLifeMediumGrey} Iqbal J}, Huang GD, Xue YX, Yang M, Jia XJ.
 \newblock Role of estrogen in sex differences in memory, emotion and neuropsychiatric disorders.
@@ -43,6 +59,11 @@
 \newblock Melatonin modulates daytime-dependent synaptic plasticity and learning efficiency.
 \newblock J Pineal Res.  2019 Apr; 66(3):e12553.
 
+\bibitem[{Lam et~al.(2015)Lam, Siu Kwan and Pitrou, Antoine and Seibert, Stanley}]{lam2015numba}
+\textbf{\color{eLifeMediumGrey} Lam SK}, Pitrou A, Seibert S.
+\newblock Numba: A llvm-based python jit compiler.
+\newblock In: \emph{Proceedings of the Second Workshop on the LLVM Compiler Infrastructure in HPC}; 2015. p. 1--6.
+
 \bibitem[{Lamir{\'e} et~al.(2023)Lamir{\'e}, Laurie Anne and Haesemeyer, Martin and Engert, Florian and Granato, Michael and Randlett, Owen}]{Lamire2023-he}
 \textbf{\color{eLifeMediumGrey} Lamir{\'e} LA}, Haesemeyer M, Engert F, Granato M, Randlett O.
 \newblock Functional and pharmacological analyses of visual habituation learning in larval zebrafish.
@@ -52,6 +73,12 @@
 \textbf{\color{eLifeMediumGrey} Luine VN}.
 \newblock Estradiol and cognitive function: past, present and future.
 \newblock Horm Behav.  2014 Sep; 66(4):602--618.
+
+\bibitem[{{W}es {M}c{K}inney(2010)}]{mckinney-proc-scipy-2010}
+\textbf{\color{eLifeMediumGrey} {W}es {M}c{K}inney}.
+\newblock {D}ata {S}tructures for {S}tatistical {C}omputing in {P}ython.
+\newblock In: {S}t\'efan van~der {W}alt, {J}arrod {M}illman, editors. \emph{{P}roceedings of the 9th {P}ython in {S}cience {C}onference}; 2010. p. 56 -- 61.
+\newblock \href{10.25080/Majora-92bf1922-00a}{\doiprefix \detokenize{10.25080/Majora-92bf1922-00a}}.
 
 \bibitem[{Menuet et~al.(2002)Menuet, Arnaud and Pellegrini, Elisabeth and Anglade, Isabelle and Blaise, Odile and Laudet, Vincent and Kah, Olivier and Pakdel, Farzad}]{Menuet2002-fo}
 \textbf{\color{eLifeMediumGrey} Menuet A}, Pellegrini E, Anglade I, Blaise O, Laudet V, Kah O, Pakdel F.
@@ -102,6 +129,21 @@
 \textbf{\color{eLifeMediumGrey} Romano SN}, Edwards HE, Souder JP, Ryan KJ, Cui X, Gorelick DA.
 \newblock {G} protein-coupled estrogen receptor regulates embryonic heart rate in zebrafish.
 \newblock PLoS Genet.  2017 Oct; 13(10):e1007069.
+
+\bibitem[{Virtanen et~al.(2020)Virtanen, Pauli and Gommers, Ralf and Oliphant, Travis E and Haberland, Matt and Reddy, Tyler and Cournapeau, David and Burovski, Evgeni and Peterson, Pearu and Weckesser, Warren and Bright, Jonathan and van der Walt, St{\'e}fan J and Brett, Matthew and Wilson, Joshua and Millman, K Jarrod and Mayorov, Nikolay and Nelson, Andrew R J and Jones, Eric and Kern, Robert and Larson, Eric and Carey, C J and Polat, {\.I}lhan and Feng, Yu and Moore, Eric W and VanderPlas, Jake and Laxalde, Denis and Perktold, Josef and Cimrman, Robert and Henriksen, Ian and Quintero, E A and Harris, Charles R and Archibald, Anne M and Ribeiro, Ant{\^o}nio H and Pedregosa, Fabian and van Mulbregt, Paul and {SciPy 1.0 Contributors}}]{Virtanen2020-sz}
+\textbf{\color{eLifeMediumGrey} Virtanen P}, Gommers R, Oliphant TE, Haberland M, Reddy T, Cournapeau D, Burovski E, Peterson P, Weckesser W, Bright J, van~der Walt SJ, Brett M, Wilson J, Millman KJ, Mayorov N, Nelson ARJ, Jones E, Kern R, Larson E, Carey CJ, et~al.
+\newblock {SciPy} 1.0: fundamental algorithms for scientific computing in Python.
+\newblock Nat Methods.  2020 Mar; 17(3):261--272.
+
+\bibitem[{Van~der Walt et~al.(2014)Van der Walt, Stefan and Sch{\"o}nberger, Johannes L and Nunez-Iglesias, Juan and Boulogne, Fran{\c{c}}ois and Warner, Joshua D and Yager, Neil and Gouillart, Emmanuelle and Yu, Tony}]{van2014scikit}
+\textbf{\color{eLifeMediumGrey} Van~der Walt S}, Sch{\"o}nberger JL, Nunez-Iglesias J, Boulogne F, Warner JD, Yager N, Gouillart E, Yu T.
+\newblock scikit-image: image processing in Python.
+\newblock PeerJ.  2014; 2:e453.
+
+\bibitem[{Waskom(2021)Waskom, Michael}]{Waskom2021-ah}
+\textbf{\color{eLifeMediumGrey} Waskom M}.
+\newblock seaborn: statistical data visualization.
+\newblock J Open Source Softw.  2021 Apr; 6(60):3021.
 
 \bibitem[{Wolman et~al.(2011)Wolman, Marc A. and Jain, Roshan A. and Liss, Laura and Granato, Michael}]{wolman_chemical_2011}
 \textbf{\color{eLifeMediumGrey} Wolman MA}, Jain RA, Liss L, Granato M.
