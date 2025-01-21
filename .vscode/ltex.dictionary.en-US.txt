@@ -6,3 +6,4 @@ DMSO
 agonism
 transactivation
 potentiation
+manoeuvre

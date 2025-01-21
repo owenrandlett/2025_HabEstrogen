@@ -12,6 +12,7 @@
 \usepackage{xcolor}
 \usepackage{textgreek}
 \usepackage{soul} 
+\usepackage{caption}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -130,31 +131,230 @@ Our discovery of a role for estradiol in promoting habituation learning is not s
 This has been most extensively characterized in the hippocampus, where estradiol promotes behavioural performance and the cellular/circuit hallmarks of hippocampal plasticity, including Long-term potentiation (LTP) and modulation of dendritic spine density \citep{Iqbal2024-yo, Luine2014-cj, Finney2020-ng, Nilsson2002-hs}. 
 While the role of estradiol in habituation is less well explored, it has previously been shown to increase memory retention for olfactory habituation in mice \citep{Dillon2013-rk}, indicating it plays broad roles in plasticity regulation.
 
-Estradiol signals via two classes of Estrogen Receptors (ERs): the ligand-activated transcription factors ERα, and ERβ, and the seven-transmembrane G-protein coupled receptor GPER1.
+Estradiol signals via two classes of Estrogen Receptors (ERs): the ligand-activated transcription factors ERα, and ERβ, and the seven-transmembrane G-protein coupled receptor Gper1.
 ERα/β are thought to mediate the long-term genomic effects of estrogens through transcriptional activation of target genes, and thus are typically termed nuclear ERs.
 Gper1 is thought to mediate acute Estrogen-dependent signaling -- often called "non-genomic", or "membrane-initiated", and does so via multiple G-proteins, and potentially epidermal growth factor (EGF) receptor transactivation \citep{Prossnitz2023-uo, Revankar2005-ww, Filardo2000-yz}.
 In this way, Gper1 signalling impacts multiple core second-messenger systems, including: adenylyl cyclase, ERK, PI3K-Akt, and nitric oxide synthase. 
 There is evidence from receptor-specific pharmacology and genetic knockout experiments for a role of all of these receptors in hippocampal plasticity, although ERα appears to have the most prominent role. \hl{EXPAND A BIT AND REFs}
 
 In this project we aimed to identify the relevant ER(s) mediating the effects of estradiol on habituation using genetic knockout alleles.
-Zebrafish have single gene encoding ERα (\emph{esr1}) and GPER1 (\emph{gper1}), and two homologs of ERβ : ERβ1 (\emph{esr2a}) and ERβ2 (\emph{esr2a})  \citep{Romano2017-ep, Menuet2002-fo}.  
+Zebrafish have single gene encoding ERα (ER1, \emph{esr1}) and Gper1 (\emph{gper1}), and two homologs of ERβ: ER2a (\emph{esr2a}) and ER2b (\emph{esr2a})  \citep{Romano2017-ep, Menuet2002-fo}.  
 We found that none of these mutants were insensitive to estradiol's effects, indicating that estradiol acts in this context via an alternative receptor or pathway. 
 Surprisingly, our experiments found that mutants for \emph{esr1}, \emph{esr2a}, and \emph{gper1} actually habituate more than their sibling controls. 
-While the effect size is small and behavioural-genetic experiments can be variable, these data indicate that these receptors actually act to inhibit habituation learning, rather than mediating the habituation-promoting effects of estradiol that we discovered pharmacologically. 
+While the effect size is small and behavioural-genetic experiments can be variable, these data indicate that these ERs actually act to inhibit habituation learning, rather than mediating the habituation-promoting effects of estradiol that we observe pharmacologically. 
 
 %\newpage
+
+\section{Results}
+
+\subsection{Estradiol increases visual habituation learning}
+
+\begin{figure}
+\begin{fullwidth}
+\begin{center}
+\includegraphics[width=0.6\linewidth]{figures/EstradiolEffect.png}
+\caption{\textbf{Estradiol increases habituation learning.} \scriptsize
+\\ \textbf{A)} In response to a dark flash (DF), larval zebrafish perform a large turning manoeuvre termed an "O-bend" response.
+\\ \textbf{B)} High-throughput setup for recording and quantify responsiveness using a high-speed camera recording at 444hz observing larvae in 300-well plates. Scale bar = 10mm.
+\\ \textbf{C)} Treatment with estradiol (red) results in more rapid and profound decreases in the probability of response to DF stimuli during habituation training relative to DMSO vehicle controls (black). DF stimuli are delivered at 1-minute intervals, in 4 blocks of 60 stimuli, separated by 1hr of rest (from 0:00-7:00). 1.5 hours later a block of 30 acoustic stimuli are delivered at 1-minute intervals (\textbf{i}). Each dot is the probability of response to one DF. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2). 
+\\ \textbf{D-G)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. Statistical significance was calculated using Mann-Whitney U test, *** = p < 0.001.  \textbf{D)} the naive response to the first 5 DF stimuli; \textbf{E)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{F)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{G)} the 30 acoustic stimuli delivered with a tap from a solenoid on the 300-well plate platform. 
+\\ \textbf{H)} Cumulative mean difference plot quantifying relative habituation performance after estradiol treatment. These plots display the cumulative average differences in the mean response across larvae of the treatment group (estradiol) relative to the control group (DMSO). Difference from 0 reflect a divergence in the change in responsivness across the 240 DF stimuli in the 4 training blocks, with positive values reflecting increased habituation. The widths of the line is a bootstrapped 99.5\% confidence intervals. The gray boxed region reflects the expected non-significant effect size \citep{Randlett2019-fj}.
+\\ Treatment groups are: Estradiol = 10\textmu M estradiol treatment (n = 345 fish); DMSO = 0.1\% DMSO vehicle controls (n = 548 fish)
+}
+
+\label{fig:1}
+
+\end{center}
+\end{fullwidth}
+\end{figure}
+
+In response to a sudden global dimming event, which we refer to as a dark flash (DF), larval zebrafish execute an "O-bend" maneuver, characterized by a deep "O"-shaped bend and a high-amplitude turn \citep{Burgess2007}. 
+Habituation learning manifests as a progressive reduction in response to repeated stimuli, and this learning can be retained for seconds/minutes or hours/days for short- and long-term habituation, respectively \citep{Rankin2009-no}. 
+We use high-speed cameras, machine-vision analysis, and 300-well plates to quantify habituation across large populations of larvae to identify molecular/genetic mechanisms of long-term habituation({\autoref{fig:1}A,B, \citealp{Randlett2019-fj,Lamire2023-he}). 
+When stimulated with DFs repeated at 1-minute intervals in repeated blocks of 60 stimuli, larval zebrafish exhibit long-term habituation, reducing not only the probability of executing a response, but also modulating the latency and other kinematic aspects of the response \citep{Randlett2019-fj}.  
+
+
+Our previous small-molecule screening experiments identified multiple synthetic Estrogen Receptor agonists as positive modulators of dark-flash habituation learning, including ethinyl estradiol, estradiol valerate, and hexestrol  \citep{Lamire2023-he}. 
+The major effect we observed was a stronger decrease in the probability of executing a O-bend response during the training/learning blocks. 
+We have confirmed and extended these results using \textbeta-Estradiol (estradiol), which is the major natural estrogen in humans. 
+
+
+
+An acute dose of 10\textmu M estradiol potently increases habituation learning, which is observable when the response probability of the population of estradiol-treated larvae is compared with DMSO-treated vehicle controls across stimuli (\autoref{fig:1}C-H).
+Consistent with our previous experiments \citep{Lamire2023-he}, there is a modest reduction in the initial responsiveness of the estradiol-treated larvae to the first DF stimulus (\autoref{fig:1}D), but the major effect is observed during the training phase (\autoref{fig:1}C,E,F), as is revealed by the consistent positive deviation in the cumulative mean difference plot (\autoref{fig:1}H, \citealp{Randlett2019-fj}).
+Importantly, the responsiveness of the larvae to acoustic stimuli delivered after the DF training is indistinguishable from controls (\autoref{fig:1}Ci, G), indicating that estradiol does not affect global arousal levels but rather has specific effects on habituation learning. 
+
+
+
+\subsection{Gper1 is dispensable for estradiol-promoted habituation learning}
+
+\begin{figure}
+\begin{fullwidth}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/gper1Mutants.png}
+\caption{\textbf{\emph{gper1} mutants do not show habituation deficits after treatment with estradiol.} \scriptsize
+\\ \textbf{A)} Homozygous \emph{gper1\textsuperscript{(-/-)}} mutants (n = 81 fish, purple) do not show impaired habituation relative to sibling controls (\emph{gper1\textsuperscript{(+/-)}} and \emph{gper1\textsuperscript{(+/+)}}, n = 222 fish, red). Rather, there is a slight suppression of responsiveness in the mutant group (arrows), indicating weakly increased habituation. Each dot is the probability of response to one stimulus. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2).
+\\ \textbf{B-E)} No significant differences are observed in the responsiveness distributions for the naive response to the first 5 DF stimuli (\textbf{B}), during the first training block (\textbf{C}), or the acoustic response (\textbf{E}), while a subtle but statistically significant decrease in responsiveness is observed in the trained response (\textbf{D}). Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05.
+\\ \textbf{F)} Cumulative mean difference plot quantifying habituation performance of mutants relative to sibling controls, consistent with slightly increased habituation rate in mutant larvae. 
+}
+\label{fig:2}
+
+\end{center}
+\end{fullwidth}
+\end{figure}
+
+The effects of estradiol that we have observed occur very rapidly -- larvae are only pretreated with estradiol for $\approx$25min-1hr before the first DF, as this is the time necessary to set the apparatus and begin the experiment.
+Since the nuclear hormone receptors are thought to primarily exert their effects via transcriptional alterations, this necessitates a delay in their signaling.
+Therefore, we hypothesized that membrane-initiated signaling through Gper1 was the more likely mechanism. 
+To test this we obtained and tested the presumed null frameshift/early stop allele \emph{gper1\textsuperscript{uab102}} \citep{Romano2017-ep}. 
+
+To test if \emph{gper1} is required for the effects of estradiol on habituation, we generated larvae from \emph{gper1\textsuperscript{uab102}} heterozygous or homo/hererozygous crosses to generate clutches of larvae of mixed genotypes. 
+Larvae were treated with estradiol during habituation, and were subsequently genotyped. 
+We reasoned that if \emph{gper1} is required for the effect of estradiol on habituation, mutants would be insensitive to estradiol and habituate significantly less than estradiol-treated controls. 
+Contrary to this hypothesis, we found that \emph{gper1} mutants showed no deficits in habituation (\autoref{fig:2}). 
+Remarkably, rather than observing the anticipated inhibition of habituation, \emph{gper1} mutants appeared to habituate slightly more, with the responsiveness trend line running slightly but consistently below the sibling controls (\autoref{fig:2}A). 
+This is further supported by a weak but statistically significant decrease in the responsiveness of the larvae during the training period (\autoref{fig:2}D), and a trend towards positive values in the Cumulative Mean Difference plot (\autoref{fig:2}F). From these experiments we conclude that Gper1 does not mediate the positive effects of estradiol on habituation learning, which are instead mediated by a different receptor. 
+
+
+\subsection{Nuclear ERs dispensable for estradiol-promoted habituation learning}
+
+\begin{figure}
+\begin{fullwidth}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/NuclearSingleMutants.png}
+\caption{\textbf{\emph{esr1}, \emph{esr2a} and \emph{esr2a} mutants do not show habituation deficits after treatment with estradiol.} \scriptsize
+\\ \textbf{A)} Homozygous \emph{esr1\textsuperscript{(-/-)}} mutants (n = 231 fish) do not show impaired habituation relative to sibling controls (\emph{esr1\textsuperscript{(+/-)}} and \emph{esr1\textsuperscript{(+/+)}}, n = 490 fish). 
+\\ \textbf{B)} Homozygous \emph{esr2a\textsuperscript{(-/-)}} mutants (n = 214 fish) do not show impaired habituation relative to sibling controls (\emph{esr2a\textsuperscript{(+/-)}} and \emph{esr2a\textsuperscript{(+/+)}}, n = 128 fish).
+\\ \textbf{C)} Homozygous \emph{esr2b\textsuperscript{(-/-)}} mutants (n = 205 fish) do not show impaired habituation relative to sibling controls (\emph{esr2b\textsuperscript{(+/-)}} and \emph{esr2b\textsuperscript{(+/+)}}, n = 542 fish). 
+\\ \textbf{i)-vi)} For each lettered section: 
+\\ \textbf{i)} Responsiveness to stimuli comparing homozygous mutants to sibling controls (heterozygous or wild-type). 
+Each dot is the probability of response to one stimulus. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2). 
+Suppression of responsiveness is indicated by arrows, potentially reflecting increased habituation.
+\\ \textbf{ii)-v)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. 
+Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05, ** = p < 0.01.
+\textbf{ii)} the naive response to the first 5 DF stimuli; \textbf{iii)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{iv)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{v)} the 30 acoustic stimuli delivered with a tap from a solenoid on the 300-well plate platform.
+\\ \textbf{vi)} Cumulative mean difference plot quantifying habituation performance of mutants relative to sibling controls
+}
+
+\label{fig:3}
+
+\end{center}
+\end{fullwidth}
+\end{figure}
+
+Since we found the \emph{gper} was unnecessary for the positive effects of estradiol on habituation learning, we next focused on the three nuclear receptors in the zebrafish genome: \emph{esr1}, \emph{esr2a} and \emph{esr2a}. 
+Using the same strategy as for \emph{gper1}, we analyzed previously established and presumed null mutants (\emph{esr2a\textsuperscript{uab134}}, \emph{esr2a\textsuperscript{uab134}}, and \emph{esr2b\textsuperscript{uab127}}), looking for a mutant with insensitivity to estradiol. 
+However, we failed to identify any deficits in habituation (\autoref{fig:3}).
+To our surprise, we again found that both \emph{esr1} and \emph{esr2a} mutants showed subtle increases in habituation (\autoref{fig:3}Avi,Bvi), similar in magnitude to what we had seen for \emph{gper1} mutants (\autoref{fig:2}F). 
+From these data we conclude that none of the nuclear ERs are required for the effects of estradiol on promoting habituation. As for Gper1, ER1 and ER2a show a  weak inhibitory effect on habituation, indicating that they also act to suppress habituation learning, and providing evidence that our failure to identify a phenotype is not caused by genotyping errors or mischaracterization of the expected null mutant alleles.
+
+\subsection{Nuclear ERs are simultaneously dispensable for estradiol-promoted habituation learning}
+
+\begin{figure}
+\begin{fullwidth}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/NuclearDoubleAndTripleMutants.png}
+\caption{ \textbf{Double and triple mutant combinations of \emph{esr1}, \emph{esr2a} and \emph{esr2a} do not show habituation deficits after treatment with estradiol.} \scriptsize
+\\ \textbf{A)} Homozygous \emph{esr2a\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)}} double mutants (n = 109 fish) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (\emph{\textsuperscript{(+/?)};\textsuperscript{(+/?)}}, n = 120 fish). 
+\\ \textbf{B)} Homozygous \emph{esr1\textsuperscript{(-/-)};esr2a\textsuperscript{(-/-)}} double mutants (n = 6 fish) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (\emph{\textsuperscript{(+/?)};\textsuperscript{(+/?)}}, n = 95 fish). 
+\\ \textbf{C)} Homozygous \emph{esr1\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)}} double mutants (n = 90 fish) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (\emph{\textsuperscript{(+/?)};\textsuperscript{(+/?)}}, n = 347 fish). 
+\\ \textbf{D)} Homozygous \emph{esr1\textsuperscript{(-/-)};esr2a\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)}} triple mutants (n = 9 fish) do not show impaired habituation relative to triple heterozygous or homozygous sibling controls (\emph{\textsuperscript{(+/?)};\textsuperscript{(+/?)};\textsuperscript{(+/?)}}, n = 106 fish). 
+\\ \textbf{i)-vi)} For each lettered section: 
+\\ \textbf{i)} Responsiveness to stimuli comparing homozygous mutants to sibling controls (heterozygous or wild-type). 
+Each dot is the probability of response to one stimulus. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2).
+\\ \textbf{ii)-v)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. 
+Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05, ** = p < 0.01.
+\textbf{ii)} the naive response to the first 5 DF stimuli; \textbf{iii)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{iv)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{v)} the 30 acoustic stimuli delivered with a tap from a solenoid on the 300-well plate platform.
+\\ \textbf{vi)} Cumulative mean difference plot quantifying habituation performance of mutants relative to sibling controls.
+}
+\label{fig:4}
+
+\end{center}
+\end{fullwidth}
+\end{figure}
+
+While our experiments demonstrated that \emph{esr1}, \emph{esr2a} and \emph{esr2a} mutants remain sensitive to estradiol, it is plausible that they could act in a redundant fashion to mediate the effects of estradiol on habituation, perhaps via co-expression in a cirtical cell type. 
+To test for this possibility, we tested combinations of homozygous mutants by crossing individual lines together, comparing to heterozygous or wild-type sibling controls (\autoref{fig:4}). 
+An expected scenario might be that the two ERβ paralogs, ER2a and ER2b might act redundatly, but we found that double mutants for \emph{esr2a;esr2b} did not show habituation deficits (\autoref{fig:4}A).
+Neither did we observe suppression of habituation in double mutants for \emph{esr1;esr2a} (\autoref{fig:4}B), or \emph{esr1;esr2b} (\autoref{fig:4}C). 
+Finally, we tested triple mutants for all three nuclear ERs (\emph{esr1;esr2a;esr2b}), but again failed to identify suppressions in habituation (\autoref{fig:4}D).
+
+We note that we did see a statistically "significant" increase in DF responsiveness in the \emph{esr1;esr2b} double mutants (\autoref{fig:4}Cii-iv), was attributable to a small increase in naive responsiveness, and did not result from habituation deficits according to our normalized cumulative mean difference analysis (\autoref{fig:4}Cvi).
+Considering that we did not observe any increased responsiveness in the triple mutants (\autoref{fig:4}D), we conclude that the observed increased responsiveness in the double mutants is likely a result of biological noise, that only rose to statistical "significance" due to the large number of larvae tested.
+
+Consistent with the paradoxical effect of increased habituation in \emph{esr1} and \emph{esr2a} single mutants (\autoref{fig:3}A,B), we again observed that double and triple mutants containing these genes also showed a slight increase in habituation (with the exception of the {esr1;esr2b} double mutants, as discussed above).
+This adds further support to our conclusion that ER1 and ER2b can play minor roles in regulating habituation, but act to suppress habituation rather than promote it. 
+
+
+\subsection{Gper1 and nuclear ERs are simultaneously dispensable for estradiol-promoted habituation learning}
+
+\begin{figure}
+\begin{fullwidth}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/gper1andNuclearMutants.png}
+
+\caption{ \textbf{Double, triple and quadruple mutant combinations of \emph{esr1}, \emph{esr2a}, \emph{esr2a}, and \emph{gper1} do not show habituation deficits after treatment with estradiol.} \scriptsize
+\\ \textbf{A)} Homozygous \emph{esr1\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} double mutants (n = 34 fish, purple) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (n = 81 fish, red). 
+\\ \textbf{B)} Homozygous \emph{esr2a\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} double mutants (n = 27 fish, purple) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (n = 81 fish, red). 
+\\ \textbf{C)} Homozygous \emph{esr2b\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} double mutants (n = 24 fish, purple) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (n = 81 fish, red). 
+\\ \textbf{D)} Homozygous \emph{esr2a\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} triple mutants (n = 35 fish, purple) do not show impaired habituation relative to heterozygous or homozygous sibling controls (n = 81 fish, red). 
+\\ \textbf{E)} A single homozygous \emph{esr1\textsuperscript{(-/-)};esr2a\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} quadruple mutant (n = 1 fish, purple) does not appear to show impaired habituation relative to heterozygous or homozygous sibling controls (n = 81 fish, red). 
+\\ \textbf{i)-vi)} For each lettered section: 
+\\ \textbf{i)} Responsiveness to stimuli comparing homozygous mutants to sibling controls (heterozygous or wild-type). 
+Each dot is the probability of response to one stimulus. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2).
+\\ \textbf{ii)-v)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. 
+Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05, ** = p < 0.01.
+\textbf{ii)} the naive response to the first 5 DF stimuli; \textbf{iii)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{iv)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{v)} the 30 acoustic stimuli delivered with a tap from a solenoid on the 300-well plate platform.
+\\ \textbf{vi)} Cumulative mean difference plot quantifying habituation performance of mutants relative to sibling controls. 
+\\ As mutant larvae were all derived from the same experiments, the sibling control data (red) is the same in \textbf{A-E)}.
+}
+
+\label{fig:5}
+\end{center}
+\end{fullwidth}
+\end{figure}
+
+
+While it is unclear how the GPCR Gper1 might act redundantly with the nuclear ERs, we nevertheless decided to test this possibility by combining the \emph{gper1} and \emph{esr} mutations (\autoref{fig:5}). 
+As with the previous iterations of this experiment, we did not find combinations of mutants with suppressed habituation (\autoref{fig:5}). 
+Consistent with our model of (\emph{gper1}, \emph{esr1} and \emph{esr2a}) having paradoxical inhibitory roles, where they act to block rather than promote habituation, we again found that most of these combinations of mutants showed evidence of increased habituation (\autoref{fig:5i),vi)}).
+While the  responsiveness distributions did not show significant differences (\autoref{fig:5ii-iv}), the cumulative mean difference plots consistently showed positive deviations, which we interpret as increased habituation (\autoref{fig:5vi}).
+
+Despite the fact that we analyzed the behaviour of 1152 larvae and successfully genotyping all 4 ER genes in 373 individuals, we were only able to identify a single quadruple mutant larva lacking all canonical ERs (\autoref{fig:5}E). 
+This is likely simply due to the limitations of combinatorial Mendelian inheritance, and the fact that \emph{esr1} and \emph{esr2a} are linked on chromosome 20, rather than any genetic lethality interactions.   
+While it is dubious to conclude much from an n = 1 experiment, we find it remarkable that this larva exhibits the strongest increased habituation of all of our experiments, with clear suppression of responses (\autoref{fig:5}Ei), and strong positive deviation in the cumulative mean difference plot (\autoref{fig:5}Evi). 
+
+\section{Discussion}
+
+In these experiments we tested a comprehensive catalog of ER mutants in an attempt to identify which ER mediates the positive effects of estradiol on habituation learning, where estradiol-treated larvae exhibit stronger suppression of their response do DF stimuli (\autoref{fig:1}, \citealp{Lamire2023-he}). Our data lead to the following conclusions:
+
+\subsection{\textbf{1)} The promotion of habituation learning by estradiol is mediated by an unidentified receptor.} 
+Gper1, ER1, ER2a and ER2b do not mediate the positive effects of estradiol on habituation learning, as mutants (or combinations of mutants) do not show suppressed habituation learning after treatment with estradiol. Therefore, we conclude that there must be an alternative receptor or pathway that mediates the effects of estradiol on habituation learning.
+
+As this is fundamentally a negative result, it is difficult to conclusively demonstrate this model. One major question could relate to the true nature of the mutant alleles that we have used. 
+These are all Cas9-generated deletions, with small deletions resulting in frameshift mutations that lead to early stop codons. 
+However, it is always possible that residual activity could still remain, perhaps via alternate splicing or alternate start codons. 
+While this is a clear limitation of our approach, this explanation is very unlikely for the \emph{esr1\textsuperscript{uab118}} and \emph{esr2b\textsuperscript{uab127}} alleles, which both exhibit a lack of estradiol responsiveness in other tissues \citep{Romano2017-ep}, indicating a non-functional receptor, and  \emph{esr2b\textsuperscript{uab127}} mutants are female sterile (D. Gorelick, personal communication).
+Similarly, \emph{gper1\textsuperscript{uab102}} mutants show a lack of estradiol responsiveness in heart beating rate \citep{Romano2017-ep}, but interestingly this was only observed in maternal-zygotic mutants. 
+While it is difficult to imagine that enough maternal mRNA/protein could persist to mediate the effects of Gper1 in our experiments, we can not rule this out entirely. While the \emph{esr2a\textsuperscript{uab134}} mutants have no previously published phenotype, we argue that the best evidence we have against the "residual activity" hypothesis is that in our experiments the \emph{esr2a\textsuperscript{uab134}} (as well as the  \emph{esr1\textsuperscript{uab118}} and \emph{gper1\textsuperscript{uab102}} do have a phenotype, it is just of the opposite sign (see below). 
+
+\subsection{\textbf{2)} The canonical ERs Gper1, ER1 and ER2a act to suppress habituation learning.}
+
+Other ERs have been identified, such as ERX and an STX-sensitive Gq-membrane ER, but are less well characterized \hl{(Srivastava et al., 2013)}
+
+\subsection{Potential non-canonical mechanisms of estradiol-promoted habituation learning}
+
+Estradiol’s rapid effects, occurring within seconds to minutes, suggest the involvement of yet-uncharacterized membrane-bound proteins beyond GPER1, ERα, and ERβ. One hypothesis posits the existence of a “Gq-mER” (Gq-coupled membrane estrogen receptor) in select neuronal populations, which rapidly mobilizes calcium or activates kinases such as PKC and ERK1/2 upon estradiol binding. Another possibility is that estradiol directly modulates orphan GPCRs (e.g., GPRC6A) or transient receptor potential (TRP) channels, triggering downstream signaling cascades (e.g., MAPK or PI3K/Akt) that do not require the classical estrogen receptors. Additionally, estradiol may transiently bind to receptor tyrosine kinases (such as the insulin-like growth factor-1 receptor, IGF-1R), leading to rapid transactivation of those receptors via conformational changes and subsequent phosphorylation events. These non-genomic interactions, often involving scaffolding or adaptor proteins in lipid rafts/caveolae, offer plausible mechanisms to explain estradiol’s fast cellular actions while circumventing classical receptor pathways.
+
 \section{Materials and Methods}
-
-\subsection{Animal Ethics Statement}
-
-Adult zebrafish used to generate larvae were housed in accordance with PRCI facility approved by the animal welfare committee (comité d’éthique en expérimentation animale de la Région Rhône-Alpes: CECCAPP, Agreement \# C693870602). 
-Behaviour experiments were performed at the 5dpf stage, and are thus not subject to ethical review, but these procedures do not harm the larvae. 
 
 \subsection{Animals}
 
 All experiments were performed on larval zebrafish at 5 days post fertilization (dpf), raised at a density of $\approx$1 larvae/mL of E3 media supplemented with 0.02\% HEPES pH 7.2. 
 Larvae were raised in a 14:10h light/dark cycle at 28-29\degree{}C. 
-Adult zebrafish were housed, cared for, and bred at the Lyon PRECI zebrafish facility. 
+Adult zebrafish were housed, cared for, and bred at the following zebrafish facilities: Plateau de Recherche Expérimentale en Criblage In Vivo (PRECI, SFR Biosciences, Lyon) and the Animalerie Zebrafish Rockefeller (AZR, SFR Santé Lyon Est, Lyon). Adult zebrafish used to generate larvae were housed in accordance with regulations of the PRECI and AZR facilities, which are regulated by an internal animal wellbeing committee, and were approved by the animal welfare committee (comité d’éthique en expérimentation animale de la Région Rhône-Alpes: CECCAPP, Agreement \# C693870602). 
+Behaviour experiments were performed at the 5dpf stage, and are thus not subject to ethical review, but these procedures do not harm the larvae. 
+
 Mutant lines were obtained from D. Gorelick's lab, and were of the following alleles: 
 
 \emph{esr1\textsuperscript{uab118}} is a 4bp deletion (ZDB-ALT-180420-2), yielding a predicted null frameshift/stop mutation, confirmed by a lack of estradiol responsiveness in the heart as assayed by \emph{Tg(5xERE:GFP)\textsuperscript{c262}} expression \citep{Romano2017-ep}. 
@@ -165,11 +365,9 @@ Mutant lines were obtained from D. Gorelick's lab, and were of the following all
 
 \emph{gper1\textsuperscript{uab102}} is a 133bp deletion (ZDB-ALT-180420-1), yielding a predicted null frameshift/stop mutation, confirmed by a lack of estradiol responsiveness in heart beating rate in maternal-zygotic mutants \citep{Romano2017-ep}.
 
+
 \subsection{Genotyping}
 
-% Esr1 is the uab118 (https://zfin.org/ZDB-ALT-180420-2) line from Gorelick Lab . 
-% Mutation is a 4 bp  (CGGC) deletion on chromosome 20 obtained after CRISPR, 
-% resulting on a premature stop codon.
 \emph{esr1\textsuperscript{uab118}} was genotyped by PCR using the forward/reverse primer pair:
 \\ \mbox{GCTGGTCACCTTGAATGCTT/TGAGATGTGAGAGATGACTAGGA} with a T\textsubscript{M} of 58°C yielding a 381 bp PCR product that was digested with the restriction enzyme ApeKI. 
 The mutant product is not digested, and the wild type has two bands at 177 and 204 bp.
@@ -215,141 +413,21 @@ and Numba \citep{lam2015numba}.
 \subsection{Data analysis}
 
 Data was analyzed in Python using custom written analysis scripts (code : \href{https://github.com/owenrandlett/2025_HabEstrogen/blob/main/code/Analyze_EsrHab.py}{Analyze\_EsrHab.py}). 
-Responses to DFs and acoustic taps were identified as movement events that had a cumulative tail bend angle greater than 3 rad and 1 rad, respectively. Data was analyzed using multiple open-source packages, including: NumPy \citep{Harris2020-bg}, SciPy \citep{Virtanen2020-sz},Numba \citep{lam2015numba} and Pandas \citep{mckinney-proc-scipy-2010}.
+Responses to DFs and acoustic taps were identified as movement events that had a cumulative tail bend angle greater than 3 radian and 1 radian, respectively. Data was analyzed using multiple open-source packages, including: NumPy \citep{Harris2020-bg}, SciPy \citep{Virtanen2020-sz},Numba \citep{lam2015numba} and Pandas \citep{mckinney-proc-scipy-2010}.
 Data was plotted using Matplotlib \citep{Hunter2007-ub} and seaborn \citep{Waskom2021-ah}.
 Statistical "significance" between the distributions was tested using the Mann-Whitney U test implemented in Scipy \citep{Virtanen2020-sz}.
 
 The cumulative difference plots to assess changes in habituation performance for the treatments were calculated as previously \citep{Randlett2019-fj}, where we first
 calculated the average response across larvae for each group for each DF.
 This generated a mean vector for each group. 
-These two vectors were normalized by dividing them by the naive response (mean response to the first 5 DFs), and then the treatment group was subtracted from the control group, yielding a mean difference vector between stimulus and controls at each flash. 
-From this mean difference vector we calculated the cumulative mean distribution using Numpy's nancumsum function.  
-To generate statistical confidence in these distributions, we bootstrapped 2000 replicates, and calculated the 99.5\% confidence intervals using SciPy's stats.norm.interval funciton.
-The assumption of this analysis is that if the two groups are habituating similarly, then the difference vectors will also have a mean of 0, and thus the cumulative mean distribution would remain near 0. 
+These two vectors were normalized by dividing them by the naive response (mean response to the first 5 DFs), and then the treatment group was subtracted from the control group, yielding a "mean difference" vector between stimulus and controls at each flash. 
+From this mean difference vector we calculated the cumulative mean distribution using Numpy's 'nancumsum' function divided by the number of stimuli experienced, or the index of the vector. 
+To generate statistical confidence in these distributions, we bootstrapped 2000 replicates, and calculated the 99.5\% confidence intervals using SciPy's 'stats.norm.interval' function.
+The assumption of this analysis is that if the two groups are habituating similarly, then the "mean difference" vector will exhibit a noise distribution centered at a mean of 0, and thus the cumulative mean distribution would remain near 0. 
 Treatments that affect habituation will show strong increasing or decreasing cumulative mean distributions, reflecting increased or decreased habituation performance throughout
 training, respectively.
+We use an empirically defined threshold of $\pm0.05$ as the statistically meaningful effect size in this analysis, as is reflected in the shaded gray regions in the plots \citep{Randlett2019-fj}.
 
-\section{Results and Discussion}
-
-\subsection{Estradiol increases habituation learning}
-
-
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
-\includegraphics[width=0.75\linewidth]{figures/EstradiolEffect.png}
-\caption{\textbf{Estradiol increases habituation learning.}
-\\ \textbf{A)} In response to a dark flash (DF), larval zebrafish perform a large turning maneuver termed an O-bend response.
-\\ \textbf{B)} High-throughput setup for recording and quantify O-bend responsiveness using a high-speed camera recording at 444hz observing larvae in 300-well plates.
-\\ \textbf{C)} Treatment with estradiol (red) results in more rapid and profound decreases in the probability of response to DF stimuli during habituation training relative to DMSO vehicle controls (black). DF stimuli are delivered at 1-minute intervals, in 4 blocks of 60 stimuli, separated by 1hr of rest (from 0:00-7:00). 1.5 hours later a block of 30 acoustic stimuli are delivered at 1-minute intervals (\textbf{i}). Each dot is the probability of response to one DF. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2). 
-\\ \textbf{D-G)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. Statistical significance was calculated using Mann-Whitney U test, *** = p < 0.001.  \textbf{D)} the naive response to the first 5 DF stimuli; \textbf{E)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{F)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{G)} the 30 acoustic stimuli delivered with a tap from a solenoid on the 300-well plate platform. 
-\\ \textbf{H)} Cumulative mean difference plot quantifying relative habituation performance after estradiol treatment. These plots display the cumulative average differences in the mean response across larvae of the treatment group (estradiol) relative to the control group (DMSO). Difference from 0 reflect a divergence in the change in responsivness across the 240 DF stimuli in the 4 training blocks, with positive values reflecting increased habituation. The widths of the line is a bootstrapped 99.5\% confidence intervals. The gray boxed region reflects the expected non-significant effect size \citep{Randlett2019-fj}.
-\\ Treatment groups are: Estradiol = 10\textmu M estradiol treatment (n = 345 fish); DMSO = 0.1\% DMSO vehicle controls (n = 548 fish)
-}
-
-\label{fig:1}
-
-\end{center}
-\end{fullwidth}
-\end{figure}
-
-In response to a sudden global dimming event, which we refer to as a dark flash (DF), larval zebrafish execute an "O-bend" maneuver, characterized by a deep "O"-shaped bend and a high-amplitude turn \citep{Burgess2007}. 
-Habituation learning manifests as a progressive reduction in response to repeated stimuli, and this learning can be retained for seconds/minutes or hours/days for short- and long-term habituation, respectively \citep{Rankin2009-no}. 
-We use high-speed cameras, machine-vision analysis, and 300-well plates to quantify habituation across large populations of larvae to identify molecular/genetic mechanisms of long-term habituation({\autoref{fig:1}A,B, \citealp{Randlett2019-fj,Lamire2023-he}). 
-When stimulated with DFs repeated at 1-minute intervals in repeated blocks of 60 stimuli, larval zebrafish exhibit long-term habituation, reducing not only the probability of executing a response, but also modulating the latency and other kinematic aspects of the response \citep{Randlett2019-fj}.  
-
-
-Our previous small-molecule screening experiments identified multiple synthetic Estrogen Receptor agonists as positive modulators of dark-flash habituation learning, including ethinyl estradiol, estradiol valerate, and hexestrol  \citep{Lamire2023-he}. 
-The major effect we observed was a stronger decrease in the probability of executing a O-bend response during the training/learning blocks. 
-We have confirmed and extended these results using \textbeta-Estradiol (estradiol), which is the major natural estrogen in humans. 
-
-
-
-An acute dose of 10\textmu M estradiol potently increases habituation learning, which is observable when the response probability of the population of estradiol-treated larvae is compared with DMSO-treated vehicle controls across stimuli (\autoref{fig:1}C-H).
-Consistent with our previous experiments \citep{Lamire2023-he}, there is a modest reduction in the initial responsiveness of the estradiol-treated larvae to the first DF stimulus (\autoref{fig:1}D), but the major effect is observed during the training phase (\autoref{fig:1}C,E,F), as is revealed by the consistent positive deviation in the cumulative mean difference plot (\autoref{fig:1}H, \citealp{Randlett2019-fj}).
-Importantly, the responsiveness of the larvae to acoustic stimuli delivered after the DF training is indistinguishable from controls (\autoref{fig:1}Ci, G), indicating that estradiol does not affect global arousal levels but rather has specific effects on habituation learning. 
-
-
-
-\subsection{Membrane-initiated estradiol signaling via Gper1 does not increase habituation learning}
-
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
-\includegraphics[width=0.95\linewidth]{figures/gper1Mutants.png}
-\caption{\textbf{\emph{gper1} mutants do not show habituation deficits after treatment with estradiol.}
-\\ \textbf{A)} Homozygous \emph{gper1\textsuperscript{(-/-)}} mutants do not show impaired habituation relative to sibling controls (\emph{gper1\textsuperscript{(+/-)}} and \emph{gper1\textsuperscript{(+/+)}}). Rather, there is a slight suppression of responsiveness in the mutant group (arrows), indicating weakly increased habituation. 
-\\ \textbf{B-E)} No significant differences are observed in the responsiveness distributions for the naive response to the first 5 DF stimuli (\textbf{B}), during the first training block (\textbf{C}), or the acoustic response (\textbf{E}), while a subtle but statistically significant decrease in responsiveness is observed in the trained response (\textbf{D}). Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05.
-\\ \textbf{F)} Cumulative mean difference plot quantifying relative habituation performance in  after estradiol treatment, consistent with slightly increased habituation rate in mutant larvae. 
-}
-\label{fig:2}
-
-\end{center}
-\end{fullwidth}
-\end{figure}
-
-The effects of estradiol we have observed occur very rapidly -- larvae are only pretreated with estradiol for $\approx$25min-1hr before the first DF, as this is the time necessary to set the apparatus and begin the experiment.
-Since classical nuclear hormone receptors (like the Esr1 and Esr2) exert their effects via transcriptional adaptation, this necessitates a delay in signaling response. 
-Therefore, we hypothesized that membrane-initiated signaling through Gper1 was the more likely mechanism. 
-To test this we obtained and tested the presumed null frameshift/early stop allele \emph{gper1\textsuperscript{uab102}}, which was previously shown to be insensitive to estradiol for heart-rate modulation \citep{Romano2017-ep}. 
-
-To test if \emph{gper1} is required for the effects of estradiol on habituation we generated larvae from \emph{gper1\textsuperscript{uab102}} heterozygous or homo/hererozygous crosses to generate clutches of larvae of mixed genotypes. Larvae were treated with estradiol during habituation, and were subsequently genotyped. We reasoned that if \emph{gper1} is required for the effect of estradiol on habituation, mutants would habituate significantly less than controls. Contrary to this hypothesis, we found that \emph{gper1} mutants showed no deficits in habituation (\autoref{fig:2}). Remarkably, rather than observing the anticipated inhibition of habituation, \emph{gper1} mutants appeared to habituate slightly more, with the responsiveness trendline running slightly but consistently below the sibling controls (\autoref{fig:2}A). This is further supported by a weak but statistically significant decrease in the responsiveness of the larvae during the training period (\autoref{fig:2}D), and a trend towards positive values in the Cumulative Mean DIfference plot (\autoref{fig:2}F). 
-
-From these experiments we conclude that: 
-\\ \textbf{1)} Gper1 does not mediate the positive effects of estradiol on habituation learning, and therefore these effects are mediated by a different receptor. 
-\\ \textbf{2)} Gper1 appears to have a paradoxical inhibitory effect on habituation learning, although this effect size is relatively minor and does not rise substantially above biological noise levels. 
-\\ \textbf{3)} The observed paradoxical inhibitory effect confirms that these mutants do have a phenotype in our assay, despite it not being of the predicted sign. This provides compelling evidence that our negative results do not simply result from an issue or mischaracterization of this predicted null-allele \citep{Romano2017-ep}.  
-
-\subsection{Nuclear-mediated estradiol signaling via Esr1, Esr2a or Esr2b does not increase habituation learning}
-
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
-\includegraphics[width=0.95\linewidth]{figures/NuclearSingleMutants.png}
-\caption{\textbf{\emph{esr1}, \emph{esr2a} and \emph{esr2a} mutants do not show habituation deficits after treatment with estradiol.}
-\\ \textbf{A)} Homozygous \emph{esr1\textsuperscript{(-/-)}} mutants do not show impaired habituation relative to sibling controls (\emph{esr1\textsuperscript{(+/-)}} and \emph{esr1\textsuperscript{(+/+)}}). 
-\\ \textbf{B)} Homozygous \emph{esr2a\textsuperscript{(-/-)}} mutants do not show impaired habituation relative to sibling controls (\emph{esr2a\textsuperscript{(+/-)}} and \emph{esr2a\textsuperscript{(+/+)}}).
-\\ \textbf{C)} Homozygous \emph{esr2b\textsuperscript{(-/-)}} mutants do not show impaired habituation relative to sibling controls (\emph{esr2b\textsuperscript{(+/-)}} and \emph{esr2b\textsuperscript{(+/+)}}). 
-}
-\label{fig:3}
-
-\end{center}
-\end{fullwidth}
-\end{figure}
-
-Since we found the \emph{gper} was unnecessary for the positive effects of estradiol on habituation learning, we next focused on the three nuclear receptors in the zebrafish genome: \emph{esr1}, \emph{esr2a} and \emph{esr2a}. Using the same strategy as for \emph{gper}, we analyzed previously established and presumed null mutants (\emph{esr2a\textsuperscript{uab134}}, \emph{esr2a\textsuperscript{uab134}}, and \emph{esr2b\textsuperscript{uab127}}), looking for a mutant with habituation deficits after estradiol treatment. However, we again failed to identify any decreases in habituatuin (\autoref{fig:3}), and to our surpise we again found that both \emph{esr1} and \emph{esr2a} mutants showed sublte \textbf{increases} in habituation (\autoref{fig:3}Avi,Bvi), similar in magnitude to what we had seen for \emph{gper1} mutants (\autoref{fig:2}F). 
-
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
-\includegraphics[width=0.95\linewidth]{figures/NuclearDoubleAndTripleMutants.png}
-\caption{ \textbf{Double and triple mutant combinations of \emph{esr1}, \emph{esr2a} and \emph{esr2a} do not show habituation deficits after treatment with estradiol.}
-\\ \textbf{A)} Homozygous \emph{esr1\textsuperscript{(-/-)}} mutants do not show impaired habituation relative to sibling het/wt controls. 
-}
-\label{fig:4}
-
-\end{center}
-\end{fullwidth}
-\end{figure}
-
-\subsection{Membrane-initiated and nuclear-mediated signaling are simultaneously dispensable for estradiol-induced enhancements in habituation learning}
-
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{figures/gper1andNuclearMutants.png}
-\caption{ \textbf{Double and triple and quaruple mutant combinations of \emph{esr1}, \emph{esr2a}, \emph{esr2a}, and \emph{gper1} do not show habituation deficits after treatment with estradiol.}
-\\ \textbf{A)} Homozygous \emph{esr1\textsuperscript{(-/-)}} mutants do not show impaired habituation relative to sibling het/wt controls. 
-}
-\label{fig:5}
-\end{center}
-\end{fullwidth}
-\end{figure}
-
-Finally, since it is formally possible that nuclear and membrane-initated estradiol-signaling could act in a redundant fashion, we analyzed combinations of double and triple mutants, but again failed to identify suppressions in habituation. 
-\section{Conclusions}
-
-Other ERs have been identified, such as ERX and an STX-sensitive Gq-membrane ER, but are less well characterized \hl{(Srivastava et al., 2013)}
 
 \section{Funding}
 
