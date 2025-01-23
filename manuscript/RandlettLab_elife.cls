@@ -78,10 +78,10 @@
 \RequirePackage{booktabs}
 \RequirePackage{authblk}
 
-\RequirePackage[left=3.5cm,%
+\RequirePackage[left=1.5cm,%
                 marginparwidth=2cm,%
                 marginparsep=0.5cm,%
-                right=1.3cm,%
+                right=1.5cm,%
                 top=2cm,%
                 bottom=2.5cm,%
                 headheight=21pt,%
@@ -229,7 +229,7 @@
 %
 % custom title page 
 %
-\renewcommand{\Authfont}{\bfseries\huge\raggedright}
+\renewcommand{\Authfont}{\bfseries\large\raggedright}
 \renewcommand{\Affilfont}{\mdseries\footnotesize\raggedright}
 \renewcommand{\Authands}{, }
 \setlength{\affilsep}{16pt}
@@ -304,7 +304,7 @@
 
 
 \newenvironment{fullwidth}{%
-  \begin{adjustwidth}{-2cm}{}%
+  \begin{adjustwidth}{-0.7cm}{}%
   \hsize=\linewidth%
 }{\end{adjustwidth}}
 
