@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{41}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\urlprefix}{}
 \providecommand{\doiprefix}{doi: }
@@ -59,6 +59,11 @@
 \newblock Melatonin modulates daytime-dependent synaptic plasticity and learning efficiency.
 \newblock J Pineal Res.  2019 Apr; 66(3):e12553.
 
+\bibitem[{Kow and Pfaff(2016)Kow, Lee-Ming and Pfaff, Donald W}]{Kow2016-dl}
+\textbf{\color{eLifeMediumGrey} Kow LM}, Pfaff DW.
+\newblock Rapid estrogen actions on ion channels: A survey in search for mechanisms.
+\newblock Steroids.  2016 Jul; 111:46--53.
+
 \bibitem[{Lam et~al.(2015)Lam, Siu Kwan and Pitrou, Antoine and Seibert, Stanley}]{lam2015numba}
 \textbf{\color{eLifeMediumGrey} Lam SK}, Pitrou A, Seibert S.
 \newblock Numba: A llvm-based python jit compiler.
@@ -74,6 +79,11 @@
 \newblock Estradiol and cognitive function: past, present and future.
 \newblock Horm Behav.  2014 Sep; 66(4):602--618.
 
+\bibitem[{McDiarmid et~al.(2019)McDiarmid, Troy A and Yu, Alex J and Rankin, Catharine H}]{McDiarmid2019-td}
+\textbf{\color{eLifeMediumGrey} McDiarmid TA}, Yu AJ, Rankin CH.
+\newblock Habituation is more than learning to ignore: Multiple mechanisms serve to facilitate shifts in behavioral strategy.
+\newblock Bioessays.  2019 Sep; 41(9):e1900077.
+
 \bibitem[{{W}es {M}c{K}inney(2010)}]{mckinney-proc-scipy-2010}
 \textbf{\color{eLifeMediumGrey} {W}es {M}c{K}inney}.
 \newblock {D}ata {S}tructures for {S}tatistical {C}omputing in {P}ython.
@@ -85,7 +95,17 @@
 \newblock Molecular characterization of three estrogen receptor forms in zebrafish: Binding characteristics, transactivation properties, and tissue Distributions1.
 \newblock Biol Reprod.  2002 Jun; 66(6):1881--1892.
 
-\bibitem[{Naderi et~al.(2020)Naderi, Mohammad and Salahinejad, Arash and Attaran, Anoosha and Niyogi, Som and Chivers, Douglas P}]{Naderi2020-ot}
+\bibitem[{Mlinari{\'c} et~al.(2017)Mlinari{\'c}, Ana and Horvat, Martina and {\v S}upak Smol{\v c}i{\'c}, Vesna}]{Mlinaric2017-kr}
+\textbf{\color{eLifeMediumGrey} Mlinari{\'c} A}, Horvat M, {\v S}upak~Smol{\v c}i{\'c} V.
+\newblock Dealing with the positive publication bias: Why you should really publish your negative results.
+\newblock Biochem Med (Zagreb).  2017 Oct; 27(3):030201.
+
+\bibitem[{Naderi et~al.(2020{\natexlab{a}})Naderi, Mohammad and Salahinejad, Arash and Attaran, Anoosha and Niyogi, Som and Chivers, Douglas P}]{Naderi2020-ot}
+\textbf{\color{eLifeMediumGrey} Naderi M}, Salahinejad A, Attaran A, Niyogi S, Chivers DP.
+\newblock Rapid effects of estradiol and its receptor agonists on object recognition and object placement in adult male zebrafish.
+\newblock Behav Brain Res.  2020 Apr; 384(112514):112514.
+
+\bibitem[{Naderi et~al.(2020{\natexlab{b}})Naderi, Mohammad and Salahinejad, Arash and Attaran, Anoosha and Niyogi, Som and Chivers, Douglas P}]{Naderi2020-cg}
 \textbf{\color{eLifeMediumGrey} Naderi M}, Salahinejad A, Attaran A, Niyogi S, Chivers DP.
 \newblock Rapid effects of estradiol and its receptor agonists on object recognition and object placement in adult male zebrafish.
 \newblock Behav Brain Res.  2020 Apr; 384(112514):112514.
@@ -100,10 +120,25 @@
 \newblock Biological role of estrogen and estrogen receptors.
 \newblock Crit Rev Biochem Mol Biol.  2002; 37(1):1--28.
 
+\bibitem[{Payrits et~al.(2017)Payrits, Maja and S{\'a}ghy, {\'E}va and Csek{\H o}, Kata and Poh{\'o}czky, Krisztina and B{\"o}lcskei, Kata and Ernszt, D{\'a}vid and Barab{\'a}s, Klaudia and Szolcs{\'a}nyi, J{\'a}nos and {\'A}brah{\'a}m, Istv{\'a}n M and Helyes, Zsuzsanna and Sz{\H o}ke, {\'E}va}]{Payrits2017-cd}
+\textbf{\color{eLifeMediumGrey} Payrits M}, S{\'a}ghy {\'E}, Csek{\H o} K, Poh{\'o}czky K, B{\"o}lcskei K, Ernszt D, Barab{\'a}s K, Szolcs{\'a}nyi J, {\'A}brah{\'a}m IM, Helyes Z, Sz{\H o}ke {\'E}.
+\newblock Estradiol sensitizes the transient receptor potential vanilloid 1 receptor in pain responses.
+\newblock Endocrinology.  2017 Oct; 158(10):3249--3258.
+
 \bibitem[{Prossnitz and Barton(2023)Prossnitz, Eric R and Barton, Matthias}]{Prossnitz2023-uo}
 \textbf{\color{eLifeMediumGrey} Prossnitz ER}, Barton M.
 \newblock The {G} protein-coupled oestrogen receptor {GPER} in health and disease: an update.
 \newblock Nat Rev Endocrinol.  2023 Jul; 19(7):407--424.
+
+\bibitem[{Qiu et~al.(2006)Qiu, Jian and Bosch, Martha A and Tobias, Sandra C and Krust, Andree and Graham, Sharon M and Murphy, Stephanie J and Korach, Kenneth S and Chambon, Pierre and Scanlan, Thomas S and R{\o}nnekleiv, Oline K and Kelly, Martin J}]{Qiu2006-ml}
+\textbf{\color{eLifeMediumGrey} Qiu J}, Bosch MA, Tobias SC, Krust A, Graham SM, Murphy SJ, Korach KS, Chambon P, Scanlan TS, R{\o}nnekleiv OK, Kelly MJ.
+\newblock A G-protein-coupled estrogen receptor is involved in hypothalamic control of energy homeostasis.
+\newblock J Neurosci.  2006 May; 26(21):5649--5655.
+
+\bibitem[{Ram{\'\i}rez-Barrantes et~al.(2020)Ram{\'\i}rez-Barrantes, Ricardo and Carvajal-Zamorano, Karina and Rodriguez, Belen and Cordova, Claudio and Lozano, Carlo and Simon, Felipe and D{\'\i}az, Paula and Mu{\~n}oz, Pablo and Marchant, Ivanny and Latorre, Ram{\'o}n and Castillo, Karen and Olivero, Pablo}]{Ramirez-Barrantes2020-iv}
+\textbf{\color{eLifeMediumGrey} Ram{\'\i}rez-Barrantes R}, Carvajal-Zamorano K, Rodriguez B, Cordova C, Lozano C, Simon F, D{\'\i}az P, Mu{\~n}oz P, Marchant I, Latorre R, Castillo K, Olivero P.
+\newblock {TRPV1-estradiol} stereospecific relationship underlies cell survival in oxidative cell death.
+\newblock Front Physiol.  2020 May; 11:444.
 
 \bibitem[{Randlett et~al.(2019)Randlett, Owen and Haesemeyer, Martin and Forkin, Greg and Shoenhard, Hannah and Schier, Alexander F and Engert, Florian and Granato, Michael}]{Randlett2019-fj}
 \textbf{\color{eLifeMediumGrey} Randlett O}, Haesemeyer M, Forkin G, Shoenhard H, Schier AF, Engert F, Granato M.
@@ -130,6 +165,26 @@
 \newblock {G} protein-coupled estrogen receptor regulates embryonic heart rate in zebrafish.
 \newblock PLoS Genet.  2017 Oct; 13(10):e1007069.
 
+\bibitem[{Sula et~al.(2021)Sula, Altin and Hollingworth, David and Ng, Leo C T and Larmore, Megan and DeCaen, Paul G and Wallace, B A}]{Sula2021-vs}
+\textbf{\color{eLifeMediumGrey} Sula A}, Hollingworth D, Ng LCT, Larmore M, DeCaen PG, Wallace BA.
+\newblock A tamoxifen receptor within a voltage-gated sodium channel.
+\newblock Mol Cell.  2021 Mar; 81(6):1160--1169.e5.
+
+\bibitem[{Thisse and Thisse(2008)Thisse, Christine and Thisse, Bernard}]{Thisse2008-vr}
+\textbf{\color{eLifeMediumGrey} Thisse C}, Thisse B.
+\newblock High-resolution in situ hybridization to whole-mount zebrafish embryos.
+\newblock Nat Protoc.  2008; 3(1):59--69.
+
+\bibitem[{Trevi{\~n}o and Gorelick(2021)Trevi{\~n}o, Lindsey S and Gorelick, Daniel A}]{Trevino2021-wl}
+\textbf{\color{eLifeMediumGrey} Trevi{\~n}o LS}, Gorelick DA.
+\newblock The interface of nuclear and membrane steroid signaling.
+\newblock Endocrinology.  2021 Aug; 162(8).
+
+\bibitem[{Vail and Roepke(2019)Vail, Gwyndolin and Roepke, Troy A}]{Vail2019-lx}
+\textbf{\color{eLifeMediumGrey} Vail G}, Roepke TA.
+\newblock Membrane-initiated estrogen signaling via Gq-coupled {GPCR} in the central nervous system.
+\newblock Steroids.  2019 Feb; 142:77--83.
+
 \bibitem[{Virtanen et~al.(2020)Virtanen, Pauli and Gommers, Ralf and Oliphant, Travis E and Haberland, Matt and Reddy, Tyler and Cournapeau, David and Burovski, Evgeni and Peterson, Pearu and Weckesser, Warren and Bright, Jonathan and van der Walt, St{\'e}fan J and Brett, Matthew and Wilson, Joshua and Millman, K Jarrod and Mayorov, Nikolay and Nelson, Andrew R J and Jones, Eric and Kern, Robert and Larson, Eric and Carey, C J and Polat, {\.I}lhan and Feng, Yu and Moore, Eric W and VanderPlas, Jake and Laxalde, Denis and Perktold, Josef and Cimrman, Robert and Henriksen, Ian and Quintero, E A and Harris, Charles R and Archibald, Anne M and Ribeiro, Ant{\^o}nio H and Pedregosa, Fabian and van Mulbregt, Paul and {SciPy 1.0 Contributors}}]{Virtanen2020-sz}
 \textbf{\color{eLifeMediumGrey} Virtanen P}, Gommers R, Oliphant TE, Haberland M, Reddy T, Cournapeau D, Burovski E, Peterson P, Weckesser W, Bright J, van~der Walt SJ, Brett M, Wilson J, Millman KJ, Mayorov N, Nelson ARJ, Jones E, Kern R, Larson E, Carey CJ, et~al.
 \newblock {SciPy} 1.0: fundamental algorithms for scientific computing in Python.
@@ -149,5 +204,10 @@
 \textbf{\color{eLifeMediumGrey} Wolman MA}, Jain RA, Liss L, Granato M.
 \newblock Chemical modulation of memory formation in larval zebrafish.
 \newblock Proceedings of the National Academy of Sciences.  2011 Sep; 108(37):15468--15473.
+
+\bibitem[{Yu et~al.(2024)Yu, Xinge and Zhao, Queena Y and Yaman, Murat and Emly, Sylvia M and Lee, Jacqueline K and Su, Hongyu and Ferguson, Allison C and Nagaswami, Chandrasekaran and Chaturantabut, Saireudee and Goessling, Wolfram and Weisel, John W and Auchus, Richard J and Shavit, Jordan A}]{Yu2024-hr}
+\textbf{\color{eLifeMediumGrey} Yu X}, Zhao QY, Yaman M, Emly SM, Lee JK, Su H, Ferguson AC, Nagaswami C, Chaturantabut S, Goessling W, Weisel JW, Auchus RJ, Shavit JA.
+\newblock Hormone-induced thrombosis is mediated through non-canonical fibrin(ogen) aggregation and a novel estrogen target in zebrafish.
+\newblock bioRxiv.  2024 Nov; .
 
 \end{thebibliography}
