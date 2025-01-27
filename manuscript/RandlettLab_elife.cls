@@ -177,7 +177,7 @@
 \titleformat{\paragraph}
   {\color{eLifeMediumGrey}\large}
   {\theparagraph}{}{#1}[] 
-\titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{0pt}
+\titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{4pt}
 \titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{0pt}
 \titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{0pt}
 \titlespacing*{\paragraph}{0pc}{1.5ex \@plus2pt \@minus1pt}{0pt}
@@ -261,10 +261,11 @@
    \textcolor{eLifeMediumGrey}{\rule{\textwidth}{2pt}}
    \vskip16pt
    \textcolor{RandlettLightOrange}{\huge\bfseries\abstractname\space}
+   \vskip4pt
 }{%   
    \vskip8pt
    \textcolor{eLifeMediumGrey}{\rule{\textwidth}{2pt}}
-   \vskip16pt
+   \vskip2pt
 }
 
 %% Insert a grey line to separate floats from main text
