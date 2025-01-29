@@ -1,4 +1,4 @@
-\begin{thebibliography}{42}
+\begin{thebibliography}{46}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\urlprefix}{}
 \providecommand{\doiprefix}{doi: }
@@ -33,6 +33,11 @@
 \newblock Melatonin regulates neuronal plasticity in the hippocampus.
 \newblock J Neurosci Res.  2003 May; 72(4):454--460.
 
+\bibitem[{Farkas et~al.(2022)Farkas, Szid{\'o}nia and Szab{\'o}, Adrienn and Hegyi, Anita Em{\H o}ke and T{\"o}r{\"o}k, Bibi{\'a}na and Fazekas, Csilla Lea and Ernszt, D{\'a}vid and Kov{\'a}cs, Tam{\'a}s and Zelena, D{\'o}ra}]{Farkas2022-na}
+\textbf{\color{eLifeMediumGrey} Farkas S}, Szab{\'o} A, Hegyi AE, T{\"o}r{\"o}k B, Fazekas CL, Ernszt D, Kov{\'a}cs T, Zelena D.
+\newblock Estradiol and estrogen-like alternative therapies in use: The importance of the selective and non-classical actions.
+\newblock Biomedicines.  2022 Apr; 10(4):861.
+
 \bibitem[{Filardo et~al.(2000)Filardo, E J and Quinn, J A and Bland, K I and Frackelton, Jr, A R}]{Filardo2000-yz}
 \textbf{\color{eLifeMediumGrey} Filardo EJ}, Quinn JA, Bland KI, Frackelton AR Jr.
 \newblock Estrogen-induced activation of Erk-1 and Erk-2 requires the {G} protein-coupled receptor homolog, {GPR30}, and occurs via trans-activation of the epidermal growth factor receptor through release of {HB-EGF}.
@@ -42,6 +47,11 @@
 \textbf{\color{eLifeMediumGrey} Finney CA}, Shvetcov A, Westbrook RF, Jones NM, Morris MJ.
 \newblock The role of hippocampal estradiol in synaptic plasticity and memory: A systematic review.
 \newblock Front Neuroendocrinol.  2020 Jan; 56(100818):100818.
+
+\bibitem[{Frick(2015)Frick, Karyn M}]{Frick2015-uy}
+\textbf{\color{eLifeMediumGrey} Frick KM}.
+\newblock Molecular mechanisms underlying the memory-enhancing effects of estradiol.
+\newblock Horm Behav.  2015 Aug; 74:4--18.
 
 \bibitem[{Harris et~al.(2020)Harris, Charles R and Millman, K Jarrod and van der Walt, St{\'e}fan J and Gommers, Ralf and Virtanen, Pauli and Cournapeau, David and Wieser, Eric and Taylor, Julian and Berg, Sebastian and Smith, Nathaniel J and Kern, Robert and Picus, Matti and Hoyer, Stephan and van Kerkwijk, Marten H and Brett, Matthew and Haldane, Allan and Del R{\'\i}o, Jaime Fern{\'a}ndez and Wiebe, Mark and Peterson, Pearu and G{\'e}rard-Marchant, Pierre and Sheppard, Kevin and Reddy, Tyler and Weckesser, Warren and Abbasi, Hameer and Gohlke, Christoph and Oliphant, Travis E}]{Harris2020-bg}
 \textbf{\color{eLifeMediumGrey} Harris CR}, Millman KJ, van~der Walt SJ, Gommers R, Virtanen P, Cournapeau D, Wieser E, Taylor J, Berg S, Smith NJ, Kern R, Picus M, Hoyer S, van Kerkwijk MH, Brett M, Haldane A, Del~R{\'\i}o JF, Wiebe M, Peterson P, G{\'e}rard-Marchant P, et~al.
@@ -77,6 +87,11 @@
 \textbf{\color{eLifeMediumGrey} Kow LM}, Pfaff DW.
 \newblock Rapid estrogen actions on ion channels: A survey in search for mechanisms.
 \newblock Steroids.  2016 Jul; 111:46--53.
+
+\bibitem[{Kuhl(2005)Kuhl, H}]{Kuhl2005-jz}
+\textbf{\color{eLifeMediumGrey} Kuhl H}.
+\newblock Pharmacology of estrogens and progestogens: influence of different routes of administration.
+\newblock Climacteric.  2005 Aug; 8 Suppl 1(sup1):3--63.
 
 \bibitem[{Lam et~al.(2015)Lam, Siu Kwan and Pitrou, Antoine and Seibert, Stanley}]{lam2015numba}
 \textbf{\color{eLifeMediumGrey} Lam SK}, Pitrou A, Seibert S.
@@ -183,6 +198,11 @@
 \textbf{\color{eLifeMediumGrey} Trevi{\~n}o LS}, Gorelick DA.
 \newblock The interface of nuclear and membrane steroid signaling.
 \newblock Endocrinology.  2021 Aug; 162(8).
+
+\bibitem[{Unger(2016)Unger, C{\'e}cile A}]{Unger2016-at}
+\textbf{\color{eLifeMediumGrey} Unger CA}.
+\newblock Hormone therapy for transgender patients.
+\newblock Transl Androl Urol.  2016 Dec; 5(6):877--884.
 
 \bibitem[{Vail and Roepke(2019)Vail, Gwyndolin and Roepke, Troy A}]{Vail2019-lx}
 \textbf{\color{eLifeMediumGrey} Vail G}, Roepke TA.
