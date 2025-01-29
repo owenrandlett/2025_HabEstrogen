@@ -78,10 +78,10 @@
 \RequirePackage{booktabs}
 \RequirePackage{authblk}
 
-\RequirePackage[left=1.5cm,%
+\RequirePackage[left=1.75cm,%
                 marginparwidth=2cm,%
                 marginparsep=0.5cm,%
-                right=1.5cm,%
+                right=1.75cm,%
                 top=2cm,%
                 bottom=2.5cm,%
                 headheight=21pt,%
@@ -169,13 +169,13 @@
   {\color{eLifeMediumGrey}\huge\bfseries}
   {\thesection}{}{#1}[]
 \titleformat{\subsection}
-  {\large\bfseries}
+  {\large\bfseries\raggedright}
   {\thesubsection}{}{#1}[]
 \titleformat{\subsubsection}
-  {\large}
+  {\large\raggedright}
   {\thesubsubsection}{}{#1}[]    
 \titleformat{\paragraph}
-  {\color{eLifeMediumGrey}\large}
+  {\color{eLifeMediumGrey}\large\raggedright}
   {\theparagraph}{}{#1}[] 
 \titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{4pt}
 \titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{0pt}
@@ -305,7 +305,7 @@
 
 
 \newenvironment{fullwidth}{%
-  \begin{adjustwidth}{-0.7cm}{}%
+  \begin{adjustwidth}{-1.1cm}{-1.1cm}%
   \hsize=\linewidth%
 }{\end{adjustwidth}}
 
