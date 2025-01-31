@@ -1,4 +1,4 @@
-\begin{thebibliography}{48}
+\begin{thebibliography}{49}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\urlprefix}{}
 \providecommand{\doiprefix}{doi: }
@@ -27,6 +27,11 @@
 \textbf{\color{eLifeMediumGrey} Dillon TS}, Fox LC, Han C, Linster C.
 \newblock 17$\beta$-estradiol enhances memory duration in the main olfactory bulb in {CD-1} mice.
 \newblock Behav Neurosci.  2013 Dec; 127(6):923--931.
+
+\bibitem[{El-Brolosy et~al.(2019)El-Brolosy, Mohamed A and Kontarakis, Zacharias and Rossi, Andrea and Kuenne, Carsten and G{\"u}nther, Stefan and Fukuda, Nana and Kikhi, Khrievono and Boezio, Giulia L M and Takacs, Carter M and Lai, Shih-Lei and Fukuda, Ryuichi and Gerri, Claudia and Giraldez, Antonio J and Stainier, Didier Y R}]{El-Brolosy2019-uq}
+\textbf{\color{eLifeMediumGrey} El-Brolosy MA}, Kontarakis Z, Rossi A, Kuenne C, G{\"u}nther S, Fukuda N, Kikhi K, Boezio GLM, Takacs CM, Lai SL, Fukuda R, Gerri C, Giraldez AJ, Stainier DYR.
+\newblock Genetic compensation triggered by mutant {mRNA} degradation.
+\newblock Nature.  2019 Apr; 568(7751):193--197.
 
 \bibitem[{El-Sherif et~al.(2003)El-Sherif, Y and Tesoriero, J and Hogan, M V and Wieraszko, A}]{El-Sherif2003-vt}
 \textbf{\color{eLifeMediumGrey} El-Sherif Y}, Tesoriero J, Hogan MV, Wieraszko A.
