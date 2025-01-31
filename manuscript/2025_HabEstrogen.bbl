@@ -1,4 +1,4 @@
-\begin{thebibliography}{46}
+\begin{thebibliography}{48}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\urlprefix}{}
 \providecommand{\doiprefix}{doi: }
@@ -52,6 +52,11 @@
 \textbf{\color{eLifeMediumGrey} Frick KM}.
 \newblock Molecular mechanisms underlying the memory-enhancing effects of estradiol.
 \newblock Horm Behav.  2015 Aug; 74:4--18.
+
+\bibitem[{Hao et~al.(2013)Hao, Ruixin and Bondesson, Maria and Singh, Amar V and Riu, Anne and McCollum, Catherine W and Knudsen, Thomas B and Gorelick, Daniel A and Gustafsson, Jan-{\AA}ke}]{Hao2013-ik}
+\textbf{\color{eLifeMediumGrey} Hao R}, Bondesson M, Singh AV, Riu A, McCollum CW, Knudsen TB, Gorelick DA, Gustafsson J{\AA}.
+\newblock Identification of estrogen target genes during zebrafish embryonic development through transcriptomic analysis.
+\newblock PLoS One.  2013 Nov; 8(11):e79020.
 
 \bibitem[{Harris et~al.(2020)Harris, Charles R and Millman, K Jarrod and van der Walt, St{\'e}fan J and Gommers, Ralf and Virtanen, Pauli and Cournapeau, David and Wieser, Eric and Taylor, Julian and Berg, Sebastian and Smith, Nathaniel J and Kern, Robert and Picus, Matti and Hoyer, Stephan and van Kerkwijk, Marten H and Brett, Matthew and Haldane, Allan and Del R{\'\i}o, Jaime Fern{\'a}ndez and Wiebe, Mark and Peterson, Pearu and G{\'e}rard-Marchant, Pierre and Sheppard, Kevin and Reddy, Tyler and Weckesser, Warren and Abbasi, Hameer and Gohlke, Christoph and Oliphant, Travis E}]{Harris2020-bg}
 \textbf{\color{eLifeMediumGrey} Harris CR}, Millman KJ, van~der Walt SJ, Gommers R, Virtanen P, Cournapeau D, Wieser E, Taylor J, Berg S, Smith NJ, Kern R, Picus M, Hoyer S, van Kerkwijk MH, Brett M, Haldane A, Del~R{\'\i}o JF, Wiebe M, Peterson P, G{\'e}rard-Marchant P, et~al.
@@ -123,6 +128,11 @@
 \textbf{\color{eLifeMediumGrey} Menuet A}, Pellegrini E, Anglade I, Blaise O, Laudet V, Kah O, Pakdel F.
 \newblock Molecular characterization of three estrogen receptor forms in zebrafish: Binding characteristics, transactivation properties, and tissue Distributions1.
 \newblock Biol Reprod.  2002 Jun; 66(6):1881--1892.
+
+\bibitem[{Menuet et~al.(2005)Menuet, Arnaud and Pellegrini, Elisabeth and Brion, Fran{\c c}ois and Gueguen, Marie-Madeleine and Anglade, Isabelle and Pakdel, Farzad and Kah, Olivier}]{Menuet2005-hn}
+\textbf{\color{eLifeMediumGrey} Menuet A}, Pellegrini E, Brion F, Gueguen MM, Anglade I, Pakdel F, Kah O.
+\newblock Expression and estrogen-dependent regulation of the zebrafish brain aromatase gene.
+\newblock J Comp Neurol.  2005 May; 485(4):304--320.
 
 \bibitem[{Mlinari{\'c} et~al.(2017)Mlinari{\'c}, Ana and Horvat, Martina and {\v S}upak Smol{\v c}i{\'c}, Vesna}]{Mlinaric2017-kr}
 \textbf{\color{eLifeMediumGrey} Mlinari{\'c} A}, Horvat M, {\v S}upak~Smol{\v c}i{\'c} V.
