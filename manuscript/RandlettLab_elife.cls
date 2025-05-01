@@ -105,39 +105,47 @@
 
 \RequirePackage{natbib}
 \renewcommand{\bibfont}{\small}
-% modifed from https://github.com/gbhutani/vancouver_authoryear_bibstyle/
-\IfFileExists{vancouver-elife.bst}
-  {\bibliographystyle{vancouver-elife}}
-  {\PackageWarning{elife}{vancouver-elife.bst not found; falling back to apalike bibliography style.}\bibliographystyle{apalike}}
-% Make author in citation italic
-\renewcommand{\NAT@nmfmt}[1]{{\bfseries\itshape\color{eLifeMediumGrey} #1}}
 
-% ...as well as the year
-\xpatchcmd{\NAT@citex}
-{\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}\NAT@date}}
-{\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}\NAT@nmfmt{\NAT@date}}}
-{}{\PackageWarning{eLife}{Failed to patch year format in citation}}
+% changing citation style to numbered to fit with Endocrinology submission, old stuff commented out below
+\bibliographystyle{unsrt}
 
-\xpatchcmd{\NAT@citex}
-{\else\unskip\NAT@spacechar\NAT@hyper@{\NAT@date}}
-{\else\unskip\NAT@spacechar\NAT@hyper@{\NAT@nmfmt{\NAT@date}}}
-{}{\PackageWarning{eLife}{Failed to patch year format in citation}}
 
-\xpatchcmd{\NAT@citex}
-{\hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}\NAT@date}
-{\hyper@natlinkbreak{\NAT@nmfmt{\NAT@aysep\NAT@spacechar}}{\@citeb\@extra@b@citeb}\NAT@nmfmt{\NAT@date}}
-{}{\PackageWarning{eLife}{Failed to patch year format in citation}}
 
-\xpatchcmd{\NAT@citex}
-{\@citea\NAT@hyper@{\NAT@date}}
-{\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@date}}}
-{}{\PackageWarning{eLife}{Failed to patch year format in citation}}
+% % modifed from https://github.com/gbhutani/vancouver_authoryear_bibstyle/
+% \IfFileExists{vancouver-elife.bst}
+%   {\bibliographystyle{unsrt}}
+%   {\PackageWarning{elife}{vancouver-elife.bst not found; falling back to apalike bibliography style.}\bibliographystyle{apalike}}
 
-\xpatchcmd{\NAT@citex}
-{{\@citeb\@extra@b@citeb}\NAT@date}
-{{\@citeb\@extra@b@citeb}\NAT@nmfmt{\NAT@date}}
-{}{\PackageWarning{eLife}{Failed to patch year format in citation}}
-%% There, we're finally done with patching the year in citations.
+
+% % Make author in citation italic
+% \renewcommand{\NAT@nmfmt}[1]{{\bfseries\itshape\color{eLifeMediumGrey} #1}}
+
+% % ...as well as the year
+% \xpatchcmd{\NAT@citex}
+% {\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}\NAT@date}}
+% {\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}\NAT@nmfmt{\NAT@date}}}
+% {}{\PackageWarning{eLife}{Failed to patch year format in citation}}
+
+% \xpatchcmd{\NAT@citex}
+% {\else\unskip\NAT@spacechar\NAT@hyper@{\NAT@date}}
+% {\else\unskip\NAT@spacechar\NAT@hyper@{\NAT@nmfmt{\NAT@date}}}
+% {}{\PackageWarning{eLife}{Failed to patch year format in citation}}
+
+% \xpatchcmd{\NAT@citex}
+% {\hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}\NAT@date}
+% {\hyper@natlinkbreak{\NAT@nmfmt{\NAT@aysep\NAT@spacechar}}{\@citeb\@extra@b@citeb}\NAT@nmfmt{\NAT@date}}
+% {}{\PackageWarning{eLife}{Failed to patch year format in citation}}
+
+% \xpatchcmd{\NAT@citex}
+% {\@citea\NAT@hyper@{\NAT@date}}
+% {\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@date}}}
+% {}{\PackageWarning{eLife}{Failed to patch year format in citation}}
+
+% \xpatchcmd{\NAT@citex}
+% {{\@citeb\@extra@b@citeb}\NAT@date}
+% {{\@citeb\@extra@b@citeb}\NAT@nmfmt{\NAT@date}}
+% {}{\PackageWarning{eLife}{Failed to patch year format in citation}}
+% %% There, we're finally done with patching the year in citations.
 
 %
 % headers and footers
