@@ -125,6 +125,46 @@ Arnaud Menuet, Elisabeth Pellegrini, Isabelle Anglade, Odile Blaise, Vincent Lau
 \newblock Molecular characterization of three estrogen receptor forms in zebrafish: Binding characteristics, transactivation properties, and tissue distributions1.
 \newblock {\em Biol. Reprod.}, 66(6):1881--1892, June 2002.
 
+\bibitem{Bradski2000-qo}
+Gary Bradski.
+\newblock The {openCV} library.
+\newblock {\em Dr. Dobb's Journal: Software Tools for the Professional Programmer}, 25(11):120--123, 2000.
+
+\bibitem{van2014scikit}
+Stefan Van~der Walt, Johannes~L Sch{\"o}nberger, Juan Nunez-Iglesias, Fran{\c{c}}ois Boulogne, Joshua~D Warner, Neil Yager, Emmanuelle Gouillart, and Tony Yu.
+\newblock scikit-image: image processing in python.
+\newblock {\em PeerJ}, 2:e453, 2014.
+
+\bibitem{Harris2020-bg}
+Charles~R Harris, K~Jarrod Millman, St{\'e}fan~J van~der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel~J Smith, Robert Kern, Matti Picus, Stephan Hoyer, Marten~H van Kerkwijk, Matthew Brett, Allan Haldane, Jaime~Fern{\'a}ndez Del~R{\'\i}o, Mark Wiebe, Pearu Peterson, Pierre G{\'e}rard-Marchant, Kevin Sheppard, Tyler Reddy, Warren Weckesser, Hameer Abbasi, Christoph Gohlke, and Travis~E Oliphant.
+\newblock Array programming with {NumPy}.
+\newblock {\em Nature}, 585(7825):357--362, September 2020.
+
+\bibitem{Virtanen2020-sz}
+Pauli Virtanen, Ralf Gommers, Travis~E Oliphant, Matt Haberland, Tyler Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan Bright, St{\'e}fan~J van~der Walt, Matthew Brett, Joshua Wilson, K~Jarrod Millman, Nikolay Mayorov, Andrew R~J Nelson, Eric Jones, Robert Kern, Eric Larson, C~J Carey, {\.I}lhan Polat, Yu~Feng, Eric~W Moore, Jake VanderPlas, Denis Laxalde, Josef Perktold, Robert Cimrman, Ian Henriksen, E~A Quintero, Charles~R Harris, Anne~M Archibald, Ant{\^o}nio~H Ribeiro, Fabian Pedregosa, Paul van Mulbregt, and {SciPy 1.0 Contributors}.
+\newblock {SciPy} 1.0: fundamental algorithms for scientific computing in python.
+\newblock {\em Nat. Methods}, 17(3):261--272, March 2020.
+
+\bibitem{lam2015numba}
+Siu~Kwan Lam, Antoine Pitrou, and Stanley Seibert.
+\newblock Numba: A llvm-based python jit compiler.
+\newblock In {\em Proceedings of the Second Workshop on the LLVM Compiler Infrastructure in HPC}, pages 1--6, 2015.
+
+\bibitem{mckinney-proc-scipy-2010}
+{W}es {M}c{K}inney.
+\newblock {D}ata {S}tructures for {S}tatistical {C}omputing in {P}ython.
+\newblock In {S}t\'efan van~der {W}alt and {J}arrod {M}illman, editors, {\em {P}roceedings of the 9th {P}ython in {S}cience {C}onference}, pages 56 -- 61, 2010.
+
+\bibitem{Hunter2007-ub}
+J.~D. Hunter.
+\newblock Matplotlib: A 2d graphics environment.
+\newblock {\em Computing in Science \& Engineering}, 9(3):90--95, 2007.
+
+\bibitem{Waskom2021-ah}
+Michael Waskom.
+\newblock seaborn: statistical data visualization.
+\newblock {\em J. Open Source Softw.}, 6(60):3021, April 2021.
+
 \bibitem{Burgess2007}
 Harold~A. Burgess and Michael Granato.
 \newblock Sensorimotor gating in larval zebrafish.
@@ -204,45 +244,5 @@ Ruixin Hao, Maria Bondesson, Amar~V Singh, Anne Riu, Catherine~W McCollum, Thoma
 Troy~A McDiarmid, Alex~J Yu, and Catharine~H Rankin.
 \newblock Habituation is more than learning to ignore: Multiple mechanisms serve to facilitate shifts in behavioral strategy.
 \newblock {\em Bioessays}, 41(9):e1900077, September 2019.
-
-\bibitem{Bradski2000-qo}
-Gary Bradski.
-\newblock The {openCV} library.
-\newblock {\em Dr. Dobb's Journal: Software Tools for the Professional Programmer}, 25(11):120--123, 2000.
-
-\bibitem{van2014scikit}
-Stefan Van~der Walt, Johannes~L Sch{\"o}nberger, Juan Nunez-Iglesias, Fran{\c{c}}ois Boulogne, Joshua~D Warner, Neil Yager, Emmanuelle Gouillart, and Tony Yu.
-\newblock scikit-image: image processing in python.
-\newblock {\em PeerJ}, 2:e453, 2014.
-
-\bibitem{Harris2020-bg}
-Charles~R Harris, K~Jarrod Millman, St{\'e}fan~J van~der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel~J Smith, Robert Kern, Matti Picus, Stephan Hoyer, Marten~H van Kerkwijk, Matthew Brett, Allan Haldane, Jaime~Fern{\'a}ndez Del~R{\'\i}o, Mark Wiebe, Pearu Peterson, Pierre G{\'e}rard-Marchant, Kevin Sheppard, Tyler Reddy, Warren Weckesser, Hameer Abbasi, Christoph Gohlke, and Travis~E Oliphant.
-\newblock Array programming with {NumPy}.
-\newblock {\em Nature}, 585(7825):357--362, September 2020.
-
-\bibitem{Virtanen2020-sz}
-Pauli Virtanen, Ralf Gommers, Travis~E Oliphant, Matt Haberland, Tyler Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan Bright, St{\'e}fan~J van~der Walt, Matthew Brett, Joshua Wilson, K~Jarrod Millman, Nikolay Mayorov, Andrew R~J Nelson, Eric Jones, Robert Kern, Eric Larson, C~J Carey, {\.I}lhan Polat, Yu~Feng, Eric~W Moore, Jake VanderPlas, Denis Laxalde, Josef Perktold, Robert Cimrman, Ian Henriksen, E~A Quintero, Charles~R Harris, Anne~M Archibald, Ant{\^o}nio~H Ribeiro, Fabian Pedregosa, Paul van Mulbregt, and {SciPy 1.0 Contributors}.
-\newblock {SciPy} 1.0: fundamental algorithms for scientific computing in python.
-\newblock {\em Nat. Methods}, 17(3):261--272, March 2020.
-
-\bibitem{lam2015numba}
-Siu~Kwan Lam, Antoine Pitrou, and Stanley Seibert.
-\newblock Numba: A llvm-based python jit compiler.
-\newblock In {\em Proceedings of the Second Workshop on the LLVM Compiler Infrastructure in HPC}, pages 1--6, 2015.
-
-\bibitem{mckinney-proc-scipy-2010}
-{W}es {M}c{K}inney.
-\newblock {D}ata {S}tructures for {S}tatistical {C}omputing in {P}ython.
-\newblock In {S}t\'efan van~der {W}alt and {J}arrod {M}illman, editors, {\em {P}roceedings of the 9th {P}ython in {S}cience {C}onference}, pages 56 -- 61, 2010.
-
-\bibitem{Hunter2007-ub}
-J.~D. Hunter.
-\newblock Matplotlib: A 2d graphics environment.
-\newblock {\em Computing in Science \& Engineering}, 9(3):90--95, 2007.
-
-\bibitem{Waskom2021-ah}
-Michael Waskom.
-\newblock seaborn: statistical data visualization.
-\newblock {\em J. Open Source Softw.}, 6(60):3021, April 2021.
 
 \end{thebibliography}

@@ -39,7 +39,7 @@
 \lstset{style=mystyle}
 \tolerance=9999
 \emergencystretch=10pt
-\hyphenpenalty=1000
+\hyphenpenalty=1000000
 \exhyphenpenalty=100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% ARTICLE SETUP
@@ -103,6 +103,15 @@ Master of Biology Program, École normale supérieure de Lyon, France
 \begin{document}
 
 \maketitle
+
+\section{Disclosures}
+
+The authors have nothing to disclose.
+
+\section{Keywords}
+
+Estrogens, estradiol, learning, zebrafish, behaviour, habituation, Gper1, ERα, ERβ, unidentified target
+
 \begin{abstract}
 
 Habituating to the constant stimuli in the environment is a critical learning process conserved across species. 
@@ -150,7 +159,88 @@ We found that none of these mutants were insensitive to estradiol's effects, ind
 Surprisingly, our experiments found that mutants for \emph{esr1}, \emph{esr2a}, and \emph{gper1} actually habituate more than their sibling controls. 
 While the effect size is small and behavioural-genetic experiments can be variable, these data indicate that these ERs actually act to inhibit habituation learning, rather than mediating the habituation-promoting effects of estradiol that we observe pharmacologically. 
 
-\newpage
+\section{Materials and Methods}
+
+\subsection{Animals}
+
+All experiments were performed on larval zebrafish at 5 days post fertilization (dpf), raised at a density of $\approx$1 larvae/mL of E3 media supplemented with 0.02\% HEPES pH 7.2. 
+Larvae were raised in a 14:10h light/dark cycle at 28-29\degree{}C. 
+Adult zebrafish were housed, cared for, and bred at the following zebrafish facilities: Plateau de Recherche Expérimentale en Criblage In Vivo (PRECI, SFR Biosciences, Lyon) and the Animalerie Zebrafish Rockefeller (AZR, SFR Santé Lyon Est, Lyon). Adult zebrafish used to generate larvae were housed in accordance with regulations of the PRECI and AZR facilities, which are regulated by an internal animal wellbeing committee, and were approved by the animal welfare committee (comité d’éthique en expérimentation animale de la Région Rhône-Alpes: CECCAPP, Agreement \# C693870602). 
+Behaviour experiments were performed at the 5dpf stage, and are thus not subject to ethical review, but these procedures do not harm the larvae. 
+
+Mutant lines were obtained from D. Gorelick's lab, and were of the following alleles: 
+
+\emph{esr1\textsuperscript{uab118}} is a 4bp deletion (ZDB-ALT-180420-2), yielding a predicted null frameshift/stop mutation, confirmed by a lack of estradiol responsiveness in the heart as assayed by \emph{Tg(5xERE:GFP)\textsuperscript{c262}} expression \citep{Romano2017-ep}. 
+
+\emph{esr2a\textsuperscript{uab134}} is a 2bp deletion (ZDB-ALT-180420-3), yielding a predicted null frameshift/stop mutation \citep{Romano2017-ep}
+
+\emph{esr2b\textsuperscript{uab127}} is a 4bp deletion (ZDB-ALT-180420-4), yielding a predicted null frameshift/stop mutation, confirmed by a lack of estradiol responsiveness in the liver as assayed by \emph{Tg(5xERE:GFP)\textsuperscript{c262}} expression \citep{Romano2017-ep}. 
+
+\emph{gper1\textsuperscript{uab102}} is a 133bp deletion (ZDB-ALT-180420-1), yielding a predicted null frameshift/stop mutation, confirmed by a lack of estradiol responsiveness in heart beating rate in maternal-zygotic mutants \citep{Romano2017-ep}.
+
+\subsection{Genotyping}
+
+\emph{esr1\textsuperscript{uab118}} was genotyped by PCR using the forward/reverse primer pair:
+\\ \mbox{GCTGGTCACCTTGAATGCTT/TGAGATGTGAGAGATGACTAGGA} with a T\textsubscript{M} of 58°C yielding a 381 bp PCR product that was digested with the restriction enzyme ApeKI. 
+The mutant product is not digested, and the wild type has two bands at 177 and 204 bp.
+
+\emph{esr2a\textsuperscript{uab134}} was genotypes by PCR using the forward/reverse primer pair:
+\\ \mbox{CTTCAGCTGCAGGAAGTGGA/AAAGTCGGGCTTAGCGACTG} with a T\textsubscript{M} of 58°C yielding a 236 bp PCR product that was digested with the restriction enzyme MboI.
+The mutant product is not digested, and the wild type has two bands at 180 and 56 bp 
+
+\emph{esr2b\textsuperscript{uab127}} was genotypes by PCR using the forward/reverse primer pair:
+\\ \mbox{TGGGCCTGAGATGCAGTAGT/GTGTGTGTCTTGGCCTCCTC} with a T\textsubscript{M} of 60°C yielding a 431 bp PCR product that was digested with the restriction enzyme MbiI.
+The mutant product is digested into two bands of 150 and 281 bp and the wild type into 3 bands of 78, 150 and 198 bp. 
+
+\emph{gper1\textsuperscript{uab102}} was genotypes by PCR using the forward/reverse primer pair:
+\\ \mbox{ATGGAGGAGCAGACTACCAATGTG/CCATCCAGATGAGGCTGCAA} with a T\textsubscript{M} of 60°C yielding a mutant product of 372bp and a wild type product of 505 bp.
+
+
+\subsection{Pharmacology}
+
+\textbeta-Estradiol (Sigma E2758, here referred to as "estradiol") was dissolved in dimethyl sulfoxide (DMSO) and stored at -20\degree C. 
+Larvae were treated with estradiol immediately before the behavioural assay by pipetting 10-30uL of 10x solution directly into the behavioural wells, always with a final concentration of 0.1\% DMSO in E3.
+
+\subsection{Habituation behaviour testing}
+
+Larval behavior was evaluated in 300-well plates using an updated version of the experimental setup previously described \citep{Randlett2019-fj,Lamire2023-he}. 
+Briefly, 300-well plates were custom made using laser-cut acrylic sheets where each well measures 8 mm in diameter and 6 mm in depth, corresponding to an approximate water volume of 300 \textmu L.
+These plates are suspended under a water bath held at 31°C, acting as a heated lid to minimize condensation and maintain a 29°C water temperature within each well. 
+Behavioral recordings were made using a Mikrotron CXP-4 camera running at 444hz in conjunction with a Silicon Software frame grabber (Marathon ACX-QP, Basler), illuminated by IR LEDs (TSHF5410, digikey.com). Visual stimuli were presented using a rectangular array of 155 WS2813 RGB LEDs (144LED/M, aliexpress.com). 
+For the DF stimulus, the LEDs were briefly switched off (1 s), then linearly returned to the original brightness over a 20 s interval. 
+Vibration/Tap stimuli were administered using a solenoid (ROB-10391, Sparkfun). 
+This behavioral paradigm was designed to be symmetrical: each 1 hr block of stimulation was followed by 1 hr of rest. 
+During these rest periods, the camera was moves using a stepper motor controlled linear actuator (Hanpose HPV4, 500cm), which moved the camera between two plates, allowing us to screen up to 600 fish per experiment across two 300-well plates. 
+
+Control of the apparatus (RGB LEDs, solenoid, camera linear actuator) was implemented via a Raspberry Pi Pico microcontroller running  CircuitPython (https://circuitpython.org/) (code : \href{https://github.com/owenrandlett/2025_HabEstrogen/tree/main/code/RigControl/PiPicro}{code.py}) and custom Python software which handled the camera acquisition via the \href{https://docs.baslerweb.com/frame-grabbers/python-wrapper}{Python wrapper of the Silicon Software Framegrabber SDK}, triggered stimuli via the Raspberry Pi Pico, and tracked the head and tail coordinates of the larvae across the 300-wells at a baseline framerate of between 20-30hz  (code : \href{https://github.com/owenrandlett/2025_HabEstrogen/blob/main/code/RigControl/Run_BigRig2.py}{Run\_BigRig2.py}). 
+When a stimulus is delivered (DF or Vibration/Tap), a 1-second "Burst" video is recorded at the full frame rate as a Tiff file, from which the head and tail coordinates are subsequently tracked offline (code : \href{https://github.com/owenrandlett/2025_HabEstrogen/blob/main/code/RigControl/TrackBurst_BigRig.py}{TrackBurst\_BigRig.py}).
+Larval zebrafish tracking was done via background subtraction and morphological operations implemented using multiple open-source packages, including: 
+OpenCV \citep{Bradski2000-qo}, 
+scikit-image \citep{van2014scikit}, 
+NumPy \citep{Harris2020-bg}, 
+SciPy \citep{Virtanen2020-sz}, 
+and Numba \citep{lam2015numba}.
+
+
+\subsection{Data analysis}
+
+Data was analyzed in Python using custom written analysis scripts (code : \href{https://github.com/owenrandlett/2025_HabEstrogen/blob/main/code/Analyze_EsrHab.py}{Analyze\_EsrHab.py}). 
+Responses to DFs and vibration/taps were identified as movement events that had a cumulative tail bend angle greater than 3 radian (O-bend)and 1 radian (C-bend), respectively. Data was analyzed using multiple open-source packages, including: NumPy \citep{Harris2020-bg}, SciPy \citep{Virtanen2020-sz},Numba \citep{lam2015numba} and Pandas \citep{mckinney-proc-scipy-2010}.
+Data was plotted using Matplotlib \citep{Hunter2007-ub} and seaborn \citep{Waskom2021-ah}.
+Statistical "significance" between the distributions was tested using the Mann-Whitney U test implemented in Scipy \citep{Virtanen2020-sz}.
+
+The cumulative difference plots to assess changes in habituation performance for the treatments were calculated as previously \citep{Randlett2019-fj}, where we first
+calculated the average response across larvae for each group for each DF.
+This generated a mean vector for each group. 
+These two vectors were normalized by dividing them by the naive response (mean response to the first 5 DFs), and then the treatment group was subtracted from the control group, yielding a "mean difference" vector between stimulus and controls at each flash. 
+From this mean difference vector we calculated the cumulative mean distribution using Numpy's 'nancumsum' function divided by the number of stimuli experienced, or the index of the vector. 
+To generate statistical confidence in these distributions, we bootstrapped 2000 replicates, and calculated the 99.5\% confidence intervals using SciPy's 'stats.norm.interval' function.
+The assumption of this analysis is that if the two groups are habituating similarly, then the "mean difference" vector will exhibit a noise distribution centered at a mean of 0, and thus the cumulative mean distribution would remain near 0. 
+Treatments that affect habituation will show strong increasing or decreasing cumulative mean distributions, reflecting increased or decreased habituation performance throughout
+training, respectively.
+We use an empirically defined threshold of $\pm0.05$ as the statistically meaningful effect size in this analysis, as is reflected in the shaded gray regions in the plots \citep{Randlett2019-fj}.
+
+
 
 \section{Results}
 
@@ -388,89 +478,7 @@ This began with our detailed observations of behaviour, leading us to conclude t
 We believe that this property underlies our subsequent discoveries of pharmacological and genetic manipulations that can result in either specific changes in specific aspects of habituation (but not others), or even opposing effects, where a single manipulation can simultaneously increase and decrease habituation, depending on which component of behavior is measured \citep{Randlett2019-fj,Lamire2023-he}.
 This complexity appears to be a fundamental property of habituation \citep{McDiarmid2019-td}, and that the study of habituation will likely continue to surprise us, hopefully leading to unexpected insights into the nature of plasticity underlying learning and memory.
 
-\section{Materials and Methods}
-
-\subsection{Animals}
-
-All experiments were performed on larval zebrafish at 5 days post fertilization (dpf), raised at a density of $\approx$1 larvae/mL of E3 media supplemented with 0.02\% HEPES pH 7.2. 
-Larvae were raised in a 14:10h light/dark cycle at 28-29\degree{}C. 
-Adult zebrafish were housed, cared for, and bred at the following zebrafish facilities: Plateau de Recherche Expérimentale en Criblage In Vivo (PRECI, SFR Biosciences, Lyon) and the Animalerie Zebrafish Rockefeller (AZR, SFR Santé Lyon Est, Lyon). Adult zebrafish used to generate larvae were housed in accordance with regulations of the PRECI and AZR facilities, which are regulated by an internal animal wellbeing committee, and were approved by the animal welfare committee (comité d’éthique en expérimentation animale de la Région Rhône-Alpes: CECCAPP, Agreement \# C693870602). 
-Behaviour experiments were performed at the 5dpf stage, and are thus not subject to ethical review, but these procedures do not harm the larvae. 
-
-Mutant lines were obtained from D. Gorelick's lab, and were of the following alleles: 
-
-\emph{esr1\textsuperscript{uab118}} is a 4bp deletion (ZDB-ALT-180420-2), yielding a predicted null frameshift/stop mutation, confirmed by a lack of estradiol responsiveness in the heart as assayed by \emph{Tg(5xERE:GFP)\textsuperscript{c262}} expression \citep{Romano2017-ep}. 
-
-\emph{esr2a\textsuperscript{uab134}} is a 2bp deletion (ZDB-ALT-180420-3), yielding a predicted null frameshift/stop mutation \citep{Romano2017-ep}
-
-\emph{esr2b\textsuperscript{uab127}} is a 4bp deletion (ZDB-ALT-180420-4), yielding a predicted null frameshift/stop mutation, confirmed by a lack of estradiol responsiveness in the liver as assayed by \emph{Tg(5xERE:GFP)\textsuperscript{c262}} expression \citep{Romano2017-ep}. 
-
-\emph{gper1\textsuperscript{uab102}} is a 133bp deletion (ZDB-ALT-180420-1), yielding a predicted null frameshift/stop mutation, confirmed by a lack of estradiol responsiveness in heart beating rate in maternal-zygotic mutants \citep{Romano2017-ep}.
-
-\subsection{Genotyping}
-
-\emph{esr1\textsuperscript{uab118}} was genotyped by PCR using the forward/reverse primer pair:
-\\ \mbox{GCTGGTCACCTTGAATGCTT/TGAGATGTGAGAGATGACTAGGA} with a T\textsubscript{M} of 58°C yielding a 381 bp PCR product that was digested with the restriction enzyme ApeKI. 
-The mutant product is not digested, and the wild type has two bands at 177 and 204 bp.
-
-\emph{esr2a\textsuperscript{uab134}} was genotypes by PCR using the forward/reverse primer pair:
-\\ \mbox{CTTCAGCTGCAGGAAGTGGA/AAAGTCGGGCTTAGCGACTG} with a T\textsubscript{M} of 58°C yielding a 236 bp PCR product that was digested with the restriction enzyme MboI.
-The mutant product is not digested, and the wild type has two bands at 180 and 56 bp 
-
-\emph{esr2b\textsuperscript{uab127}} was genotypes by PCR using the forward/reverse primer pair:
-\\ \mbox{TGGGCCTGAGATGCAGTAGT/GTGTGTGTCTTGGCCTCCTC} with a T\textsubscript{M} of 60°C yielding a 431 bp PCR product that was digested with the restriction enzyme MbiI.
-The mutant product is digested into two bands of 150 and 281 bp and the wild type into 3 bands of 78, 150 and 198 bp. 
-
-\emph{gper1\textsuperscript{uab102}} was genotypes by PCR using the forward/reverse primer pair:
-\\ \mbox{ATGGAGGAGCAGACTACCAATGTG/CCATCCAGATGAGGCTGCAA} with a T\textsubscript{M} of 60°C yielding a mutant product of 372bp and a wild type product of 505 bp.
-
-
-\subsection{Pharmacology}
-
-\textbeta-Estradiol (Sigma E2758, here referred to as "estradiol") was dissolved in dimethyl sulfoxide (DMSO) and stored at -20\degree C. 
-Larvae were treated with estradiol immediately before the behavioural assay by pipetting 10-30uL of 10x solution directly into the behavioural wells, always with a final concentration of 0.1\% DMSO in E3.
-
-\subsection{Habituation behaviour testing}
-
-Larval behavior was evaluated in 300-well plates using an updated version of the experimental setup previously described \citep{Randlett2019-fj,Lamire2023-he}. 
-Briefly, 300-well plates were custom made using laser-cut acrylic sheets where each well measures 8 mm in diameter and 6 mm in depth, corresponding to an approximate water volume of 300 \textmu L.
-These plates are suspended under a water bath held at 31°C, acting as a heated lid to minimize condensation and maintain a 29°C water temperature within each well. 
-Behavioral recordings were made using a Mikrotron CXP-4 camera running at 444hz in conjunction with a Silicon Software frame grabber (Marathon ACX-QP, Basler), illuminated by IR LEDs (TSHF5410, digikey.com). Visual stimuli were presented using a rectangular array of 155 WS2813 RGB LEDs (144LED/M, aliexpress.com). 
-For the DF stimulus, the LEDs were briefly switched off (1 s), then linearly returned to the original brightness over a 20 s interval. 
-Vibration/Tap stimuli were administered using a solenoid (ROB-10391, Sparkfun). 
-This behavioral paradigm was designed to be symmetrical: each 1 hr block of stimulation was followed by 1 hr of rest. 
-During these rest periods, the camera was moves using a stepper motor controlled linear actuator (Hanpose HPV4, 500cm), which moved the camera between two plates, allowing us to screen up to 600 fish per experiment across two 300-well plates. 
-
-Control of the apparatus (RGB LEDs, solenoid, camera linear actuator) was implemented via a Raspberry Pi Pico microcontroller running  CircuitPython (https://circuitpython.org/) (code : \href{https://github.com/owenrandlett/2025_HabEstrogen/tree/main/code/RigControl/PiPicro}{code.py}) and custom Python software which handled the camera acquisition via the \href{https://docs.baslerweb.com/frame-grabbers/python-wrapper}{Python wrapper of the Silicon Software Framegrabber SDK}, triggered stimuli via the Raspberry Pi Pico, and tracked the head and tail coordinates of the larvae across the 300-wells at a baseline framerate of between 20-30hz  (code : \href{https://github.com/owenrandlett/2025_HabEstrogen/blob/main/code/RigControl/Run_BigRig2.py}{Run\_BigRig2.py}). 
-When a stimulus is delivered (DF or Vibration/Tap), a 1-second "Burst" video is recorded at the full frame rate as a Tiff file, from which the head and tail coordinates are subsequently tracked offline (code : \href{https://github.com/owenrandlett/2025_HabEstrogen/blob/main/code/RigControl/TrackBurst_BigRig.py}{TrackBurst\_BigRig.py}).
-Larval zebrafish tracking was done via background subtraction and morphological operations implemented using multiple open-source packages, including: 
-OpenCV \citep{Bradski2000-qo}, 
-scikit-image \citep{van2014scikit}, 
-NumPy \citep{Harris2020-bg}, 
-SciPy \citep{Virtanen2020-sz}, 
-and Numba \citep{lam2015numba}.
-
-
-\subsection{Data analysis}
-
-Data was analyzed in Python using custom written analysis scripts (code : \href{https://github.com/owenrandlett/2025_HabEstrogen/blob/main/code/Analyze_EsrHab.py}{Analyze\_EsrHab.py}). 
-Responses to DFs and vibration/taps were identified as movement events that had a cumulative tail bend angle greater than 3 radian (O-bend)and 1 radian (C-bend), respectively. Data was analyzed using multiple open-source packages, including: NumPy \citep{Harris2020-bg}, SciPy \citep{Virtanen2020-sz},Numba \citep{lam2015numba} and Pandas \citep{mckinney-proc-scipy-2010}.
-Data was plotted using Matplotlib \citep{Hunter2007-ub} and seaborn \citep{Waskom2021-ah}.
-Statistical "significance" between the distributions was tested using the Mann-Whitney U test implemented in Scipy \citep{Virtanen2020-sz}.
-
-The cumulative difference plots to assess changes in habituation performance for the treatments were calculated as previously \citep{Randlett2019-fj}, where we first
-calculated the average response across larvae for each group for each DF.
-This generated a mean vector for each group. 
-These two vectors were normalized by dividing them by the naive response (mean response to the first 5 DFs), and then the treatment group was subtracted from the control group, yielding a "mean difference" vector between stimulus and controls at each flash. 
-From this mean difference vector we calculated the cumulative mean distribution using Numpy's 'nancumsum' function divided by the number of stimuli experienced, or the index of the vector. 
-To generate statistical confidence in these distributions, we bootstrapped 2000 replicates, and calculated the 99.5\% confidence intervals using SciPy's 'stats.norm.interval' function.
-The assumption of this analysis is that if the two groups are habituating similarly, then the "mean difference" vector will exhibit a noise distribution centered at a mean of 0, and thus the cumulative mean distribution would remain near 0. 
-Treatments that affect habituation will show strong increasing or decreasing cumulative mean distributions, reflecting increased or decreased habituation performance throughout
-training, respectively.
-We use an empirically defined threshold of $\pm0.05$ as the statistically meaningful effect size in this analysis, as is reflected in the shaded gray regions in the plots \citep{Randlett2019-fj}.
-
-
-\section{Data Availability}
+\section{Data Availability Statement}
 
 Software and analysis code is available here:  \href{https://github.com/owenrandlett/2025_HabEstrogen}{https://github.com/owenrandlett/2025\_HabEstrogen}. 
 All datasets used in these analyses are available here: \href{https://gofile.me/5sdws/xF6oQhqTA}{HabEstrogen\_Datasets}.
