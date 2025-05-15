@@ -103,11 +103,11 @@
 % \captionsetup*[table]{skip=\medskipamount}
 
 
-\RequirePackage{natbib}
+\usepackage[numbers]{natbib}
 \renewcommand{\bibfont}{\small}
 
 % changing citation style to numbered to fit with Endocrinology submission, old stuff commented out below
-\bibliographystyle{unsrt}
+\bibliographystyle{vancouver}
 
 
 
