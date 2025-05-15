@@ -1,7 +1,8 @@
 
 %%% PREAMBLE 
 \documentclass[9.5pt,lineno]{RandlettLab_elife}
-\nolinenumbers
+% \nolinenumbers
+\usepackage{setspace}
 \usepackage{lipsum} % Required to insert dummy text
 \usepackage{listings}
 \usepackage[version=4]{mhchem}
@@ -44,7 +45,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% ARTICLE SETUP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Estradiol promotes habituation learning via an unidentified target, bypassing the suppressive effects of established Estrogen Receptors}
+\title{Estradiol promotes habituation learning via an unidentified target, bypassing the suppressive effects of established ERs}
 
 \author[ !,1,2] 
 {Andrew Hsiao}
@@ -102,6 +103,7 @@ Master of Biology Program, École normale supérieure de Lyon, France
 
 \begin{document}
 
+\doublespacing
 \maketitle
 
 \section{Disclosures}
@@ -112,6 +114,16 @@ The authors have nothing to disclose.
 
 Estrogens, estradiol, learning, zebrafish, behaviour, habituation, Gper1, ERα, ERβ, unidentified target
 
+\section{Corresponding Author}
+Owen Randlett
+\\ Team ZeNeB: Zebrafish Neurogenetics and Behaviour
+\\ Laboratoire MeLiS, UCBL - CNRS UMR5284 - Inserm U1314, Institut NeuroMyoGène, 
+\\ Faculté de Médecine et de Pharmacie, 8 avenue Rockefeller, 69008 Lyon
+\\ \emph{email:} \href{mailto:owen.randlett@univ-lyon1.fr}{owen.randlett@univ-lyon1.fr}
+\\ \emph{ORCID:} \href{https://orcid.org/0000-0003-0181-5239}{0000-0003-0181-5239}
+
+
+\newpage
 \begin{abstract}
 
 Habituating to the constant stimuli in the environment is a critical learning process conserved across species. 
@@ -240,30 +252,16 @@ Treatments that affect habituation will show strong increasing or decreasing cum
 training, respectively.
 We use an empirically defined threshold of $\pm0.05$ as the statistically meaningful effect size in this analysis, as is reflected in the shaded gray regions in the plots \citep{Randlett2019-fj}.
 
+\subsection{Software and Datasets}
+
+Software and analysis code is available here:  \href{https://github.com/owenrandlett/2025_HabEstrogen}{https://github.com/owenrandlett/2025\_HabEstrogen}. 
+All datasets used in these analyses are available here: \href{https://gofile.me/5sdws/xF6oQhqTA}{HabEstrogen\_Datasets}.
 
 
 \section{Results}
 
 \subsection{Estradiol increases visual habituation learning}
 
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
-\includegraphics[width=0.65\linewidth]{figures/EstradiolEffect.png}
-\caption{\textbf{Estradiol increases habituation learning.} \scriptsize
-\\ \textbf{A)} In response to a dark flash (DF), larval zebrafish perform a large turning manoeuvre termed an "O-bend" response.
-\\ \textbf{B)} High-throughput setup for recording and quantifying responsiveness using a high-speed camera recording at 444hz observing larvae in 300-well plates. Scale bar = 10mm.
-\\ \textbf{C)} Treatment with estradiol (red) results in more rapid and profound decreases in the probability of response to DF stimuli during habituation training relative to DMSO vehicle controls (black). DF stimuli are delivered at 1-minute intervals, in 4 blocks of 60 stimuli, separated by 1hr of rest (from 0:00-7:00). 1.5 hours later a block of 30 vibration stimuli are delivered at 1-minute intervals (\textbf{i}). Each dot is the probability of response to one DF. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2). 
-\\ \textbf{D-G)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. Statistical significance was calculated using Mann-Whitney U test, *** = p < 0.001.  \textbf{D)} the naive response to the first 5 DF stimuli; \textbf{E)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{F)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{G)} the 30 vibration stimuli delivered with a tap from a solenoid on the 300-well plate platform. 
-\\ \textbf{H)} Cumulative mean difference (CMD) plot quantifying relative habituation performance after estradiol treatment. These plots display the cumulative average differences in the mean response across larvae of the treatment group (estradiol) relative to the control group (DMSO). Difference from 0 reflect a divergence in the change in responsiveness across the 240 DF stimuli in the 4 training blocks, with positive values reflecting increased habituation. The widths of the line is a bootstrapped 99.5\% confidence intervals. The gray boxed region reflects the expected non-significant effect size \citep{Randlett2019-fj}.
-\\ Treatment groups are: Estradiol = 10\textmu M estradiol treatment (n = 345 fish); DMSO = 0.1\% DMSO vehicle controls (n = 548 fish)
-}
-
-\label{fig:1}
-
-\end{center}
-\end{fullwidth}
-\end{figure}
 
 In response to a sudden global darkening stimulus, which we refer to as a dark flash (DF), larval zebrafish execute an "O-bend" maneuver, characterized by a deep "O"-shaped bend and a high-amplitude turn (\citealp{Burgess2007}, \autoref{fig:1}a). 
 Habituation learning manifests as a progressive reduction in response to repeated stimuli, and this learning can be retained for seconds/minutes, or hours/days for short-, and long-term habituation, respectively \citep{Rankin2009-no}. 
@@ -281,20 +279,6 @@ Importantly, the responsiveness of the larvae to vibration stimuli delivered aft
 
 \subsection{Gper1 is dispensable for estradiol-promoted habituation learning}
 
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{figures/gper1Mutants.png}
-\caption{\textbf{\emph{gper1} mutants do not show habituation deficits after treatment with estradiol.} \scriptsize
-\\ \textbf{A)} Homozygous \emph{gper1\textsuperscript{(-/-)}} mutants (n = 81 fish, purple) do not show impaired habituation relative to sibling controls (\emph{gper1\textsuperscript{(+/-)}} and \emph{gper1\textsuperscript{(+/+)}}, n = 222 fish, red). Rather, there is a slight suppression of responsiveness in the mutant group (arrows), indicating weakly increased habituation. Each dot is the probability of response to one stimulus. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2).
-\\ \textbf{B-E)} No significant differences are observed in the responsiveness distributions for the naive response to the first 5 DF stimuli (\textbf{B}), during the first training block (\textbf{C}), or the vibration response (\textbf{E}), while a subtle but statistically significant decrease in responsiveness is observed in the trained response (\textbf{D}). Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05.
-\\ \textbf{F)} Cumulative mean difference (CMD) plot quantifying habituation performance of mutants relative to sibling controls, consistent with slightly increased habituation rate in mutant larvae. 
-}
-\label{fig:2}
-
-\end{center}
-\end{fullwidth}
-\end{figure}
 
 The effects of estradiol that we have observed occur very rapidly -- larvae are only pretreated with estradiol for $\approx$25min-1hr before the first DF. 
 This is the time necessary to set the apparatus and begin the experiment.
@@ -312,29 +296,6 @@ From these experiments we conclude that Gper1 agonism does not promote habituati
 
 \subsection{ERα and ERβ are dispensable for estradiol-promoted habituation learning}
 
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
-\includegraphics[width=0.70\linewidth]{figures/NuclearSingleMutants.png}
-\caption{\textbf{\emph{esr1}, \emph{esr2a} and \emph{esr2a} mutants do not show habituation deficits after treatment with estradiol.} \scriptsize
-\\ \textbf{A)} Homozygous \emph{esr1\textsuperscript{(-/-)}} mutants (n = 231 fish) do not show impaired habituation relative to sibling controls (\emph{esr1\textsuperscript{(+/-)}} and \emph{esr1\textsuperscript{(+/+)}}, n = 490 fish). 
-\\ \textbf{B)} Homozygous \emph{esr2a\textsuperscript{(-/-)}} mutants (n = 214 fish) do not show impaired habituation relative to sibling controls (\emph{esr2a\textsuperscript{(+/-)}} and \emph{esr2a\textsuperscript{(+/+)}}, n = 128 fish).
-\\ \textbf{C)} Homozygous \emph{esr2b\textsuperscript{(-/-)}} mutants (n = 205 fish) do not show impaired habituation relative to sibling controls (\emph{esr2b\textsuperscript{(+/-)}} and \emph{esr2b\textsuperscript{(+/+)}}, n = 542 fish). 
-\\ \textbf{i)-vi)} For each lettered section: 
-\\ \textbf{i)} Responsiveness to stimuli comparing homozygous mutants to sibling controls (heterozygous or wild-type). 
-Each dot is the probability of response to one stimulus. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2). 
-Suppression of responsiveness is indicated by arrows, potentially reflecting increased habituation.
-\\ \textbf{ii)-v)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. 
-Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05, ** = p < 0.01.
-\textbf{ii)} the naive response to the first 5 DF stimuli; \textbf{iii)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{iv)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{v)} the 30 vibration stimuli delivered with a tap from a solenoid on the 300-well plate platform.
-\\ \textbf{vi)} Cumulative mean difference (CMD) plot quantifying habituation performance of mutants relative to sibling controls
-}
-
-\label{fig:3}
-
-\end{center}
-\end{fullwidth}
-\end{figure}
 
 Since we found that \emph{gper1} was unnecessary for the habituating-promoting effects of estradiol, we next focused on the three other ERs in the zebrafish genome: \emph{esr1}, \emph{esr2a} and \emph{esr2a}. 
 While we initially prioritized Gper1 due to its rapid signaling properties that aligned with the rapid actions of estradiol on habituation, it is equally possible that the rapid membrane-initiated actions of ERα and/or ERβ could underlie these effects.
@@ -345,28 +306,6 @@ From these data we conclude that none of the identified ERs are required for the
 
 \subsection{ERα and ERβ are simultaneously dispensable for estradiol-promoted habituation learning}
 
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
-\includegraphics[width=0.70\linewidth]{figures/NuclearDoubleAndTripleMutants.png}
-\caption{ \textbf{Double and triple mutant combinations of \emph{esr1}, \emph{esr2a} and \emph{esr2a} do not show habituation deficits after treatment with estradiol.} \scriptsize
-\\ \textbf{A)} Homozygous \emph{esr2a\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)}} double mutants (n = 109 fish) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (\emph{\textsuperscript{(+/?)};\textsuperscript{(+/?)}}, n = 120 fish). 
-\\ \textbf{B)} Homozygous \emph{esr1\textsuperscript{(-/-)};esr2a\textsuperscript{(-/-)}} double mutants (n = 6 fish) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (\emph{\textsuperscript{(+/?)};\textsuperscript{(+/?)}}, n = 95 fish). 
-\\ \textbf{C)} Homozygous \emph{esr1\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)}} double mutants (n = 90 fish) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (\emph{\textsuperscript{(+/?)};\textsuperscript{(+/?)}}, n = 347 fish). 
-\\ \textbf{D)} Homozygous \emph{esr1\textsuperscript{(-/-)};esr2a\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)}} triple mutants (n = 9 fish) do not show impaired habituation relative to triple heterozygous or homozygous sibling controls (\emph{\textsuperscript{(+/?)};\textsuperscript{(+/?)};\textsuperscript{(+/?)}}, n = 106 fish). 
-\\ \textbf{i)-vi)} For each lettered section: 
-\\ \textbf{i)} Responsiveness to stimuli comparing homozygous mutants to sibling controls (heterozygous or wild-type). 
-Each dot is the probability of response to one stimulus. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2).
-\\ \textbf{ii)-v)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. 
-Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05, ** = p < 0.01.
-\textbf{ii)} the naive response to the first 5 DF stimuli; \textbf{iii)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{iv)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{v)} the 30 vibration stimuli delivered with a tap from a solenoid on the 300-well plate platform.
-\\ \textbf{vi)} Cumulative mean difference (CMD) plot quantifying habituation performance of mutants relative to sibling controls.
-}
-\label{fig:4}
-
-\end{center}
-\end{fullwidth}
-\end{figure}
 
 While our experiments demonstrated that \emph{esr1}, \emph{esr2a} and \emph{esr2a} mutants remain sensitive to estradiol, it is plausible that they could act in a redundant fashion to mediate the effects of estradiol on habituation, perhaps via co-expression in a critical cell type, or via genetic compensation \citep{El-Brolosy2019-uq}. 
 To test for this possibility, we generated combinations of mutants by crossing individual lines together (\autoref{fig:4}). 
@@ -384,32 +323,6 @@ This adds further support to the model in which ER1 and ER2b act to suppress lea
 
 
 \subsection{Gper1, ERα, and ERβ are simultaneously dispensable for estradiol-promoted habituation learning}
-
-\begin{figure}
-\begin{fullwidth}
-\begin{center}
-\includegraphics[width=0.70\linewidth]{figures/gper1andNuclearMutants.png}
-
-\caption{ \textbf{Double, triple and quadruple mutant combinations of \emph{esr1}, \emph{esr2a}, \emph{esr2a}, and \emph{gper1} do not show habituation deficits after treatment with estradiol.} \scriptsize
-\\ \textbf{A)} Homozygous \emph{esr1\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} double mutants (n = 34 fish, purple) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (n = 81 fish, red). 
-\textbf{B)} Homozygous \emph{esr2a\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} double mutants (n = 27 fish, purple) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (n = 81 fish, red). 
-\textbf{C)} Homozygous \emph{esr2b\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} double mutants (n = 24 fish, purple) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (n = 81 fish, red). 
-\textbf{D)} Homozygous \emph{esr2a\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} triple mutants (n = 35 fish, purple) do not show impaired habituation relative to heterozygous or homozygous sibling controls (n = 81 fish, red). 
-\textbf{E)} A single homozygous \emph{esr1\textsuperscript{(-/-)};esr2a\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} quadruple mutant (n = 1 fish, purple) does not appear to show impaired habituation relative to heterozygous or homozygous sibling controls (n = 81 fish, red). 
-\\ \textbf{i)-vi)} For each lettered section: 
-\textbf{i)} Responsiveness to stimuli comparing homozygous mutants to sibling controls (heterozygous or wild-type). 
-Each dot is the probability of response to one stimulus. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2).
-\textbf{ii)-v)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. 
-Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05, ** = p < 0.01.
-\textbf{ii)} the naive response to the first 5 DF stimuli; \textbf{iii)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{iv)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{v)} the 30 vibration stimuli delivered with a tap from a solenoid on the 300-well plate platform.
-\textbf{vi)} Cumulative mean difference (CMD) plot quantifying habituation performance of mutants relative to sibling controls. 
-As mutant larvae were all derived from the same experiments, the sibling control data (red) is the same in \textbf{A-E)}.
-}
-
-\label{fig:5}
-\end{center}
-\end{fullwidth}
-\end{figure}
 
 
 While it is unclear to us how Gper1 might act redundantly with ERα/β, we nevertheless decided to test this possibility by combining the \emph{gper1} and the \emph{esr1}, \emph{esr2a}, and \emph{esr2b} mutations (\autoref{fig:5}). 
@@ -480,8 +393,7 @@ This complexity appears to be a fundamental property of habituation \citep{McDia
 
 \section{Data Availability Statement}
 
-Software and analysis code is available here:  \href{https://github.com/owenrandlett/2025_HabEstrogen}{https://github.com/owenrandlett/2025\_HabEstrogen}. 
-All datasets used in these analyses are available here: \href{https://gofile.me/5sdws/xF6oQhqTA}{HabEstrogen\_Datasets}.
+Original data generated and analyzed during this study are included in this published article or in the data repositories listed in References.
 
 \section{Acknowledgments}
 
@@ -494,4 +406,131 @@ We also gratefully acknowledge the communities that develop and maintain the num
 This work was supported by funding from the ATIP-Avenir program of the CNRS and Inserm, a Fondation Fyssen research grant, and the IDEX-Impulsion initiative of the University of Lyon.
 
 \bibliography{References_HabEstrogen}
+
+\newpage
+
+\section{Figure Legends}
+\newpage
+
+\begin{figure}
+\internallinenumbers
+
+\begin{center}
+% \includegraphics[width=0.65\linewidth]{figures/EstradiolEffect.png}
+
+\caption{\textbf{Estradiol increases habituation learning.} \doublespacing
+\\ \textbf{A)} In response to a dark flash (DF), larval zebrafish perform a large turning manoeuvre termed an "O-bend" response.
+\\ \textbf{B)} High-throughput setup for recording and quantifying responsiveness using a high-speed camera recording at 444hz observing larvae in 300-well plates. Scale bar = 10mm.
+\\ \textbf{C)} Treatment with estradiol (red) results in more rapid and profound decreases in the probability of response to DF stimuli during habituation training relative to DMSO vehicle controls (black). DF stimuli are delivered at 1-minute intervals, in 4 blocks of 60 stimuli, separated by 1hr of rest (from 0:00-7:00). 1.5 hours later a block of 30 vibration stimuli are delivered at 1-minute intervals (\textbf{i}). Each dot is the probability of response to one DF. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2). 
+\\ \textbf{D-G)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. Statistical significance was calculated using Mann-Whitney U test, *** = p < 0.001.  \textbf{D)} the naive response to the first 5 DF stimuli; \textbf{E)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{F)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{G)} the 30 vibration stimuli delivered with a tap from a solenoid on the 300-well plate platform. 
+\\ \textbf{H)} Cumulative mean difference (CMD) plot quantifying relative habituation performance after estradiol treatment. These plots display the cumulative average differences in the mean response across larvae of the treatment group (estradiol) relative to the control group (DMSO). Difference from 0 reflect a divergence in the change in responsiveness across the 240 DF stimuli in the 4 training blocks, with positive values reflecting increased habituation. The widths of the line is a bootstrapped 99.5\% confidence intervals. The gray boxed region reflects the expected non-significant effect size \citep{Randlett2019-fj}.
+\\ Treatment groups are: Estradiol = 10\textmu M estradiol treatment (n = 345 fish); DMSO = 0.1\% DMSO vehicle controls (n = 548 fish)
+}
+
+\label{fig:1}
+
+\end{center}
+
+\endinternallinenumbers
+\end{figure}
+
+
+\begin{figure}
+\internallinenumbers
+
+\begin{center}
+% \includegraphics[width=0.8\linewidth]{figures/gper1Mutants.png}
+\caption{\textbf{\emph{gper1} mutants do not show habituation deficits after treatment with estradiol.} \doublespacing
+\\ \textbf{A)} Homozygous \emph{gper1\textsuperscript{(-/-)}} mutants (n = 81 fish, purple) do not show impaired habituation relative to sibling controls (\emph{gper1\textsuperscript{(+/-)}} and \emph{gper1\textsuperscript{(+/+)}}, n = 222 fish, red). Rather, there is a slight suppression of responsiveness in the mutant group (arrows), indicating weakly increased habituation. Each dot is the probability of response to one stimulus. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2).
+\\ \textbf{B-E)} No significant differences are observed in the responsiveness distributions for the naive response to the first 5 DF stimuli (\textbf{B}), during the first training block (\textbf{C}), or the vibration response (\textbf{E}), while a subtle but statistically significant decrease in responsiveness is observed in the trained response (\textbf{D}). Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05.
+\\ \textbf{F)} Cumulative mean difference (CMD) plot quantifying habituation performance of mutants relative to sibling controls, consistent with slightly increased habituation rate in mutant larvae. 
+}
+\label{fig:2}
+
+\end{center}
+
+\endinternallinenumbers
+\end{figure}
+
+
+\begin{figure}
+\internallinenumbers
+\begin{center}
+% \includegraphics[width=0.70\linewidth]{figures/NuclearSingleMutants.png}
+\caption{\textbf{\emph{esr1}, \emph{esr2a} and \emph{esr2a} mutants do not show habituation deficits after treatment with estradiol.} \doublespacing
+\\ \textbf{A)} Homozygous \emph{esr1\textsuperscript{(-/-)}} mutants (n = 231 fish) do not show impaired habituation relative to sibling controls (\emph{esr1\textsuperscript{(+/-)}} and \emph{esr1\textsuperscript{(+/+)}}, n = 490 fish). 
+\\ \textbf{B)} Homozygous \emph{esr2a\textsuperscript{(-/-)}} mutants (n = 214 fish) do not show impaired habituation relative to sibling controls (\emph{esr2a\textsuperscript{(+/-)}} and \emph{esr2a\textsuperscript{(+/+)}}, n = 128 fish).
+\\ \textbf{C)} Homozygous \emph{esr2b\textsuperscript{(-/-)}} mutants (n = 205 fish) do not show impaired habituation relative to sibling controls (\emph{esr2b\textsuperscript{(+/-)}} and \emph{esr2b\textsuperscript{(+/+)}}, n = 542 fish). 
+\\ \textbf{i)-vi)} For each lettered section: 
+\\ \textbf{i)} Responsiveness to stimuli comparing homozygous mutants to sibling controls (heterozygous or wild-type). 
+Each dot is the probability of response to one stimulus. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2). 
+Suppression of responsiveness is indicated by arrows, potentially reflecting increased habituation.
+\\ \textbf{ii)-v)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. 
+Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05, ** = p < 0.01.
+\textbf{ii)} the naive response to the first 5 DF stimuli; \textbf{iii)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{iv)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{v)} the 30 vibration stimuli delivered with a tap from a solenoid on the 300-well plate platform.
+\\ \textbf{vi)} Cumulative mean difference (CMD) plot quantifying habituation performance of mutants relative to sibling controls
+}
+
+\label{fig:3}
+
+\end{center}
+\endinternallinenumbers
+\end{figure}
+
+
+
+\begin{figure}
+\internallinenumbers
+
+\begin{center}
+% \includegraphics[width=0.70\linewidth]{figures/NuclearDoubleAndTripleMutants.png}
+\caption{ \textbf{Double and triple mutant combinations of \emph{esr1}, \emph{esr2a} and \emph{esr2a} do not show habituation deficits after treatment with estradiol.} \doublespacing
+\\ \textbf{A)} Homozygous \emph{esr2a\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)}} double mutants (n = 109 fish) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (\emph{\textsuperscript{(+/?)};\textsuperscript{(+/?)}}, n = 120 fish). 
+\\ \textbf{B)} Homozygous \emph{esr1\textsuperscript{(-/-)};esr2a\textsuperscript{(-/-)}} double mutants (n = 6 fish) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (\emph{\textsuperscript{(+/?)};\textsuperscript{(+/?)}}, n = 95 fish). 
+\\ \textbf{C)} Homozygous \emph{esr1\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)}} double mutants (n = 90 fish) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (\emph{\textsuperscript{(+/?)};\textsuperscript{(+/?)}}, n = 347 fish). 
+\\ \textbf{D)} Homozygous \emph{esr1\textsuperscript{(-/-)};esr2a\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)}} triple mutants (n = 9 fish) do not show impaired habituation relative to triple heterozygous or homozygous sibling controls (\emph{\textsuperscript{(+/?)};\textsuperscript{(+/?)};\textsuperscript{(+/?)}}, n = 106 fish). 
+\\ \textbf{i)-vi)} For each lettered section: 
+\\ \textbf{i)} Responsiveness to stimuli comparing homozygous mutants to sibling controls (heterozygous or wild-type). 
+Each dot is the probability of response to one stimulus. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2).
+\\ \textbf{ii)-v)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. 
+Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05, ** = p < 0.01.
+\textbf{ii)} the naive response to the first 5 DF stimuli; \textbf{iii)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{iv)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{v)} the 30 vibration stimuli delivered with a tap from a solenoid on the 300-well plate platform.
+\\ \textbf{vi)} Cumulative mean difference (CMD) plot quantifying habituation performance of mutants relative to sibling controls.
+}
+\label{fig:4}
+
+\end{center}
+\endinternallinenumbers
+\end{figure}
+
+
+\begin{figure}
+\internallinenumbers
+
+\begin{center}
+% \includegraphics[width=0.70\linewidth]{figures/gper1andNuclearMutants.png}
+
+\caption{ \textbf{Double, triple and quadruple mutant combinations of \emph{esr1}, \emph{esr2a}, \emph{esr2a}, and \emph{gper1} do not show habituation deficits after treatment with estradiol.} \doublespacing
+\\ \textbf{A)} Homozygous \emph{esr1\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} double mutants (n = 34 fish, purple) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (n = 81 fish, red). 
+\textbf{B)} Homozygous \emph{esr2a\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} double mutants (n = 27 fish, purple) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (n = 81 fish, red). 
+\textbf{C)} Homozygous \emph{esr2b\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} double mutants (n = 24 fish, purple) do not show impaired habituation relative to double heterozygous or homozygous sibling controls (n = 81 fish, red). 
+\textbf{D)} Homozygous \emph{esr2a\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} triple mutants (n = 35 fish, purple) do not show impaired habituation relative to heterozygous or homozygous sibling controls (n = 81 fish, red). 
+\textbf{E)} A single homozygous \emph{esr1\textsuperscript{(-/-)};esr2a\textsuperscript{(-/-)};esr2b\textsuperscript{(-/-)};gper1\textsuperscript{(-/-)}} quadruple mutant (n = 1 fish, purple) does not appear to show impaired habituation relative to heterozygous or homozygous sibling controls (n = 81 fish, red). 
+\\ \textbf{i)-vi)} For each lettered section: 
+\textbf{i)} Responsiveness to stimuli comparing homozygous mutants to sibling controls (heterozygous or wild-type). 
+Each dot is the probability of response to one stimulus. Lines are smoothed in time with a Savitzky–Golay filter (window = 15 stimuli, order = 2).
+\textbf{ii)-v)} Distributions responsiveness for different epochs of the experiment. Each dot is the per-fish average of the epoch. 
+Statistical significance was calculated using Mann-Whitney U test, * = p < 0.05, ** = p < 0.01.
+\textbf{ii)} the naive response to the first 5 DF stimuli; \textbf{iii)} the mean response to the remaining DF stimuli in the Block 1 (DFs 6:60); \textbf{iv)} the trained response to the last 45 DFs in all four training blocks (DFs 16:60,76:120,136:180,196:240); \textbf{v)} the 30 vibration stimuli delivered with a tap from a solenoid on the 300-well plate platform.
+\textbf{vi)} Cumulative mean difference (CMD) plot quantifying habituation performance of mutants relative to sibling controls. 
+As mutant larvae were all derived from the same experiments, the sibling control data (red) is the same in \textbf{A-E)}.
+}
+
+\label{fig:5}
+\end{center}
+
+\endinternallinenumbers
+\end{figure}
+
+
 \end{document}
